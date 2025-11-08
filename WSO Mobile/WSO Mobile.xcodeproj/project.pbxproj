@@ -43,12 +43,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5BEB324F2EBFD7F300F75A10 /* WSO Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WSO Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WSOMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEB32522EBFD7F300F75A10 /* WSO_MobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSO_MobileApp.swift; sourceTree = "<group>"; };
 		5BEB32542EBFD7F300F75A10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BEB32562EBFD7F400F75A10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5BEB325C2EBFD7F400F75A10 /* WSO MobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WSO MobileTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BEB32662EBFD7F400F75A10 /* WSO MobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WSO MobileUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BEB325C2EBFD7F400F75A10 /* WSOMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WSOMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WSOMobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEB327D2EBFD83200F75A10 /* WSO Mobile Debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "WSO Mobile Debug"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEB327F2EBFD83200F75A10 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,9 +111,9 @@
 		5BEB32502EBFD7F300F75A10 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5BEB324F2EBFD7F300F75A10 /* WSO Mobile.app */,
-				5BEB325C2EBFD7F400F75A10 /* WSO MobileTests.xctest */,
-				5BEB32662EBFD7F400F75A10 /* WSO MobileUITests.xctest */,
+				5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */,
+				5BEB325C2EBFD7F400F75A10 /* WSOMobileTests.xctest */,
+				5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */,
 				5BEB327D2EBFD83200F75A10 /* WSO Mobile Debug */,
 			);
 			name = Products;
@@ -205,9 +205,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5BEB324E2EBFD7F300F75A10 /* WSO Mobile */ = {
+		5BEB324E2EBFD7F300F75A10 /* WSOMobile */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BEB32702EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSO Mobile" */;
+			buildConfigurationList = 5BEB32702EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSOMobile" */;
 			buildPhases = (
 				5BEB324B2EBFD7F300F75A10 /* Sources */,
 				5BEB324C2EBFD7F300F75A10 /* Frameworks */,
@@ -217,16 +217,16 @@
 			);
 			dependencies = (
 			);
-			name = "WSO Mobile";
+			name = WSOMobile;
 			packageProductDependencies = (
 			);
 			productName = "WSO Mobile";
-			productReference = 5BEB324F2EBFD7F300F75A10 /* WSO Mobile.app */;
+			productReference = 5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5BEB325B2EBFD7F400F75A10 /* WSO MobileTests */ = {
+		5BEB325B2EBFD7F400F75A10 /* WSOMobileTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BEB32732EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSO MobileTests" */;
+			buildConfigurationList = 5BEB32732EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSOMobileTests" */;
 			buildPhases = (
 				5BEB32582EBFD7F400F75A10 /* Sources */,
 				5BEB32592EBFD7F400F75A10 /* Frameworks */,
@@ -240,16 +240,16 @@
 			fileSystemSynchronizedGroups = (
 				5BEB325F2EBFD7F400F75A10 /* WSO MobileTests */,
 			);
-			name = "WSO MobileTests";
+			name = WSOMobileTests;
 			packageProductDependencies = (
 			);
 			productName = "WSO MobileTests";
-			productReference = 5BEB325C2EBFD7F400F75A10 /* WSO MobileTests.xctest */;
+			productReference = 5BEB325C2EBFD7F400F75A10 /* WSOMobileTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5BEB32652EBFD7F400F75A10 /* WSO MobileUITests */ = {
+		5BEB32652EBFD7F400F75A10 /* WSOMobileUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BEB32762EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSO MobileUITests" */;
+			buildConfigurationList = 5BEB32762EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSOMobileUITests" */;
 			buildPhases = (
 				5BEB32622EBFD7F400F75A10 /* Sources */,
 				5BEB32632EBFD7F400F75A10 /* Frameworks */,
@@ -263,11 +263,11 @@
 			fileSystemSynchronizedGroups = (
 				5BEB32692EBFD7F400F75A10 /* WSO MobileUITests */,
 			);
-			name = "WSO MobileUITests";
+			name = WSOMobileUITests;
 			packageProductDependencies = (
 			);
 			productName = "WSO MobileUITests";
-			productReference = 5BEB32662EBFD7F400F75A10 /* WSO MobileUITests.xctest */;
+			productReference = 5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		5BEB327C2EBFD83200F75A10 /* WSO Mobile Debug */ = {
@@ -329,9 +329,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5BEB324E2EBFD7F300F75A10 /* WSO Mobile */,
-				5BEB325B2EBFD7F400F75A10 /* WSO MobileTests */,
-				5BEB32652EBFD7F400F75A10 /* WSO MobileUITests */,
+				5BEB324E2EBFD7F300F75A10 /* WSOMobile */,
+				5BEB325B2EBFD7F400F75A10 /* WSOMobileTests */,
+				5BEB32652EBFD7F400F75A10 /* WSOMobileUITests */,
 				5BEB327C2EBFD83200F75A10 /* WSO Mobile Debug */,
 			);
 		};
@@ -399,12 +399,12 @@
 /* Begin PBXTargetDependency section */
 		5BEB325E2EBFD7F400F75A10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5BEB324E2EBFD7F300F75A10 /* WSO Mobile */;
+			target = 5BEB324E2EBFD7F300F75A10 /* WSOMobile */;
 			targetProxy = 5BEB325D2EBFD7F400F75A10 /* PBXContainerItemProxy */;
 		};
 		5BEB32682EBFD7F400F75A10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5BEB324E2EBFD7F300F75A10 /* WSO Mobile */;
+			target = 5BEB324E2EBFD7F300F75A10 /* WSOMobile */;
 			targetProxy = 5BEB32672EBFD7F400F75A10 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -541,6 +541,8 @@
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "WSO Mobile";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -573,6 +575,8 @@
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "WSO Mobile";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -721,7 +725,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5BEB32702EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSO Mobile" */ = {
+		5BEB32702EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSOMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BEB32712EBFD7F400F75A10 /* Debug */,
@@ -730,7 +734,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5BEB32732EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSO MobileTests" */ = {
+		5BEB32732EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSOMobileTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BEB32742EBFD7F400F75A10 /* Debug */,
@@ -739,7 +743,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5BEB32762EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSO MobileUITests" */ = {
+		5BEB32762EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSOMobileUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BEB32772EBFD7F400F75A10 /* Debug */,

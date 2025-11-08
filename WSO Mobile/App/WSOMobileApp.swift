@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct WSO_MobileApp: App {
+struct WSOMobileApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
