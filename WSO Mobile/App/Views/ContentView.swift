@@ -8,36 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var state = ContentViewModel()
     var body: some View {
-        VStack {
-            Text("Williams Students Online")
-                .font(Font.system(size: 30))
-            Divider()
-        }
-        .padding()
         TabView {
+            Tab("Home", systemImage: "house") {
+                HomeView()
+            }
             Tab("News", systemImage: "calendar") {
                 NewsView()
             }
-            .badge(2)
-
-            // TODO: be a little silly,
-            // make this icon change on pi day to
-            // pi.square and give users an option to change it
-
-            Tab("Dining", systemImage: "fork.knife") {
+            Tab("Dining", systemImage: state.diningIcon) {
                 DiningView()
             }
-            .badge("?")
-
             Tab("More", systemImage: "person") {
                 ProfileView()
             }
-            .badge("!")
         }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView().environmentObject(AppSettings.shared)
 }

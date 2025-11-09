@@ -9,13 +9,18 @@ import SwiftUI
 
 struct DiningView: View {
     var body: some View {
-        ScrollView {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, Dining!")
-            }.padding()
+        NavigationStack {
+            List {
+                Text("a menu item")
+                Text("another menu item")
+
+            }
+            .navigationTitle(Text("Dining"))
+            .navigationBarTitleDisplayMode(.large)
         }
     }
+}
+
+#Preview {
+    DiningView().environmentObject(AppSettings.shared)
 }

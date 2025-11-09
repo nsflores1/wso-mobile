@@ -9,17 +9,17 @@ import SwiftUI
 
 struct NewsView: View {
     var body: some View {
-        ScrollView {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, News!")
+        NavigationStack {
+            List {
+                Text("a news item")
+                Text("another news item")
             }
-            VStack(alignment: .leading) {
-                Text("Someday, a daily message will go here!")
-                    .padding()
-            }
+            .navigationTitle(Text("News"))
+            .navigationBarTitleDisplayMode(.large)
         }
     }
+}
+
+#Preview {
+    NewsView().environmentObject(AppSettings.shared)
 }

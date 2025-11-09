@@ -12,6 +12,7 @@ struct WSOMobileApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(AppSettings.shared)
         }
     }
 }

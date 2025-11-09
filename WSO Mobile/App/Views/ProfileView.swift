@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var settings: AppSettings
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, Profile!")
-        }.padding()
+        NavigationStack {
+            List {
+                Toggle("Mathematical Mode", isOn: $settings.likesMath)
+                Text("another setting")
+            }
+            .navigationTitle(Text("Settings"))
+            .navigationBarTitleDisplayMode(.large)
+        }
     }
+}
+
+#Preview {
+    ProfileView().environmentObject(AppSettings.shared)
 }
