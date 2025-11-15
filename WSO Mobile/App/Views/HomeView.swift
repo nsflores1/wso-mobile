@@ -16,8 +16,6 @@ struct HomeView: View {
                 .italic(true)
             Divider()
         }
-        .padding()
-
     }
 }
 

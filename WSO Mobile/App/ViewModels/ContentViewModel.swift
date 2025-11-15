@@ -5,6 +5,7 @@
 //  Created by Nathaniel Flores on 2025-11-09.
 //
 
+import SwiftUI // TODO: literally just for preview btw
 import Combine
 
 class ContentViewModel: ObservableObject {
@@ -26,6 +27,8 @@ class ContentViewModel: ObservableObject {
     private func updateContentBasedOnMathPreference(_ likesMath: Bool) {
         diningIcon = likesMath ? "pi" : "fork.knife"
     }
+}
 
-    
+#Preview {
+    ContentView().environmentObject(AppSettings.shared)
 }

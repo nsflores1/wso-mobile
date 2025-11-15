@@ -7,17 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B10FF962EC838DE0021597F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 5B10FF952EC838DE0021597F /* SwiftSoup */; };
+		5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 5B10FF972EC838E50021597F /* SwiftSoup */; };
+		5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B10FF992EC83C820021597F /* DailyMessages.swift */; };
+		5B10FF9B2EC83C880021597F /* DailyMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B10FF992EC83C820021597F /* DailyMessages.swift */; };
+		5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B10FF9C2EC83CA50021597F /* LibraryHours.swift */; };
+		5B10FF9E2EC83CA80021597F /* LibraryHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B10FF9C2EC83CA50021597F /* LibraryHours.swift */; };
 		5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF22EC10C9000277399 /* HomeView.swift */; };
 		5B4B3EFA2EC1271200277399 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF92EC1261500277399 /* Settings.swift */; };
 		5B4B3EFB2EC1271200277399 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF92EC1261500277399 /* Settings.swift */; };
 		5B4B3EFD2EC1291C00277399 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EFC2EC1291700277399 /* ContentViewModel.swift */; };
+		5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71D5F72EC802790051ABF5 /* ArgumentParser */; };
+		5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */; };
 		5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9B2EC0ED9900A242A1 /* WSOMobileApp.swift */; };
 		5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */; };
 		5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */; };
 		5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */; };
 		5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB32542EBFD7F300F75A10 /* ContentView.swift */; };
 		5BEB32572EBFD7F400F75A10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BEB32562EBFD7F400F75A10 /* Assets.xcassets */; };
-		5BEB32802EBFD83200F75A10 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB327F2EBFD83200F75A10 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +57,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B10FF992EC83C820021597F /* DailyMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessages.swift; sourceTree = "<group>"; };
+		5B10FF9C2EC83CA50021597F /* LibraryHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHours.swift; sourceTree = "<group>"; };
 		5B4B3EF22EC10C9000277399 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5B4B3EF92EC1261500277399 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5B4B3EFC2EC1291700277399 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileCLI.swift; sourceTree = "<group>"; };
 		5BB76F952EC0ED7500A242A1 /* WSOMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileTests.swift; sourceTree = "<group>"; };
 		5BB76F972EC0ED7500A242A1 /* WSOMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileUITests.swift; sourceTree = "<group>"; };
 		5BB76F982EC0ED7500A242A1 /* WSOMobileUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -65,8 +75,7 @@
 		5BEB32562EBFD7F400F75A10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BEB325C2EBFD7F400F75A10 /* WSOMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WSOMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WSOMobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BEB327D2EBFD83200F75A10 /* WSO Mobile Debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "WSO Mobile Debug"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BEB327F2EBFD83200F75A10 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WSOMobileCLI; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,12 +105,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */,
+				5B10FF962EC838DE0021597F /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B71D5F62EC802790051ABF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5BB76F962EC0ED7500A242A1 /* WSOMobileTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +152,7 @@
 				5BEB32872EBFD9AB00F75A10 /* Shared */,
 				5BEB32852EBFD8A600F75A10 /* CLI */,
 				5BEB32842EBFD89700F75A10 /* App */,
+				5B71D5F62EC802790051ABF5 /* Frameworks */,
 				5BEB32502EBFD7F300F75A10 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,7 +163,7 @@
 				5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */,
 				5BEB325C2EBFD7F400F75A10 /* WSOMobileTests.xctest */,
 				5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */,
-				5BEB327D2EBFD83200F75A10 /* WSO Mobile Debug */,
+				5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,7 +183,7 @@
 		5BEB32852EBFD8A600F75A10 /* CLI */ = {
 			isa = PBXGroup;
 			children = (
-				5BEB327F2EBFD83200F75A10 /* main.swift */,
+				5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */,
 			);
 			path = CLI;
 			sourceTree = "<group>";
@@ -224,6 +244,8 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5B10FF9C2EC83CA50021597F /* LibraryHours.swift */,
+				5B10FF992EC83C820021597F /* DailyMessages.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -245,6 +267,7 @@
 			);
 			name = WSOMobile;
 			packageProductDependencies = (
+				5B10FF972EC838E50021597F /* SwiftSoup */,
 			);
 			productName = "WSO Mobile";
 			productReference = 5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */;
@@ -290,9 +313,9 @@
 			productReference = 5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		5BEB327C2EBFD83200F75A10 /* WSO Mobile Debug */ = {
+		5BEB327C2EBFD83200F75A10 /* WSOMobileCLI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BEB32812EBFD83200F75A10 /* Build configuration list for PBXNativeTarget "WSO Mobile Debug" */;
+			buildConfigurationList = 5BEB32812EBFD83200F75A10 /* Build configuration list for PBXNativeTarget "WSOMobileCLI" */;
 			buildPhases = (
 				5BEB32792EBFD83200F75A10 /* Sources */,
 				5BEB327A2EBFD83200F75A10 /* Frameworks */,
@@ -302,11 +325,13 @@
 			);
 			dependencies = (
 			);
-			name = "WSO Mobile Debug";
+			name = WSOMobileCLI;
 			packageProductDependencies = (
+				5B71D5F72EC802790051ABF5 /* ArgumentParser */,
+				5B10FF952EC838DE0021597F /* SwiftSoup */,
 			);
 			productName = "WSO Mobile Debug";
-			productReference = 5BEB327D2EBFD83200F75A10 /* WSO Mobile Debug */;
+			productReference = 5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -344,6 +369,10 @@
 			);
 			mainGroup = 5BEB32462EBFD7F300F75A10;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5B3B65962EC800DB0001B28A /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				5B10FF942EC838C10021597F /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5BEB32502EBFD7F300F75A10 /* Products */;
 			projectDirPath = "";
@@ -352,7 +381,7 @@
 				5BEB324E2EBFD7F300F75A10 /* WSOMobile */,
 				5BEB325B2EBFD7F400F75A10 /* WSOMobileTests */,
 				5BEB32652EBFD7F400F75A10 /* WSOMobileUITests */,
-				5BEB327C2EBFD83200F75A10 /* WSO Mobile Debug */,
+				5BEB327C2EBFD83200F75A10 /* WSOMobileCLI */,
 			);
 		};
 /* End PBXProject section */
@@ -388,11 +417,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B4B3EFD2EC1291C00277399 /* ContentViewModel.swift in Sources */,
+				5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */,
 				5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */,
 				5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */,
 				5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */,
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
 				5B4B3EFA2EC1271200277399 /* Settings.swift in Sources */,
+				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
 				5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */,
 			);
@@ -417,7 +448,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B4B3EFB2EC1271200277399 /* Settings.swift in Sources */,
-				5BEB32802EBFD83200F75A10 /* main.swift in Sources */,
+				5B10FF9B2EC83C880021597F /* DailyMessages.swift in Sources */,
+				5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */,
+				5B10FF9E2EC83CA80021597F /* LibraryHours.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,7 +749,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_HARDENED_RUNTIME = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -731,7 +764,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_HARDENED_RUNTIME = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -779,7 +812,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5BEB32812EBFD83200F75A10 /* Build configuration list for PBXNativeTarget "WSO Mobile Debug" */ = {
+		5BEB32812EBFD83200F75A10 /* Build configuration list for PBXNativeTarget "WSOMobileCLI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BEB32822EBFD83200F75A10 /* Debug */,
@@ -789,6 +822,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5B10FF942EC838C10021597F /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.11.1;
+			};
+		};
+		5B3B65962EC800DB0001B28A /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5B10FF952EC838DE0021597F /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B10FF942EC838C10021597F /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		5B10FF972EC838E50021597F /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B10FF942EC838C10021597F /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		5B71D5F72EC802790051ABF5 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B3B65962EC800DB0001B28A /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5BEB32472EBFD7F300F75A10 /* Project object */;
 }

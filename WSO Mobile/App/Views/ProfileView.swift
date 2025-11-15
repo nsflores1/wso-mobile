@@ -13,6 +13,8 @@ struct ProfileView: View {
         NavigationStack {
             List {
                 Toggle("Mathematical Mode", isOn: $settings.likesMath)
+                // TODO: test if this works on device
+                    .sensoryFeedback(.selection, trigger: settings.likesMath)
                 Text("another setting")
             }
             .navigationTitle(Text("Settings"))
