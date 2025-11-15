@@ -9,12 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack {
-            Text("Williams Students Online")
-                .font(Font.system(size: 30))
-            Text("For students, by students!")
-                .italic(true)
-            Divider()
+        NavigationStack {
+            LibraryHoursView()
+            .navigationTitle(Text("WSO Mobile"))
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }

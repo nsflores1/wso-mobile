@@ -17,6 +17,8 @@
 		5B4B3EFA2EC1271200277399 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF92EC1261500277399 /* Settings.swift */; };
 		5B4B3EFB2EC1271200277399 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF92EC1261500277399 /* Settings.swift */; };
 		5B4B3EFD2EC1291C00277399 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EFC2EC1291700277399 /* ContentViewModel.swift */; };
+		5B5597312EC8F7CE00FB82D6 /* LibraryHoursView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */; };
+		5B5597332EC8F80E00FB82D6 /* LibraryHoursViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5597322EC8F80900FB82D6 /* LibraryHoursViewModel.swift */; };
 		5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71D5F72EC802790051ABF5 /* ArgumentParser */; };
 		5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */; };
 		5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9B2EC0ED9900A242A1 /* WSOMobileApp.swift */; };
@@ -62,6 +64,8 @@
 		5B4B3EF22EC10C9000277399 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5B4B3EF92EC1261500277399 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5B4B3EFC2EC1291700277399 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHoursView.swift; sourceTree = "<group>"; };
+		5B5597322EC8F80900FB82D6 /* LibraryHoursViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHoursViewModel.swift; sourceTree = "<group>"; };
 		5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileCLI.swift; sourceTree = "<group>"; };
 		5BB76F952EC0ED7500A242A1 /* WSOMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileTests.swift; sourceTree = "<group>"; };
 		5BB76F972EC0ED7500A242A1 /* WSOMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileUITests.swift; sourceTree = "<group>"; };
@@ -113,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		5B71D5F62EC802790051ABF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +213,7 @@
 		5BEB32882EBFD9EF00F75A10 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5B55972D2EC8F7B700FB82D6 /* Subviews */,
 				5B4B3EF22EC10C9000277399 /* HomeView.swift */,
 				5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */,
 				5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */,
@@ -213,6 +226,7 @@
 		5BEB32892EBFD9FB00F75A10 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5B5597322EC8F80900FB82D6 /* LibraryHoursViewModel.swift */,
 				5B4B3EFC2EC1291700277399 /* ContentViewModel.swift */,
 			);
 			path = ViewModels;
@@ -424,7 +438,9 @@
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
 				5B4B3EFA2EC1271200277399 /* Settings.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
+				5B5597332EC8F80E00FB82D6 /* LibraryHoursViewModel.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
+				5B5597312EC8F7CE00FB82D6 /* LibraryHoursView.swift in Sources */,
 				5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

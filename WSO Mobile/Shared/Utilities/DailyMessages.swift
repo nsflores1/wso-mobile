@@ -20,10 +20,20 @@ struct DailyMessageCategory: Codable {
 struct DailyMessagePost: Codable {
     let title: String
     let author: String
-    let author_email: String
-    let start_ts: String
+    let authorEmail: String
+    let startTime: String
     let content: String
-    let ldap_department: String
+    let ldapDepartment: String
+
+    // needed to match good swift stylee
+    enum CodingKeys: String, CodingKey {
+        case title
+        case author
+        case authorEmail = "author_email"
+        case startTime = "start_ts"
+        case content
+        case ldapDepartment = "ldap_department"
+    }
 }
 
 struct DailyMessagesParseError : Error {}
@@ -37,26 +47,33 @@ func parseDailyMessages() async throws -> [String: [DailyMessagePost]] {
 
     do {
         let decodedResponse = try JSONDecoder().decode(DailyMessageCategory.self, from: data)
-
-        for (categoryName, eventThing) in decodedResponse.categories {
-            print("### category: \(categoryName) ###")
-            for event in eventThing {
-                let soupTitle = try SwiftSoup.parse(event.title).text()
-                print("---- \(soupTitle)")
-                print("run by \(event.author) (\(event.author_email))")
-                print("department: \(event.ldap_department)")
-                print("on date: \(event.start_ts)")
-                let soupContent = try SwiftSoup.parse(event.content).text()
-                print("content: \(soupContent)")
-            }
-        }
         return decodedResponse.categories
     } catch {
         // TODO: handle this in the GUI.
         // maybe we need some way to handle past daily messages,
         // and be able to load those from remote.
         // but for now this works.
-        print("No daily messages today.")
         throw DailyMessagesParseError()
+    }
+}
+
+func doDailyMessages() async {
+    do {
+        let data = try await parseDailyMessages()
+        for (categoryName, eventThing) in data {
+            print("### category: \(categoryName) ###")
+            for event in eventThing {
+                let soupTitle = try SwiftSoup.parse(event.title).text()
+                print("---- \(soupTitle)")
+                print("run by \(event.author) (\(event.authorEmail))")
+                print("department: \(event.ldapDepartment)")
+                print("on date: \(event.startTime)")
+                let soupContent = try SwiftSoup.parse(event.content).text()
+                print("content: \(soupContent)")
+            }
+        }
+    }
+    catch {
+        print("no daily messages today")
     }
 }
