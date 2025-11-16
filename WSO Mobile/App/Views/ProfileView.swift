@@ -12,12 +12,20 @@ struct ProfileView: View {
     var body: some View {
         NavigationStack {
             List {
-                Toggle("Mathematical Mode", isOn: $settings.likesMath)
-                // TODO: test if this works on device
-                    .sensoryFeedback(.selection, trigger: settings.likesMath)
-                Text("another setting")
+                Section {
+                    Toggle("Mathematical Mode", isOn: $settings.likesMath)
+                        // TODO: test if this works on device
+                        .sensoryFeedback(.selection, trigger: settings.likesMath)
+                    Text("another setting")
+                } header : {
+                    Text("Settings")
+                        .fontWeight(.semibold)
+                        .font(.title3)
+                }
+                ImportantLinksView()
             }
-            .navigationTitle(Text("Settings"))
+            .listStyle(.grouped)
+            .navigationTitle(Text("More"))
             .navigationBarTitleDisplayMode(.large)
         }
     }

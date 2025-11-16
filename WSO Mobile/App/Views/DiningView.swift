@@ -15,6 +15,7 @@ struct DiningView: View {
                 Text("another menu item")
 
             }
+
             .navigationTitle(Text("Dining"))
             .navigationBarTitleDisplayMode(.large)
         }

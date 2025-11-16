@@ -10,9 +10,18 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         NavigationStack {
-            LibraryHoursView()
+
+            List {
+                Section {
+                    Text("search goes here")
+                }
+                LibraryHoursView()
+                DailyMessagesView()
+            }
+            .listStyle(.grouped)
             .navigationTitle(Text("WSO Mobile"))
             .navigationBarTitleDisplayMode(.large)
+
         }
     }
 }

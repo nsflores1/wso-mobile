@@ -23,6 +23,7 @@ class LibraryHoursViewModel: ObservableObject {
             self.libraryHours = data
         } catch {
             self.errorMessage = "Failed to load library hours."
+            self.libraryHours = []
         }
 
         isLoading = false

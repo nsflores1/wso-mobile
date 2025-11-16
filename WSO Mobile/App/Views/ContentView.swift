@@ -17,8 +17,13 @@ struct ContentView: View {
             Tab("News", systemImage: "calendar") {
                 NewsView()
             }
-            Tab("Dining", systemImage: state.diningIcon) {
+            Tab("Dining", systemImage: state.diningIcon)
+            {
                 DiningView()
+            }
+            Tab("Map", systemImage: "globe.americas")
+            {
+                MapView()
             }
             Tab("More", systemImage: "person") {
                 ProfileView()
