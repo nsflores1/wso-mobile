@@ -15,6 +15,13 @@
 		5B10FF9B2EC83C880021597F /* DailyMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B10FF992EC83C820021597F /* DailyMessages.swift */; };
 		5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B10FF9C2EC83CA50021597F /* LibraryHours.swift */; };
 		5B10FF9E2EC83CA80021597F /* LibraryHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B10FF9C2EC83CA50021597F /* LibraryHours.swift */; };
+		5B2FCB2F2ECE59A900A960F3 /* WSOWristApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCB2E2ECE59A900A960F3 /* WSOWristApp.swift */; };
+		5B2FCB312ECE59A900A960F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCB302ECE59A900A960F3 /* ContentView.swift */; };
+		5B2FCB332ECE59AA00A960F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B2FCB322ECE59AA00A960F3 /* Assets.xcassets */; };
+		5B2FCB3D2ECE59AA00A960F3 /* WSOWrist_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCB3C2ECE59AA00A960F3 /* WSOWrist_Watch_AppTests.swift */; };
+		5B2FCB472ECE59AA00A960F3 /* WSOWrist_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCB462ECE59AA00A960F3 /* WSOWrist_Watch_AppUITests.swift */; };
+		5B2FCB492ECE59AA00A960F3 /* WSOWrist_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FCB482ECE59AA00A960F3 /* WSOWrist_Watch_AppUITestsLaunchTests.swift */; };
+		5B2FCB4C2ECE59AA00A960F3 /* WSOWrist Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5B2FCB2C2ECE59A900A960F3 /* WSOWrist Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF22EC10C9000277399 /* HomeView.swift */; };
 		5B4B3EFA2EC1271200277399 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF92EC1261500277399 /* Settings.swift */; };
 		5B4B3EFB2EC1271200277399 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF92EC1261500277399 /* Settings.swift */; };
@@ -47,6 +54,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5B2FCB392ECE59AA00A960F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BEB32472EBFD7F300F75A10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B2FCB2B2ECE59A900A960F3;
+			remoteInfo = "WSOWrist Watch App";
+		};
+		5B2FCB432ECE59AA00A960F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BEB32472EBFD7F300F75A10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B2FCB2B2ECE59A900A960F3;
+			remoteInfo = "WSOWrist Watch App";
+		};
+		5B2FCB4A2ECE59AA00A960F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BEB32472EBFD7F300F75A10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B2FCB2B2ECE59A900A960F3;
+			remoteInfo = "WSOWrist Watch App";
+		};
 		5BEB325D2EBFD7F400F75A10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5BEB32472EBFD7F300F75A10 /* Project object */;
@@ -64,6 +92,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5B2FCB1E2ECE594400A960F3 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				5B2FCB4C2ECE59AA00A960F3 /* WSOWrist Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEB327B2EBFD83200F75A10 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,6 +119,15 @@
 		5B0168422EC91D650092FBA3 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		5B10FF992EC83C820021597F /* DailyMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessages.swift; sourceTree = "<group>"; };
 		5B10FF9C2EC83CA50021597F /* LibraryHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHours.swift; sourceTree = "<group>"; };
+		5B2FCB2C2ECE59A900A960F3 /* WSOWrist Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WSOWrist Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B2FCB2E2ECE59A900A960F3 /* WSOWristApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOWristApp.swift; sourceTree = "<group>"; };
+		5B2FCB302ECE59A900A960F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5B2FCB322ECE59AA00A960F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B2FCB382ECE59AA00A960F3 /* WSOWrist Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WSOWrist Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B2FCB3C2ECE59AA00A960F3 /* WSOWrist_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOWrist_Watch_AppTests.swift; sourceTree = "<group>"; };
+		5B2FCB422ECE59AA00A960F3 /* WSOWrist Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WSOWrist Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B2FCB462ECE59AA00A960F3 /* WSOWrist_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOWrist_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		5B2FCB482ECE59AA00A960F3 /* WSOWrist_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOWrist_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5B4B3EF22EC10C9000277399 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5B4B3EF92EC1261500277399 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5B4B3EFC2EC1291700277399 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -112,6 +160,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B2FCB292ECE59A900A960F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2FCB352ECE59AA00A960F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2FCB3F2ECE59AA00A960F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEB324C2EBFD7F300F75A10 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,6 +217,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B2FCB562ECE59D800A960F3 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				5B2FCB5B2ECE5A3400A960F3 /* ViewModels */,
+				5B2FCB5A2ECE5A2E00A960F3 /* Views */,
+				5B2FCB582ECE5A1F00A960F3 /* Tests */,
+				5B2FCB572ECE59EA00A960F3 /* Assets */,
+				5B2FCB2E2ECE59A900A960F3 /* WSOWristApp.swift */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
+		5B2FCB572ECE59EA00A960F3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5B2FCB322ECE59AA00A960F3 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		5B2FCB582ECE5A1F00A960F3 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5B2FCB3C2ECE59AA00A960F3 /* WSOWrist_Watch_AppTests.swift */,
+				5B2FCB462ECE59AA00A960F3 /* WSOWrist_Watch_AppUITests.swift */,
+				5B2FCB482ECE59AA00A960F3 /* WSOWrist_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		5B2FCB5A2ECE5A2E00A960F3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B2FCB302ECE59A900A960F3 /* ContentView.swift */,
+				5B2FCB5C2ECE5A3C00A960F3 /* Subviews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5B2FCB5B2ECE5A3400A960F3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5B2FCB5C2ECE5A3C00A960F3 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +321,7 @@
 				5BEB32872EBFD9AB00F75A10 /* Shared */,
 				5BEB32852EBFD8A600F75A10 /* CLI */,
 				5BEB32842EBFD89700F75A10 /* App */,
+				5B2FCB562ECE59D800A960F3 /* Watch */,
 				5B71D5F62EC802790051ABF5 /* Frameworks */,
 				5BEB32502EBFD7F300F75A10 /* Products */,
 			);
@@ -211,6 +334,9 @@
 				5BEB325C2EBFD7F400F75A10 /* WSOMobileTests.xctest */,
 				5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */,
 				5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */,
+				5B2FCB2C2ECE59A900A960F3 /* WSOWrist Watch App.app */,
+				5B2FCB382ECE59AA00A960F3 /* WSOWrist Watch AppTests.xctest */,
+				5B2FCB422ECE59AA00A960F3 /* WSOWrist Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -310,6 +436,65 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B2FCB2B2ECE59A900A960F3 /* WSOWrist Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B2FCB4D2ECE59AA00A960F3 /* Build configuration list for PBXNativeTarget "WSOWrist Watch App" */;
+			buildPhases = (
+				5B2FCB282ECE59A900A960F3 /* Sources */,
+				5B2FCB292ECE59A900A960F3 /* Frameworks */,
+				5B2FCB2A2ECE59A900A960F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WSOWrist Watch App";
+			packageProductDependencies = (
+			);
+			productName = "WSOWrist Watch App";
+			productReference = 5B2FCB2C2ECE59A900A960F3 /* WSOWrist Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B2FCB372ECE59AA00A960F3 /* WSOWrist Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B2FCB502ECE59AA00A960F3 /* Build configuration list for PBXNativeTarget "WSOWrist Watch AppTests" */;
+			buildPhases = (
+				5B2FCB342ECE59AA00A960F3 /* Sources */,
+				5B2FCB352ECE59AA00A960F3 /* Frameworks */,
+				5B2FCB362ECE59AA00A960F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B2FCB3A2ECE59AA00A960F3 /* PBXTargetDependency */,
+			);
+			name = "WSOWrist Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "WSOWrist Watch AppTests";
+			productReference = 5B2FCB382ECE59AA00A960F3 /* WSOWrist Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5B2FCB412ECE59AA00A960F3 /* WSOWrist Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B2FCB532ECE59AA00A960F3 /* Build configuration list for PBXNativeTarget "WSOWrist Watch AppUITests" */;
+			buildPhases = (
+				5B2FCB3E2ECE59AA00A960F3 /* Sources */,
+				5B2FCB3F2ECE59AA00A960F3 /* Frameworks */,
+				5B2FCB402ECE59AA00A960F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B2FCB442ECE59AA00A960F3 /* PBXTargetDependency */,
+			);
+			name = "WSOWrist Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "WSOWrist Watch AppUITests";
+			productReference = 5B2FCB422ECE59AA00A960F3 /* WSOWrist Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		5BEB324E2EBFD7F300F75A10 /* WSOMobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BEB32702EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSOMobile" */;
@@ -317,10 +502,12 @@
 				5BEB324B2EBFD7F300F75A10 /* Sources */,
 				5BEB324C2EBFD7F300F75A10 /* Frameworks */,
 				5BEB324D2EBFD7F300F75A10 /* Resources */,
+				5B2FCB1E2ECE594400A960F3 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5B2FCB4B2ECE59AA00A960F3 /* PBXTargetDependency */,
 			);
 			name = WSOMobile;
 			packageProductDependencies = (
@@ -403,6 +590,17 @@
 				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					5B2FCB2B2ECE59A900A960F3 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					5B2FCB372ECE59AA00A960F3 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = 5B2FCB2B2ECE59A900A960F3;
+					};
+					5B2FCB412ECE59AA00A960F3 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = 5B2FCB2B2ECE59A900A960F3;
+					};
 					5BEB324E2EBFD7F300F75A10 = {
 						CreatedOnToolsVersion = 26.1;
 					};
@@ -444,11 +642,36 @@
 				5BEB325B2EBFD7F400F75A10 /* WSOMobileTests */,
 				5BEB32652EBFD7F400F75A10 /* WSOMobileUITests */,
 				5BEB327C2EBFD83200F75A10 /* WSOMobileCLI */,
+				5B2FCB2B2ECE59A900A960F3 /* WSOWrist Watch App */,
+				5B2FCB372ECE59AA00A960F3 /* WSOWrist Watch AppTests */,
+				5B2FCB412ECE59AA00A960F3 /* WSOWrist Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B2FCB2A2ECE59A900A960F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B2FCB332ECE59AA00A960F3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2FCB362ECE59AA00A960F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2FCB402ECE59AA00A960F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEB324D2EBFD7F300F75A10 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,6 +697,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B2FCB282ECE59A900A960F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B2FCB312ECE59A900A960F3 /* ContentView.swift in Sources */,
+				5B2FCB2F2ECE59A900A960F3 /* WSOWristApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2FCB342ECE59AA00A960F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B2FCB3D2ECE59AA00A960F3 /* WSOWrist_Watch_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2FCB3E2ECE59AA00A960F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B2FCB492ECE59AA00A960F3 /* WSOWrist_Watch_AppUITestsLaunchTests.swift in Sources */,
+				5B2FCB472ECE59AA00A960F3 /* WSOWrist_Watch_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEB324B2EBFD7F300F75A10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -536,6 +785,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5B2FCB3A2ECE59AA00A960F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B2FCB2B2ECE59A900A960F3 /* WSOWrist Watch App */;
+			targetProxy = 5B2FCB392ECE59AA00A960F3 /* PBXContainerItemProxy */;
+		};
+		5B2FCB442ECE59AA00A960F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B2FCB2B2ECE59A900A960F3 /* WSOWrist Watch App */;
+			targetProxy = 5B2FCB432ECE59AA00A960F3 /* PBXContainerItemProxy */;
+		};
+		5B2FCB4B2ECE59AA00A960F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B2FCB2B2ECE59A900A960F3 /* WSOWrist Watch App */;
+			targetProxy = 5B2FCB4A2ECE59AA00A960F3 /* PBXContainerItemProxy */;
+		};
 		5BEB325E2EBFD7F400F75A10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5BEB324E2EBFD7F300F75A10 /* WSOMobile */;
@@ -549,6 +813,162 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5B2FCB4E2ECE59AA00A960F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = WSOWrist;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "williams-students-online.WSO-Mobile";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		5B2FCB4F2ECE59AA00A960F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = WSOWrist;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "williams-students-online.WSO-Mobile";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
+		5B2FCB512ECE59AA00A960F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSOWrist-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WSOWrist Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WSOWrist Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		5B2FCB522ECE59AA00A960F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSOWrist-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WSOWrist Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WSOWrist Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
+		5B2FCB542ECE59AA00A960F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSOWrist-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "WSOWrist Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		5B2FCB552ECE59AA00A960F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSOWrist-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "WSOWrist Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
 		5BEB326E2EBFD7F400F75A10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -857,6 +1277,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B2FCB4D2ECE59AA00A960F3 /* Build configuration list for PBXNativeTarget "WSOWrist Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B2FCB4E2ECE59AA00A960F3 /* Debug */,
+				5B2FCB4F2ECE59AA00A960F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B2FCB502ECE59AA00A960F3 /* Build configuration list for PBXNativeTarget "WSOWrist Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B2FCB512ECE59AA00A960F3 /* Debug */,
+				5B2FCB522ECE59AA00A960F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B2FCB532ECE59AA00A960F3 /* Build configuration list for PBXNativeTarget "WSOWrist Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B2FCB542ECE59AA00A960F3 /* Debug */,
+				5B2FCB552ECE59AA00A960F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5BEB324A2EBFD7F300F75A10 /* Build configuration list for PBXProject "WSO Mobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
