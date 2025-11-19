@@ -31,7 +31,8 @@ class WilliamsRecordViewModel: ObservableObject {
                     title: "(Unknown)",
                     author: "(Unknown)",
                     content: "(Unknown)"
-                ) }
+                    )
+                }
 
                 let cleanContent = (
                     try? SwiftSoup.parse(rawContent).text()

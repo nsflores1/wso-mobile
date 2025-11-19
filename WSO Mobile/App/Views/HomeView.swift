@@ -50,7 +50,7 @@ struct HomeView: View {
                             .fontWeight(.semibold)
                             .font(.title3)
                         Spacer()
-                        Image(systemName: "book")
+                        Image(systemName: "server.rack")
                     }
                 }
                 LibraryHoursView()

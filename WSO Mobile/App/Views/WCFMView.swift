@@ -17,16 +17,20 @@ struct WCFMView: View {
     let streamURL = URL(string: "http://wcfm-streaming.williams.edu:8000/stream")
 
     var body: some View {
-        VStack {
-            Text("WCFM live radio")
+        NavigationStack {
+            VStack {
+                Text("WCFM live radio")
 
-            Button(player.isPlaying ? "pause" : "play") {
-                if player.isPlaying {
-                    player.pause()
-                } else {
-                    player.play(url: streamURL!)
+                Button(player.isPlaying ? "pause" : "play") {
+                    if player.isPlaying {
+                        player.pause()
+                    } else {
+                        player.play(url: streamURL!)
+                    }
                 }
             }
+            .navigationTitle(Text("WCFM Radio"))
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }
