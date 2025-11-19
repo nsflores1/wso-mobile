@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// TODO: Ephelia's Roots wants their info here
+// TODO: places in town would be sick to have
+
 struct DiningView: View {
     var body: some View {
         NavigationStack {

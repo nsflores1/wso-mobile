@@ -11,8 +11,7 @@ struct NewsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Text("a news item")
-                Text("another news item")
+                WilliamsRecordView()
             }
             .navigationTitle(Text("News"))
             .navigationBarTitleDisplayMode(.large)

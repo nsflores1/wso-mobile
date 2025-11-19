@@ -29,9 +29,14 @@ struct LibraryHoursView: View {
                 }
             }
         } header : {
-            Text("Library Hours")
-                .fontWeight(.semibold)
-                .font(.title3)
+            HStack {
+                Text("Library Hours")
+                    .fontWeight(.semibold)
+                    .font(.title3)
+                Spacer()
+                Image(systemName: "book")
+            }
+
         } .task { await viewModel.loadHours() }
     }
 }

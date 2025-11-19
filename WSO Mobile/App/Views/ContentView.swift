@@ -21,9 +21,9 @@ struct ContentView: View {
             {
                 DiningView()
             }
-            Tab("Map", systemImage: "globe.americas")
+            Tab("WCFM", systemImage: "radio")
             {
-                MapView()
+                WCFMView()
             }
             Tab("More", systemImage: "person") {
                 ProfileView()

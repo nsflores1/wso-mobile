@@ -23,6 +23,7 @@ struct AppCLI: AsyncParsableCommand {
         print("### WSO Mobile CLI ###")
         await doDailyMessages()
         await doLibraryHours()
+        await doWilliamsRecord()
         print("### EXECUTION OVER ###")
     }
 }

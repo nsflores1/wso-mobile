@@ -5,6 +5,9 @@
 //  Created by Nathaniel Flores on 2025-11-15.
 //
 
+// TODO: maybe rewrite this for WOC locations?
+// this is kept here in case it may be useful.
+
 import SwiftUI
 import MapKit
 

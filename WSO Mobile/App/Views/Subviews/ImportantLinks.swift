@@ -7,6 +7,17 @@
 
 // TODO: update this from a web JSON rather than being manual
 // TODO: also ask different campus orgs what they'd like in the app
+// Orgs who are interested:
+// - check your messages with jack allen (he has a bunch)
+// - woc board
+// - the record
+// - wso (duh)
+// - ephelia's roots
+// - alexander hamilton society (check thianna dms)
+// - black student union
+// - williams colleeg jewish association
+// TODO: people want to hide sections they don't want to see.
+// TODO: you need to have a way to hide these if people don't want to see them, and have the app remember that
 
 import SwiftUI
 import Foundation
@@ -16,7 +27,25 @@ struct ImportantLinksView: View {
 
     var body: some View {
         Section {
-            linkRow("Williams College Homepage", url: "https://williams.edu")
+            Section() {
+                linkRow("Williams College Homepage", url: "https://williams.edu")
+                linkRow("Williams College Sports", url: "https://williams.edu")
+            } header : {
+                HStack {
+                    Image(systemName: "laurel.leading")
+                    Text("Official Stuff")
+                    Image(systemName: "laurel.trailing")
+                }
+            }
+            Section() {
+                linkRow("Department Homepage", url: "https://williams.edu")
+                linkRow("Future Course Planner", url: "https://williams.edu")
+            } header: {
+                HStack {
+                    Image(systemName: "fossil.shell")
+                    Text("Geosciences Department")
+                }
+            }
         } header : {
             Text("Important Links")
                 .fontWeight(.semibold)

@@ -20,12 +20,47 @@ struct DailyMessagesView: View {
                     // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
                 Text(error).foregroundStyle(Color.red)
             } else {
-                Text("Content will go here soon")
+                ForEach(viewModel.dailyMessageCategories.keys.sorted(), id: \.self) { category in
+                    Section() {
+                        ForEach(viewModel.dailyMessageCategories[category] ?? [], id: \.title) { post in
+                            DisclosureGroup {
+                                VStack {
+                                    Text(post.content)
+                                        .font(.subheadline)
+                                        .foregroundStyle(Color.secondary)
+                                        .multilineTextAlignment(.leading)
+                                }
+                            } label: {
+                                VStack() {
+                                    // the .frame() trick is Dark Arts
+                                    Text(post.title)
+                                        .multilineTextAlignment(.leading)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    HStack() {
+                                        Image(systemName: "person")
+                                        Text("\(post.author) (\(post.authorEmail))").italic()
+                                            .multilineTextAlignment(.leading)
+                                    }.frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
+                        }
+                    } header: {
+                        HStack() {
+                            Image(systemName: "square.fill")
+                            Text(category).font(.headline)
+                                .multilineTextAlignment(.leading)
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
             }
         } header : {
-            Text("Daily Messages")
-                .fontWeight(.semibold)
-                .font(.title3)
+            HStack {
+                Text("Daily Messages")
+                    .fontWeight(.semibold)
+                    .font(.title3)
+                Spacer()
+                Image(systemName: "list.bullet.clipboard")
+            }
         } .task { await viewModel.loadContent() }
     }
     // Important note: clearly you need to attach the task
