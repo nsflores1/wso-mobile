@@ -61,6 +61,22 @@ struct HomeView: View {
             .navigationTitle(Text("WSO Mobile"))
             .navigationSubtitle(Text("For the students, by the students!"))
             .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                            // TODO: add profile/login page view
+                    } label: {
+                        Image(systemName: "person")
+                    }
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                            // TODO: add credits page
+                    } label: {
+                        Image(systemName: "wand.and.rays")
+                    }
+                }
+            }
         }
     }
 }

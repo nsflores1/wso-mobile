@@ -22,6 +22,8 @@ class WilliamsRecordViewModel: ObservableObject {
         errorMessage = nil
 
         do {
+            //URLCache.shared.removeAllCachedResponses() // nuke all caches
+            // TODO: UNCOMMENT ABOVE BEFORE PROD RELEASE
             let items = try await parseWilliamsRecord()
             posts = items.compactMap { item in
                 guard let title = item.title,

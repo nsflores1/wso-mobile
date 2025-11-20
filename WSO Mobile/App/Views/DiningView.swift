@@ -11,17 +11,42 @@ import SwiftUI
 // TODO: places in town would be sick to have
 
 struct DiningView: View {
+    @StateObject private var viewModel = DiningHoursViewModel()
+
     var body: some View {
         NavigationStack {
-            List {
-                Text("a menu item")
-                Text("another menu item")
+                if viewModel.isLoading {
+                        // TODO: make a nicer ProgressView()
+                    Text("Loading...")
+                    .navigationTitle(Text("Dining"))
+                    // TODO: setting this three times is DUMB but whatevs
+                } else if let error = viewModel.errorMessage {
+                        // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
+                    Text(error).foregroundStyle(Color.red)
+                    .navigationTitle(Text("Dining"))
+                } else {
+                    // ALL dining hours stuff lives in here,
+                    // not just the dining hall ones.
+                    List {
+                        Section {
+                            NavigationLink("Spring Street") {
+                                SpringStreetRestaurantView()
+                            }
+                            NavigationLink("Ephelia's Roots") {
+                                // TODO: write this view
+                            }
+                        } header: {
+                            Text("Off-Campus & Stores")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                        }
+                        DiningVendorView(menu: viewModel.diningMenu)
+                    }
+                    .navigationTitle(Text("Dining"))
+                }
 
-            }
 
-            .navigationTitle(Text("Dining"))
-            .navigationBarTitleDisplayMode(.large)
-        }
+        }.task { await viewModel.loadMenus() }
     }
 }
 

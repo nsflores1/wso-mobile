@@ -21,11 +21,18 @@ struct WCFMView: View {
             VStack {
                 Text("WCFM live radio")
 
-                Button(player.isPlaying ? "pause" : "play") {
+                Button {
                     if player.isPlaying {
                         player.pause()
                     } else {
                         player.play(url: streamURL!)
+                    }
+                } label : {
+                    // need to split this up by type
+                    if player.isPlaying {
+                        Label("Pause", systemImage: "pause")
+                    } else {
+                        Label("Play", systemImage: "play")
                     }
                 }
             }

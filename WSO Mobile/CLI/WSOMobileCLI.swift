@@ -24,6 +24,7 @@ struct AppCLI: AsyncParsableCommand {
         await doDailyMessages()
         await doLibraryHours()
         await doWilliamsRecord()
+        await doWilliamsDining()
         print("### EXECUTION OVER ###")
     }
 }

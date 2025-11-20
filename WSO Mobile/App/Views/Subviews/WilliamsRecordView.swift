@@ -24,8 +24,8 @@ struct WilliamsRecordView: View {
             } else {
                 // TODO: need to introduce a NavigationLink for posts
                 ForEach(viewModel.posts, id: \.id) { post in
-                    NavigationLink {
-                        Text(post.content)
+                    NavigationLink() {
+                        WilliamsRecordArticleView(article: post)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } label: {
                         VStack {

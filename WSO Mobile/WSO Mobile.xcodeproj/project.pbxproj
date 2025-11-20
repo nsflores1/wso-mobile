@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0168402EC91BEC0092FBA3 /* MapView.swift */; };
 		5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0168422EC91D650092FBA3 /* MapViewModel.swift */; };
+		5B0A2E8C2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */; };
+		5B0A2E8D2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */; };
+		5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A2E8E2ECEC38200DC3485 /* DiningViewModel.swift */; };
 		5B10FF962EC838DE0021597F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 5B10FF952EC838DE0021597F /* SwiftSoup */; };
 		5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 5B10FF972EC838E50021597F /* SwiftSoup */; };
 		5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B10FF992EC83C820021597F /* DailyMessages.swift */; };
@@ -31,6 +34,10 @@
 		5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */; };
 		5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */; };
 		5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71D5F72EC802790051ABF5 /* ArgumentParser */; };
+		5B75F0B22ECF4E4400F1F4F8 /* DiningMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B12ECF4E2D00F1F4F8 /* DiningMealView.swift */; };
+		5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */; };
+		5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */; };
+		5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */; };
 		5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */; };
 		5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */; };
 		5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */; };
@@ -39,6 +46,10 @@
 		5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */; };
 		5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */; };
 		5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */; };
+		5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */; };
+		5BDEED642ECF7E9700E150E6 /* SpringStreetRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */; };
+		5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED672ECF857700E150E6 /* WSOGetWords.swift */; };
+		5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED672ECF857700E150E6 /* WSOGetWords.swift */; };
 		5BE3EE452ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */; };
 		5BE3EE462ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */; };
 		5BE3EE4A2ECC30F5009CDFD3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3EE492ECC30E7009CDFD3 /* StringExtension.swift */; };
@@ -117,6 +128,8 @@
 /* Begin PBXFileReference section */
 		5B0168402EC91BEC0092FBA3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5B0168422EC91D650092FBA3 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsDining.swift; sourceTree = "<group>"; };
+		5B0A2E8E2ECEC38200DC3485 /* DiningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningViewModel.swift; sourceTree = "<group>"; };
 		5B10FF992EC83C820021597F /* DailyMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessages.swift; sourceTree = "<group>"; };
 		5B10FF9C2EC83CA50021597F /* LibraryHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHours.swift; sourceTree = "<group>"; };
 		5B2FCB2C2ECE59A900A960F3 /* WSOWrist Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WSOWrist Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +148,10 @@
 		5B5597322EC8F80900FB82D6 /* LibraryHoursViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHoursViewModel.swift; sourceTree = "<group>"; };
 		5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesView.swift; sourceTree = "<group>"; };
 		5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesViewModel.swift; sourceTree = "<group>"; };
+		5B75F0B12ECF4E2D00F1F4F8 /* DiningMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningMealView.swift; sourceTree = "<group>"; };
+		5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningVendorView.swift; sourceTree = "<group>"; };
+		5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningCoursesView.swift; sourceTree = "<group>"; };
+		5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningItemsView.swift; sourceTree = "<group>"; };
 		5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileCLI.swift; sourceTree = "<group>"; };
 		5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMView.swift; sourceTree = "<group>"; };
 		5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMViewModel.swift; sourceTree = "<group>"; };
@@ -146,6 +163,9 @@
 		5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningView.swift; sourceTree = "<group>"; };
 		5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecordArticleView.swift; sourceTree = "<group>"; };
+		5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringStreetRestaurantView.swift; sourceTree = "<group>"; };
+		5BDEED672ECF857700E150E6 /* WSOGetWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOGetWords.swift; sourceTree = "<group>"; };
 		5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecord.swift; sourceTree = "<group>"; };
 		5BE3EE492ECC30E7009CDFD3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5BE3EE512ECC3491009CDFD3 /* WilliamsRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecordViewModel.swift; sourceTree = "<group>"; };
@@ -273,6 +293,12 @@
 		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */,
+				5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */,
+				5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */,
+				5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */,
+				5B75F0B12ECF4E2D00F1F4F8 /* DiningMealView.swift */,
+				5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */,
 				5BE3EE532ECC3521009CDFD3 /* WilliamsRecordView.swift */,
 				5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */,
 				5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */,
@@ -374,10 +400,10 @@
 		5BEB32882EBFD9EF00F75A10 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */,
 				5B55972D2EC8F7B700FB82D6 /* Subviews */,
 				5B4B3EF22EC10C9000277399 /* HomeView.swift */,
 				5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */,
+				5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */,
 				5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */,
 				5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */,
 				5BEB32542EBFD7F300F75A10 /* ContentView.swift */,
@@ -388,6 +414,7 @@
 		5BEB32892EBFD9FB00F75A10 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5B0A2E8E2ECEC38200DC3485 /* DiningViewModel.swift */,
 				5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */,
 				5BE3EE512ECC3491009CDFD3 /* WilliamsRecordViewModel.swift */,
 				5B0168422EC91D650092FBA3 /* MapViewModel.swift */,
@@ -417,6 +444,7 @@
 		5BEB328D2EBFDA3F00F75A10 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5BDEED672ECF857700E150E6 /* WSOGetWords.swift */,
 				5BE3EE552ECCBDA3009CDFD3 /* WSOLogin.swift */,
 			);
 			path = Services;
@@ -425,6 +453,7 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */,
 				5BE3EE492ECC30E7009CDFD3 /* StringExtension.swift */,
 				5B10FF9C2EC83CA50021597F /* LibraryHours.swift */,
 				5B10FF992EC83C820021597F /* DailyMessages.swift */,
@@ -727,6 +756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */,
 				5B4B3EFD2EC1291C00277399 /* ContentViewModel.swift in Sources */,
 				5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */,
 				5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */,
@@ -736,19 +766,27 @@
 				5BE3EE522ECC3499009CDFD3 /* WilliamsRecordViewModel.swift in Sources */,
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
 				5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */,
+				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
 				5B4B3EFA2EC1271200277399 /* Settings.swift in Sources */,
+				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */,
 				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BE3EE452ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */,
 				5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */,
 				5B5597332EC8F80E00FB82D6 /* LibraryHoursViewModel.swift in Sources */,
+				5BDEED642ECF7E9700E150E6 /* SpringStreetRestaurantView.swift in Sources */,
+				5B0A2E8C2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
 				5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */,
+				5B75F0B22ECF4E4400F1F4F8 /* DiningMealView.swift in Sources */,
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
+				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,
+				5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */,
 				5BE3EE4B2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
 				5B5597312EC8F7CE00FB82D6 /* LibraryHoursView.swift in Sources */,
+				5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */,
 				5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */,
 				5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */,
 			);
@@ -774,9 +812,11 @@
 			files = (
 				5B4B3EFB2EC1271200277399 /* Settings.swift in Sources */,
 				5BE3EE462ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */,
+				5B0A2E8D2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5BE3EE4A2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
 				5BE3EE572ECCBDA5009CDFD3 /* WSOLogin.swift in Sources */,
 				5B10FF9B2EC83C880021597F /* DailyMessages.swift in Sources */,
+				5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */,
 				5B10FF9E2EC83CA80021597F /* LibraryHours.swift in Sources */,
 			);

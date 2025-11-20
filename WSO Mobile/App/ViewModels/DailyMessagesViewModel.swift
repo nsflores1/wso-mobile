@@ -19,6 +19,8 @@ class DailyMessagesViewModel: ObservableObject {
         errorMessage = nil
 
         do {
+            //URLCache.shared.removeAllCachedResponses() // nuke all caches
+            // TODO: UNCOMMENT ABOVE BEFORE PROD RELEASE
             let data: [String: [DailyMessagePost]] = try await parseDailyMessages()
             self.dailyMessageCategories = data
         } catch {
