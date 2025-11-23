@@ -15,7 +15,12 @@ class AppSettings: ObservableObject {
         didSet { UserDefaults.standard.set(likesMath, forKey: "likesMath") }
     }
 
+    @Published var hatesEatingOut: Bool {
+        didSet { UserDefaults.standard.set(hatesEatingOut, forKey: "hatesEatingOut") }
+    }
+
     private init() {
         likesMath = UserDefaults.standard.bool(forKey: "likesMath")
+        hatesEatingOut = UserDefaults.standard.bool(forKey: "hatesEatingOut")
     }
 }

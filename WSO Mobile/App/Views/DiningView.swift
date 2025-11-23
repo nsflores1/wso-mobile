@@ -12,6 +12,7 @@ import SwiftUI
 
 struct DiningView: View {
     @StateObject private var viewModel = DiningHoursViewModel()
+    @StateObject private var state = ContentViewModel()
 
     var body: some View {
         NavigationStack {
@@ -28,17 +29,28 @@ struct DiningView: View {
                     // ALL dining hours stuff lives in here,
                     // not just the dining hall ones.
                     List {
-                        Section {
-                            NavigationLink("Spring Street") {
-                                SpringStreetRestaurantView()
+                        if (state.localEater == false) {
+                            Section {
+                                NavigationLink("Ephelia's Roots") {
+                                        // TODO: write this view
+                                }
+                                NavigationLink("Tunnel City") {
+                                    SpringStreetRestaurantView()
+                                }
+                                NavigationLink("Tea and Boba Lounge") {
+                                    SpringStreetRestaurantView()
+                                }
+                                NavigationLink("Spring Street Restaurants") {
+                                    SpringStreetRestaurantView()
+                                }
+                                NavigationLink("Rest of Williamstown") {
+                                        // TODO: write this view
+                                }
+                            } header: {
+                                Text("Off-Campus & Stores")
+                                    .fontWeight(.semibold)
+                                    .font(.title3)
                             }
-                            NavigationLink("Ephelia's Roots") {
-                                // TODO: write this view
-                            }
-                        } header: {
-                            Text("Off-Campus & Stores")
-                                .fontWeight(.semibold)
-                                .font(.title3)
                         }
                         DiningVendorView(menu: viewModel.diningMenu)
                     }

@@ -16,6 +16,9 @@ struct ProfileView: View {
                     Toggle("Mathematical Mode", isOn: $settings.likesMath)
                         // TODO: test if this works on device
                         .sensoryFeedback(.selection, trigger: settings.likesMath)
+                    Toggle("Hide All Restaurants", isOn: $settings.hatesEatingOut)
+                        // TODO: test if this works on device
+                        .sensoryFeedback(.selection, trigger: settings.hatesEatingOut)
                 } header : {
                     Text("Settings")
                         .fontWeight(.semibold)
