@@ -47,9 +47,16 @@
 		5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */; };
 		5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */; };
 		5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */; };
+		5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD358212ED3A7AC001AE153 /* AboutView.swift */; };
 		5BDEED642ECF7E9700E150E6 /* SpringStreetRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */; };
 		5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED672ECF857700E150E6 /* WSOGetWords.swift */; };
 		5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED672ECF857700E150E6 /* WSOGetWords.swift */; };
+		5BDEED6B2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED6A2ED0E62D00E150E6 /* SpinitronMetadata.swift */; };
+		5BDEED6C2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED6A2ED0E62D00E150E6 /* SpinitronMetadata.swift */; };
+		5BDEED6E2ED0E6A400E150E6 /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDEED6D2ED0E6A400E150E6 /* HTTPTypes */; };
+		5BDEED702ED0E6AA00E150E6 /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDEED6F2ED0E6AA00E150E6 /* HTTPTypes */; };
+		5BDEED722ED0E7FA00E150E6 /* HTTPTypesFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDEED712ED0E7FA00E150E6 /* HTTPTypesFoundation */; };
+		5BDEED742ED0E80000E150E6 /* HTTPTypesFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDEED732ED0E80000E150E6 /* HTTPTypesFoundation */; };
 		5BE3EE452ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */; };
 		5BE3EE462ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */; };
 		5BE3EE4A2ECC30F5009CDFD3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3EE492ECC30E7009CDFD3 /* StringExtension.swift */; };
@@ -164,8 +171,10 @@
 		5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningView.swift; sourceTree = "<group>"; };
 		5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecordArticleView.swift; sourceTree = "<group>"; };
+		5BD358212ED3A7AC001AE153 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringStreetRestaurantView.swift; sourceTree = "<group>"; };
 		5BDEED672ECF857700E150E6 /* WSOGetWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOGetWords.swift; sourceTree = "<group>"; };
+		5BDEED6A2ED0E62D00E150E6 /* SpinitronMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinitronMetadata.swift; sourceTree = "<group>"; };
 		5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecord.swift; sourceTree = "<group>"; };
 		5BE3EE492ECC30E7009CDFD3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5BE3EE512ECC3491009CDFD3 /* WilliamsRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecordViewModel.swift; sourceTree = "<group>"; };
@@ -205,8 +214,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BDEED6E2ED0E6A400E150E6 /* HTTPTypes in Frameworks */,
 				5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */,
 				5BE3EE4E2ECC3358009CDFD3 /* FeedKit in Frameworks */,
+				5BDEED742ED0E80000E150E6 /* HTTPTypesFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +241,8 @@
 			files = (
 				5BE3EE502ECC3361009CDFD3 /* FeedKit in Frameworks */,
 				5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */,
+				5BDEED722ED0E7FA00E150E6 /* HTTPTypesFoundation in Frameworks */,
+				5BDEED702ED0E6AA00E150E6 /* HTTPTypes in Frameworks */,
 				5B10FF962EC838DE0021597F /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +413,7 @@
 		5BEB32882EBFD9EF00F75A10 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5BD358212ED3A7AC001AE153 /* AboutView.swift */,
 				5B55972D2EC8F7B700FB82D6 /* Subviews */,
 				5B4B3EF22EC10C9000277399 /* HomeView.swift */,
 				5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */,
@@ -453,6 +467,7 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5BDEED6A2ED0E62D00E150E6 /* SpinitronMetadata.swift */,
 				5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */,
 				5BE3EE492ECC30E7009CDFD3 /* StringExtension.swift */,
 				5B10FF9C2EC83CA50021597F /* LibraryHours.swift */,
@@ -542,6 +557,8 @@
 			packageProductDependencies = (
 				5B10FF972EC838E50021597F /* SwiftSoup */,
 				5BE3EE4D2ECC3358009CDFD3 /* FeedKit */,
+				5BDEED6D2ED0E6A400E150E6 /* HTTPTypes */,
+				5BDEED732ED0E80000E150E6 /* HTTPTypesFoundation */,
 			);
 			productName = "WSO Mobile";
 			productReference = 5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */;
@@ -604,6 +621,8 @@
 				5B71D5F72EC802790051ABF5 /* ArgumentParser */,
 				5B10FF952EC838DE0021597F /* SwiftSoup */,
 				5BE3EE4F2ECC3361009CDFD3 /* FeedKit */,
+				5BDEED6F2ED0E6AA00E150E6 /* HTTPTypes */,
+				5BDEED712ED0E7FA00E150E6 /* HTTPTypesFoundation */,
 			);
 			productName = "WSO Mobile Debug";
 			productReference = 5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */;
@@ -779,11 +798,13 @@
 				5B0A2E8C2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
+				5BDEED6B2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
 				5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */,
 				5B75F0B22ECF4E4400F1F4F8 /* DiningMealView.swift in Sources */,
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
 				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,
 				5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */,
+				5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */,
 				5BE3EE4B2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
 				5B5597312EC8F7CE00FB82D6 /* LibraryHoursView.swift in Sources */,
 				5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */,
@@ -817,6 +838,7 @@
 				5BE3EE572ECCBDA5009CDFD3 /* WSOLogin.swift in Sources */,
 				5B10FF9B2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */,
+				5BDEED6C2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
 				5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */,
 				5B10FF9E2EC83CA80021597F /* LibraryHours.swift in Sources */,
 			);
@@ -1449,6 +1471,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B3B65962EC800DB0001B28A /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		5BDEED6D2ED0E6A400E150E6 /* HTTPTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BE3EE472ECC2F46009CDFD3 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypes;
+		};
+		5BDEED6F2ED0E6AA00E150E6 /* HTTPTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BE3EE472ECC2F46009CDFD3 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypes;
+		};
+		5BDEED712ED0E7FA00E150E6 /* HTTPTypesFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BE3EE472ECC2F46009CDFD3 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypesFoundation;
+		};
+		5BDEED732ED0E80000E150E6 /* HTTPTypesFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BE3EE472ECC2F46009CDFD3 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypesFoundation;
 		};
 		5BE3EE4D2ECC3358009CDFD3 /* FeedKit */ = {
 			isa = XCSwiftPackageProductDependency;

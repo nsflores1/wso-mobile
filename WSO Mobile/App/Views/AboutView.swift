@@ -1,0 +1,52 @@
+//
+//  AboutView.swift
+//  WSO Mobile
+//
+//  Created by Nathaniel Flores on 2025-11-23.
+//
+
+import SwiftUI
+
+struct AboutView: View {
+    var body: some View {
+        VStack {
+            Text("WSO Mobile")
+                .font(.title)
+                .fontWeight(.bold)
+            // TODO: secretly make this a button
+            Text("For students, by students!")
+                .font(.headline)
+                .fontWeight(.medium)
+                .italic(true)
+            Divider().tint(Color(.secondarySystemBackground))
+            let text = """
+                WSO is made possible by the following lovely people,
+                 who all contributed greatly:
+                """
+            Text(text.replacingOccurrences(of: "\n", with: ""))
+        }
+        List {
+            Section("Lead Developers (2026-2027)") {
+                Text("Nathaniel Flores - nsf1@williams.edu")
+                Text("Charlie Tharas - cmt8@wiliams.edu")
+                Text("Nathan Vosburg - nvj1@williams.edu")
+            }
+            Section("App Artists") {
+                Text("Emma Li - ebl2@williams.edu")
+            }
+            Section("Beta Testers") {
+                Text("TODO: none yet...")
+                    .italic(true)
+            }
+            Section("Special Mentions") {
+                Text("Ye Shu - https://shuye.dev")
+                Text("Matthew Baya - mjb9@williams.edu")
+                Text("Aidan Lloyd-Tucker - aidanlloydtucker@gmail.com")
+            }
+        }
+    }
+}
+
+#Preview {
+    AboutView().environmentObject(AppSettings.shared)
+}

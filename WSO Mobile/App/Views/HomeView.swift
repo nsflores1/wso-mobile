@@ -59,7 +59,7 @@ struct HomeView: View {
             HStack { } // hidden hstack wraps the text
             .listStyle(.grouped)
             .navigationTitle(Text("WSO Mobile"))
-            .navigationSubtitle(Text("For the students, by the students!"))
+            .navigationSubtitle(Text("For students, by students!"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -70,9 +70,7 @@ struct HomeView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                            // TODO: add credits page
-                    } label: {
+                    NavigationLink(destination: AboutView()) {
                         Image(systemName: "wand.and.rays")
                     }
                 }
