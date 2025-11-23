@@ -24,8 +24,17 @@ class DailyMessagesViewModel: ObservableObject {
             let data: [String: [DailyMessagePost]] = try await parseDailyMessages()
             self.dailyMessageCategories = data
         } catch {
-            self.errorMessage = "Failed to load daily messages."
-            self.dailyMessageCategories = [:]
+            let date = Date()
+            let calendar = Calendar.current
+            if (calendar.component(.weekday, from: date) == 1 || calendar.component(.weekday, from: date) == 7) {
+                self.errorMessage = "No daily messages available on a weekend."
+                self.dailyMessageCategories = [:]
+                
+            }
+            else {
+                self.errorMessage = "Failed to load daily messages."
+                self.dailyMessageCategories = [:]
+            }
         }
 
         isLoading = false
