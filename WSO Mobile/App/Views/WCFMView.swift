@@ -19,21 +19,58 @@ struct WCFMView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("WCFM live radio")
-
-                Button {
-                    if player.isPlaying {
-                        player.pause()
-                    } else {
-                        player.play(url: streamURL!)
+                if player.isPlaying, let track = player.currentTrack {
+                    AsyncImage(url: track.image) { picture in
+                        picture
+                            .resizable()
+                            .scaledToFit()
+                    } placeholder: {
+                        Color.gray
                     }
-                } label : {
-                    // need to split this up by type
-                    if player.isPlaying {
+                    .frame(width: 200, height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+
+                    Text(track.song)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Text("\(track.artist) - \(track.release)")
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
+                    // this trick means NO changes on the year value
+                    Text(verbatim: "Released in: \(track.released)")
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
+
+                    Text("Track started at: \(track.start.formatted())")
+
+                    Spacer()
+                    Text("TODO: put show info here")
+                    // TODO: it would be awesome to have a list of past tracks
+                    // also, show info would be huge
+
+                    Button {
+                        player.pause()
+                    } label : {
                         Label("Pause", systemImage: "pause")
-                    } else {
+                    }
+                    .padding(10)
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(ControlSize.large)
+                }
+                else {
+                    Label("Radio not current playing...",
+                          systemImage: "antenna.radiowaves.left.and.right")
+                        .font(.title)
+                        .italic(true)
+
+                    Button {
+                        player.play(url: streamURL!)
+                    } label : {
                         Label("Play", systemImage: "play")
                     }
+                    .padding(10)
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(ControlSize.large)
                 }
             }
             .navigationTitle(Text("WCFM Radio"))

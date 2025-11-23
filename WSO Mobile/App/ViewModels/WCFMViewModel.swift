@@ -16,8 +16,10 @@ import MediaPlayer
 @MainActor
 class WCFMViewModel: ObservableObject {
     private var player: AVPlayer?
+    private var metadataTimer: Timer?
     @Published var isPlaying = false
     @Published var streamURL = URL(string: "")
+    @Published var currentTrack: WCFMSpinItem?
 
     init() {
         setupAudioSession()
@@ -28,11 +30,35 @@ class WCFMViewModel: ObservableObject {
         player = AVPlayer(url: url)
         player?.play()
         isPlaying = true
+        startMetadataPolling()
     }
 
     func pause() {
         player?.pause()
         isPlaying = false
+        metadataTimer?.invalidate()
+        metadataTimer = nil
+    }
+
+    private func startMetadataPolling() {
+        // poll instantly!
+        Task { await updateMetadata() }
+
+        // then do it again every 10 seconds (reasonable amount of time)
+        metadataTimer = Timer
+            .scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
+                Task { await self?.updateMetadata() }
+        }
+    }
+
+    private func updateMetadata() async {
+        guard let info = try? await getWCFMSpin() else {
+            currentTrack = nil
+            return
+        }
+
+        // do it the dumb way, see if it works
+        currentTrack = info.items[0]
     }
 
     private func setupAudioSession() {

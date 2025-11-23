@@ -25,6 +25,8 @@ struct AppCLI: AsyncParsableCommand {
         await doLibraryHours()
         await doWilliamsRecord()
         await doWilliamsDining()
+        try await doWCFMPlaylist()
+        try await doWCFMSpin()
         print("### EXECUTION OVER ###")
     }
 }
