@@ -61,6 +61,7 @@ struct WCFMSpin: Codable {
 }
 
 struct WCFMSpinItem: Codable {
+    var id: Int
     var start: Date
     var end: Date
     var artist: String
