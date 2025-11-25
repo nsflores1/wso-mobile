@@ -35,14 +35,17 @@ struct AboutView: View {
                 Text("Emma Li - ebl2@williams.edu")
             }
             Section("Beta Testers") {
-                Text("TODO: none yet...")
+                Text("TODO: To be completed later!")
                     .italic(true)
             }
             Section("Special Mentions") {
+                Text("Dylan Safai - das5@williams.edu")
                 Text("Ye Shu - https://shuye.dev")
                 Text("Matthew Baya - mjb9@williams.edu")
                 Text("Aidan Lloyd-Tucker - aidanlloydtucker@gmail.com")
+                Text("The many WSO developers of yore").italic(true)
             }
+            Text("WSO is made possible by users like you. Thank you!")
         }
     }
 }

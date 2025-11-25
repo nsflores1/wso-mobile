@@ -39,17 +39,33 @@ struct WCFMView: View {
                         .font(.headline)
                         .foregroundStyle(.secondary)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
-                    // this trick means NO changes on the year value
-                    Text(verbatim: "Released in: \(track.released)")
+                    // this trick converts an int to a flat number
+                    Text(verbatim: "\(track.label ?? "(No label)"), \(track.released)")
                         .font(.headline)
                         .foregroundStyle(.secondary)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                     Text("Track started at: \(track.start.formatted())")
                         .transition(.move(edge: .bottom).combined(with: .opacity))
 
+                    HStack {
+                        NavigationLink(destination: WCFMShowsView()) {
+                            Label("Shows", systemImage: "music.microphone")
+                        }
+                        .padding(10)
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(ControlSize.large)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        NavigationLink(destination: WCFMPlaylistView()) {
+                            Label("Playlists", systemImage: "scroll")
+                        }
+                        .padding(10)
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(ControlSize.large)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                    }
+
                     Spacer()
                     Text("TODO: put show info here")
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
                     // TODO: it would be awesome to have a list of past tracks
                     // also, show info would be huge
 

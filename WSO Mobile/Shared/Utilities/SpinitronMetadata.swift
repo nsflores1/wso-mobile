@@ -67,6 +67,7 @@ struct WCFMSpinItem: Codable {
     var artist: String
     var composer: String?
     var song: String
+    var label: String?
     var image: URL?
     var release: String
     var released: Int

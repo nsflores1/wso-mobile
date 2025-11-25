@@ -20,6 +20,7 @@ class WCFMViewModel: ObservableObject {
     @Published var isPlaying = false
     @Published var streamURL = URL(string: "")
     @Published var currentTrack: WCFMSpinItem?
+    @Published var currentPlaylist: WCFMPlaylist?
 
     init() {
         setupAudioSession()
