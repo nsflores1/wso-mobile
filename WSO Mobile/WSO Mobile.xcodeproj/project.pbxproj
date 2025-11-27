@@ -53,6 +53,7 @@
 		5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */; };
 		5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */; };
 		5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */; };
+		5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */; };
 		5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD358212ED3A7AC001AE153 /* AboutView.swift */; };
 		5BDEED642ECF7E9700E150E6 /* SpringStreetRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */; };
 		5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED672ECF857700E150E6 /* WSOGetWords.swift */; };
@@ -184,6 +185,7 @@
 		5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningView.swift; sourceTree = "<group>"; };
 		5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecordArticleView.swift; sourceTree = "<group>"; };
+		5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpheliaView.swift; sourceTree = "<group>"; };
 		5BD358212ED3A7AC001AE153 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringStreetRestaurantView.swift; sourceTree = "<group>"; };
 		5BDEED672ECF857700E150E6 /* WSOGetWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOGetWords.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				5BD2D2E82ED90E34009F3C3A /* EasterEgg */,
 				5B05EF212ED8EC1100802310 /* Onboarding */,
 				5B3543E12ED652AE00A37A56 /* Record */,
 				5B3543E02ED6526400A37A56 /* Dining */,
@@ -405,6 +408,14 @@
 				5BB76F992EC0ED7500A242A1 /* WSOMobileUITests */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		5BD2D2E82ED90E34009F3C3A /* EasterEgg */ = {
+			isa = PBXGroup;
+			children = (
+				5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */,
+			);
+			path = EasterEgg;
 			sourceTree = "<group>";
 		};
 		5BEB32462EBFD7F300F75A10 = {
@@ -842,6 +853,7 @@
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5B05EF2E2ED8F96000802310 /* RestOfWilliamstownView.swift in Sources */,
+				5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */,
 				5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */,
 				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,

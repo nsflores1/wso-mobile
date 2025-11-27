@@ -45,7 +45,9 @@ struct AboutView: View {
                 Text("Aidan Lloyd-Tucker - aidanlloydtucker@gmail.com")
                 Text("The many WSO developers of yore").italic(true)
             }
-            Text("WSO is made possible by users like you. Thank you!")
+            NavigationLink("WSO is made possible by users like you. Thank you!") {
+                EpheliaView()
+            }
         }
     }
 }
