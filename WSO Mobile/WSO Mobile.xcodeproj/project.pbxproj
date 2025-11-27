@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0168402EC91BEC0092FBA3 /* MapView.swift */; };
 		5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0168422EC91D650092FBA3 /* MapViewModel.swift */; };
+		5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */; };
+		5B05EF242ED8EF9100802310 /* OnboardingOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF232ED8EF8D00802310 /* OnboardingOneView.swift */; };
+		5B05EF262ED8EF9B00802310 /* OnboardingTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF252ED8EF9800802310 /* OnboardingTwoView.swift */; };
+		5B05EF282ED8EFA300802310 /* OnboardingThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF272ED8EF9E00802310 /* OnboardingThreeView.swift */; };
+		5B05EF2A2ED8F92E00802310 /* EpheliasRootsHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF292ED8F92A00802310 /* EpheliasRootsHours.swift */; };
+		5B05EF2E2ED8F96000802310 /* RestOfWilliamstownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF2D2ED8F95400802310 /* RestOfWilliamstownView.swift */; };
+		5B05EF322ED8F98800802310 /* SpringStreetCafesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF312ED8F98300802310 /* SpringStreetCafesView.swift */; };
 		5B0A2E8C2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */; };
 		5B0A2E8D2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */; };
 		5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A2E8E2ECEC38200DC3485 /* DiningViewModel.swift */; };
@@ -134,6 +141,13 @@
 /* Begin PBXFileReference section */
 		5B0168402EC91BEC0092FBA3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5B0168422EC91D650092FBA3 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		5B05EF232ED8EF8D00802310 /* OnboardingOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingOneView.swift; sourceTree = "<group>"; };
+		5B05EF252ED8EF9800802310 /* OnboardingTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTwoView.swift; sourceTree = "<group>"; };
+		5B05EF272ED8EF9E00802310 /* OnboardingThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThreeView.swift; sourceTree = "<group>"; };
+		5B05EF292ED8F92A00802310 /* EpheliasRootsHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpheliasRootsHours.swift; sourceTree = "<group>"; };
+		5B05EF2D2ED8F95400802310 /* RestOfWilliamstownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestOfWilliamstownView.swift; sourceTree = "<group>"; };
+		5B05EF312ED8F98300802310 /* SpringStreetCafesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringStreetCafesView.swift; sourceTree = "<group>"; };
 		5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsDining.swift; sourceTree = "<group>"; };
 		5B0A2E8E2ECEC38200DC3485 /* DiningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningViewModel.swift; sourceTree = "<group>"; };
 		5B10FF992EC83C820021597F /* DailyMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessages.swift; sourceTree = "<group>"; };
@@ -249,6 +263,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B05EF212ED8EC1100802310 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5B05EF272ED8EF9E00802310 /* OnboardingThreeView.swift */,
+				5B05EF252ED8EF9800802310 /* OnboardingTwoView.swift */,
+				5B05EF232ED8EF8D00802310 /* OnboardingOneView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		5B2FCB562ECE59D800A960F3 /* Watch */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +338,9 @@
 		5B3543E02ED6526400A37A56 /* Dining */ = {
 			isa = PBXGroup;
 			children = (
+				5B05EF312ED8F98300802310 /* SpringStreetCafesView.swift */,
+				5B05EF2D2ED8F95400802310 /* RestOfWilliamstownView.swift */,
+				5B05EF292ED8F92A00802310 /* EpheliasRootsHours.swift */,
 				5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */,
 				5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */,
 				5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */,
@@ -335,6 +362,7 @@
 		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				5B05EF212ED8EC1100802310 /* Onboarding */,
 				5B3543E12ED652AE00A37A56 /* Record */,
 				5B3543E02ED6526400A37A56 /* Dining */,
 				5B3543DF2ED6525700A37A56 /* WCFM */,
@@ -438,6 +466,7 @@
 		5BEB32882EBFD9EF00F75A10 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */,
 				5B55972D2EC8F7B700FB82D6 /* Subviews */,
 				5B4B3EF22EC10C9000277399 /* HomeView.swift */,
 				5BD358212ED3A7AC001AE153 /* AboutView.swift */,
@@ -800,15 +829,19 @@
 			files = (
 				5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */,
 				5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */,
+				5B05EF262ED8EF9B00802310 /* OnboardingTwoView.swift in Sources */,
 				5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */,
 				5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */,
 				5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */,
 				5BE3EE562ECCBDA5009CDFD3 /* WSOLogin.swift in Sources */,
+				5B05EF242ED8EF9100802310 /* OnboardingOneView.swift in Sources */,
 				5BE3EE522ECC3499009CDFD3 /* WilliamsRecordViewModel.swift in Sources */,
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
 				5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */,
+				5B05EF282ED8EFA300802310 /* OnboardingThreeView.swift in Sources */,
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
+				5B05EF2E2ED8F96000802310 /* RestOfWilliamstownView.swift in Sources */,
 				5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */,
 				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
@@ -819,11 +852,14 @@
 				5B0A2E8C2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
+				5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */,
 				5BDEED6B2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
 				5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */,
 				5B75F0B22ECF4E4400F1F4F8 /* DiningMealView.swift in Sources */,
+				5B05EF322ED8F98800802310 /* SpringStreetCafesView.swift in Sources */,
 				5B3543DE2ED64E7B00A37A56 /* WCFMShowsView.swift in Sources */,
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
+				5B05EF2A2ED8F92E00802310 /* EpheliasRootsHours.swift in Sources */,
 				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,
 				5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */,
 				5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */,

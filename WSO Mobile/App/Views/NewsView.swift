@@ -14,6 +14,7 @@ struct NewsView: View {
                 WilliamsRecordView()
             }
             .navigationTitle(Text("News"))
+            .navigationSubtitle(Text("The latest happenings"))
             .navigationBarTitleDisplayMode(.large)
         }
     }

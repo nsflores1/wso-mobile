@@ -100,6 +100,7 @@ struct WCFMView: View {
             .animation(.spring(response: 0.4, dampingFraction: 0.8), value: player.isPlaying)
             .animation(.easeInOut, value: player.currentTrack?.id)
             .navigationTitle(Text("WCFM Radio"))
+            .navigationSubtitle(Text("This only works if the station is active"))
             .navigationBarTitleDisplayMode(.large)
         }
     }
