@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var settings: AppSettings
+    @AppStorage("likesMath") var likesMath: Bool = false
+    @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
+
     var body: some View {
         NavigationStack {
             List {
                 Section {
-                    Toggle("Mathematical Mode", isOn: $settings.likesMath)
+                    Toggle("Mathematical Mode", isOn: $likesMath)
                         // TODO: test if this works on device
-                        .sensoryFeedback(.selection, trigger: settings.likesMath)
-                    Toggle("Hide All Restaurants", isOn: $settings.hatesEatingOut)
+                        .sensoryFeedback(.selection, trigger: likesMath)
+                    Toggle("Hide All Restaurants", isOn: $hatesEatingOut)
                         // TODO: test if this works on device
-                        .sensoryFeedback(.selection, trigger: settings.hatesEatingOut)
+                        .sensoryFeedback(.selection, trigger: hatesEatingOut)
                 } header : {
                     Text("Settings")
                         .fontWeight(.semibold)
@@ -34,5 +36,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView().environmentObject(AppSettings.shared)
+    ProfileView()
 }

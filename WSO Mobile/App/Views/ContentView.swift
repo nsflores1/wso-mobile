@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var state = ContentViewModel()
+    @AppStorage("likesMath") var likesMath: Bool = false
+
     var body: some View {
         TabView {
             Tab("Home", systemImage: "house") {
@@ -17,9 +18,15 @@ struct ContentView: View {
             Tab("News", systemImage: "calendar") {
                 NewsView()
             }
-            Tab("Dining", systemImage: state.diningIcon)
+            Tab
             {
                 DiningView()
+            } label: {
+                if likesMath {
+                    Label("Dining", systemImage: "pi")
+                } else {
+                    Label("Dining", systemImage: "fork.knife")
+                }
             }
             Tab("WCFM", systemImage: "radio")
             {
@@ -33,5 +40,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView().environmentObject(AppSettings.shared)
+    ContentView()
 }

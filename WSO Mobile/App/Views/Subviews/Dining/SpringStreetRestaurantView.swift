@@ -32,5 +32,5 @@ struct SpringStreetRestaurantView: View {
 }
 
 #Preview {
-    DiningView().environmentObject(AppSettings.shared)
+    DiningView()
 }

@@ -34,5 +34,5 @@ struct DiningVendorView: View {
 }
 
 #Preview {
-    DiningView().environmentObject(AppSettings.shared)
+    DiningView()
 }

@@ -68,5 +68,5 @@ struct DailyMessagesView: View {
 }
 
 #Preview {
-    HomeView().environmentObject(AppSettings.shared)
+    HomeView()
 }

@@ -32,5 +32,5 @@ struct MapView: View {
 }
 
 #Preview {
-    MapView().environmentObject(AppSettings.shared)
+    MapView()
 }

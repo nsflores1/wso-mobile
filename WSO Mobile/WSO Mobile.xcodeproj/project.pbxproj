@@ -28,9 +28,6 @@
 		5B3543DC2ED64DDB00A37A56 /* WCFMPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3543DB2ED64DD600A37A56 /* WCFMPlaylistView.swift */; };
 		5B3543DE2ED64E7B00A37A56 /* WCFMShowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3543DD2ED64E7900A37A56 /* WCFMShowsView.swift */; };
 		5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF22EC10C9000277399 /* HomeView.swift */; };
-		5B4B3EFA2EC1271200277399 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF92EC1261500277399 /* Settings.swift */; };
-		5B4B3EFB2EC1271200277399 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EF92EC1261500277399 /* Settings.swift */; };
-		5B4B3EFD2EC1291C00277399 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B3EFC2EC1291700277399 /* ContentViewModel.swift */; };
 		5B5597312EC8F7CE00FB82D6 /* LibraryHoursView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */; };
 		5B5597332EC8F80E00FB82D6 /* LibraryHoursViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5597322EC8F80900FB82D6 /* LibraryHoursViewModel.swift */; };
 		5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */; };
@@ -153,8 +150,6 @@
 		5B3543DB2ED64DD600A37A56 /* WCFMPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMPlaylistView.swift; sourceTree = "<group>"; };
 		5B3543DD2ED64E7900A37A56 /* WCFMShowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMShowsView.swift; sourceTree = "<group>"; };
 		5B4B3EF22EC10C9000277399 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		5B4B3EF92EC1261500277399 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		5B4B3EFC2EC1291700277399 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHoursView.swift; sourceTree = "<group>"; };
 		5B5597322EC8F80900FB82D6 /* LibraryHoursViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHoursViewModel.swift; sourceTree = "<group>"; };
 		5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesView.swift; sourceTree = "<group>"; };
@@ -464,7 +459,6 @@
 				5B0168422EC91D650092FBA3 /* MapViewModel.swift */,
 				5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */,
 				5B5597322EC8F80900FB82D6 /* LibraryHoursViewModel.swift */,
-				5B4B3EFC2EC1291700277399 /* ContentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -480,7 +474,6 @@
 		5BEB328C2EBFDA3900F75A10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5B4B3EF92EC1261500277399 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -806,7 +799,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */,
-				5B4B3EFD2EC1291C00277399 /* ContentViewModel.swift in Sources */,
 				5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */,
 				5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */,
 				5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */,
@@ -816,7 +808,6 @@
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
 				5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */,
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
-				5B4B3EFA2EC1271200277399 /* Settings.swift in Sources */,
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */,
 				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
@@ -863,7 +854,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B4B3EFB2EC1271200277399 /* Settings.swift in Sources */,
 				5BE3EE462ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */,
 				5B0A2E8D2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5BE3EE4A2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,

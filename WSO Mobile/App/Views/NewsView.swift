@@ -20,5 +20,5 @@ struct NewsView: View {
 }
 
 #Preview {
-    NewsView().environmentObject(AppSettings.shared)
+    NewsView()
 }

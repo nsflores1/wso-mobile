@@ -80,5 +80,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView().environmentObject(AppSettings.shared)
+    HomeView()
 }

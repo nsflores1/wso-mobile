@@ -51,5 +51,5 @@ struct AboutView: View {
 }
 
 #Preview {
-    AboutView().environmentObject(AppSettings.shared)
+    AboutView()
 }

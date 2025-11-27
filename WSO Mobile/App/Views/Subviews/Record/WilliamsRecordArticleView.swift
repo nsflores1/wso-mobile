@@ -33,6 +33,6 @@ struct WilliamsRecordArticleView: View {
 }
 
 #Preview {
-    NewsView().environmentObject(AppSettings.shared)
+    NewsView()
 }
 

@@ -12,7 +12,7 @@ import SwiftUI
 
 struct DiningView: View {
     @StateObject private var viewModel = DiningHoursViewModel()
-    @StateObject private var state = ContentViewModel()
+    @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -29,7 +29,7 @@ struct DiningView: View {
                     // ALL dining hours stuff lives in here,
                     // not just the dining hall ones.
                     List {
-                        if (state.localEater == false) {
+                        if (hatesEatingOut == false) {
                             Section {
                                 NavigationLink("Ephelia's Roots") {
                                         // TODO: write this view
@@ -63,5 +63,5 @@ struct DiningView: View {
 }
 
 #Preview {
-    DiningView().environmentObject(AppSettings.shared)
+    DiningView()
 }

@@ -106,5 +106,5 @@ struct WCFMView: View {
 }
 
 #Preview {
-    WCFMView().environmentObject(AppSettings.shared)
+    WCFMView()
 }

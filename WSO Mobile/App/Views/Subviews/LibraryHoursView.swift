@@ -42,5 +42,5 @@ struct LibraryHoursView: View {
 }
 
 #Preview {
-    HomeView().environmentObject(AppSettings.shared)
+    HomeView()
 }

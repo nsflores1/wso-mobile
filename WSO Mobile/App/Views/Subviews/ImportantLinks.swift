@@ -69,5 +69,5 @@ struct ImportantLinksView: View {
 }
 
 #Preview {
-    ProfileView().environmentObject(AppSettings.shared)
+    ProfileView()
 }

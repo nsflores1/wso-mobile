@@ -58,5 +58,5 @@ struct WilliamsRecordView: View {
 }
 
 #Preview {
-    NewsView().environmentObject(AppSettings.shared)
+    NewsView()
 }
