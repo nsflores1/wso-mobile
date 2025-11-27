@@ -13,6 +13,7 @@ class DailyMessagesViewModel: ObservableObject {
     @Published var dailyMessageCategories: [String: [DailyMessagePost]] = [:]
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var requestURL: URL = URL(string: "https://events.williams.edu/wp-json/wms/events/v1/list/dm")!
 
     func loadContent() async {
         isLoading = true

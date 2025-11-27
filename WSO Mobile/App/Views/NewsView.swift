@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NewsView: View {
+    @StateObject private var viewModel = WilliamsRecordViewModel()
+
     var body: some View {
         NavigationStack {
             List {
@@ -16,6 +18,12 @@ struct NewsView: View {
             .navigationTitle(Text("News"))
             .navigationSubtitle(Text("The latest happenings"))
             .navigationBarTitleDisplayMode(.large)
+        }.refreshable {
+            URLCache.shared
+                .removeCachedResponse(
+                    for: URLRequest(url: viewModel.requestURL)
+                )
+            await viewModel.loadContent()
         }
     }
 }

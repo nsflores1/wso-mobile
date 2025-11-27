@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var libraryViewModel = LibraryHoursViewModel()
+    @StateObject private var dailyMessagesViewModel = DailyMessagesViewModel()
+
     var body: some View {
         NavigationStack {
             List {
@@ -55,6 +58,16 @@ struct HomeView: View {
                 }
                 LibraryHoursView()
                 DailyMessagesView()
+            }.refreshable {
+                URLCache.shared
+                    .removeCachedResponse(
+                        for: URLRequest(url: libraryViewModel.requestURL)
+                    )
+                URLCache.shared
+                    .removeCachedResponse(
+                        for: URLRequest(url: dailyMessagesViewModel.requestURL)
+                    )
+                print("Refreshed!")
             }
             HStack { } // hidden hstack wraps the text
             .listStyle(.grouped)

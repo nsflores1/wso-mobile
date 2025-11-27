@@ -13,6 +13,7 @@ class LibraryHoursViewModel: ObservableObject {
     @Published var libraryHours: [LibraryHours] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var requestURL: URL = URL(string: "https://libcal.williams.edu/api_hours_today.php")!
 
     func loadHours() async {
         isLoading = true

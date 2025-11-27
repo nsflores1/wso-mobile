@@ -16,7 +16,7 @@ struct DiningView: View {
 
     var body: some View {
         NavigationStack {
-                if viewModel.isLoading {
+            if viewModel.isLoading && viewModel.diningMenu.isEmpty {
                         // TODO: make a nicer ProgressView()
                     Text("Loading...")
                     .navigationTitle(Text("Dining"))
@@ -50,12 +50,13 @@ struct DiningView: View {
                             }
                         }
                         DiningVendorView(menu: viewModel.diningMenu)
+                    }.refreshable {
+                        URLCache.shared.removeCachedResponse(for: URLRequest(url: viewModel.diningURL))
+                        await viewModel.loadMenus()
                     }
                     .navigationTitle(Text("Dining"))
                     .navigationSubtitle(Text("Halls and other places"))
                 }
-
-
         }.task { await viewModel.loadMenus() }
     }
 }

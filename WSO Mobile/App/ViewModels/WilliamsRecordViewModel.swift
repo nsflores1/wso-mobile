@@ -16,6 +16,7 @@ class WilliamsRecordViewModel: ObservableObject {
     @Published var posts: [CleanRSSPost] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var requestURL: URL = URL(string: "https://www.williamsrecord.com/feed/")!
 
     func loadContent() async {
         isLoading = true

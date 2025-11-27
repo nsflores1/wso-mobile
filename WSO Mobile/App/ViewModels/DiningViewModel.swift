@@ -15,6 +15,7 @@ class DiningHoursViewModel: ObservableObject {
     @Published var diningMenu: [String: Vendor] = [:]
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var diningURL: URL = URL(string: "https://wso.williams.edu/dining.json")!
 
     func loadMenus() async {
         isLoading = true
