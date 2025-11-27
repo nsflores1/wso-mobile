@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @AppStorage("likesMath") var likesMath: Bool = false
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -21,6 +22,9 @@ struct ProfileView: View {
                     Toggle("Hide All Restaurants", isOn: $hatesEatingOut)
                         // TODO: test if this works on device
                         .sensoryFeedback(.selection, trigger: hatesEatingOut)
+                    Toggle("Reset Onboarding", isOn: $hasSeenOnboarding)
+                        // TODO: test if this works on device
+                        .sensoryFeedback(.selection, trigger: hatesEatingOut)
                 } header : {
                     Text("Settings")
                         .fontWeight(.semibold)
@@ -30,6 +34,7 @@ struct ProfileView: View {
             }
             .listStyle(.grouped)
             .navigationTitle(Text("More"))
+            .navigationSubtitle(Text("WSO Mobile version: v0.0.1"))
             .navigationBarTitleDisplayMode(.large)
         }
     }

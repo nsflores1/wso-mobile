@@ -9,31 +9,37 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("likesMath") var likesMath: Bool = false
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
 
     var body: some View {
-        TabView {
-            Tab("Home", systemImage: "house") {
-                HomeView()
-            }
-            Tab("News", systemImage: "calendar") {
-                NewsView()
-            }
-            Tab
-            {
-                DiningView()
-            } label: {
-                if likesMath {
-                    Label("Dining", systemImage: "pi")
-                } else {
-                    Label("Dining", systemImage: "fork.knife")
+        if (!hasSeenOnboarding) {
+            OnboardingView()
+        }
+        else {
+            TabView {
+                Tab("Home", systemImage: "house") {
+                    HomeView()
                 }
-            }
-            Tab("WCFM", systemImage: "radio")
-            {
-                WCFMView()
-            }
-            Tab("More", systemImage: "person") {
-                ProfileView()
+                Tab("News", systemImage: "calendar") {
+                    NewsView()
+                }
+                Tab
+                {
+                    DiningView()
+                } label: {
+                    if likesMath {
+                        Label("Dining", systemImage: "pi")
+                    } else {
+                        Label("Dining", systemImage: "fork.knife")
+                    }
+                }
+                Tab("WCFM", systemImage: "radio")
+                {
+                    WCFMView()
+                }
+                Tab("More", systemImage: "person") {
+                    ProfileView()
+                }
             }
         }
     }
