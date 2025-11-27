@@ -9,28 +9,179 @@ import SwiftUI
 import Combine
 
 struct SpringStreetRestaurantView: View {
-    // TODO: give this a new state model
+        // TODO: give this a new state model
     @StateObject private var viewModel = DiningHoursViewModel()
 
     var body: some View {
         if viewModel.isLoading {
-            // TODO: make a nicer ProgressView()
+                // TODO: make a nicer ProgressView()
             Text("Loading...")
         } else if let error = viewModel.errorMessage {
-            // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
+                // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
             Text(error).foregroundStyle(Color.red)
         } else {
-            Section {
-                Text("hoi!!! I'm a view!!!")
-            } header: {
-                Text("Spring Street Hours")
-                    .fontWeight(.semibold)
-                    .font(.title3)
+            NavigationStack {
+                // TODO: this should just be parsing a JSON at some point!
+                List {
+                    Section("Blue Mango")
+                    {
+                        Section
+                        {
+                            Text("Thai and Japanese lunch and dinner.")
+                        } header : {
+                            Text("Description")
+                                .italic()
+                        }
+                        Section
+                        {
+                            Text("Monday-Sunday: 11:30AM-9:30PM")
+                        } header : {
+                            Text("Hours")
+                                .italic()
+                        }
+                    }
+                    Section("Pappa Charlie's Deli")
+                    {
+                        Section
+                        {
+                            Text("Sandwiches, soups, and salads.")
+                        } header : {
+                            Text("Description")
+                                .italic()
+                        }
+                        Section
+                        {
+                            Text("Daily: 9AM-4PM")
+                        } header : {
+                            Text("Hours")
+                                .italic()
+                        }
+                    }
+                    Section("Crust")
+                    {
+                        Section
+                        {
+                            Text("Pizzas and salads.")
+                        } header : {
+                            Text("Description")
+                                .italic()
+                        }
+                        Section
+                        {
+                            Text("Monday: 11:30AM-8PM")
+                            Text("Tuesday: (Closed)")
+                            Text("Wednesday-Thursday: 11:30AM-8PM")
+                            Text("Friday: 11:30AM-8:30PM")
+                            Text("Saturday: 12PM-8:30PM")
+                            Text("Sunday: 12PM-8PM")
+                        } header : {
+                            Text("Hours")
+                                .italic()
+                        }
+                    }
+                    Section("Spice Root")
+                    {
+                        Section
+                        {
+                            Text("Modern Indian lunch and dinner.")
+                        } header : {
+                            Text("Description")
+                                .italic()
+                        }
+                        Section
+                        {
+                            Text("Tuesday-Saturday: 11:30AM-2:30PM, 5PM-10PM")
+                            Text("Sunday: 12PM-3PM, 5PM-10PM")
+                        } header : {
+                            Text("Hours")
+                                .italic()
+                        }
+                    }
+                    Section("The Log by Ramunto's")
+                    {
+                        Section
+                        {
+                            Text("Pizzeria and American-style dinner. Also the place for Trivia Nights.")
+                        } header : {
+                            Text("Description")
+                                .italic()
+                        }
+                        Section
+                        {
+                            Text("Monday-Tuesday: (Closed)")
+                            Text("Wednesday: 3PM-8PM")
+                            Text("Thursday: 12PM-2PM, 4PM-9PM")
+                            Text("Friday-Sunday: 3PM-9PM")
+                        } header : {
+                            Text("Hours")
+                                .italic()
+                        }
+                    }
+                    Section("Tony's Sombrero")
+                    {
+                        Section
+                        {
+                            Text("Mexican lunch and dinner.")
+                        } header : {
+                            Text("Description")
+                                .italic()
+                        }
+                        Section
+                        {
+                            Text("Monday-Saturday: 11AM-9PM")
+                            Text("Sunday: (Closed)")
+                        } header : {
+                            Text("Hours")
+                                .italic()
+                        }
+                    }
+                    Section("Purple Pub")
+                    {
+                        Section
+                        {
+                            Text("American pub.")
+                            Text("Note: Purple Pub is likely closed for the forseeable future.").italic()
+                        } header : {
+                            Text("Description")
+                                .italic()
+                        }
+                        Section
+                        {
+                            Text("Monday-Tuesday: (Closed)")
+                            Text("Wednesday-Saturday: 11:30AM-9PM")
+                            Text("Sunday: 11:30AM-4PM")
+                        } header : {
+                            Text("Hours")
+                                .italic()
+                        }
+                    }
+                    Section("Plates Mediterranean Bistro")
+                    {
+                        Section
+                        {
+                            Text("Mediterranean cuisine.")
+                        } header : {
+                            Text("Description")
+                                .italic()
+                        }
+                        Section
+                        {
+                            Text("Monday: 11AM-9PM")
+                            Text("Tuesday: 11AM-3PM, 4PM-9PM")
+                            Text("Wednesday: 4PM-9PM")
+                            Text("Thursday-Sunday: 11AM-3PM, 4PM-9PM")
+                        } header : {
+                            Text("Hours")
+                                .italic()
+                        }
+                    }
+                }
+                .navigationTitle(Text("Spring Street"))
             }
         }
     }
 }
 
 #Preview {
-    DiningView()
+    SpringStreetRestaurantView()
 }

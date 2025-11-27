@@ -32,22 +32,19 @@ struct DiningView: View {
                         if (hatesEatingOut == false) {
                             Section {
                                 NavigationLink("Ephelia's Roots") {
-                                        // TODO: write this view
+                                    EpheliasRootHoursView()
                                 }
-                                NavigationLink("Tunnel City") {
-                                    SpringStreetRestaurantView()
-                                }
-                                NavigationLink("Tea and Boba Lounge") {
-                                    SpringStreetRestaurantView()
+                                NavigationLink("Spring Street Cafes") {
+                                    SpringStreetCafesView()
                                 }
                                 NavigationLink("Spring Street Restaurants") {
                                     SpringStreetRestaurantView()
                                 }
                                 NavigationLink("Rest of Williamstown") {
-                                        // TODO: write this view
+                                    RestOfWilliamstownView()
                                 }
                             } header: {
-                                Text("Off-Campus & Stores")
+                                Text("Off-Campus & Campus Stores")
                                     .fontWeight(.semibold)
                                     .font(.title3)
                             }
@@ -55,6 +52,7 @@ struct DiningView: View {
                         DiningVendorView(menu: viewModel.diningMenu)
                     }
                     .navigationTitle(Text("Dining"))
+                    .navigationSubtitle(Text("Halls and other places"))
                 }
 
 
