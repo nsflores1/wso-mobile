@@ -15,6 +15,12 @@ func parseWilliamsRecord() async throws -> [RSSFeedItem] {
     do {
         let feed = try await RSSFeed(urlString: "https://www.williamsrecord.com/feed/")
         return feed.channel?.items ?? []
+
+        // TODO: this is way, way too simple. we need to do the following things:
+        // - parse an article for its CDATA and store the attachement with Kingfisher,
+        // then make it nice and blurred so users can click on it
+        // - collect every <p> tag and store it
+
     } catch {
         // this will throw in even the most minor parse error,
         // but that's good. we want to be careful

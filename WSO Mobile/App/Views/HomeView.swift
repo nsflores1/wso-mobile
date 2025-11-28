@@ -10,12 +10,28 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var libraryViewModel = LibraryHoursViewModel()
     @StateObject private var dailyMessagesViewModel = DailyMessagesViewModel()
+    @State private var searchText: String = ""
 
     var body: some View {
         NavigationStack {
             List {
                 Section {
-                    Text("Login to view search...").italic(true)
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        // TODO: make this do something
+                        // TODO: hide this based on auth state
+                        TextField("Search users...", text: $searchText)
+                            .textInputAutocapitalization(.never)
+                        if !searchText.isEmpty {
+                            Button {
+                                searchText = ""
+                                // TODO: clear search model if pressed
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
                 }
                 // TODO: this does NOTHING, still need to implement
                 Section {
@@ -76,9 +92,7 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                            // TODO: add profile/login page view
-                    } label: {
+                    NavigationLink(destination: WSOLoginView()) {
                         Image(systemName: "person")
                     }
                 }

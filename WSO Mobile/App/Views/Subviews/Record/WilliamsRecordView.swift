@@ -42,7 +42,11 @@ struct WilliamsRecordView: View {
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
+                    .transition(.move(edge: .trailing).combined(with: .opacity))
+
                 }
+                .animation(.easeInOut(duration: 0.25), value: viewModel.posts.count)
+
             }
         } header : {
             HStack {

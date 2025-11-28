@@ -84,8 +84,24 @@ class WCFMViewModel: ObservableObject {
 
     private func updateNowPlaying() {
         var info = [String: Any]()
-        info[MPMediaItemPropertyTitle] = "WCFM Radio"
-        info[MPMediaItemPropertyArtist] = "Williams College"
+        if let currentTrack {
+            info[MPMediaItemPropertyArtwork] = AsyncImage(
+                url: currentTrack.image
+            ) { picture in
+                picture
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                Color.gray
+            }
+            info[MPMediaItemPropertyGenre] = "Radio"
+            info[MPMediaItemPropertyTitle] = currentTrack.song
+            info[MPMediaItemPropertyArtist] = currentTrack.artist
+        } else {
+            info[MPMediaItemPropertyTitle] = "WCFM Radio"
+            info[MPMediaItemPropertyArtist] = "WCFM DJs"
+            info[MPMediaItemPropertyGenre] = "Radio"
+        }
 
         MPNowPlayingInfoCenter.default().nowPlayingInfo = info
     }

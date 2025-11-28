@@ -8,16 +8,26 @@
 import SwiftUI
 
 struct AboutView: View {
+    @StateObject private var viewModel = AboutViewModel()
+
     var body: some View {
         VStack {
             Text("WSO Mobile")
                 .font(.title)
                 .fontWeight(.bold)
-            // TODO: secretly make this a button
-            Text("For students, by students!")
-                .font(.headline)
-                .fontWeight(.medium)
-                .italic(true)
+            // TODO: secretly make this a button as an easter egg
+            if viewModel.isLoading {
+                Text("Rolling dice...")
+                    .font(.headline)
+                    .fontWeight(.medium)
+                    .italic(true)
+            } else {
+                Text(viewModel.words)
+                    .font(.headline)
+                    .fontWeight(.medium)
+                    .italic(true)
+
+            }
             Divider().tint(Color(.secondarySystemBackground))
             let text = """
                 WSO is made possible by the following lovely people,
@@ -49,6 +59,7 @@ struct AboutView: View {
                 EpheliaView()
             }
         }
+        .task { await viewModel.loadWords() }
     }
 }
 
