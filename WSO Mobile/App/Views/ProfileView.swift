@@ -22,7 +22,9 @@ struct ProfileView: View {
                     Toggle("Hide All Restaurants", isOn: $hatesEatingOut)
                         // TODO: test if this works on device
                         .sensoryFeedback(.selection, trigger: hatesEatingOut)
-                    Toggle("Reset Onboarding", isOn: $hasSeenOnboarding)
+                    Button("Reset Onboarding") {
+                        hasSeenOnboarding.toggle()
+                    }
                         // TODO: test if this works on device
                         .sensoryFeedback(.selection, trigger: hatesEatingOut)
                 } header : {
