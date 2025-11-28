@@ -12,21 +12,38 @@ struct ProfileView: View {
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
 
+    @StateObject private var notificationManager = NotificationManager.shared
+
     var body: some View {
         NavigationStack {
             List {
                 Section {
                     Toggle("Mathematical Mode", isOn: $likesMath)
-                        // TODO: test if this works on device
                         .sensoryFeedback(.selection, trigger: likesMath)
                     Toggle("Hide All Restaurants", isOn: $hatesEatingOut)
-                        // TODO: test if this works on device
                         .sensoryFeedback(.selection, trigger: hatesEatingOut)
+                    Toggle("Enable Notifications", isOn: $notificationManager.isAuthorized)
+                        .disabled(true)
+                    if !notificationManager.isAuthorized {
+                        Button("Enable in Settings...") {
+                            Task {
+                                await notificationManager.requestPermission()
+                            }
+                        }
+                    }
+                    Button("Test Notifications") {
+                        Task {
+                            await notificationManager.scheduleLocal(
+                                title: "Test",
+                                body: "This is a test notification.",
+                                date: Date().addingTimeInterval(1)
+                            )
+                        }
+                    }
                     Button("Reset Onboarding") {
                         hasSeenOnboarding.toggle()
-                    }
-                        // TODO: test if this works on device
-                        .sensoryFeedback(.selection, trigger: hatesEatingOut)
+                    }.sensoryFeedback(.selection, trigger: hatesEatingOut)
+
                 } header : {
                     Text("Settings")
                         .fontWeight(.semibold)
