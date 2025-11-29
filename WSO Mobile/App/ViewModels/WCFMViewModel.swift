@@ -46,9 +46,29 @@ class WCFMViewModel: ObservableObject {
         Task { await updateMetadata() }
 
         // then do it again every 10 seconds (reasonable amount of time)
-        metadataTimer = Timer
-            .scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
+        scheduleNextPoll()
+    }
+
+    private func scheduleNextPoll() {
+        metadataTimer?.invalidate()
+
+        if let endTime = currentTrack?.end {
+            let timeUntilEnd = endTime.timeIntervalSinceNow
+
+            if timeUntilEnd > 0 {
+                metadataTimer = Timer.scheduledTimer(withTimeInterval: timeUntilEnd + 5, repeats: false) { [weak self] _ in
+                    Task {
+                        await self?.updateMetadata()
+                        await self?.scheduleNextPoll()
+                    }
+                }
+            } else {
+                Task { await updateMetadata() }
+            }
+        } else {
+            metadataTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
                 Task { await self?.updateMetadata() }
+            }
         }
     }
 
@@ -83,6 +103,7 @@ class WCFMViewModel: ObservableObject {
         }
     }
 
+    // TODO: figure out if this extra annotation is nonsense paranoia or not
     @MainActor
     private func updateNowPlaying() {
         var info = [String: Any]()
