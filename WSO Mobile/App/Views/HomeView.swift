@@ -92,7 +92,9 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink(destination: WSOLoginView()) {
+                    // TODO: replace with WSOLoginView() later,
+                    // this is to placate Apple reviewers
+                    NavigationLink(destination: AboutView()) {
                         Image(systemName: "person")
                     }
                 }

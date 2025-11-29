@@ -16,7 +16,7 @@ struct OnboardingOneView: View {
                     .bold()
                     .italic(true)
 
-                Text(verbatim: "\nVersion: v(0.0.1)")
+                Text(verbatim: "\nVersion: 1.2.0")
                     .font(.subheadline)
                 let mainText = """
                 

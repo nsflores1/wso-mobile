@@ -11,7 +11,7 @@ struct OnboardingTwoView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Some functionality doesn't work in this Beta version (v0.0.1):")
+                Text("Some functionality doesn't work in this Beta version (1.2.0):")
                 let mainText = """
                     
                     - Literally anything that involves the WSO backend (FaceBook, FacTrak, etc)
