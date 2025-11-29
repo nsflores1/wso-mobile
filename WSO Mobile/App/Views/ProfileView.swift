@@ -24,6 +24,9 @@ struct ProfileView: View {
                         .sensoryFeedback(.selection, trigger: hatesEatingOut)
                     Toggle("Enable Notifications", isOn: $notificationManager.isAuthorized)
                         .disabled(true)
+                        .task {
+                            _ = await notificationManager.requestPermission()
+                        }
                     if !notificationManager.isAuthorized {
                         Button("Enable in Settings...") {
                             Task {
@@ -34,8 +37,8 @@ struct ProfileView: View {
                     Button("Test Notifications") {
                         Task {
                             await notificationManager.scheduleLocal(
-                                title: "Test",
-                                body: "This is a test notification.",
+                                title: "Hurray!",
+                                body: "Notifications actually work now!",
                                 date: Date().addingTimeInterval(1)
                             )
                         }

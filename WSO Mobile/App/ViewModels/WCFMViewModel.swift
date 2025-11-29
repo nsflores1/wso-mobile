@@ -66,6 +66,7 @@ class WCFMViewModel: ObservableObject {
         let session = AVAudioSession.sharedInstance()
         try? session.setCategory(.playback, mode: .default)
         try? session.setActive(true)
+        UIApplication.shared.beginReceivingRemoteControlEvents()
     }
 
     private func setupRemoteControls() {
@@ -82,28 +83,36 @@ class WCFMViewModel: ObservableObject {
         }
     }
 
+    @MainActor
     private func updateNowPlaying() {
         var info = [String: Any]()
         if let currentTrack {
-            info[MPMediaItemPropertyArtwork] = AsyncImage(
-                url: currentTrack.image
-            ) { picture in
-                picture
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                Color.gray
-            }
-            info[MPMediaItemPropertyGenre] = "Radio"
             info[MPMediaItemPropertyTitle] = currentTrack.song
             info[MPMediaItemPropertyArtist] = currentTrack.artist
-        } else {
-            info[MPMediaItemPropertyTitle] = "WCFM Radio"
-            info[MPMediaItemPropertyArtist] = "WCFM DJs"
             info[MPMediaItemPropertyGenre] = "Radio"
-        }
 
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+            info[MPNowPlayingInfoPropertyPlaybackRate] = isPlaying ? 1.0 : 0.0
+            // we're a radio stream, so no time ever passes
+            info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = 0
+
+            // set it now just in case we can't find an image
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+
+            if currentTrack.image != nil {
+                Task {
+                    if let imageData = try? await URLSession.shared.data(from: currentTrack.image!).0,
+                       let image = UIImage(data: imageData) {
+                        info[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(
+                            boundsSize: image.size
+                        ) { _ in image }
+                    }
+
+                    MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+                }
+            }
+        } else {
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+        }
     }
 
 }

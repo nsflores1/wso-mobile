@@ -11,12 +11,26 @@
 import UserNotifications
 import Combine
 
+extension NotificationManager: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification
+    ) async -> UNNotificationPresentationOptions {
+        return [.banner, .sound, .badge]
+    }
+}
+
 @MainActor
-class NotificationManager: ObservableObject {
+class NotificationManager: NSObject, ObservableObject {
     static let shared = NotificationManager()
 
     @Published var isAuthorized = false
     private let center = UNUserNotificationCenter.current()
+
+    override init() {
+        super.init()
+        center.delegate = self
+    }
 
     func requestPermission() async -> Bool {
         do {
@@ -39,12 +53,13 @@ class NotificationManager: ObservableObject {
             .day,
             .hour,
             .minute,
+            .second
         ], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-
         let id = identifier ?? UUID().uuidString
-        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
 
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        print("scheduled notification \(id), \(content), \(trigger)")
         try? await center.add(request)
     }
 

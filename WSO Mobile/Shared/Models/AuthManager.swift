@@ -125,6 +125,8 @@ class AuthManager: ObservableObject {
     }
 
     func login(username: String, password: String) async throws {
+        let token = try await WSOAuthLogin(password: password, unixID: username)
+        print(token.data?.token ?? "failed to login")
         // Something that needs to be implemented in here:
         // if our token fails on backend, we need to reload it
     }
