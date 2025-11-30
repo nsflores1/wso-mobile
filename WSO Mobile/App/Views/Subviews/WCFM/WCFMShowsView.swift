@@ -14,7 +14,9 @@ struct WCFMShowsView: View {
 
     var body: some View {
         Section {
-            Text("hoi!!! I'm a view!!!")
+            VStack {
+                Text("Come back again later!")
+            }.padding(16)
         } header: {
             Text("WCFM Shows")
                 .fontWeight(.semibold)
