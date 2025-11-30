@@ -56,7 +56,7 @@ struct AboutView: View {
                 Text("The many WSO developers of yore").italic(true)
             }
             NavigationLink("WSO is made possible by users like you. Thank you!") {
-                EpheliaView()
+                EtherialView()
             }
         }
         .task { await viewModel.loadWords() }
