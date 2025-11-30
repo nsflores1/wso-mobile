@@ -35,12 +35,14 @@ struct WCFMView: View {
                         .font(.title2)
                         .fontWeight(.semibold)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
-                    Text("\(track.artist) - \(track.release)")
+                        .padding(5)
+                    Text("\(track.artist ?? "Anonymous") - \(track.release ?? "(unknown)")")
                         .font(.headline)
                         .foregroundStyle(.secondary)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                     // this trick converts an int to a flat number
-                    Text(verbatim: "\(track.label ?? "(No label)"), \(track.released)")
+                    // such a mess. spinitron is the devil
+                    Text(verbatim: "\(track.label ?? "(No label)"), \(track.released, default: "(No release date)")")
                         .font(.headline)
                         .foregroundStyle(.secondary)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
@@ -65,7 +67,6 @@ struct WCFMView: View {
                     }
 
                     Spacer()
-                    Text("TODO: put show info here")
                     // TODO: it would be awesome to have a list of past tracks
                     // also, show info would be huge
 

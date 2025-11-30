@@ -65,7 +65,7 @@ struct DailyMessagePost: Codable {
 struct DailyMessagesParseError : Error {}
 
 func parseDailyMessages() async throws -> [String: [DailyMessagePost]] {
-    let url = URL(string: "https://events.williams.edu/wp-json/wms/events/v1/list/dm")!
+    let url = URL(string: "https://wso.williams.edu/daily_messages.html")!
     let (data, _) = try await URLSession.shared.data(from: url)
 
         // debug feature, hidden. unhide to see raw URL read data

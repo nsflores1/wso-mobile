@@ -32,6 +32,7 @@ struct WCFMPlaylist: Codable {
 }
 
 struct WCFMPlaylistItem: Codable {
+    var id: Int
     var start: Date
     var end: Date
     var title: String
@@ -40,6 +41,7 @@ struct WCFMPlaylistItem: Codable {
     var metaLinks: [String: [String: URL]]
 
     enum CodingKeys: String, CodingKey {
+        case id
         case start
         case end
         case title
@@ -64,13 +66,13 @@ struct WCFMSpinItem: Codable {
     var id: Int
     var start: Date
     var end: Date
-    var artist: String
+    var artist: String?
     var composer: String?
     var song: String
     var label: String?
     var image: URL?
-    var release: String
-    var released: Int
+    var release: String?
+    var released: Int?
     // TODO: maybe add playlist_id here
 }
 
@@ -78,11 +80,7 @@ struct WCFMPlaylistParseError : Error {}
 struct WCFMSpinParseError : Error {}
 
 func getWCFMPlaylist() async throws -> WCFMPlaylist {
-    var request = HTTPRequest(method: .get, url: URL(string: "https://spinitron.com/")!)
-    request.path = "/api/playlists"
-    request.headerFields[.authorization] = "Bearer moazobB9wl0fxtDtovfBABHC"
-    request.headerFields[.accept] = "application/json"
-    request.headerFields[.userAgent] = "New WSO Mobile/0.1"
+    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/playlists.json")!)
 
     let (data, _) = try await URLSession.shared.data(for: request)
     let decoder = JSONDecoder()
@@ -93,11 +91,7 @@ func getWCFMPlaylist() async throws -> WCFMPlaylist {
 }
 
 func getWCFMSpin() async throws -> WCFMSpin {
-    var request = HTTPRequest(method: .get, url: URL(string: "https://spinitron.com/")!)
-    request.path = "/api/spins"
-    request.headerFields[.authorization] = "Bearer moazobB9wl0fxtDtovfBABHC"
-    request.headerFields[.accept] = "application/json"
-    request.headerFields[.userAgent] = "New WSO Mobile/0.1"
+    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/spins.json")!)
 
     let (data, _) = try await URLSession.shared.data(for: request)
     let decoder = JSONDecoder()
@@ -131,6 +125,6 @@ func doWCFMPlaylist() async throws {
 func doWCFMSpin() async throws {
     let spin = try await getWCFMSpin()
     for thing in spin.items {
-        print("spin \(thing.song) by \(thing.artist) (released \(thing.released))")
+        print("spin \(thing.song) by \(thing.artist, default: "Anonymous") released \(thing.released, default: "(no release date)")")
     }
 }

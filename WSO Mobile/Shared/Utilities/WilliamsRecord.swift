@@ -13,7 +13,7 @@ struct WilliamsRecordParseError : Error {}
 
 func parseWilliamsRecord() async throws -> [RSSFeedItem] {
     do {
-        let feed = try await RSSFeed(urlString: "https://www.williamsrecord.com/feed/")
+        let feed = try await RSSFeed(urlString: "https://wso.williams.edu/williams_record.rss")
         return feed.channel?.items ?? []
 
         // TODO: this is way, way too simple. we need to do the following things:

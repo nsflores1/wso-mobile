@@ -56,7 +56,7 @@ struct ProfileView: View {
             }
             .listStyle(.grouped)
             .navigationTitle(Text("More"))
-            .navigationSubtitle(Text("WSO Mobile version: v0.0.1"))
+            .navigationSubtitle(Text("WSO Mobile version: 1.2.0"))
             .navigationBarTitleDisplayMode(.large)
         }
     }

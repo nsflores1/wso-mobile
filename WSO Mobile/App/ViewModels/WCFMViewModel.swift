@@ -20,7 +20,6 @@ class WCFMViewModel: ObservableObject {
     @Published var isPlaying = false
     @Published var streamURL = URL(string: "")
     @Published var currentTrack: WCFMSpinItem?
-    @Published var currentPlaylist: WCFMPlaylist?
 
     init() {
         setupAudioSession()
@@ -31,6 +30,12 @@ class WCFMViewModel: ObservableObject {
         player = AVPlayer(url: url)
         player?.play()
         isPlaying = true
+
+        var info = [String: Any]()
+        info[MPMediaItemPropertyTitle] = "WCFM Live Radio"
+        info[MPMediaItemPropertyArtist] = "Loading..."
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+
         startMetadataPolling()
     }
 
@@ -43,7 +48,9 @@ class WCFMViewModel: ObservableObject {
 
     private func startMetadataPolling() {
         // poll instantly!
-        Task { await updateMetadata() }
+        Task {
+            await updateMetadata()
+        }
 
         // then do it again every 10 seconds (reasonable amount of time)
         scheduleNextPoll()
@@ -63,11 +70,15 @@ class WCFMViewModel: ObservableObject {
                     }
                 }
             } else {
-                Task { await updateMetadata() }
+                Task {
+                    await updateMetadata()
+                }
             }
         } else {
             metadataTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
-                Task { await self?.updateMetadata() }
+                Task {
+                    await self?.updateMetadata()
+                }
             }
         }
     }
@@ -80,6 +91,7 @@ class WCFMViewModel: ObservableObject {
 
         // do it the dumb way, see if it works
         currentTrack = info.items[0]
+        updateNowPlaying()
     }
 
     private func setupAudioSession() {
