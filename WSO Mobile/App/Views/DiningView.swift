@@ -55,7 +55,7 @@ struct DiningView: View {
                         await viewModel.loadMenus()
                     }
                     .navigationTitle(Text("Dining"))
-                    .navigationSubtitle(Text("Halls and other places"))
+                    .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))
                 }
         }.task { await viewModel.loadMenus() }
     }

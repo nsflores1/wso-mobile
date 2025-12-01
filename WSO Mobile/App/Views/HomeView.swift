@@ -88,7 +88,7 @@ struct HomeView: View {
             HStack { } // hidden hstack wraps the text
             .listStyle(.grouped)
             .navigationTitle(Text("WSO Mobile"))
-            .navigationSubtitle(Text("For students, by students!"))
+            .modifier(NavSubtitleIfAvailable(subtitle: "For students, by students!"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

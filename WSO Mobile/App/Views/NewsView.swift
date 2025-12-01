@@ -16,7 +16,7 @@ struct NewsView: View {
                 WilliamsRecordView()
             }
             .navigationTitle(Text("News"))
-            .navigationSubtitle(Text("The latest happenings"))
+            .modifier(NavSubtitleIfAvailable(subtitle: "The latest happenings"))
             .navigationBarTitleDisplayMode(.large)
         }.refreshable {
             URLCache.shared
