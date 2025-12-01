@@ -113,6 +113,15 @@ class WCFMViewModel: ObservableObject {
             self?.pause()
             return .success
         }
+
+        commandCenter.togglePlayPauseCommand.addTarget { [weak self] _ in
+            if self?.isPlaying == true {
+                self?.pause()
+            } else {
+                self?.play(url: self?.streamURL ?? URL(string: "")!)
+            }
+            return .success
+        }
     }
 
     // TODO: figure out if this extra annotation is nonsense paranoia or not
