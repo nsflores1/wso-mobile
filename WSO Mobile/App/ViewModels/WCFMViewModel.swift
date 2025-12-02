@@ -58,7 +58,7 @@ class WCFMViewModel: ObservableObject {
         
         player?.pause()
         isPlaying = false
-        player?.replaceCurrentItem(with: nil)
+        //player?.replaceCurrentItem(with: nil)
         metadataTimer?.invalidate()
         metadataTimer = nil
 
