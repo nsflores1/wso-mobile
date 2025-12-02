@@ -34,7 +34,20 @@ func doWilliamsRecord() async {
         for (post) in data {
             print(post.title!)
             print(post.dublinCore?.creator ?? "Unknown")
-            print(try SwiftSoup.parse(post.content!.encoded!).text())
+            let soupText = try SwiftSoup.parse(post.content!.encoded!)
+            let paragraphs = try soupText.select("p")
+
+            var soupContent: [String] = []
+
+            for p in paragraphs {
+                let p = try p.text()
+                soupContent.append(p)
+            }
+
+            for i in soupContent {
+                print(i)
+            }
+
         }
     } catch {
         print("No Williams Record today")

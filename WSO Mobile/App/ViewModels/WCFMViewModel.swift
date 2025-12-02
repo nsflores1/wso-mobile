@@ -40,6 +40,12 @@ class WCFMViewModel: ObservableObject {
     }
 
     func pause() {
+        // TODO: the in-app pause should also kill the player,
+        // it needs to be a separate function.
+        // we need to detach from the MPNowPlayingCenter.
+
+        // also, pausing outside of the app crashes the player?
+        
         player?.pause()
         isPlaying = false
         metadataTimer?.invalidate()

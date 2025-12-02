@@ -24,8 +24,10 @@ struct WilliamsRecordArticleView: View {
                     }
                 }
                 Section {
-                    Text(article.content)
-                        .padding(10)
+                    ForEach(article.content, id: \.self) { line in
+                        Text(line.cleanWhitespace())
+                            .padding(10)
+                    }
                 }.background(.ultraThinMaterial)
             }
         }

@@ -12,6 +12,11 @@ struct HomeView: View {
     @StateObject private var dailyMessagesViewModel = DailyMessagesViewModel()
     @State private var searchText: String = ""
 
+
+    // TODO: this can jump around when scrolling
+    // To fix this, find some way to make a skeleton that you fill in,
+    // or just don't show the page until it's done loading
+
     var body: some View {
         NavigationStack {
             List {
