@@ -27,6 +27,13 @@ struct ImportantLinksView: View {
 
     var body: some View {
         Section {
+            Button {
+                if let url = URL(string: "https://forms.gle/pJVhoyRU8A2ciDhz5") {
+                    openURL(url)
+                }
+            } label: {
+                Label("Suggest a link here...", systemImage: "person.fill.questionmark")
+            }
             Section() {
                 linkRow("Williams College Homepage", url: "https://williams.edu")
                 linkRow("Williams College Sports", url: "https://williams.edu")
@@ -38,8 +45,8 @@ struct ImportantLinksView: View {
                 }
             }
             Section() {
-                linkRow("Department Homepage", url: "https://williams.edu")
-                linkRow("Future Course Planner", url: "https://williams.edu")
+                linkRow("Department Homepage", url: "https://geosciences.williams.edu")
+                linkRow("Future Course Planner", url: "https://geosciences.williams.edu/the-major/major-requirements/")
             } header: {
                 HStack {
                     Image(systemName: "fossil.shell")
