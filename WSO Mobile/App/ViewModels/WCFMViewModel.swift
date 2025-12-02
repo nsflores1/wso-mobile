@@ -21,19 +21,29 @@ class WCFMViewModel: ObservableObject {
     @Published var streamURL = URL(string: "")
     @Published var currentTrack: WCFMSpinItem?
 
-    init() {
+    init(url: URL) {
+        player = AVPlayer(url: url)
         setupAudioSession()
         setupRemoteControls()
     }
 
-    func play(url: URL) {
-        player = AVPlayer(url: url)
+    func play() {
+        // recover if we were murdered
+        if player?.currentItem?.status == .failed {
+            let item = AVPlayerItem(url: streamURL!)
+            player?.replaceCurrentItem(with: item)
+        }
+
+        // reactivate if we were deactivated
+        try? AVAudioSession.sharedInstance().setActive(true)
+
         player?.play()
         isPlaying = true
 
         var info = [String: Any]()
         info[MPMediaItemPropertyTitle] = "WCFM Live Radio"
         info[MPMediaItemPropertyArtist] = "Loading..."
+        info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
         MPNowPlayingInfoCenter.default().nowPlayingInfo = info
 
         startMetadataPolling()
@@ -48,8 +58,15 @@ class WCFMViewModel: ObservableObject {
         
         player?.pause()
         isPlaying = false
+        player?.replaceCurrentItem(with: nil)
         metadataTimer?.invalidate()
         metadataTimer = nil
+
+        var info = [String: Any]()
+        info[MPMediaItemPropertyTitle] = "WCFM Live Radio"
+        info[MPMediaItemPropertyArtist] = "(Paused)"
+        info[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
     }
 
     private func startMetadataPolling() {
@@ -111,7 +128,7 @@ class WCFMViewModel: ObservableObject {
         let commandCenter = MPRemoteCommandCenter.shared()
 
         commandCenter.playCommand.addTarget { [weak self] _ in
-            self?.play(url: self?.streamURL ?? URL(string: "")!)
+            self?.play()
             return .success
         }
 
@@ -124,7 +141,7 @@ class WCFMViewModel: ObservableObject {
             if self?.isPlaying == true {
                 self?.pause()
             } else {
-                self?.play(url: self?.streamURL ?? URL(string: "")!)
+                self?.play()
             }
             return .success
         }

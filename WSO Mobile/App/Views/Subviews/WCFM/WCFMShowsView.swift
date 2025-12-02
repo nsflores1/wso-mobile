@@ -10,7 +10,7 @@ import Combine
 
 struct WCFMShowsView: View {
         // TODO: give this a new state model
-    @StateObject private var viewModel = WCFMViewModel()
+    @StateObject private var viewModel = WCFMPlaylistViewModel()
 
     var body: some View {
         Section {

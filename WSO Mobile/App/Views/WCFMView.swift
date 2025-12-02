@@ -13,8 +13,7 @@ import AVFoundation
 // TODO: add metadata
 
 struct WCFMView: View {
-    @StateObject private var player = WCFMViewModel()
-    let streamURL = URL(string: "http://wcfm-streaming.williams.edu:8000/stream")
+    @StateObject private var player = WCFMViewModel(url: URL(string: "http://wcfm-streaming.williams.edu:8000/stream")!)
 
     var body: some View {
         NavigationStack {
@@ -88,7 +87,7 @@ struct WCFMView: View {
                         .transition(.scale.combined(with: .opacity))
 
                     Button {
-                        player.play(url: streamURL!)
+                        player.play()
                     } label : {
                         Label("Play", systemImage: "play")
                     }

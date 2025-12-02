@@ -46,6 +46,16 @@ struct ProfileView: View {
                     Button("Reset Onboarding") {
                         hasSeenOnboarding.toggle()
                     }.sensoryFeedback(.selection, trigger: hatesEatingOut)
+                    Button("Force Clear Cache") {
+                        Task {
+                            URLCache.shared.removeAllCachedResponses()
+                            await notificationManager.scheduleLocal(
+                                title: "Cache cleared!",
+                                body: "Please restart the app.",
+                                date: Date().addingTimeInterval(1)
+                            )
+                        }
+                    }
 
                 } header : {
                     Text("Settings")

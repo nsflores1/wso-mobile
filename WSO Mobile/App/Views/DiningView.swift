@@ -50,7 +50,8 @@ struct DiningView: View {
                             }
                         }
                         DiningVendorView(menu: viewModel.diningMenu)
-                    }.refreshable {
+                    }.listStyle(.sidebar)
+                    .refreshable {
                         URLCache.shared.removeCachedResponse(for: URLRequest(url: viewModel.diningURL))
                         await viewModel.loadMenus()
                     }
