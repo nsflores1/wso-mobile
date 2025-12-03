@@ -76,6 +76,43 @@ struct WCFMSpinItem: Codable {
     // TODO: maybe add playlist_id here
 }
 
+struct WCFMShow: Codable {
+    var metaLinks: [String: [String: URL]]
+    var metaMeta : [String: Int]
+    var items: [WCFMPlaylistItem]
+
+    enum CodingKeys: String, CodingKey {
+        case metaLinks = "_links"
+        case metaMeta = "_meta"
+        case items
+    }
+}
+
+struct WCFMShowItem: Codable {
+    var id: Int
+    var start: Date
+    var end: Date
+    var duration: Int
+    var title: String
+    var description: String
+    var image: String
+    var spinsCount: String
+    var metaLinks: [String: [String: URL]]
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case start
+        case end
+        case duration
+        case title
+        case description
+        case image
+        case spinsCount
+        case metaLinks = "_links"
+    }
+}
+
+
 struct WCFMPlaylistParseError : Error {}
 struct WCFMSpinParseError : Error {}
 
@@ -101,6 +138,17 @@ func getWCFMSpin() async throws -> WCFMSpin {
     return decodedResponse
 }
 
+func getWCFMShow() async throws -> WCFMShow {
+    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/shows.json")!)
+
+    let (data, _) = try await URLSession.shared.data(for: request)
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .iso8601
+
+    let decodedResponse = try decoder.decode(WCFMShow.self, from: data)
+    return decodedResponse
+}
+
 // strategy to get the latest playlist:
 // find the date and time. then, go over the array, and return the one
 // that we're currently at because we should fall within its range.
@@ -115,9 +163,9 @@ func getWCFMSpin() async throws -> WCFMSpin {
 func doWCFMPlaylist() async throws {
         let playlist = try await getWCFMPlaylist()
         for thing in playlist.items {
-            print("show \(thing.title) runs from \(thing.start) to \(thing.end)")
+            print("playlist \(thing.title) runs from \(thing.start) to \(thing.end)")
             for (key, value) in thing.metaLinks {
-                print("show \(thing.title): \(key): \(value)")
+                print("playlist \(thing.title): \(key): \(value)")
             }
         }
 }
@@ -126,5 +174,15 @@ func doWCFMSpin() async throws {
     let spin = try await getWCFMSpin()
     for thing in spin.items {
         print("spin \(thing.song) by \(thing.artist, default: "Anonymous") released \(thing.released, default: "(no release date)")")
+    }
+}
+
+func doWCFMShow() async throws {
+    let show = try await getWCFMShow()
+    for thing in show.items {
+        print("show \(thing.title) runs from \(thing.start) to \(thing.end)")
+        for (key, value) in show.metaLinks {
+            print("show \(thing.title): \(key): \(value)")
+        }
     }
 }
