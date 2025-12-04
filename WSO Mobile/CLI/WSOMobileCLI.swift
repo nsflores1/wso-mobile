@@ -21,6 +21,7 @@ struct AppCLI: AsyncParsableCommand {
 
     mutating func run() async throws {
         print("### WSO Mobile CLI ###")
+        URLCache.shared.removeAllCachedResponses()
         await doDailyMessages()
         await doLibraryHours()
         await doWilliamsRecord()

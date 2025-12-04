@@ -37,7 +37,7 @@ struct WCFMPlaylistItem: Codable {
     var end: Date
     var title: String
     var image: String
-    var spinsCount: String
+    var spinsCount: String?
     var metaLinks: [String: [String: URL]]
 
     enum CodingKeys: String, CodingKey {
@@ -79,7 +79,7 @@ struct WCFMSpinItem: Codable {
 struct WCFMShow: Codable {
     var metaLinks: [String: [String: URL]]
     var metaMeta : [String: Int]
-    var items: [WCFMPlaylistItem]
+    var items: [WCFMShowItem]
 
     enum CodingKeys: String, CodingKey {
         case metaLinks = "_links"
@@ -96,8 +96,7 @@ struct WCFMShowItem: Codable {
     var title: String
     var description: String
     var image: String
-    var spinsCount: String
-    var metaLinks: [String: [String: URL]]
+    var metaLinks: WCFMShowMeta
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -107,8 +106,16 @@ struct WCFMShowItem: Codable {
         case title
         case description
         case image
-        case spinsCount
         case metaLinks = "_links"
+    }
+}
+
+struct WCFMShowMeta: Codable {
+    let playlists: HrefObj
+    let personas: [HrefObj]?
+
+    struct HrefObj: Codable {
+        let href: String   // NOT url
     }
 }
 
@@ -181,8 +188,6 @@ func doWCFMShow() async throws {
     let show = try await getWCFMShow()
     for thing in show.items {
         print("show \(thing.title) runs from \(thing.start) to \(thing.end)")
-        for (key, value) in show.metaLinks {
-            print("show \(thing.title): \(key): \(value)")
-        }
+        print("its url is: https://spinitron.com\(thing.metaLinks.playlists.href)")
     }
 }

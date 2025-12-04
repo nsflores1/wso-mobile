@@ -9,22 +9,44 @@ import SwiftUI
 import Combine
 
 struct WCFMShowsView: View {
-        // TODO: give this a new state model
-    @StateObject private var viewModel = WCFMPlaylistViewModel()
+    @StateObject private var viewModel = WCFMShowViewModel()
 
     var body: some View {
-        Section {
-            VStack {
-                Text("Come back again later!")
-            }.padding(16)
-        } header: {
-            Text("WCFM Shows")
-                .fontWeight(.semibold)
-                .font(.title3)
+        NavigationStack {
+            List {
+                ForEach(
+                    viewModel.currentShows?.items ?? [],
+                    id: \.id
+                ) { show in
+                    VStack {
+                        HStack {
+                            VStack {
+                                Text(show.title)
+                                    .font(.title2)
+                                    .italic()
+                            }
+                            Spacer()
+                            AsyncImage(url: URL(string: show.image)!)
+                                .frame(width: 150, height: 150)
+                                .cornerRadius(12)
+                        }
+                        Text("\(show.start.shortDisplay) - \(show.end.shortDisplay)")
+                            .font(.subheadline)
+                    }
+                }
+            }
+            .navigationTitle("Recent Shows")
+        }
+        .task { await viewModel.loadPlaylists() }
+        .refreshable {
+            URLCache.shared
+                .removeCachedResponse(
+                    for: URLRequest(url: viewModel.requestURL!)
+                )
         }
     }
 }
 
 #Preview {
-    WCFMView()
+    WCFMShowsView()
 }
