@@ -26,7 +26,6 @@ struct AboutView: View {
                     .font(.headline)
                     .fontWeight(.medium)
                     .italic(true)
-
             }
             Divider().tint(Color(.secondarySystemBackground))
             let text = """

@@ -15,7 +15,7 @@ struct CleanRSSPost: Identifiable {
     let id: String
     let title: String
     let author: String
-    let content: [String]
+    let content: String
 }
 
 @MainActor
@@ -53,7 +53,7 @@ class WilliamsRecordViewModel: ObservableObject {
                         id: item.guid?.text ?? "(Unknown)",
                         title: title ?? "(Unknown)",
                         author: item.dublinCore?.creator ?? "(Unknown)",
-                        content: soupContent
+                        content: soupContent.joined(separator: "\n\n")
                     )
                 )
             }

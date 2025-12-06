@@ -14,12 +14,23 @@ struct DailyMessagesView: View {
     var body: some View {
         Section {
             if viewModel.isLoading {
-                    // TODO: make a nicer ProgressView()
-                Text("Loading...")
+                HStack {
+                    Text("Loading...")
+                    Spacer()
+                }
+                .listRowSeparator(.hidden)
+                .transition(.opacity)
             } else if let error = viewModel.errorMessage {
                     // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
-                Text(error).foregroundStyle(Color.red)
+                HStack {
+                    Text(error).foregroundStyle(Color.red)
+                    Spacer()
+                }
+                .listRowSeparator(.hidden)
+                .transition(.opacity)
             } else {
+                // TODO: this can't be animated until you flatten this into something less painful
+                // maybe make it a simple flat array?
                 ForEach(viewModel.dailyMessageCategories.keys.sorted(), id: \.self) { category in
                     Section() {
                         ForEach(viewModel.dailyMessageCategories[category] ?? [], id: \.title) { post in
@@ -35,13 +46,7 @@ struct DailyMessagesView: View {
                                     // the .frame() trick is Dark Arts
                                     Text(post.title)
                                         .multilineTextAlignment(.leading)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                    HStack() {
-                                        Image(systemName: "person")
-                                        Text("\(post.author) (\(post.authorEmail))").italic()
-                                            .multilineTextAlignment(.leading)
-                                    }.frame(maxWidth: .infinity, alignment: .leading)
-                                }
+                                }.frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
                     } header: {
@@ -63,8 +68,6 @@ struct DailyMessagesView: View {
             }
         } .task { await viewModel.loadContent() }
     }
-    // Important note: clearly you need to attach the task
-    // to a consistent and stable view. Group {} is not one of them.
 }
 
 #Preview {

@@ -17,11 +17,23 @@ struct WilliamsRecordView: View {
         Section {
             if viewModel.isLoading {
                     // TODO: make a nicer ProgressView()
-                Text("Loading...")
-            } else if let error = viewModel.errorMessage {
+                HStack {
+                    Text("Loading...")
+                    Spacer()
+                }
+                .listRowSeparator(.hidden)
+                .transition(.opacity)
+            }
+            if let error = viewModel.errorMessage {
                     // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
-                Text(error).foregroundStyle(Color.red)
-            } else {
+                HStack {
+                    Text(error)
+                        .foregroundStyle(Color.red)
+                }
+                .listRowSeparator(.hidden)
+                .transition(.opacity)
+            }
+            if !viewModel.isLoading && viewModel.errorMessage == nil {
                 // TODO: need to introduce a NavigationLink for posts
                 ForEach(viewModel.posts, id: \.id) { post in
                     NavigationLink() {
@@ -30,7 +42,7 @@ struct WilliamsRecordView: View {
                     } label: {
                         VStack {
                             HStack {
-                                // TODO: make the record article views nicer
+                                    // TODO: make the record article views nicer
                                 Text(post.title)
                                     .multilineTextAlignment(.leading)
                             }.frame(maxWidth: .infinity, alignment: .leading)
@@ -41,12 +53,9 @@ struct WilliamsRecordView: View {
                                     .italic()
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
-                    }
-                    .transition(.move(edge: .trailing).combined(with: .opacity))
-
+                    }.transition(.move(edge: .trailing).combined(with: .opacity))
                 }
-                .animation(.easeInOut(duration: 0.25), value: viewModel.posts.count)
-
+                .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)
             }
         } header : {
             HStack {

@@ -24,11 +24,11 @@ struct WilliamsRecordArticleView: View {
                     }
                 }
                 Section {
-                    ForEach(article.content, id: \.self) { line in
-                        Text(line.cleanWhitespace())
-                            .padding(10)
-                    }
-                }.background(.ultraThinMaterial)
+                    Text(article.content)
+                        .multilineTextAlignment(.leading)
+                        .padding(10)
+                        .background(.ultraThinMaterial)
+                }
             }
         }
     }

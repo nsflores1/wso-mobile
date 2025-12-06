@@ -34,8 +34,13 @@ struct WCFMShowsView: View {
                             .font(.subheadline)
                     }
                 }
+                .transition(.asymmetric(
+                    insertion: .move(edge: .top).combined(with: .opacity),
+                    removal: .opacity
+                ))
             }
             .navigationTitle("Recent Shows")
+            .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)
         }
         .task { await viewModel.loadPlaylists() }
         .refreshable {

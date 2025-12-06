@@ -36,6 +36,10 @@ struct EtherialView: View {
                         .italic(true)
                         .padding(20)
                         .background(.ultraThinMaterial, in: Capsule())
+                    NavigationLink("A secret for math enjoyers!") {
+                        EasterEggView()
+                    }
+                    .buttonStyle(.borderedProminent)
                 }.padding(20)
             }
             .navigationTitle(Text("The Ether"))
