@@ -73,7 +73,7 @@ struct ProfileView: View {
             }
             .listStyle(.grouped)
             .navigationTitle(Text("Profile"))
-            .modifier(NavSubtitleIfAvailable(subtitle: "WSO Mobile version: 1.2.0"))
+            .modifier(NavSubtitleIfAvailable(subtitle: "WSO Mobile version: 1.2.1"))
             .navigationBarTitleDisplayMode(.large)
         }
     }
