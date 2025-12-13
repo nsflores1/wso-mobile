@@ -11,14 +11,13 @@ struct OnboardingTwoView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Some functionality doesn't work in this Beta version (1.2.0):")
+                Text("Some functionality doesn't work in this Beta version (1.2.1):")
                 let mainText = """
                     
                     - Literally anything that involves the WSO backend (FaceBook, FacTrak, etc)
-                    - Dining (broken on backend)
                     - Embedded pictures in Record articles
                     - Links in Daily Messages posts
-                    - Off-campus dining location hours don't update automatically (broken on backend)
+                    - Off-campus dining location hours don't update automatically (backend implementation pending)
                     
                     """
                 Text(mainText)
