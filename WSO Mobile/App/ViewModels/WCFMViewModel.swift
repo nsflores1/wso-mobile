@@ -18,6 +18,7 @@ class WCFMViewModel: ObservableObject {
     private var player: AVPlayer?
     private var metadataTimer: Timer?
     @Published var isPlaying = false
+    @Published var error: Error?
     @Published var streamURL = URL(string: "")
     @Published var currentTrack: WCFMSpinItem?
 
@@ -38,6 +39,10 @@ class WCFMViewModel: ObservableObject {
         try? AVAudioSession.sharedInstance().setActive(true)
 
         player?.play()
+        // TODO: we should check to see if the URL is accessible to us rather than
+        // failing silently. big source of user confusion.
+        // we also need to check if there's silence, and then pass some other
+        // state rather than just isPlaying to un-gate the view
         isPlaying = true
 
         var info = [String: Any]()

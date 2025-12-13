@@ -30,15 +30,21 @@ struct SpringStreetCafesView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Tuesday-Saturday: 8AM-5PM, kitchen closes at 4PM")
                             Text("Sunday: 9AM-3PM, kitchen closes at 2:30PM")
+                                .listRowSeparator(.hidden)
                             Text("Monday: (Closed)")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Tea and Boba Lounge")
@@ -49,14 +55,19 @@ struct SpringStreetCafesView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Monday-Saturday: 11AM-5PM")
                             Text("Sunday: 12PM-5PM")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Tunnel City")
@@ -67,14 +78,19 @@ struct SpringStreetCafesView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Friday-Sunday: 6AM-5PM")
                             Text("Monday-Thursday: 6AM-4PM")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                 }

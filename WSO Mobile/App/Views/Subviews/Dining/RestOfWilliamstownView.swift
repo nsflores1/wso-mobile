@@ -30,6 +30,8 @@ struct RestOfWilliamstownView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
@@ -37,6 +39,8 @@ struct RestOfWilliamstownView: View {
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("A-Frame Bakery")
@@ -47,15 +51,21 @@ struct RestOfWilliamstownView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Monday-Wednesday: (Closed)")
                             Text("Thursday-Friday: 8AM-4PM")
+                                .listRowSeparator(.hidden)
                             Text("Saturday-Sunday: 8:30AM-9PM")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Coyote Flaco Restaurant")
@@ -66,16 +76,23 @@ struct RestOfWilliamstownView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Monday-Tuesday: (Closed)")
                             Text("Wednesday-Thursday: 4PM-9PM")
+                                .listRowSeparator(.hidden)
                             Text("Friday-Saturday: 4PM-10PM")
+                                .listRowSeparator(.hidden)
                             Text("Sunday: 4PM-9PM")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Mezze Bistro + Bar")
@@ -86,14 +103,19 @@ struct RestOfWilliamstownView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Wednesday-Sunday: 5PM-8:30PM")
                             Text("Other times possible; need to reserve")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                 }

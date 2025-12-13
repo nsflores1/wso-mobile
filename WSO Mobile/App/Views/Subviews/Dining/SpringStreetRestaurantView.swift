@@ -31,6 +31,8 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
@@ -38,6 +40,8 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Pappa Charlie's Deli")
@@ -55,6 +59,8 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Crust")
@@ -65,18 +71,27 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Monday: 11:30AM-8PM")
                             Text("Tuesday: (Closed)")
+                                .listRowSeparator(.hidden)
                             Text("Wednesday-Thursday: 11:30AM-8PM")
+                                .listRowSeparator(.hidden)
                             Text("Friday: 11:30AM-8:30PM")
+                                .listRowSeparator(.hidden)
                             Text("Saturday: 12PM-8:30PM")
+                                .listRowSeparator(.hidden)
                             Text("Sunday: 12PM-8PM")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Spice Root")
@@ -87,14 +102,19 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Tuesday-Saturday: 11:30AM-2:30PM, 5PM-10PM")
                             Text("Sunday: 12PM-3PM, 5PM-10PM")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("The Log by Ramunto's")
@@ -105,16 +125,23 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Monday-Tuesday: (Closed)")
                             Text("Wednesday: 3PM-8PM")
+                                .listRowSeparator(.hidden)
                             Text("Thursday: 12PM-2PM, 4PM-9PM")
+                                .listRowSeparator(.hidden)
                             Text("Friday-Sunday: 3PM-9PM")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Tony's Sombrero")
@@ -125,14 +152,19 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Monday-Saturday: 11AM-9PM")
                             Text("Sunday: (Closed)")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Purple Pub")
@@ -144,15 +176,21 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Monday-Tuesday: (Closed)")
                             Text("Wednesday-Saturday: 11:30AM-9PM")
+                                .listRowSeparator(.hidden)
                             Text("Sunday: 11:30AM-4PM")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                     Section("Plates Mediterranean Bistro")
@@ -163,16 +201,23 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {
                             Text("Monday: 11AM-9PM")
                             Text("Tuesday: 11AM-3PM, 4PM-9PM")
+                                .listRowSeparator(.hidden)
                             Text("Wednesday: 4PM-9PM")
+                                .listRowSeparator(.hidden)
                             Text("Thursday-Sunday: 11AM-3PM, 4PM-9PM")
+                                .listRowSeparator(.hidden)
                         } header : {
                             Text("Hours")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                     }
                 }

@@ -16,8 +16,14 @@ struct DiningItemsView: View {
         ForEach(items, id: \.name) { item in
             HStack {
                 Text(item.name)
-                if (item.vegan || item.vegetarian) {
+                // TODO: add halal (need to scrape it)
+                if (item.vegetarian) {
                     Image(systemName: "leaf")
+                        .foregroundStyle(Color.green)
+                }
+                if (item.vegan) {
+                    Image(systemName: "v.circle")
+                        .foregroundStyle(Color.green)
                 }
                 if (item.glutenFree) {
                     Image(systemName: "g.circle")
