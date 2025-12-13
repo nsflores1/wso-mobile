@@ -46,6 +46,8 @@
 		5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */; };
 		5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */; };
 		5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */; };
+		5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */; };
+		5B7F6EA42EECA40C00895BB3 /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */; };
 		5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */; };
 		5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */; };
 		5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */; };
@@ -84,6 +86,7 @@
 		5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3EE532ECC3521009CDFD3 /* WilliamsRecordView.swift */; };
 		5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB32542EBFD7F300F75A10 /* ContentView.swift */; };
 		5BEB32572EBFD7F400F75A10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BEB32562EBFD7F400F75A10 /* Assets.xcassets */; };
+		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +159,7 @@
 		5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningCoursesView.swift; sourceTree = "<group>"; };
 		5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningItemsView.swift; sourceTree = "<group>"; };
 		5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileCLI.swift; sourceTree = "<group>"; };
+		5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequest.swift; sourceTree = "<group>"; };
 		5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMView.swift; sourceTree = "<group>"; };
 		5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMViewModel.swift; sourceTree = "<group>"; };
 		5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantLinks.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		5BEB325C2EBFD7F400F75A10 /* WSOMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WSOMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WSOMobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WSOMobileCLI; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +283,7 @@
 		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */,
 				5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */,
 				5BD2D2E82ED90E34009F3C3A /* EasterEgg */,
 				5B05EF212ED8EC1100802310 /* Onboarding */,
@@ -438,6 +444,7 @@
 		5BEB328C2EBFDA3900F75A10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */,
 				5BD50F122ED9DEF400806CA7 /* NotificationManager.swift */,
 				5BD50F0F2ED9DC9300806CA7 /* AuthManager.swift */,
 			);
@@ -568,7 +575,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2610;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					5BEB324E2EBFD7F300F75A10 = {
 						CreatedOnToolsVersion = 26.1;
@@ -656,6 +663,7 @@
 				5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */,
 				5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */,
 				5B05EF242ED8EF9100802310 /* OnboardingOneView.swift in Sources */,
+				5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */,
 				5BE3EE522ECC3499009CDFD3 /* WilliamsRecordViewModel.swift in Sources */,
 				5BD50F182ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */,
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
@@ -682,6 +690,7 @@
 				5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
 				5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */,
+				5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */,
 				5BDEED6B2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
 				5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */,
 				5B75F0B22ECF4E4400F1F4F8 /* DiningMealView.swift in Sources */,
@@ -722,6 +731,7 @@
 			files = (
 				5BD50F172ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */,
 				5B515FB32EDBCE5300F166A1 /* DateExtension.swift in Sources */,
+				5B7F6EA42EECA40C00895BB3 /* WebRequest.swift in Sources */,
 				5BE3EE462ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */,
 				5B0A2E8D2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5BE3EE4A2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
@@ -811,6 +821,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -868,6 +879,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1033,6 +1045,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
@@ -1048,6 +1061,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.4;

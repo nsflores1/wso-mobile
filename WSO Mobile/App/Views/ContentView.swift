@@ -37,7 +37,7 @@ struct ContentView: View {
                 {
                     WCFMView()
                 }
-                Tab("More", systemImage: "person") {
+                Tab("Profile", systemImage: "person") {
                     ProfileView()
                 }
             }
