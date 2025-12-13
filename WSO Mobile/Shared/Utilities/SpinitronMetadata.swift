@@ -130,6 +130,7 @@ class JSONISO8601Parser<T: Codable>: DataParser {
         //let str = (String(data: data, encoding: .utf8) ?? "No data")
         //print(str)
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         let decodedResponse = try decoder.decode(T.self, from: data)
         return decodedResponse
     }
