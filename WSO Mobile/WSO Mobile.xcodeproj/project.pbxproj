@@ -40,6 +40,7 @@
 		5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */; };
 		5B5632792EDB848200390AB8 /* FluidGradient in Frameworks */ = {isa = PBXBuildFile; productRef = 5B5632782EDB848200390AB8 /* FluidGradient */; };
 		5B56327B2EDB84B800390AB8 /* EtherialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56327A2EDB84A800390AB8 /* EtherialView.swift */; };
+		5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B99C22EEE16710046B3A7 /* LinksView.swift */; };
 		5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71D5F72EC802790051ABF5 /* ArgumentParser */; };
 		5B75F0B22ECF4E4400F1F4F8 /* DiningMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B12ECF4E2D00F1F4F8 /* DiningMealView.swift */; };
 		5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */; };
@@ -154,6 +155,7 @@
 		5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesView.swift; sourceTree = "<group>"; };
 		5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesViewModel.swift; sourceTree = "<group>"; };
 		5B56327A2EDB84A800390AB8 /* EtherialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherialView.swift; sourceTree = "<group>"; };
+		5B6B99C22EEE16710046B3A7 /* LinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksView.swift; sourceTree = "<group>"; };
 		5B75F0B12ECF4E2D00F1F4F8 /* DiningMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningMealView.swift; sourceTree = "<group>"; };
 		5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningVendorView.swift; sourceTree = "<group>"; };
 		5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningCoursesView.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 		5BEB32882EBFD9EF00F75A10 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5B6B99C22EEE16710046B3A7 /* LinksView.swift */,
 				5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */,
 				5B55972D2EC8F7B700FB82D6 /* Subviews */,
 				5B4B3EF22EC10C9000277399 /* HomeView.swift */,
@@ -699,6 +702,7 @@
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
 				5B05EF2A2ED8F92E00802310 /* EpheliasRootsHours.swift in Sources */,
 				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,
+				5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */,
 				5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */,
 				5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */,
 				5BE3EE4B2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
@@ -891,7 +895,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -927,7 +931,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

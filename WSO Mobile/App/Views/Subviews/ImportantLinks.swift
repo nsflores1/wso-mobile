@@ -27,29 +27,23 @@ struct ImportantLinksView: View {
 
     var body: some View {
         Section {
-            Section() {
-                linkRow("Williams College Homepage", url: "https://williams.edu")
-                linkRow("Williams College Sports", url: "https://williams.edu")
-            } header : {
-                HStack {
-                    Image(systemName: "laurel.leading")
-                    Text("Official Stuff")
-                    Image(systemName: "laurel.trailing")
-                }
-            }
-            Section() {
-                linkRow("Department Homepage", url: "https://geosciences.williams.edu")
-                linkRow("Future Course Planner", url: "https://geosciences.williams.edu/the-major/major-requirements/")
-            } header: {
-                HStack {
-                    Image(systemName: "fossil.shell")
-                    Text("Geosciences Department")
-                }
-            }
+            linkRow("Williams College Homepage", url: "https://williams.edu")
+            linkRow("Williams College Sports", url: "https://williams.edu")
         } header : {
-            Text("Important Links")
-                .fontWeight(.semibold)
-                .font(.title3)
+            HStack {
+                Image(systemName: "laurel.leading")
+                Text("Official Stuff")
+                Image(systemName: "laurel.trailing")
+            }
+        }
+        Section {
+            linkRow("Department Homepage", url: "https://geosciences.williams.edu")
+            linkRow("Future Course Planner", url: "https://geosciences.williams.edu/the-major/major-requirements/")
+        } header: {
+            HStack {
+                Image(systemName: "fossil.shell")
+                Text("Geosciences Department")
+            }
         }
     }
 
@@ -69,5 +63,5 @@ struct ImportantLinksView: View {
 }
 
 #Preview {
-    ProfileView()
+    LinksView()
 }

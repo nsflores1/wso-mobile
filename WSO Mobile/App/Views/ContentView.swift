@@ -37,8 +37,8 @@ struct ContentView: View {
                 {
                     WCFMView()
                 }
-                Tab("Profile", systemImage: "person") {
-                    ProfileView()
+                Tab("Links", systemImage: "link") {
+                    LinksView()
                 }
             }
         }
