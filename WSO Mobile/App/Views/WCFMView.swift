@@ -80,7 +80,7 @@ struct WCFMView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
                 else {
-                    Label("Radio not current playing...",
+                    Label("Player is inactive...",
                           systemImage: "antenna.radiowaves.left.and.right")
                         .font(.title)
                         .italic(true)

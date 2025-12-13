@@ -38,7 +38,7 @@ enum WebRequestError : Error {
 // TODO: implement the various other HTTP request methods as they come up
 
 class WebRequest<GetParser: DataParser, PostParser: DataParser> {
-    private let session = URLSession.shared
+    private var session = URLSession.shared
     private let cache = URLCache.shared
 
     // bidirectional: WebRequest supports decoding and encoding
@@ -60,6 +60,13 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         self.postParser = postParser
         self.requestType = requestType
         self.internalURL = url
+
+        // crank the global cache all the way up
+        // TODO: find a better place to do this.
+        // this is OKAY, but will eventually introduce subtle problems, because like
+        // who in god's green earth would expect this code to be HERE of all places?
+        if cache.memoryCapacity >= 50_000_000 { cache.memoryCapacity = 50_000_000 }
+        if cache.diskCapacity >= 100_000_000 { cache.diskCapacity = 100_000_000 }
     }
 
     // make 
@@ -70,8 +77,6 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             request.headerFields[.accept] = getParser!.acceptType
 
             let (data, _) = try await session.data(for: request)
-            let str = (String(data: data, encoding: .utf8) ?? "No data")
-            print(str)
             return try await getParser!.parse(data: data)
         } else {
             throw WebRequestError.noParser("No decode parser yet fetch was requested.")
@@ -133,3 +138,7 @@ class JSONParser<T: Codable>: DataParser {
         return decodedResponse
     }
 }
+
+// ONLY STANDARD, COMMONLY USED PARSERS SHOULD GO HERE!
+// IF YOUR API NEEDS ANOTHER ONE, PUT IT WITH THAT,
+// SO PEOPLE CAN QUICKLY DETERMINE WHERE THE ERROR COMES FROM!

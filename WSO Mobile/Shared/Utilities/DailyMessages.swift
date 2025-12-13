@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftSoup
+import HTTPTypes
+import HTTPTypesFoundation
 
 struct DailyMessageCategory: Codable {
     let categories: [String: [DailyMessagePost]]
@@ -65,6 +67,18 @@ struct DailyMessagePost: Codable {
 struct DailyMessagesParseError : Error {}
 
 func parseDailyMessages() async throws -> [String: [DailyMessagePost]] {
+    let parser = JSONParser<DailyMessageCategory>()
+    let request = WebRequest<JSONParser<DailyMessageCategory>, NoParser>(
+        url: URL(string: "https://wso.williams.edu/api/v2/words")!,
+        requestType: .get,
+        getParser: parser
+    )
+    print("finished!")
+    print("data: \(try await request.get())")
+    return try await request.get().categories
+}
+
+func oldParseDailyMessages() async throws -> [String: [DailyMessagePost]] {
     let url = URL(string: "https://wso.williams.edu/daily_messages.html")!
     let (data, _) = try await URLSession.shared.data(from: url)
 
