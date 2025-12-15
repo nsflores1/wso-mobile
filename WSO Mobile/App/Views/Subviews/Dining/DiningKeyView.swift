@@ -33,7 +33,7 @@ struct DiningKeyView: View {
                         Text("Gluten free items")
                     }
                 }
-            }.padding(30)
+            }.padding(20)
             .navigationTitle("Dining Help")
             .modifier(NavSubtitleIfAvailable(subtitle: "For all your dining questions"))
         }

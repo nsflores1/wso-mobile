@@ -51,17 +51,23 @@ struct DiningView: View {
                         }
                         // TODO: this data structure can change order,
                         // but it should always be ordered alphabetically.
-                        ForEach(
-                            viewModel.diningMenu.sorted(),
-                            id: \.hallName
-                        ) { hall in
-                            NavigationLink(destination: DiningVendorView(menu: hall)) {
-                                HStack {
-                                    Text(hall.hallName)
-                                    // TODO: some way to track hall status here. is it open? is it closed?
+                        Section {
+                            ForEach(
+                                viewModel.diningMenu.sorted(),
+                                id: \.hallName
+                            ) { hall in
+                                NavigationLink(destination: DiningVendorView(menu: hall)) {
+                                    HStack {
+                                        Text(hall.hallName)
+                                            // TODO: some way to track hall status here. is it open? is it closed?
+                                    }
                                 }
-                            }
 
+                            }
+                        } header: {
+                            Text("On-Campus Dining Halls")
+                                .fontWeight(.semibold)
+                                .font(.title3)
                         }
                     }.listStyle(.sidebar)
                     .refreshable {
