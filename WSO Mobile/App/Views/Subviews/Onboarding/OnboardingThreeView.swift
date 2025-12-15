@@ -20,7 +20,7 @@ struct OnboardingThreeView: View {
                     
                     Thanks again for testing out the app!
                     
-                    If you want to see any of this text again, change the setting in the app to see it again.
+                    If you want to see any of this text again, change the setting in the app to reset your onboarding progress.
                     """
                 Text(mainText)
             }.padding(20)

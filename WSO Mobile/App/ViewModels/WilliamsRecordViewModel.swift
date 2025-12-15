@@ -16,6 +16,7 @@ struct CleanRSSPost: Identifiable {
     let title: String
     let author: String
     let content: String
+    let description: String?
 }
 
 @MainActor
@@ -36,6 +37,7 @@ class WilliamsRecordViewModel: ObservableObject {
             var returnValue: [CleanRSSPost] = []
             for item in items {
                 let title = item.title
+                let description = item.description
                 let rawContent = item.content?.encoded ?? ""
 
                 let soupText = try SwiftSoup.parse(rawContent)
@@ -53,7 +55,8 @@ class WilliamsRecordViewModel: ObservableObject {
                         id: item.guid?.text ?? "(Unknown)",
                         title: title ?? "(Unknown)",
                         author: item.dublinCore?.creator ?? "(Unknown)",
-                        content: soupContent.joined(separator: "\n\n")
+                        content: soupContent.joined(separator: "\n\n"),
+                        description: description
                     )
                 )
             }

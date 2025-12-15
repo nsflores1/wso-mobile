@@ -31,6 +31,7 @@ class WCFMViewModel: ObservableObject {
     func play() {
         // recover if we were murdered
         if player?.currentItem?.status == .failed {
+            // TODO: this can crash if we try to run with no internet access!!!
             let item = AVPlayerItem(url: streamURL!)
             player?.replaceCurrentItem(with: item)
         }

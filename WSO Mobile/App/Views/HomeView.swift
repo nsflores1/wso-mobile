@@ -147,9 +147,8 @@ struct HomeView: View {
                     // TODO: replace with WSOLoginView() later,
                     // this is to placate Apple reviewers
                     HStack {
-                        NavigationLink(destination: MapView()) {
-                            Image(systemName: "map")
-                        }
+                        // TODO: see if WOC will let you make that hike map
+                        // the map is disabled for now
                         NavigationLink(destination: ProfileView()) {
                             Image(systemName: "person")
                         }

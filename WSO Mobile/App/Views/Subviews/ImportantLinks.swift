@@ -25,6 +25,11 @@ import Foundation
 struct ImportantLinksView: View {
     @Environment(\.openURL) private var openURL
 
+    // TODO: once we JSON this, you want a way to ForEach
+    // through every single object, then have a dict of state ints
+    // and then use that to determine if the views are expanded.
+    // save them to @AppStorage or whatever. mmkay?
+
     var body: some View {
         Section {
             linkRow("Williams College Homepage", url: "https://williams.edu")

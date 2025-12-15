@@ -31,6 +31,18 @@ struct WSOAuthLoginForm: Codable {
     var useIP: Bool
 }
 
+func newWSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin {
+    let parser = JSONParser<WSOAuthLogin>()
+    let request = WebRequest<NoParser, JSONParser<WSOAuthLogin>>(
+        url: URL(string: "https://wso.williams.edu/api/v2/auth/login")!,
+        requestType: .post,
+        postParser: parser
+    )
+    let formData: WSOAuthLoginForm = .init(localIP: true, password: password, unixID: unixID, useIP: true)
+    let formDataJSON = try JSONEncoder().encode(formData)
+    return try await request.post(sendData: formDataJSON)
+}
+
 func WSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin {
     var request = HTTPRequest(method: .post, url: URL(string: "https://wso.williams.edu/api/v2/auth/login")!)
     request.headerFields[.userAgent] = "New WSO Mobile/0.1"

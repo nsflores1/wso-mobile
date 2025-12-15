@@ -44,7 +44,7 @@ struct ProfileView: View {
                         .font(.title3)
                 }
                 Section {
-                    Text("This is a mockup of the final version and does not actually change at present. This is included soley so that you can see what a complete profile will look like.").italic()
+                    Text("This is a mockup of the final version and does not actually change at the moment. This is included just so that you can see what a complete profile will look like.").italic()
                 }
             }
             .listStyle(.grouped)
