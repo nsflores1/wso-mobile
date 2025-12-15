@@ -57,6 +57,7 @@
 		5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */; };
 		5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */; };
 		5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */; };
+		5BCDB7FD2EF09506008B438C /* MapPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB7FC2EF09502008B438C /* MapPageView.swift */; };
 		5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */; };
 		5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */; };
 		5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD358212ED3A7AC001AE153 /* AboutView.swift */; };
@@ -174,6 +175,7 @@
 		5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningView.swift; sourceTree = "<group>"; };
 		5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecordArticleView.swift; sourceTree = "<group>"; };
+		5BCDB7FC2EF09502008B438C /* MapPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPageView.swift; sourceTree = "<group>"; };
 		5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpheliaView.swift; sourceTree = "<group>"; };
 		5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOLoginView.swift; sourceTree = "<group>"; };
 		5BD358212ED3A7AC001AE153 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 		5BEB32882EBFD9EF00F75A10 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5BCDB7FC2EF09502008B438C /* MapPageView.swift */,
 				5B6B99C22EEE16710046B3A7 /* LinksView.swift */,
 				5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */,
 				5B55972D2EC8F7B700FB82D6 /* Subviews */,
@@ -705,6 +708,7 @@
 				5BA37ED02EF08CB30011C245 /* WCFMKeyView.swift in Sources */,
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
 				5B05EF2A2ED8F92E00802310 /* EpheliasRootsHours.swift in Sources */,
+				5BCDB7FD2EF09506008B438C /* MapPageView.swift in Sources */,
 				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,
 				5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */,
 				5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */,

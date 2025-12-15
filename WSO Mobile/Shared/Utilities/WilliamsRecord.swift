@@ -31,7 +31,31 @@ struct NewsNode: Codable {
     let imageCaption: String?
 }
 
-struct WilliamsRecordParseError : Error {}
+struct WilliamsRecordParseError: Error {}
+
+//func parseWilliamsRecord() async throws -> [NewsFeed] {
+//    let feed = try await RSSFeed(urlString: "https://wso.williams.edu/williams_record.rss")
+//    // this is probably safe but needs more sanity checks
+//    // also I could do this with a .map but it's simply too complicated to be worth it
+//    // this is naturally an iterative task. and its pretty fast too since n is small
+//    var news: [NewsFeed] = []
+//    for post in feed.channel?.items ?? [] {
+//        news
+//            .append(
+//                NewsFeed(
+//                    title: post.title ?? "",
+//                    link: URL(string: post.link ?? "https://williamsrecord.com")!,
+//                    pubDate: post.pubDate!, // TODO: implement a thing which gives us 8am of last wednesday
+//                    author: post.author ?? "(unknown author)",
+//                    description: post.description ?? "(no description)",
+//                    content: {
+//                        let soupText = try SwiftSoup.parse(post.content!.encoded!)
+//                        let paragraphs = try soupText.select("p")
+//                    }
+//                )
+//            )
+//    }
+//}
 
 // this doesn't need a rewrite because FeedKit implements parsing for us
 func parseWilliamsRecord() async throws -> [RSSFeedItem] {
@@ -84,13 +108,16 @@ func doWilliamsRecord() async {
                 let image = try image.attr("src")
                 soupImageContent.append(image)
             }
-
-            for i in soupCaptionContent {
-               print("Caption:", i)
+            for p in paragraphs {
+                print("Paragraph:", p)
             }
 
             for i in soupImageContent {
                 print("Image:", i)
+            }
+
+            for i in soupCaptionContent {
+               print("Caption:", i)
             }
 
             print()
