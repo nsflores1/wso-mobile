@@ -7,48 +7,60 @@
 
 import SwiftSoup
 import Foundation
+import HTTPTypes
+import HTTPTypesFoundation
 
-struct LibraryHours: Codable, Hashable {
+// codable data
+struct LibraryServices: Codable {
+    let libraryServices: [String: LibraryHours]
+    let updateTime: String // TODO: parse as date somehow
+
+    enum CodingKeys: String, CodingKey {
+        case libraryServices = "libraryservices"
+        case updateTime
+    }
+}
+
+struct LibraryHours: Codable {
     let name: String
-    let hours: String
-}
+    let hours: HoursList
 
-struct LibraryHoursParseError : Error {}
-
-func parseLibraryHours() async throws -> [LibraryHours] {
-    let url = URL(string: "https://wso.williams.edu/library_hours_today.html")!
-    do {
-        let (data, _) = try await URLSession.shared.data(from: url)
-
-        let doc = try SwiftSoup.parse(data)
-        let rows = try doc.select("tr.hours-today-row")
-
-        return rows.compactMap { row in
-            guard let name = try? row.select("th.hours-col-loc").text(),
-                  let time = try? row.select("td.hours-col-time span.s-lc-time").text()
-            else { return nil }
-
-            let trimmedTime = time.trimmingCharacters(in: .whitespacesAndNewlines)
-            let hours = trimmedTime.isEmpty ? "(closed)" : trimmedTime
-
-            return LibraryHours(
-                name: name.trimmingCharacters(in: .whitespacesAndNewlines),
-                hours: hours
-            )
-        }
-    } catch {
-        throw LibraryHoursParseError()
+    struct HoursList: Codable {
+        let open: [String]?
+        let close: [String]?
     }
 }
 
-func doLibraryHours() async {
-    do {
-        let data = try await parseLibraryHours()
-        for item in data {
-            print("name: \(item.name), hours: \(item.hours)")
-        }
+// clean data storage
+struct SaneLibraryHours: Codable {
+    let name: String
+    let openHours: [String]
+    let closeHours: [String]
+}
+
+func parseLibraryHours() async throws -> [SaneLibraryHours] {
+    let parser = JSONParser<LibraryServices>()
+    let request = WebRequest<JSONParser<LibraryServices>, NoParser>(
+        url: URL(string: "https://wso.williams.edu/library.json")!,
+        requestType: .get,
+        getParser: parser
+    )
+    let data = try await request.get()
+    return data.libraryServices.map { library in
+        SaneLibraryHours(
+            name: library.key,
+            openHours: library.value.hours.open ?? [],
+            closeHours: library.value.hours.close ?? []
+        )
     }
-    catch {
-        print("no hours today")
+
+}
+
+func doLibraryHours() async throws {
+    let data = try await parseLibraryHours()
+    for item in data {
+        print(
+            "name: \(item.name), hours: \(item.openHours.joined(separator: "-")) - \(item.closeHours.joined(separator: "-"))"
+        )
     }
 }

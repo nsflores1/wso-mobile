@@ -23,7 +23,7 @@ struct AppCLI: AsyncParsableCommand {
         print("### WSO Mobile CLI ###")
         URLCache.shared.removeAllCachedResponses()
         await doDailyMessages()
-        await doLibraryHours()
+        try await doLibraryHours()
         await doWilliamsRecord()
         await doWilliamsDining()
         try await doWCFMPlaylist()

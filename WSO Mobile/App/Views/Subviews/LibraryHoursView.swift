@@ -26,9 +26,10 @@ struct LibraryHoursView: View {
                 if !viewModel.isLoading && viewModel.errorMessage == nil {
                     ForEach(viewModel.libraryHours, id: \.name) { place in
                         HStack {
-                            Text(place.name)
+                            Text(place.name.capitalized)
                             Spacer()
-                            Text(place.hours).foregroundStyle(.secondary)
+                            Text("\(place.openHours.joined()), \(place.closeHours.joined())")
+                                .foregroundStyle(.secondary)
                         }
                     }.transition(.move(edge: .top).combined(with: .opacity))
                 }
