@@ -10,7 +10,7 @@ import Combine
 
 @MainActor
 class LibraryHoursViewModel: ObservableObject {
-    @Published var libraryHours: [LibraryHours] = []
+    @Published var libraryHours: [SaneLibraryHours] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var requestURL: URL = URL(string: "https://libcal.williams.edu/api_hours_today.php")!
@@ -20,9 +20,7 @@ class LibraryHoursViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-            //URLCache.shared.removeAllCachedResponses() // nuke all caches
-            // TODO: UNCOMMENT ABOVE BEFORE PROD RELEASE
-            let data: [LibraryHours] = try await parseLibraryHours()
+            let data: [SaneLibraryHours] = try await parseLibraryHours()
             self.libraryHours = data
         } catch {
             self.errorMessage = "Failed to load library hours."
