@@ -51,6 +51,7 @@
 		5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */; };
 		5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */; };
 		5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */; };
+		5BA37ED02EF08CB30011C245 /* WCFMKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */; };
 		5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9B2EC0ED9900A242A1 /* WSOMobileApp.swift */; };
 		5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */; };
 		5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */; };
@@ -164,6 +165,7 @@
 		5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMView.swift; sourceTree = "<group>"; };
 		5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMViewModel.swift; sourceTree = "<group>"; };
 		5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantLinks.swift; sourceTree = "<group>"; };
+		5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMKeyView.swift; sourceTree = "<group>"; };
 		5BB76F952EC0ED7500A242A1 /* WSOMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileTests.swift; sourceTree = "<group>"; };
 		5BB76F972EC0ED7500A242A1 /* WSOMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileUITests.swift; sourceTree = "<group>"; };
 		5BB76F982EC0ED7500A242A1 /* WSOMobileUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		5B3543DF2ED6525700A37A56 /* WCFM */ = {
 			isa = PBXGroup;
 			children = (
+				5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */,
 				5B3543DD2ED64E7900A37A56 /* WCFMShowsView.swift */,
 				5B3543DB2ED64DD600A37A56 /* WCFMPlaylistView.swift */,
 			);
@@ -699,6 +702,7 @@
 				5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */,
 				5B05EF322ED8F98800802310 /* SpringStreetCafesView.swift in Sources */,
 				5B3543DE2ED64E7B00A37A56 /* WCFMShowsView.swift in Sources */,
+				5BA37ED02EF08CB30011C245 /* WCFMKeyView.swift in Sources */,
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
 				5B05EF2A2ED8F92E00802310 /* EpheliasRootsHours.swift in Sources */,
 				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,

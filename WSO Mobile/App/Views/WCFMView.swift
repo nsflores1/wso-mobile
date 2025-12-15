@@ -39,8 +39,8 @@ struct WCFMView: View {
                         .font(.headline)
                         .foregroundStyle(.secondary)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
-                    // this trick converts an int to a flat number
-                    // such a mess. spinitron is the devil
+                        // this trick converts an int to a flat number
+                        // such a mess. spinitron is the devil
                     Text(verbatim: "\(track.label ?? "(No label)"), \(track.released, default: "(No release date)")")
                         .font(.headline)
                         .foregroundStyle(.secondary)
@@ -66,8 +66,8 @@ struct WCFMView: View {
                     }
 
                     Spacer()
-                    // TODO: it would be awesome to have a list of past tracks
-                    // also, show info would be huge
+                        // TODO: it would be awesome to have a list of past tracks
+                        // also, show info would be huge
 
                     Button {
                         player.pause()
@@ -82,9 +82,9 @@ struct WCFMView: View {
                 else {
                     Label("Player is inactive...",
                           systemImage: "antenna.radiowaves.left.and.right")
-                        .font(.title)
-                        .italic(true)
-                        .transition(.scale.combined(with: .opacity))
+                    .font(.title)
+                    .italic(true)
+                    .transition(.scale.combined(with: .opacity))
 
                     Button {
                         player.play()
@@ -95,6 +95,15 @@ struct WCFMView: View {
                     .buttonStyle(.borderedProminent)
                     .controlSize(ControlSize.large)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        NavigationLink(destination: WCFMKeyView()) {
+                            Image(systemName: "questionmark")
+                        }
+                    }
                 }
             }
             .animation(.spring(response: 0.4, dampingFraction: 0.8), value: player.isPlaying)
