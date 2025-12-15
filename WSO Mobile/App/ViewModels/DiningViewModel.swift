@@ -8,11 +8,9 @@
 import SwiftUI
 import Combine
 
-// TODO: has someone written an xpath for this?
-
 @MainActor
 class DiningHoursViewModel: ObservableObject {
-    @Published var diningMenu: [String: Vendor] = [:]
+    @Published var diningMenu: [DiningHall] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var diningURL: URL = URL(string: "https://wso.williams.edu/dining.json")!
@@ -22,13 +20,10 @@ class DiningHoursViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-                //URLCache.shared.removeAllCachedResponses() // nuke all caches
-                // TODO: UNCOMMENT ABOVE BEFORE PROD RELEASE
-            let data: MenuResponse = try await parseWilliamsDining()
-            self.diningMenu = data.vendors
+            let data: [DiningHall] = try await parseWilliamsDining()
+            self.diningMenu = data
         } catch {
             self.errorMessage = "Failed to load dining hours."
-            self.diningMenu = [:]
         }
 
         isLoading = false

@@ -49,7 +49,20 @@ struct DiningView: View {
                                     .font(.title3)
                             }
                         }
-                        DiningVendorView(menu: viewModel.diningMenu)
+                        // TODO: this data structure can change order,
+                        // but it should always be ordered alphabetically.
+                        ForEach(
+                            viewModel.diningMenu.sorted(),
+                            id: \.hallName
+                        ) { hall in
+                            NavigationLink(destination: DiningVendorView(menu: hall)) {
+                                HStack {
+                                    Text(hall.hallName)
+                                    // TODO: some way to track hall status here. is it open? is it closed?
+                                }
+                            }
+
+                        }
                     }.listStyle(.sidebar)
                     .refreshable {
                         URLCache.shared.removeCachedResponse(for: URLRequest(url: viewModel.diningURL))
@@ -57,6 +70,18 @@ struct DiningView: View {
                     }
                     .navigationTitle(Text("Dining"))
                     .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            // TODO: actually add a KeyView
+                            // it will explain what the dining
+                            // item keys do so they know how to interpret them
+                            HStack {
+                                NavigationLink(destination: DiningKeyView()) {
+                                    Image(systemName: "questionmark")
+                                }
+                            }
+                        }
+                    }
                 }
         }.task { await viewModel.loadMenus() }
     }

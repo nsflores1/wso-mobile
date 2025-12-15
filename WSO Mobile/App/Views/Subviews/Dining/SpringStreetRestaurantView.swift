@@ -52,6 +52,8 @@ struct SpringStreetRestaurantView: View {
                         } header : {
                             Text("Description")
                                 .italic()
+                                .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
+                                .listRowBackground(Color.accent)
                         }
                         Section
                         {

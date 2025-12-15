@@ -42,7 +42,6 @@
 		5B56327B2EDB84B800390AB8 /* EtherialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56327A2EDB84A800390AB8 /* EtherialView.swift */; };
 		5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B99C22EEE16710046B3A7 /* LinksView.swift */; };
 		5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71D5F72EC802790051ABF5 /* ArgumentParser */; };
-		5B75F0B22ECF4E4400F1F4F8 /* DiningMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B12ECF4E2D00F1F4F8 /* DiningMealView.swift */; };
 		5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */; };
 		5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */; };
 		5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */; };
@@ -67,6 +66,7 @@
 		5BD50F142ED9DEF800806CA7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD50F122ED9DEF400806CA7 /* NotificationManager.swift */; };
 		5BD50F172ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD50F162ED9E8B800806CA7 /* WSOAuthLogin.swift */; };
 		5BD50F182ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD50F162ED9E8B800806CA7 /* WSOAuthLogin.swift */; };
+		5BD6B7A62EEF9A510068B669 /* DiningKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6B7A52EEF9A4E0068B669 /* DiningKeyView.swift */; };
 		5BDA0FDB2EE122F8005D6AC4 /* WCFMShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA0FDA2EE122F2005D6AC4 /* WCFMShowViewModel.swift */; };
 		5BDEED642ECF7E9700E150E6 /* SpringStreetRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */; };
 		5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEED672ECF857700E150E6 /* WSOGetWords.swift */; };
@@ -156,7 +156,6 @@
 		5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesViewModel.swift; sourceTree = "<group>"; };
 		5B56327A2EDB84A800390AB8 /* EtherialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherialView.swift; sourceTree = "<group>"; };
 		5B6B99C22EEE16710046B3A7 /* LinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksView.swift; sourceTree = "<group>"; };
-		5B75F0B12ECF4E2D00F1F4F8 /* DiningMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningMealView.swift; sourceTree = "<group>"; };
 		5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningVendorView.swift; sourceTree = "<group>"; };
 		5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningCoursesView.swift; sourceTree = "<group>"; };
 		5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningItemsView.swift; sourceTree = "<group>"; };
@@ -180,6 +179,7 @@
 		5BD50F0F2ED9DC9300806CA7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		5BD50F122ED9DEF400806CA7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5BD50F162ED9E8B800806CA7 /* WSOAuthLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOAuthLogin.swift; sourceTree = "<group>"; };
+		5BD6B7A52EEF9A4E0068B669 /* DiningKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningKeyView.swift; sourceTree = "<group>"; };
 		5BDA0FDA2EE122F2005D6AC4 /* WCFMShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMShowViewModel.swift; sourceTree = "<group>"; };
 		5BDEED632ECF7E8F00E150E6 /* SpringStreetRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringStreetRestaurantView.swift; sourceTree = "<group>"; };
 		5BDEED672ECF857700E150E6 /* WSOGetWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOGetWords.swift; sourceTree = "<group>"; };
@@ -261,6 +261,7 @@
 		5B3543E02ED6526400A37A56 /* Dining */ = {
 			isa = PBXGroup;
 			children = (
+				5BD6B7A52EEF9A4E0068B669 /* DiningKeyView.swift */,
 				5B05EF312ED8F98300802310 /* SpringStreetCafesView.swift */,
 				5B05EF2D2ED8F95400802310 /* RestOfWilliamstownView.swift */,
 				5B05EF292ED8F92A00802310 /* EpheliasRootsHours.swift */,
@@ -268,7 +269,6 @@
 				5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */,
 				5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */,
 				5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */,
-				5B75F0B12ECF4E2D00F1F4F8 /* DiningMealView.swift */,
 			);
 			path = Dining;
 			sourceTree = "<group>";
@@ -659,6 +659,7 @@
 				5BDA0FDB2EE122F8005D6AC4 /* WCFMShowViewModel.swift in Sources */,
 				5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */,
 				5BD50F112ED9DC9700806CA7 /* AuthManager.swift in Sources */,
+				5BD6B7A62EEF9A510068B669 /* DiningKeyView.swift in Sources */,
 				5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */,
 				5B379A152EE3D0A000A09DE4 /* PetView.swift in Sources */,
 				5B05EF262ED8EF9B00802310 /* OnboardingTwoView.swift in Sources */,
@@ -696,7 +697,6 @@
 				5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */,
 				5BDEED6B2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
 				5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */,
-				5B75F0B22ECF4E4400F1F4F8 /* DiningMealView.swift in Sources */,
 				5B05EF322ED8F98800802310 /* SpringStreetCafesView.swift in Sources */,
 				5B3543DE2ED64E7B00A37A56 /* WCFMShowsView.swift in Sources */,
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
