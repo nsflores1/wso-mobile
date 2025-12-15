@@ -40,6 +40,15 @@ struct LinksView: View {
                 }
                 ImportantLinksView()
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        NavigationLink(destination: LinksKeyView()) {
+                            Image(systemName: "questionmark")
+                        }
+                    }
+                }
+            }
             .navigationTitle(Text("Links"))
             .modifier(NavSubtitleIfAvailable(subtitle: "Important campus resources"))
         }

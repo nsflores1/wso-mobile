@@ -58,6 +58,8 @@
 		5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */; };
 		5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */; };
 		5BCDB7FD2EF09506008B438C /* MapPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB7FC2EF09502008B438C /* MapPageView.swift */; };
+		5BCDB7FF2EF0973E008B438C /* LinksKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */; };
+		5BCDB8012EF098CE008B438C /* SneakyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB8002EF098CB008B438C /* SneakyView.swift */; };
 		5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */; };
 		5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */; };
 		5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD358212ED3A7AC001AE153 /* AboutView.swift */; };
@@ -176,6 +178,8 @@
 		5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecordArticleView.swift; sourceTree = "<group>"; };
 		5BCDB7FC2EF09502008B438C /* MapPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPageView.swift; sourceTree = "<group>"; };
+		5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksKeyView.swift; sourceTree = "<group>"; };
+		5BCDB8002EF098CB008B438C /* SneakyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakyView.swift; sourceTree = "<group>"; };
 		5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpheliaView.swift; sourceTree = "<group>"; };
 		5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOLoginView.swift; sourceTree = "<group>"; };
 		5BD358212ED3A7AC001AE153 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -290,7 +294,6 @@
 		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */,
 				5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */,
 				5BD2D2E82ED90E34009F3C3A /* EasterEgg */,
 				5B05EF212ED8EC1100802310 /* Onboarding */,
@@ -298,6 +301,8 @@
 				5B3543E02ED6526400A37A56 /* Dining */,
 				5B3543DF2ED6525700A37A56 /* WCFM */,
 				5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */,
+				5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */,
+				5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */,
 				5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */,
 				5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */,
 				5B0168402EC91BEC0092FBA3 /* MapView.swift */,
@@ -341,6 +346,7 @@
 		5BD2D2E82ED90E34009F3C3A /* EasterEgg */ = {
 			isa = PBXGroup;
 			children = (
+				5BCDB8002EF098CB008B438C /* SneakyView.swift */,
 				5B379A142EE3D09A00A09DE4 /* PetView.swift */,
 				5B56327A2EDB84A800390AB8 /* EtherialView.swift */,
 				5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */,
@@ -678,6 +684,7 @@
 				5BD50F182ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */,
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
 				5B515FB22EDBCE5300F166A1 /* DateExtension.swift in Sources */,
+				5BCDB7FF2EF0973E008B438C /* LinksKeyView.swift in Sources */,
 				5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */,
 				5B05EF282ED8EFA300802310 /* OnboardingThreeView.swift in Sources */,
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
@@ -702,6 +709,7 @@
 				5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */,
 				5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */,
 				5BDEED6B2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
+				5BCDB8012EF098CE008B438C /* SneakyView.swift in Sources */,
 				5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */,
 				5B05EF322ED8F98800802310 /* SpringStreetCafesView.swift in Sources */,
 				5B3543DE2ED64E7B00A37A56 /* WCFMShowsView.swift in Sources */,
