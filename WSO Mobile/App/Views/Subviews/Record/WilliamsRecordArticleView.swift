@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct WilliamsRecordArticleView: View {
-    let article: CleanRSSPost
+    let article: NewsFeed
 
     var body: some View {
         ScrollView {
@@ -23,11 +24,41 @@ struct WilliamsRecordArticleView: View {
                             .italic(true)
                     }
                 }
+                Divider()
                 Section {
-                    Text(article.content)
-                        .multilineTextAlignment(.leading)
-                        .padding(10)
-                        .background(.ultraThinMaterial)
+                    ForEach(article.content.indices, id: \.self) { idx in
+                        switch article.content[idx] {
+                            case .text(let content):
+                                Text(content)
+                                    .multilineTextAlignment(.leading)
+                                    .padding(10)
+                                    .background(.ultraThinMaterial)
+                            case .image(let url, let caption):
+                                VStack {
+                                    KFImage(URL(string: url))
+                                        .placeholder { ProgressView() }
+                                        .fade(duration: 0.25)
+                                        .resizable()
+                                        .cornerRadius(10)
+                                        .scaledToFit()
+                                    // this parameter prevents massive vertical images
+                                        .frame(maxWidth: 360, maxHeight: 300)
+                                    Text(caption)
+                                        .font(.caption)
+                                        .italic()
+                                        .padding(10)
+                                }
+                        }
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        ShareLink(item: article.link) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                    }
                 }
             }
         }

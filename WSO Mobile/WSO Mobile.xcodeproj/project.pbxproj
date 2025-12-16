@@ -60,6 +60,7 @@
 		5BCDB7FD2EF09506008B438C /* MapPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB7FC2EF09502008B438C /* MapPageView.swift */; };
 		5BCDB7FF2EF0973E008B438C /* LinksKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */; };
 		5BCDB8012EF098CE008B438C /* SneakyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB8002EF098CB008B438C /* SneakyView.swift */; };
+		5BCDB8032EF1D795008B438C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5BCDB8022EF1D795008B438C /* Kingfisher */; };
 		5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */; };
 		5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */; };
 		5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD358212ED3A7AC001AE153 /* AboutView.swift */; };
@@ -210,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCDB8032EF1D795008B438C /* Kingfisher in Frameworks */,
 				5BDEED6E2ED0E6A400E150E6 /* HTTPTypes in Frameworks */,
 				5B5632792EDB848200390AB8 /* FluidGradient in Frameworks */,
 				5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */,
@@ -513,6 +515,7 @@
 				5BDEED6D2ED0E6A400E150E6 /* HTTPTypes */,
 				5BDEED732ED0E80000E150E6 /* HTTPTypesFoundation */,
 				5B5632782EDB848200390AB8 /* FluidGradient */,
+				5BCDB8022EF1D795008B438C /* Kingfisher */,
 			);
 			productName = "WSO Mobile";
 			productReference = 5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */;
@@ -1214,6 +1217,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B3B65962EC800DB0001B28A /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		5BCDB8022EF1D795008B438C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BE3EE482ECC2F87009CDFD3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		5BDEED6D2ED0E6A400E150E6 /* HTTPTypes */ = {
 			isa = XCSwiftPackageProductDependency;
