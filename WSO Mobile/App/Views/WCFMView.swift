@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 import Foundation
 import AVFoundation
+import Marquee
 
 // TODO: add metadata
 
@@ -29,12 +30,14 @@ struct WCFMView: View {
                     .frame(width: 200, height: 200)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .transition(.scale.combined(with: .opacity))
-
-                    Text(track.song)
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
-                        .padding(5)
+                    // TODO: find a long song title, see if this works well
+                    Marquee {
+                        Text(track.song)
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                            .padding(5)
+                    }
                     Text("\(track.artist ?? "Anonymous") - \(track.release ?? "(unknown)")")
                         .font(.headline)
                         .foregroundStyle(.secondary)

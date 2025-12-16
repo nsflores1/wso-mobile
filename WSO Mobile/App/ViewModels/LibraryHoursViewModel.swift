@@ -21,8 +21,6 @@ class LibraryHoursViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-            //URLCache.shared.removeAllCachedResponses() // nuke all caches
-            // TODO: UNCOMMENT ABOVE BEFORE PROD RELEASE
             let data: [LibraryHours] = try await parseLibraryHours()
             self.libraryHours = data
         } catch {

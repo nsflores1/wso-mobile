@@ -15,27 +15,6 @@ import LocalAuthentication
 // TODO: this has a bunch of stuff that most users will never see,
 // which is probably fine.
 
-struct User: Codable {
-    let admin: Bool
-    let atWilliams: Bool
-    let cellPhone: String?
-    let classYear: Int
-    let hasAcceptedDormtrakPolicy: Bool
-    let hasAcceptedFactrakPolicy: Bool
-    let homeCountry: String?
-    let homePhone: String?
-    let homeState: String?
-    let homeTown: String?
-    let homeVisible: Bool
-    let id: Int
-    let name: String
-    let pronoun: String
-    let unixID: String
-    let visible: Bool
-    let williamsEmail: String
-    let williamsID: String
-}
-
 // shamelessly stole this enum from Apple
 enum KeychainError: Error {
     case noPassword
@@ -81,7 +60,7 @@ class AuthManager: ObservableObject {
     // every single time from their password booklet.
     func getToken() async throws -> String {
         let context = LAContext()
-        context.localizedReason = "Authenticate to access your account"
+        context.localizedReason = "Authenticate to access your WSO account"
 
         var error: NSError?
         guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
@@ -124,10 +103,18 @@ class AuthManager: ObservableObject {
         SecItemDelete(query as CFDictionary)
     }
 
-    func login(username: String, password: String) async throws {
+    // this should be used in the case we need to login,
+    // but only fall back to this if getToken() throws.
+    // initially, you should start by trying to getToken(),
+    // and then switch back to a login screen.
+    func login(username: String, password: String) async throws -> Bool {
         let token = try await WSOAuthLogin(password: password, unixID: username)
-        print(token.data?.token ?? "failed to login")
-        // Something that needs to be implemented in here:
+        if token.data?.token != nil {
+            try saveToken(token.data!.token!)
+            return true
+        }
+        return false
+        // TODO: Something that needs to be implemented in here:
         // if our token fails on backend, we need to reload it
     }
 

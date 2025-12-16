@@ -21,8 +21,6 @@ class WCFMShowViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-                //URLCache.shared.removeAllCachedResponses() // nuke all caches
-                // TODO: UNCOMMENT ABOVE BEFORE PROD RELEASE
             let data: WCFMShow = try await getWCFMShow()
             self.currentShows = data
         } catch {

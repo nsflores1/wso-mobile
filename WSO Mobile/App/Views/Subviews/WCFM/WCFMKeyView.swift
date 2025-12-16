@@ -41,7 +41,6 @@ struct WCFMKeyView: View {
                         Text("-  If you click on a song, you can open it in Apple Music if that's available. To change this to Spotify, look at the app settings.")
                     }
                 }
-
             }
             .navigationTitle("WCFM Help")
             .modifier(NavSubtitleIfAvailable(subtitle: "For all your WCFM related needs"))

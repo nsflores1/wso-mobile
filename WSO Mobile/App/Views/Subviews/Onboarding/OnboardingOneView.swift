@@ -6,28 +6,10 @@
 //
 
 import SwiftUI
-import FluidGradient
 
 struct OnboardingOneView: View {
     var body: some View {
         NavigationStack {
-            ZStack {
-                FluidGradient(
-                    blobs: [
-                        Color(hue: 0.56, saturation: 0.8, brightness: 0.9),
-                        Color(hue: 0.52, saturation: 0.7, brightness: 0.85),
-                        Color(hue: 0.66, saturation: 0.55, brightness: 0.85)
-                    ],
-                    highlights: [
-                        Color(hue: 0.58, saturation: 0.9, brightness: 1.0),
-                        Color(hue: 0.68, saturation: 0.75, brightness: 1.0),
-                        Color(hue: 0.74, saturation: 0.6, brightness: 0.95)
-                    ],
-                    speed: 0.5,
-                    blur: 0.75
-                )
-                .background(.quaternary)
-                .cornerRadius(20)
                 VStack {
                     let mainText = """
                 You're testing WSO Mobile Beta v1.2.1.
@@ -46,7 +28,6 @@ struct OnboardingOneView: View {
                         .background(.ultraThinMaterial)
                         .cornerRadius(10)
                 }.padding(20)
-            }
                 .navigationTitle(Text("Welcome to WSO Beta!"))
         }.padding(20)
     }

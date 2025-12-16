@@ -48,6 +48,19 @@
 		5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */; };
 		5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */; };
 		5B7F6EA42EECA40C00895BB3 /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */; };
+		5B93FE122EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
+		5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
+		5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */; };
+		5B93FE162EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */; };
+		5B93FE182EF1FE14008A2C1A /* WSODormTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */; };
+		5B93FE192EF1FE14008A2C1A /* WSODormTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */; };
+		5B93FE1B2EF1FE1D008A2C1A /* WSOBookTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE1A2EF1FE17008A2C1A /* WSOBookTrak.swift */; };
+		5B93FE1C2EF1FE1D008A2C1A /* WSOBookTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE1A2EF1FE17008A2C1A /* WSOBookTrak.swift */; };
+		5B93FE1E2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */; };
+		5B93FE1F2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */; };
+		5B93FE212EF20196008A2C1A /* WSOUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE202EF20193008A2C1A /* WSOUser.swift */; };
+		5B93FE222EF20196008A2C1A /* WSOUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE202EF20193008A2C1A /* WSOUser.swift */; };
+		5B93FE292EF20615008A2C1A /* Marquee in Frameworks */ = {isa = PBXBuildFile; productRef = 5B93FE282EF20615008A2C1A /* Marquee */; };
 		5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */; };
 		5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */; };
 		5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */; };
@@ -166,6 +179,12 @@
 		5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningItemsView.swift; sourceTree = "<group>"; };
 		5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileCLI.swift; sourceTree = "<group>"; };
 		5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequest.swift; sourceTree = "<group>"; };
+		5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacebook.swift; sourceTree = "<group>"; };
+		5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrak.swift; sourceTree = "<group>"; };
+		5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSODormTrak.swift; sourceTree = "<group>"; };
+		5B93FE1A2EF1FE17008A2C1A /* WSOBookTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBookTrak.swift; sourceTree = "<group>"; };
+		5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletins.swift; sourceTree = "<group>"; };
+		5B93FE202EF20193008A2C1A /* WSOUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOUser.swift; sourceTree = "<group>"; };
 		5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMView.swift; sourceTree = "<group>"; };
 		5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMViewModel.swift; sourceTree = "<group>"; };
 		5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantLinks.swift; sourceTree = "<group>"; };
@@ -213,6 +232,7 @@
 			files = (
 				5BCDB8032EF1D795008B438C /* Kingfisher in Frameworks */,
 				5BDEED6E2ED0E6A400E150E6 /* HTTPTypes in Frameworks */,
+				5B93FE292EF20615008A2C1A /* Marquee in Frameworks */,
 				5B5632792EDB848200390AB8 /* FluidGradient in Frameworks */,
 				5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */,
 				5BE3EE4E2ECC3358009CDFD3 /* FeedKit in Frameworks */,
@@ -461,6 +481,7 @@
 		5BEB328C2EBFDA3900F75A10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5B93FE202EF20193008A2C1A /* WSOUser.swift */,
 				5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */,
 				5BD50F122ED9DEF400806CA7 /* NotificationManager.swift */,
 				5BD50F0F2ED9DC9300806CA7 /* AuthManager.swift */,
@@ -471,6 +492,11 @@
 		5BEB328D2EBFDA3F00F75A10 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */,
+				5B93FE1A2EF1FE17008A2C1A /* WSOBookTrak.swift */,
+				5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */,
+				5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */,
+				5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */,
 				5BD50F162ED9E8B800806CA7 /* WSOAuthLogin.swift */,
 				5BDEED672ECF857700E150E6 /* WSOGetWords.swift */,
 			);
@@ -516,6 +542,7 @@
 				5BDEED732ED0E80000E150E6 /* HTTPTypesFoundation */,
 				5B5632782EDB848200390AB8 /* FluidGradient */,
 				5BCDB8022EF1D795008B438C /* Kingfisher */,
+				5B93FE282EF20615008A2C1A /* Marquee */,
 			);
 			productName = "WSO Mobile";
 			productReference = 5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */;
@@ -627,6 +654,8 @@
 				5BE3EE482ECC2F87009CDFD3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				5BE3EE4C2ECC3294009CDFD3 /* XCRemoteSwiftPackageReference "FeedKit" */,
 				5B5632772EDB848200390AB8 /* XCRemoteSwiftPackageReference "FluidGradient" */,
+				5B93FE232EF20402008A2C1A /* XCRemoteSwiftPackageReference "swift-log" */,
+				5B93FE272EF2060B008A2C1A /* XCRemoteSwiftPackageReference "Marquee" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5BEB32502EBFD7F300F75A10 /* Products */;
@@ -673,12 +702,15 @@
 			files = (
 				5BDA0FDB2EE122F8005D6AC4 /* WCFMShowViewModel.swift in Sources */,
 				5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */,
+				5B93FE1B2EF1FE1D008A2C1A /* WSOBookTrak.swift in Sources */,
+				5B93FE122EF1FE05008A2C1A /* WSOFacebook.swift in Sources */,
 				5BD50F112ED9DC9700806CA7 /* AuthManager.swift in Sources */,
 				5BD6B7A62EEF9A510068B669 /* DiningKeyView.swift in Sources */,
 				5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */,
 				5B379A152EE3D0A000A09DE4 /* PetView.swift in Sources */,
 				5B05EF262ED8EF9B00802310 /* OnboardingTwoView.swift in Sources */,
 				5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */,
+				5B93FE222EF20196008A2C1A /* WSOUser.swift in Sources */,
 				5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */,
 				5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */,
 				5B05EF242ED8EF9100802310 /* OnboardingOneView.swift in Sources */,
@@ -706,8 +738,10 @@
 				5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */,
 				5BDEED642ECF7E9700E150E6 /* SpringStreetRestaurantView.swift in Sources */,
 				5B515FB62EDC8F1300F166A1 /* NavStackShim.swift in Sources */,
+				5B93FE1E2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */,
 				5B0A2E8C2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */,
+				5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
 				5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */,
 				5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */,
@@ -720,6 +754,7 @@
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
 				5B05EF2A2ED8F92E00802310 /* EpheliasRootsHours.swift in Sources */,
 				5BCDB7FD2EF09506008B438C /* MapPageView.swift in Sources */,
+				5B93FE192EF1FE14008A2C1A /* WSODormTrak.swift in Sources */,
 				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,
 				5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */,
 				5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */,
@@ -752,17 +787,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B93FE1C2EF1FE1D008A2C1A /* WSOBookTrak.swift in Sources */,
+				5B93FE162EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */,
 				5BD50F172ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */,
 				5B515FB32EDBCE5300F166A1 /* DateExtension.swift in Sources */,
 				5B7F6EA42EECA40C00895BB3 /* WebRequest.swift in Sources */,
 				5BE3EE462ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */,
 				5B0A2E8D2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
+				5B93FE182EF1FE14008A2C1A /* WSODormTrak.swift in Sources */,
+				5B93FE1F2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */,
+				5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */,
 				5BE3EE4A2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
 				5BD50F132ED9DEF800806CA7 /* NotificationManager.swift in Sources */,
 				5B10FF9B2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5BDEED6C2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
 				5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */,
+				5B93FE212EF20196008A2C1A /* WSOUser.swift in Sources */,
 				5B515FB52EDC8F1300F166A1 /* NavStackShim.swift in Sources */,
 				5B10FF9E2EC83CA80021597F /* LibraryHours.swift in Sources */,
 				5BD50F102ED9DC9700806CA7 /* AuthManager.swift in Sources */,
@@ -1171,6 +1212,22 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		5B93FE232EF20402008A2C1A /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.0;
+			};
+		};
+		5B93FE272EF2060B008A2C1A /* XCRemoteSwiftPackageReference "Marquee" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stonko1994/Marquee";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 		5BE3EE472ECC2F46009CDFD3 /* XCRemoteSwiftPackageReference "swift-http-types" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-http-types";
@@ -1217,6 +1274,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B3B65962EC800DB0001B28A /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		5B93FE282EF20615008A2C1A /* Marquee */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B93FE272EF2060B008A2C1A /* XCRemoteSwiftPackageReference "Marquee" */;
+			productName = Marquee;
 		};
 		5BCDB8022EF1D795008B438C /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

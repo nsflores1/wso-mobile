@@ -1,5 +1,5 @@
 {
-  "originHash" : "e977f7355f1c5b2cbd42d40101e11f3814135e77efc7f25aa6202306ffc34f22",
+  "originHash" : "71746e380ee96a2eb711c75d99a6b6177f321a528645038399591a9fa7ad188d",
   "pins" : [
     {
       "identity" : "feedkit",
@@ -38,6 +38,15 @@
       }
     },
     {
+      "identity" : "marquee",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stonko1994/Marquee",
+      "state" : {
+        "revision" : "35445eeadfd5965b3a52c4efc77e5eca93e2c40f",
+        "version" : "1.0.1"
+      }
+    },
+    {
       "identity" : "swift-argument-parser",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser.git",
@@ -62,6 +71,15 @@
       "state" : {
         "revision" : "45eb0224913ea070ec4fba17291b9e7ecf4749ca",
         "version" : "1.5.1"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log",
+      "state" : {
+        "revision" : "bc386b95f2a16ccd0150a8235e7c69eab2b866ca",
+        "version" : "1.8.0"
       }
     },
     {

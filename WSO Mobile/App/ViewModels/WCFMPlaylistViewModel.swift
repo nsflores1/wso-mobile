@@ -21,8 +21,6 @@ class WCFMPlaylistViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-                //URLCache.shared.removeAllCachedResponses() // nuke all caches
-                // TODO: UNCOMMENT ABOVE BEFORE PROD RELEASE
             let data: WCFMPlaylist = try await getWCFMPlaylist()
             self.currentPlaylist = data
         } catch {

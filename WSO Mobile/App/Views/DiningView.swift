@@ -49,8 +49,6 @@ struct DiningView: View {
                                     .font(.title3)
                             }
                         }
-                        // TODO: this data structure can change order,
-                        // but it should always be ordered alphabetically.
                         Section {
                             ForEach(
                                 viewModel.diningMenu.sorted(),
@@ -60,6 +58,7 @@ struct DiningView: View {
                                     HStack {
                                         Text(hall.hallName)
                                             // TODO: some way to track hall status here. is it open? is it closed?
+                                            // consider parsing everything as a date.
                                     }
                                 }
 
@@ -78,9 +77,6 @@ struct DiningView: View {
                     .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))
                     .toolbar {
                         ToolbarItem(placement: .topBarTrailing) {
-                            // TODO: actually add a KeyView
-                            // it will explain what the dining
-                            // item keys do so they know how to interpret them
                             HStack {
                                 NavigationLink(destination: DiningKeyView()) {
                                     Image(systemName: "questionmark")

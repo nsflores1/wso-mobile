@@ -20,8 +20,6 @@ class AboutViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-                //URLCache.shared.removeAllCachedResponses() // nuke all caches
-                // TODO: UNCOMMENT ABOVE BEFORE PROD RELEASE
             let data: String = try await WSOGetWords()
             self.words = data
         } catch {

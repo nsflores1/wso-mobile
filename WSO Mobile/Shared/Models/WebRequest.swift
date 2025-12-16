@@ -69,7 +69,6 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         if cache.diskCapacity >= 100_000_000 { cache.diskCapacity = 100_000_000 }
     }
 
-    // make 
     func get() async throws -> GetParser.ParsedType {
         if getParser != nil {
             var request = HTTPRequest(method: .get, url: internalURL)
@@ -83,7 +82,20 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         }
     }
 
-    // make a HTTP POST request on this data.
+    // TODO: make this actually make requests with authentication
+    func authGet(token: String) async throws -> GetParser.ParsedType {
+        if getParser != nil {
+            var request = HTTPRequest(method: .get, url: internalURL)
+            request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+            request.headerFields[.accept] = getParser!.acceptType
+
+            let (data, _) = try await session.data(for: request)
+            return try await getParser!.parse(data: data)
+        } else {
+            throw WebRequestError.noParser("No decode parser yet fetch was requested.")
+        }
+    }
+
     func post(sendData: Data) async throws -> PostParser.ParsedType {
         if postParser != nil {
             var request = HTTPRequest(method: .post, url: internalURL)
@@ -97,6 +109,20 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             return try await postParser!.parse(data: data)
         } else {
             throw WebRequestError.noParser("No encode parser yet push was requested.")
+        }
+    }
+
+    // TODO: make this actually make requests with authentication
+    func authPost(token: String) async throws -> GetParser.ParsedType {
+        if getParser != nil {
+            var request = HTTPRequest(method: .get, url: internalURL)
+            request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+            request.headerFields[.accept] = getParser!.acceptType
+
+            let (data, _) = try await session.data(for: request)
+            return try await getParser!.parse(data: data)
+        } else {
+            throw WebRequestError.noParser("No decode parser yet fetch was requested.")
         }
     }
 
