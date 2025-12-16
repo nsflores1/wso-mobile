@@ -66,7 +66,7 @@ struct DailyMessagesView: View {
                 Spacer()
                 Image(systemName: "list.bullet.clipboard")
             }
-        } .task { await viewModel.loadContent() }
+        } .task { await viewModel.fetchIfNeeded() }
     }
 }
 

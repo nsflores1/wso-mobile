@@ -43,7 +43,7 @@ struct LibraryHoursView: View {
                 Image(systemName: "book")
             }
 
-        } .task { await viewModel.loadHours() }
+        } .task { await viewModel.fetchIfNeeded() }
     }
 }
 

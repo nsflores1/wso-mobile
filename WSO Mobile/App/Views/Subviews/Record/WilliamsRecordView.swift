@@ -65,7 +65,8 @@ struct WilliamsRecordView: View {
                 Image(systemName: "newspaper")
             }
 
-        } .task { await viewModel.loadContent() }
+        } .task { await viewModel.fetchIfNeeded() }
+          .refreshable { await viewModel.forceRefresh() }
     }
 }
 

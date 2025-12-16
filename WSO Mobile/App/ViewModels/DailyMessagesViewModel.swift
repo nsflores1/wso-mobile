@@ -14,6 +14,7 @@ class DailyMessagesViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var requestURL: URL = URL(string: "https://events.williams.edu/wp-json/wms/events/v1/list/dm")!
+    private var hasFetched = false
 
     func loadContent() async {
         isLoading = true
@@ -39,6 +40,17 @@ class DailyMessagesViewModel: ObservableObject {
         }
 
         isLoading = false
+    }
+
+    func fetchIfNeeded() async {
+        guard !hasFetched else { return }
+        hasFetched = true
+        await loadContent()
+    }
+
+    func forceRefresh() async {
+        hasFetched = false
+        await fetchIfNeeded()
     }
 
 }

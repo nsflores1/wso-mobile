@@ -72,7 +72,7 @@ struct DiningView: View {
                     }.listStyle(.sidebar)
                     .refreshable {
                         URLCache.shared.removeCachedResponse(for: URLRequest(url: viewModel.diningURL))
-                        await viewModel.loadMenus()
+                        await viewModel.forceRefresh()
                     }
                     .navigationTitle(Text("Dining"))
                     .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))
@@ -89,7 +89,7 @@ struct DiningView: View {
                         }
                     }
                 }
-        }.task { await viewModel.loadMenus() }
+        }.task { await viewModel.fetchIfNeeded() }
     }
 }
 

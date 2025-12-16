@@ -14,6 +14,7 @@ class DiningHoursViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var diningURL: URL = URL(string: "https://wso.williams.edu/dining.json")!
+    private var hasFetched = false
 
     func loadMenus() async {
         isLoading = true
@@ -27,6 +28,17 @@ class DiningHoursViewModel: ObservableObject {
         }
 
         isLoading = false
+    }
+
+    func fetchIfNeeded() async {
+        guard !hasFetched else { return }
+        hasFetched = true
+        await loadMenus()
+    }
+
+    func forceRefresh() async {
+        hasFetched = false
+        await fetchIfNeeded()
     }
 
 }

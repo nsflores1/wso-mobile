@@ -14,6 +14,7 @@ class WCFMShowViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var currentShows: WCFMShow?
     @Published var requestURL = URL(string: "https://spinitron.com/api/shows/")
+    private var hasFetched = false
 
     func loadPlaylists() async {
         isLoading = true
@@ -30,6 +31,17 @@ class WCFMShowViewModel: ObservableObject {
         }
 
         isLoading = false
+    }
+
+    func fetchIfNeeded() async {
+        guard !hasFetched else { return }
+        hasFetched = true
+        await loadPlaylists()
+    }
+
+    func forceRefresh() async {
+        hasFetched = false
+        await fetchIfNeeded()
     }
 
 }

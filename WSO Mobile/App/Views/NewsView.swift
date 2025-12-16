@@ -23,7 +23,7 @@ struct NewsView: View {
                 .removeCachedResponse(
                     for: URLRequest(url: viewModel.requestURL)
                 )
-            await viewModel.loadContent()
+            await viewModel.forceRefresh()
         }
     }
 }

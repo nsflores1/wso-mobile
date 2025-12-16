@@ -135,7 +135,9 @@ struct HomeView: View {
                     .removeCachedResponse(
                         for: URLRequest(url: dailyMessagesViewModel.requestURL)
                     )
-                print("Refreshed!")
+                await libraryViewModel.forceRefresh()
+                await dailyMessagesViewModel.forceRefresh()
+
             }
             HStack { } // hidden hstack wraps the text
             .listStyle(.grouped)

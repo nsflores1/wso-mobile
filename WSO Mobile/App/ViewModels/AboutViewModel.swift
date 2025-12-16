@@ -13,6 +13,7 @@ class AboutViewModel: ObservableObject {
     @Published var words: String = ""
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    private var hasFetched = false
 
     func loadWords() async {
         isLoading = true
@@ -29,6 +30,17 @@ class AboutViewModel: ObservableObject {
         }
 
         isLoading = false
+    }
+
+    func fetchIfNeeded() async {
+        guard !hasFetched else { return }
+        hasFetched = true
+        await loadWords()
+    }
+
+    func forceRefresh() async {
+        hasFetched = false
+        await fetchIfNeeded()
     }
 
 }

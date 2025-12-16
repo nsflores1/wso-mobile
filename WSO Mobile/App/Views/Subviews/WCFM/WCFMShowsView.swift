@@ -42,12 +42,13 @@ struct WCFMShowsView: View {
             .navigationTitle("Recent Shows")
             .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)
         }
-        .task { await viewModel.loadPlaylists() }
+        .task { await viewModel.fetchIfNeeded() }
         .refreshable {
             URLCache.shared
                 .removeCachedResponse(
                     for: URLRequest(url: viewModel.requestURL!)
                 )
+            await viewModel.forceRefresh()
         }
     }
 }
