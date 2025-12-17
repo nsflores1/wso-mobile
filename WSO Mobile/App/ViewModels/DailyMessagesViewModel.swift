@@ -36,7 +36,6 @@ class DailyMessagesViewModel: ObservableObject {
                 self.dailyMessageCategories = [:]
             }
         }
-
         isLoading = false
     }
 

@@ -43,9 +43,15 @@ struct DailyMessagesView: View {
                                 }
                             } label: {
                                 VStack() {
-                                    // the .frame() trick is Dark Arts
                                     Text(post.title)
                                         .multilineTextAlignment(.leading)
+                                } .swipeActions(edge: .trailing) {
+                                    // TODO: test this with working daily messages
+                                    ShareLink(item: post.url) {
+                                        Label("Share", systemImage: "square.and.arrow.up")
+                                    }
+                                    .tint(.blue)
+                                    // the .frame() trick is Dark Arts
                                 }.frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }

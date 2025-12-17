@@ -32,7 +32,6 @@ struct DailyMessageCategory: Codable {
     }
 }
 
-
 struct DailyMessagePost: Codable {
     private let rawTitle: String
     private let rawAuthor: String
@@ -40,6 +39,7 @@ struct DailyMessagePost: Codable {
     private let rawStartTime: String
     private let rawContent: String
     private let rawLdapDepartment: String
+    private let rawURL: String // named something weird internally
 
     // these weirdly come with whitespace, so we have to clean everything
     var title: String { stripHTML(rawTitle).cleanWhitespace() }
@@ -48,6 +48,8 @@ struct DailyMessagePost: Codable {
     var startTime: String { stripHTML(rawStartTime).cleanWhitespace() }
     var content: String { stripHTML(rawContent).cleanWhitespace() }
     var ldapDepartment: String { stripHTML(rawLdapDepartment).cleanWhitespace() }
+    // if we can't find a unique event URL, falling back to the global event URL is okay
+    var url: URL { URL(string: stripHTML(rawURL).cleanWhitespace()) ?? URL(string: "https://events.williams.edu/")! }
 
     private func stripHTML(_ html: String) -> String {
         (try? SwiftSoup.parse(html).text()) ?? html
@@ -61,6 +63,7 @@ struct DailyMessagePost: Codable {
         case rawStartTime = "start_ts"
         case rawContent = "content"
         case rawLdapDepartment = "ldap_department"
+        case rawURL = "guid"
     }
 }
 
