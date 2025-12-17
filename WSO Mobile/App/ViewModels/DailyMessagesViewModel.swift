@@ -51,4 +51,8 @@ class DailyMessagesViewModel: ObservableObject {
         await fetchIfNeeded()
     }
 
+    func clearCache() async {
+        self.dailyMessageCategories = [:]
+    }
+
 }

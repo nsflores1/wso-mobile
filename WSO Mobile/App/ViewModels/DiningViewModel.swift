@@ -41,4 +41,8 @@ class DiningHoursViewModel: ObservableObject {
         await fetchIfNeeded()
     }
 
+    func clearCache() async {
+        self.diningMenu = []
+    }
+
 }

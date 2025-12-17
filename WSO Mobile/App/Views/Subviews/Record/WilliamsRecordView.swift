@@ -18,7 +18,8 @@ struct WilliamsRecordView: View {
             if viewModel.isLoading {
                     // TODO: make a nicer ProgressView()
                 HStack {
-                    Text("Loading...")
+                    ProgressView()
+                        .alignmentGuide(VerticalAlignment.center) { _ in 0.5 }
                     Spacer()
                 }
                 .listRowSeparator(.hidden)
@@ -66,7 +67,11 @@ struct WilliamsRecordView: View {
             }
 
         } .task { await viewModel.fetchIfNeeded() }
-          .refreshable { await viewModel.forceRefresh() }
+            .refreshable {
+                await viewModel.forceRefresh()
+                let impact = UIImpactFeedbackGenerator(style: .medium)
+                impact.impactOccurred()
+            }
     }
 }
 

@@ -42,4 +42,8 @@ class WCFMShowViewModel: ObservableObject {
         await fetchIfNeeded()
     }
 
+    func clearCache() async {
+        self.currentShows = nil
+    }
+
 }

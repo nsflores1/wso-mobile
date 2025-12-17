@@ -43,4 +43,8 @@ class WilliamsRecordViewModel: ObservableObject {
         await fetchIfNeeded()
     }
 
+    func clearCache() async {
+        self.posts = []
+    }
+
 }

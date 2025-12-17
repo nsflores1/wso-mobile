@@ -42,4 +42,8 @@ class WCFMPlaylistViewModel: ObservableObject {
         await fetchIfNeeded()
     }
 
+    func clearCache() async {
+        self.currentPlaylist = nil
+    }
+
 }

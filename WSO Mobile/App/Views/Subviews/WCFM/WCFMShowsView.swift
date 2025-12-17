@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Kingfisher
 
 struct WCFMShowsView: View {
     @StateObject private var viewModel = WCFMShowViewModel()
@@ -26,7 +27,9 @@ struct WCFMShowsView: View {
                                     .italic()
                             }
                             Spacer()
-                            AsyncImage(url: URL(string: show.image)!)
+                            KFImage(URL(string: show.image)!)
+                                .placeholder { ProgressView() }
+                                .fade(duration: 0.25)
                                 .frame(width: 150, height: 150)
                                 .cornerRadius(12)
                         }
@@ -49,6 +52,8 @@ struct WCFMShowsView: View {
                     for: URLRequest(url: viewModel.requestURL!)
                 )
             await viewModel.forceRefresh()
+            let impact = UIImpactFeedbackGenerator(style: .medium)
+            impact.impactOccurred()
         }
     }
 }

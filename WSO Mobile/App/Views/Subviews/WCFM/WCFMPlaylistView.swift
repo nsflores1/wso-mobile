@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Kingfisher
 
 struct WCFMPlaylistView: View {
     @StateObject private var viewModel = WCFMPlaylistViewModel()
@@ -23,9 +24,11 @@ struct WCFMPlaylistView: View {
                                     .italic()
                             }
                             Spacer()
-                            AsyncImage(url: URL(string: playlist.image)!)
-                            .frame(width: 150, height: 150)
-                            .cornerRadius(12)
+                            KFImage(URL(string: playlist.image)!)
+                                .placeholder { ProgressView() }
+                                .fade(duration: 0.25)
+                                .frame(width: 150, height: 150)
+                                .cornerRadius(12)
                         }
                         Text("\(playlist.start.shortDisplay) - \(playlist.end.shortDisplay)")
                             .font(.subheadline)
@@ -46,6 +49,8 @@ struct WCFMPlaylistView: View {
                     for: URLRequest(url: viewModel.requestURL!)
                 )
             await viewModel.forceRefresh()
+            let impact = UIImpactFeedbackGenerator(style: .medium)
+            impact.impactOccurred()
         }
     }
 }

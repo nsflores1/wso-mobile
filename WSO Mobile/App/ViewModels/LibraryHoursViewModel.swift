@@ -42,4 +42,8 @@ class LibraryHoursViewModel: ObservableObject {
         await fetchIfNeeded()
     }
 
+    func clearCache() async {
+        self.libraryHours = []
+    }
+
 }

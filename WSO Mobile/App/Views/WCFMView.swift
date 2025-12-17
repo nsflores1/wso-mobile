@@ -10,34 +10,32 @@ import Combine
 import Foundation
 import AVFoundation
 import Marquee
+import Kingfisher
 
 // TODO: add metadata
 
 struct WCFMView: View {
     @StateObject private var player = WCFMViewModel(url: URL(string: "http://wcfm-streaming.williams.edu:8000/stream")!)
 
+    // haptic feedback
+    let impact = UIImpactFeedbackGenerator(style: .medium)
+
     var body: some View {
         NavigationStack {
             VStack {
                 if player.isPlaying, let track = player.currentTrack {
-                    AsyncImage(url: track.image) { picture in
-                        picture
-                            .resizable()
-                            .scaledToFit()
-                    } placeholder: {
-                        Color.gray
-                    }
-                    .frame(width: 200, height: 200)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .transition(.scale.combined(with: .opacity))
-                    // TODO: find a long song title, see if this works well
-                    Marquee {
-                        Text(track.song)
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .transition(.move(edge: .bottom).combined(with: .opacity))
-                            .padding(5)
-                    }
+                    KFImage(track.image)
+                        .placeholder { ProgressView() }
+                        .fade(duration: 0.25)
+                        .frame(width: 200, height: 200)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .transition(.scale.combined(with: .opacity))
+                    // TODO: find a long song title, add marquee
+                    Text(track.song)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .padding(5)
                     Text("\(track.artist ?? "Anonymous") - \(track.release ?? "(unknown)")")
                         .font(.headline)
                         .foregroundStyle(.secondary)
@@ -73,6 +71,7 @@ struct WCFMView: View {
                         // also, show info would be huge
 
                     Button {
+                        impact.impactOccurred()
                         player.pause()
                     } label : {
                         Label("Pause", systemImage: "pause")
@@ -90,6 +89,7 @@ struct WCFMView: View {
                     .transition(.scale.combined(with: .opacity))
 
                     Button {
+                        impact.impactOccurred()
                         player.play()
                     } label : {
                         Label("Play", systemImage: "play")

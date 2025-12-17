@@ -137,7 +137,8 @@ struct HomeView: View {
                     )
                 await libraryViewModel.forceRefresh()
                 await dailyMessagesViewModel.forceRefresh()
-
+                let impact = UIImpactFeedbackGenerator(style: .medium)
+                impact.impactOccurred()
             }
             HStack { } // hidden hstack wraps the text
             .listStyle(.grouped)
@@ -154,7 +155,7 @@ struct HomeView: View {
                                 Image(systemName: "map")
                             }
                         }
-                        NavigationLink(destination: ProfileView()) {
+                        NavigationLink(destination: WSOLoginView()) {
                             Image(systemName: "person")
                         }
                     }

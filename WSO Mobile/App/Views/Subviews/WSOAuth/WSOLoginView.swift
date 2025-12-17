@@ -28,12 +28,18 @@ struct WSOLoginView: View {
                     .lineLimit(1)
                 Button("Login") {
                     Task {
-                        try await authManager.login(username: username, password: password)
+                        let result = try await authManager.login(username: username, password: password)
+                        if result == true {
+                            print("yay success!!!")
+                            let impact = UIImpactFeedbackGenerator(style: .medium)
+                            impact.impactOccurred()
+                        }
                     }
                 }
                 .buttonStyle(.borderedProminent)
             }.padding(10)
             .navigationTitle(Text("Login to WSO"))
+            .modifier(NavSubtitleIfAvailable(subtitle: "If you meant to use FaceID, enable it in settings"))
         }.padding(20)
 
     }

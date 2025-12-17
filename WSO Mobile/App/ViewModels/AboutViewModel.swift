@@ -41,4 +41,8 @@ class AboutViewModel: ObservableObject {
         await fetchIfNeeded()
     }
 
+    func clearCache() async {
+        self.words = ""
+    }
+
 }

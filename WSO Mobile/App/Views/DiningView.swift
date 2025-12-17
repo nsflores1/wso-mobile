@@ -18,7 +18,7 @@ struct DiningView: View {
         NavigationStack {
             if viewModel.isLoading && viewModel.diningMenu.isEmpty {
                         // TODO: make a nicer ProgressView()
-                    Text("Loading...")
+                    ProgressView()
                     .navigationTitle(Text("Dining"))
                     // TODO: setting this three times is DUMB but whatevs
                 } else if let error = viewModel.errorMessage {
@@ -72,6 +72,8 @@ struct DiningView: View {
                     .refreshable {
                         URLCache.shared.removeCachedResponse(for: URLRequest(url: viewModel.diningURL))
                         await viewModel.forceRefresh()
+                        let impact = UIImpactFeedbackGenerator(style: .medium)
+                        impact.impactOccurred()
                     }
                     .navigationTitle(Text("Dining"))
                     .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))

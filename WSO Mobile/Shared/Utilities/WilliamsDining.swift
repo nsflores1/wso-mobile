@@ -143,6 +143,8 @@ extension FoodItem: Comparable {
 }
 
 // this helper function makes it substantially easier to handle the data
+// you are not expected to understand this. I chose to do it with some very
+// strange functional programming magic... don't be bothered by it.
 func flattenMenuResponse(_ response: MenuResponse) -> [DiningHall] {
     response.vendors.values.map { vendor in
         DiningHall(
