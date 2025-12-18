@@ -18,6 +18,8 @@ struct HomeView: View {
     @State private var bookTrakWarn = false
     @State private var facebookWarn = false
 
+    // impact used for all haptic actions
+    let impact = UIImpactFeedbackGenerator(style: .medium)
 
     // TODO: this can jump around when scrolling
     // To fix this, find some way to make a skeleton that you fill in,
@@ -137,7 +139,6 @@ struct HomeView: View {
                     )
                 await libraryViewModel.forceRefresh()
                 await dailyMessagesViewModel.forceRefresh()
-                let impact = UIImpactFeedbackGenerator(style: .medium)
                 impact.impactOccurred()
             }
             HStack { } // hidden hstack wraps the text
@@ -153,10 +154,14 @@ struct HomeView: View {
                         if #available(iOS 26.0, *) {
                             NavigationLink(destination: MapPageView()) {
                                 Image(systemName: "map")
+                            }.onTapGesture {
+                                impact.impactOccurred()
                             }
                         }
                         NavigationLink(destination: WSOLoginView()) {
                             Image(systemName: "person")
+                        }.onTapGesture {
+                            impact.impactOccurred()
                         }
                     }
                 }
@@ -164,6 +169,8 @@ struct HomeView: View {
                     HStack {
                         NavigationLink(destination: AboutView()) {
                             Image(systemName: "wand.and.rays")
+                        }.onTapGesture {
+                            impact.impactOccurred()
                         }
                     }
                 }

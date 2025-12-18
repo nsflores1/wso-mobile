@@ -10,6 +10,7 @@ import Kingfisher
 
 struct WilliamsRecordArticleView: View {
     let article: NewsFeed
+    let impact = UIImpactFeedbackGenerator(style: .medium)
 
     var body: some View {
         ScrollView {
@@ -58,6 +59,8 @@ struct WilliamsRecordArticleView: View {
                         ShareLink(item: article.link) {
                             Label("Share", systemImage: "square.and.arrow.up")
                         }
+                    }.onTapGesture {
+                        impact.impactOccurred()
                     }
                 }
             }

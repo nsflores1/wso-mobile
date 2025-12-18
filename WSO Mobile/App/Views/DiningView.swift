@@ -13,6 +13,7 @@ import SwiftUI
 struct DiningView: View {
     @StateObject private var viewModel = DiningHoursViewModel()
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
+    let impact = UIImpactFeedbackGenerator(style: .medium)
 
     var body: some View {
         NavigationStack {
@@ -83,6 +84,8 @@ struct DiningView: View {
                                 NavigationLink(destination: DiningKeyView()) {
                                     Image(systemName: "questionmark")
                                 }
+                            }.onTapGesture {
+                                impact.impactOccurred()
                             }
                         }
                     }

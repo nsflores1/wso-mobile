@@ -62,6 +62,7 @@ func WSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin
         WSOAuthLogin.self,
         from: data
     )
+    print(decodedResponse.data?.token ?? "No token returned")
     return decodedResponse
 }
 

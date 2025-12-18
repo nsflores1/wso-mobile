@@ -28,12 +28,8 @@ struct WSOLoginView: View {
                     .lineLimit(1)
                 Button("Login") {
                     Task {
-                        let result = try await authManager.login(username: username, password: password)
-                        if result == true {
-                            print("yay success!!!")
-                            let impact = UIImpactFeedbackGenerator(style: .medium)
-                            impact.impactOccurred()
-                        }
+                        // TODO: try this
+                        try await WSOAuthLogin(password: password, unixID: username)
                     }
                 }
                 .buttonStyle(.borderedProminent)

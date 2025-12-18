@@ -9,7 +9,9 @@ import SwiftUI
 
 struct LinksView: View {
     @Environment(\.openURL) private var openURL
-    
+
+    let impact = UIImpactFeedbackGenerator(style: .medium)
+
     var body: some View {
         NavigationStack {
             List {
@@ -45,6 +47,8 @@ struct LinksView: View {
                     HStack {
                         NavigationLink(destination: LinksKeyView()) {
                             Image(systemName: "questionmark")
+                        }.onTapGesture {
+                            impact.impactOccurred()
                         }
                     }
                 }
