@@ -76,8 +76,6 @@ func parseDailyMessages() async throws -> [String: [DailyMessagePost]] {
         requestType: .get,
         getParser: parser
     )
-    print("finished!")
-    print("data: \(try await request.get())")
     return try await request.get().categories
 }
 

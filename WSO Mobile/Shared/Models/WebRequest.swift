@@ -23,7 +23,25 @@ protocol DataParser {
 }
 
 enum WebRequestError : Error {
-    case noParser(String)
+    case notFound           // resource doesn't exist
+    case noInternet         // network unreachable
+    case internalFailure    // parsing/data corruption/etc
+    case noParser           // internal parsing failure, don't show to users
+    case unknown(Error)     // catch-all wrapper
+    var errorDescription: String? {
+        switch self {
+            case .notFound:
+                return "Data not found on server"
+            case .noInternet:
+                return "No internet connection available"
+            case .internalFailure:
+                return "Failed to process data"
+            case .noParser:
+                return "Request was made yet no parser avaiable for it."
+            case .unknown(let error):
+                return "Unexpected error: \(error.localizedDescription)"
+        }
+    }
 }
 
 // WebRequest is a class that allows you to easily define a whole family of requests.
@@ -78,7 +96,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             let (data, _) = try await session.data(for: request)
             return try await getParser!.parse(data: data)
         } else {
-            throw WebRequestError.noParser("No decode parser yet fetch was requested.")
+            throw WebRequestError.noParser
         }
     }
 
@@ -92,7 +110,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             let (data, _) = try await session.data(for: request)
             return try await getParser!.parse(data: data)
         } else {
-            throw WebRequestError.noParser("No decode parser yet fetch was requested.")
+            throw WebRequestError.noParser
         }
     }
 
@@ -108,7 +126,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 
             return try await postParser!.parse(data: data)
         } else {
-            throw WebRequestError.noParser("No encode parser yet push was requested.")
+            throw WebRequestError.noParser
         }
     }
 
@@ -122,7 +140,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             let (data, _) = try await session.data(for: request)
             return try await getParser!.parse(data: data)
         } else {
-            throw WebRequestError.noParser("No decode parser yet fetch was requested.")
+            throw WebRequestError.noParser
         }
     }
 

@@ -21,6 +21,7 @@ struct LinksView: View {
                     }
                     Button {
                         if let url = URL(string: "https://forms.gle/NqYdAAbZKPQmPq866"){
+                            impact.impactOccurred()
                             openURL(url)
                         }
                     } label: {
@@ -31,6 +32,7 @@ struct LinksView: View {
                     .buttonStyle(.plain)
                     Button {
                         if let url = URL(string: "https://forms.gle/pJVhoyRU8A2ciDhz5"){
+                            impact.impactOccurred()
                             openURL(url)
                         }
                     } label: {

@@ -24,6 +24,7 @@ import Foundation
 
 struct ImportantLinksView: View {
     @Environment(\.openURL) private var openURL
+    let impact = UIImpactFeedbackGenerator(style: .medium)
 
     // TODO: once we JSON this, you want a way to ForEach
     // through every single object, then have a dict of state ints
@@ -56,6 +57,7 @@ struct ImportantLinksView: View {
     private func linkRow(_ title: String, url: String) -> some View {
         Button {
             guard let u = URL(string: url) else { return }
+            impact.impactOccurred()
             openURL(u)
         } label: {
             HStack {

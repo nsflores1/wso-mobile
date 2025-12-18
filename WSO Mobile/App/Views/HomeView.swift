@@ -37,6 +37,7 @@ struct HomeView: View {
                             .textInputAutocapitalization(.never)
                         if !searchText.isEmpty {
                             Button {
+                                impact.impactOccurred()
                                 searchText = ""
                                 // TODO: clear search model if pressed
                             } label: {
@@ -53,6 +54,7 @@ struct HomeView: View {
                         GridItem(.flexible(), spacing: 8)
                     ], spacing: 12) {
                             Button {
+                                impact.impactOccurred()
                                 facTrakWarn = true
                             } label: {
                                 Label("FacTrak", systemImage: "graduationcap")
@@ -69,6 +71,7 @@ struct HomeView: View {
                                     Button("OK", role: .cancel) { }
                                 }
                             Button{
+                                impact.impactOccurred()
                                 facebookWarn = true
                             } label: {
                                 Label("Facebook", systemImage: "person")
@@ -85,6 +88,7 @@ struct HomeView: View {
                                     Button("OK", role: .cancel) { }
                                 }
                             Button{
+                                impact.impactOccurred()
                                 dormTrakWarn = true
                             } label: {
                                 Label("DormTrak", systemImage: "house")
@@ -101,6 +105,7 @@ struct HomeView: View {
                                     Button("OK", role: .cancel) { }
                                 }
                             Button {
+                                impact.impactOccurred()
                                 bookTrakWarn = true
                             } label: {
                                 Label("BookTrak", systemImage: "book.closed")

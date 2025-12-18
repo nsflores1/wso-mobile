@@ -13,6 +13,7 @@ struct SettingsView: View {
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
 
     @State private var notificationManager = NotificationManager.shared
+    let impact = UIImpactFeedbackGenerator(style: .medium)
 
     var body: some View {
         NavigationStack {
@@ -21,17 +22,20 @@ struct SettingsView: View {
                     Toggle("Enable Notifications", isOn: $notificationManager.isAuthorized)
                         .disabled(true)
                         .task {
+                            impact.impactOccurred()
                             _ = await notificationManager.requestPermission()
                         }
                     if !notificationManager.isAuthorized {
                         Button("Enable in Settings...") {
                             Task {
-                                await notificationManager.requestPermission()
+                                impact.impactOccurred()
+                                _ = await notificationManager.requestPermission()
                             }
                         }
                     }
                     Button("Test Notifications") {
                         Task {
+                            impact.impactOccurred()
                             await notificationManager.scheduleLocal(
                                 title: "Hurray!",
                                 body: "Notifications actually work now!",
@@ -58,10 +62,12 @@ struct SettingsView: View {
                 }
                 Section {
                     Button("Reset Onboarding") {
+                        impact.impactOccurred()
                         hasSeenOnboarding.toggle()
                     }.sensoryFeedback(.selection, trigger: hatesEatingOut)
                     Button("Force Clear Cache") {
                         Task {
+                            impact.impactOccurred()
                             URLCache.shared.removeAllCachedResponses()
                             await notificationManager.scheduleLocal(
                                 title: "Cache cleared!",

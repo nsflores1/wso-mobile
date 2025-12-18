@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EpheliaView: View {
     @State private var isPresented: Bool = false
+    let impact = UIImpactFeedbackGenerator(style: .medium)
 
     var body: some View {
         NavigationStack {
@@ -19,6 +20,7 @@ struct EpheliaView: View {
                     .cornerRadius(20)
                 Text("* Ephelia stands on Stone Hill, before you.").italic(true)
                 Button("Recieve Her Wisdom") {
+                    impact.impactOccurred()
                     isPresented.toggle()
                 }
                 .buttonStyle(.borderedProminent)
