@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import Combine
 
 @MainActor
-class WCFMShowViewModel: ObservableObject {
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: String?
-    @Published var currentShows: WCFMShow?
-    @Published var requestURL = URL(string: "https://spinitron.com/api/shows/")
+@Observable
+class WCFMShowViewModel {
+    var isLoading: Bool = false
+    var errorMessage: String?
+    var currentShows: WCFMShow?
+    var requestURL = URL(string: "https://spinitron.com/api/shows/")
     private var hasFetched = false
 
     func loadPlaylists() async {

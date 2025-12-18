@@ -11,12 +11,11 @@ import Foundation
 import SwiftSoup
 
 struct WilliamsRecordView: View {
-    @StateObject private var viewModel = WilliamsRecordViewModel()
-
+    @State private var viewModel = WilliamsRecordViewModel()
+    
     var body: some View {
-        Section {
+        List {
             if viewModel.isLoading {
-                    // TODO: make a nicer ProgressView()
                 HStack {
                     ProgressView()
                         .alignmentGuide(VerticalAlignment.center) { _ in 0.5 }
@@ -35,7 +34,7 @@ struct WilliamsRecordView: View {
                 .transition(.opacity)
             }
             if !viewModel.isLoading && viewModel.errorMessage == nil {
-                // TODO: need to introduce a NavigationLink for posts
+                    // TODO: need to introduce a NavigationLink for posts
                 ForEach(viewModel.posts, id: \.title) { post in
                     NavigationLink() {
                         WilliamsRecordArticleView(article: post)
@@ -55,23 +54,15 @@ struct WilliamsRecordView: View {
                         }
                     }.transition(.move(edge: .trailing).combined(with: .opacity))
                 }
-                .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)
             }
-        } header : {
-            HStack {
-                Text("Williams Record Articles")
-                    .fontWeight(.semibold)
-                    .font(.title3)
-                Spacer()
-                Image(systemName: "newspaper")
-            }
-
-        } .task { await viewModel.fetchIfNeeded() }
-            .refreshable {
-                await viewModel.forceRefresh()
-                let impact = UIImpactFeedbackGenerator(style: .medium)
-                impact.impactOccurred()
-            }
+        }
+        .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)
+        .task { await viewModel.fetchIfNeeded() }
+        .refreshable {
+            await viewModel.forceRefresh()
+            let impact = UIImpactFeedbackGenerator(style: .medium)
+            impact.impactOccurred()
+        }
     }
 }
 

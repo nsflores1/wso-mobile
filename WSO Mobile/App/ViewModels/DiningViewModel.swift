@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import Combine
 
 @MainActor
-class DiningHoursViewModel: ObservableObject {
-    @Published var diningMenu: [DiningHall] = []
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: String?
-    @Published var diningURL: URL = URL(string: "https://wso.williams.edu/dining.json")!
+@Observable
+class DiningHoursViewModel {
+    var diningMenu: [DiningHall] = []
+    var isLoading: Bool = false
+    var errorMessage: String?
+    var diningURL: URL = URL(string: "https://wso.williams.edu/dining.json")!
     private var hasFetched = false
 
     func loadMenus() async {

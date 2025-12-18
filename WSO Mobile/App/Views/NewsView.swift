@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct NewsView: View {
-    @StateObject private var viewModel = WilliamsRecordViewModel()
+    @State private var viewModel = WilliamsRecordViewModel()
 
     var body: some View {
         NavigationStack {
-            List {
-                WilliamsRecordView()
-            }
+            WilliamsRecordView()
             .navigationTitle(Text("News"))
             .modifier(NavSubtitleIfAvailable(subtitle: "The latest happenings"))
             .navigationBarTitleDisplayMode(.large)

@@ -9,7 +9,6 @@
 // also handles local and remote notifications.
 
 import UserNotifications
-import Combine
 
 extension NotificationManager: UNUserNotificationCenterDelegate {
     func userNotificationCenter(
@@ -21,10 +20,11 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
 }
 
 @MainActor
-class NotificationManager: NSObject, ObservableObject {
+@Observable
+class NotificationManager: NSObject {
     static let shared = NotificationManager()
 
-    @Published var isAuthorized = false
+    var isAuthorized = false
     private let center = UNUserNotificationCenter.current()
 
     override init() {

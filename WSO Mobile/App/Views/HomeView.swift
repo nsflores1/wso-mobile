@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var libraryViewModel = LibraryHoursViewModel()
-    @StateObject private var dailyMessagesViewModel = DailyMessagesViewModel()
+    @State private var libraryViewModel = LibraryHoursViewModel()
+    @State private var dailyMessagesViewModel = DailyMessagesViewModel()
     @State private var searchText: String = ""
 
     // these warnings are for the user when they're not logged in
@@ -129,14 +129,6 @@ struct HomeView: View {
                 LibraryHoursView()
                 DailyMessagesView()
             }.refreshable {
-                URLCache.shared
-                    .removeCachedResponse(
-                        for: URLRequest(url: libraryViewModel.requestURL)
-                    )
-                URLCache.shared
-                    .removeCachedResponse(
-                        for: URLRequest(url: dailyMessagesViewModel.requestURL)
-                    )
                 await libraryViewModel.forceRefresh()
                 await dailyMessagesViewModel.forceRefresh()
                 impact.impactOccurred()

@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
-import Combine
 
 struct LibraryHoursView: View {
-    @StateObject private var viewModel = LibraryHoursViewModel()
+    @State var viewModel = LibraryHoursViewModel()
 
     var body: some View {
         Section {
@@ -23,7 +22,7 @@ struct LibraryHoursView: View {
                         .foregroundStyle(.red)
                         .transition(.opacity)
                 }
-                if !viewModel.isLoading && viewModel.errorMessage == nil {
+                if !viewModel.isLoading && viewModel.errorMessage == nil && viewModel.libraryHours.count > 0 {
                     ForEach(viewModel.libraryHours, id: \.name) { place in
                         HStack {
                             Text(place.name)
@@ -31,6 +30,9 @@ struct LibraryHoursView: View {
                             Text(place.hours).foregroundStyle(.secondary)
                         }
                     }.transition(.move(edge: .top).combined(with: .opacity))
+                } else {
+                    Text("(Library hours not posted for today)")
+                        .italic()
                 }
             }
             .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)

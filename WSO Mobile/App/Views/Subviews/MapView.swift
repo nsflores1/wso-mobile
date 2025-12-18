@@ -12,7 +12,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @StateObject private var viewModel = MapViewModel()
+    @State private var viewModel = MapViewModel()
 
     var body: some View {
         NavigationStack {

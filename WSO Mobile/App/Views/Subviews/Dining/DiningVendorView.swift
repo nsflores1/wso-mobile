@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Foundation
-import Combine
 
 struct DiningVendorView: View {
     let menu: DiningHall

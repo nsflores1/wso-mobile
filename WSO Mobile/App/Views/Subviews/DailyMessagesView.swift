@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import Combine
 
 struct DailyMessagesView: View {
-    @ObservedObject var viewModel = DailyMessagesViewModel()
-    
+    @State var viewModel = DailyMessagesViewModel()
+
     var body: some View {
         Section {
             if viewModel.isLoading {

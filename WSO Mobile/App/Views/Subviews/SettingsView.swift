@@ -12,7 +12,7 @@ struct SettingsView: View {
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
 
-    @StateObject private var notificationManager = NotificationManager.shared
+    @State private var notificationManager = NotificationManager.shared
 
     var body: some View {
         NavigationStack {

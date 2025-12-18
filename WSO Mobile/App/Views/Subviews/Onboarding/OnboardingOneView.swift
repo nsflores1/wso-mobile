@@ -10,8 +10,7 @@ import SwiftUI
 struct OnboardingOneView: View {
     var body: some View {
         NavigationStack {
-                VStack {
-                    let mainText = """
+                let mainText = """
                 You're testing WSO Mobile Beta v1.2.1.
                 
                 This app is in a preliminary state. Your feedback matters a lot! If you run into any issues, please report them as soon as possible.
@@ -22,13 +21,11 @@ struct OnboardingOneView: View {
                 
                 Swipe to the left to view the next page!
                 """
-                    Text(mainText)
-                        .multilineTextAlignment(.leading)
-                        .padding(10)
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(10)
-                }.padding(20)
+                Text(mainText)
+                .padding(20)
+                .multilineTextAlignment(.leading)
                 .navigationTitle(Text("Welcome to WSO Beta!"))
+                Spacer()
         }.padding(20)
     }
 }

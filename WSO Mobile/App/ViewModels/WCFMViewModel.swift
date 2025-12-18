@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 import AVFoundation
 import MediaPlayer
 
@@ -14,13 +13,14 @@ import MediaPlayer
 // because it's completely GUI-mode. can't hear audio on the CLI!
 
 @MainActor
-class WCFMViewModel: ObservableObject {
+@Observable
+class WCFMViewModel {
     private var player: AVPlayer?
     private var metadataTimer: Timer?
-    @Published var isPlaying = false
-    @Published var error: Error?
-    @Published var streamURL = URL(string: "")
-    @Published var currentTrack: WCFMSpinItem?
+    var isPlaying = false
+    var error: Error?
+    var streamURL = URL(string: "")
+    var currentTrack: WCFMSpinItem?
 
     init(url: URL) {
         player = AVPlayer(url: url)

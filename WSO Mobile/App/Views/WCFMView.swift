@@ -6,16 +6,13 @@
 //
 
 import SwiftUI
-import Combine
 import Foundation
 import AVFoundation
 import Marquee
 import Kingfisher
 
-// TODO: add metadata
-
 struct WCFMView: View {
-    @StateObject private var player = WCFMViewModel(url: URL(string: "http://wcfm-streaming.williams.edu:8000/stream")!)
+    @State private var player = WCFMViewModel(url: URL(string: "http://wcfm-streaming.williams.edu:8000/stream")!)
 
     // haptic feedback
     let impact = UIImpactFeedbackGenerator(style: .medium)

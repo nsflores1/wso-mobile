@@ -11,7 +11,7 @@ struct WSOLoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
 
-    @StateObject private var authManager = AuthManager()
+    @State private var authManager = AuthManager()
 
     var body: some View {
         NavigationStack {

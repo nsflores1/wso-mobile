@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import Combine
 
 struct SpringStreetRestaurantView: View {
         // TODO: give this a new state model
-    @StateObject private var viewModel = DiningHoursViewModel()
+    @State private var viewModel = DiningHoursViewModel()
 
     var body: some View {
         if viewModel.isLoading {

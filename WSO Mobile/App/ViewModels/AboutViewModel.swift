@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-import Combine
 
 @MainActor
-class AboutViewModel: ObservableObject {
-    @Published var words: String = ""
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: String?
+@Observable
+class AboutViewModel {
+    var words: String = ""
+    var isLoading: Bool = false
+    var errorMessage: String?
     private var hasFetched = false
 
     func loadWords() async {

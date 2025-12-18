@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import Combine
 
 @MainActor
-class DailyMessagesViewModel: ObservableObject {
-    @Published var dailyMessageCategories: [String: [DailyMessagePost]] = [:]
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: String?
-    @Published var requestURL: URL = URL(string: "https://events.williams.edu/wp-json/wms/events/v1/list/dm")!
+@Observable
+class DailyMessagesViewModel {
+    var dailyMessageCategories: [String: [DailyMessagePost]] = [:]
+    var isLoading: Bool = false
+    var errorMessage: String?
     private var hasFetched = false
 
     func loadContent() async {

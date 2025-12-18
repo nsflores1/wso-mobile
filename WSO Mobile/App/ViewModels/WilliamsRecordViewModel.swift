@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import Combine
 
 @MainActor
-class WilliamsRecordViewModel: ObservableObject {
-    @Published var posts: [NewsFeed] = []
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: String?
-    @Published var requestURL: URL = URL(string: "https://www.williamsrecord.com/feed/")!
+@Observable
+class WilliamsRecordViewModel {
+    var posts: [NewsFeed] = []
+    var isLoading: Bool = false
+    var errorMessage: String?
+    var requestURL: URL = URL(string: "https://www.williamsrecord.com/feed/")!
     private var hasFetched = false
 
     func loadContent() async {

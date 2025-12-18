@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import Combine
 import Kingfisher
 
 struct WCFMShowsView: View {
-    @StateObject private var viewModel = WCFMShowViewModel()
+    @State private var viewModel = WCFMShowViewModel()
 
     var body: some View {
         NavigationStack {

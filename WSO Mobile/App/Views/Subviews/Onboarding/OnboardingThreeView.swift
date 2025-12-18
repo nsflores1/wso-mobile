@@ -9,7 +9,8 @@ import SwiftUI
 
 struct OnboardingThreeView: View {
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
-    
+    let impact = UIImpactFeedbackGenerator(style: .medium)
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -29,6 +30,7 @@ struct OnboardingThreeView: View {
                 Text("Ready to go!")
                 Button("Get started") {
                     hasSeenOnboarding = true
+                    impact.impactOccurred()
                 }
                 .buttonStyle(.borderedProminent)
             }

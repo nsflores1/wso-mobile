@@ -6,14 +6,12 @@
 //
 
 import SwiftUI
-import Combine
 
 @MainActor
-class LibraryHoursViewModel: ObservableObject {
-    @Published var libraryHours: [LibraryHours] = []
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: String?
-    @Published var requestURL: URL = URL(string: "https://libcal.williams.edu/api_hours_today.php")!
+class LibraryHoursViewModel {
+    var libraryHours: [LibraryHours] = []
+    var isLoading: Bool = false
+    var errorMessage: String?
     private var hasFetched = false
 
     func loadHours() async {

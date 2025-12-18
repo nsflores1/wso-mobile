@@ -11,7 +11,7 @@ import System
 
 struct ProfileView: View {
     @Environment(\.openURL) private var openURL
-    @StateObject private var notificationManager = NotificationManager.shared
+    @State private var notificationManager = NotificationManager.shared
 
     var body: some View {
         NavigationStack {

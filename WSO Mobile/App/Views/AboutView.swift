@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AboutView: View {
-    @StateObject private var viewModel = AboutViewModel()
+    @State private var viewModel = AboutViewModel()
     let impact = UIImpactFeedbackGenerator(style: .medium)
 
     var body: some View {

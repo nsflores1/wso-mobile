@@ -9,7 +9,6 @@
 // ViewModel, but is too useful to end up duplicating across a bunch of files.
 
 import Foundation
-import Combine
 import LocalAuthentication
 
 // TODO: this has a bunch of stuff that most users will never see,
@@ -25,11 +24,12 @@ enum KeychainError: Error {
 }
 
 @MainActor
-class AuthManager: ObservableObject {
+@Observable
+class AuthManager {
     static let shared = AuthManager()
 
-    @Published var isAuthenticated: Bool = false
-    @Published var currentUser: User?
+    var isAuthenticated: Bool = false
+    var currentUser: User?
 
     private var keychainKey: String = "com.wsomobile.authToken"
     private var authToken: String?

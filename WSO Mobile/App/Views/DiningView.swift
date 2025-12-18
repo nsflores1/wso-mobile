@@ -7,11 +7,8 @@
 
 import SwiftUI
 
-// TODO: Ephelia's Roots wants their info here
-// TODO: places in town would be sick to have
-
 struct DiningView: View {
-    @StateObject private var viewModel = DiningHoursViewModel()
+    @State private var viewModel = DiningHoursViewModel()
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
     let impact = UIImpactFeedbackGenerator(style: .medium)
 
