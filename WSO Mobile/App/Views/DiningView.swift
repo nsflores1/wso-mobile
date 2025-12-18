@@ -81,8 +81,6 @@ struct DiningView: View {
                                 NavigationLink(destination: DiningKeyView()) {
                                     Image(systemName: "questionmark")
                                 }
-                            }.onTapGesture {
-                                impact.impactOccurred()
                             }
                         }
                     }

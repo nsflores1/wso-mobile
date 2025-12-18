@@ -151,14 +151,10 @@ struct HomeView: View {
                         if #available(iOS 26.0, *) {
                             NavigationLink(destination: MapPageView()) {
                                 Image(systemName: "map")
-                            }.onTapGesture {
-                                impact.impactOccurred()
                             }
                         }
                         NavigationLink(destination: WSOLoginView()) {
                             Image(systemName: "person")
-                        }.onTapGesture {
-                            impact.impactOccurred()
                         }
                     }
                 }
@@ -166,8 +162,6 @@ struct HomeView: View {
                     HStack {
                         NavigationLink(destination: AboutView()) {
                             Image(systemName: "wand.and.rays")
-                        }.onTapGesture {
-                            impact.impactOccurred()
                         }
                     }
                 }

@@ -59,8 +59,6 @@ struct WilliamsRecordArticleView: View {
                         ShareLink(item: article.link) {
                             Label("Share", systemImage: "square.and.arrow.up")
                         }
-                    }.onTapGesture {
-                        impact.impactOccurred()
                     }
                 }
             }

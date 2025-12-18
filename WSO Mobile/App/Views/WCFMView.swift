@@ -103,8 +103,6 @@ struct WCFMView: View {
                         NavigationLink(destination: WCFMKeyView()) {
                             Image(systemName: "questionmark")
                         }
-                    }.onTapGesture {
-                        impact.impactOccurred()
                     }
                 }
             }

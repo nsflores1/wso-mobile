@@ -49,8 +49,6 @@ struct LinksView: View {
                     HStack {
                         NavigationLink(destination: LinksKeyView()) {
                             Image(systemName: "questionmark")
-                        }.onTapGesture {
-                            impact.impactOccurred()
                         }
                     }
                 }

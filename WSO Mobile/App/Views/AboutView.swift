@@ -41,8 +41,6 @@ struct AboutView: View {
                         NavigationLink(destination: SneakyView()) {
                             Image(systemName: "questionmark")
                         }
-                    }.onTapGesture {
-                        impact.impactOccurred()
                     }
                 }
             }
@@ -74,7 +72,7 @@ struct AboutView: View {
                     Text("Logan Spaleta - ls24@williams.edu")
                     Text("Olivia Thorton - ort1@williams.edu")
                     Text("Andrew Gu - amg11@williams.edu")
-                    Text("Jenna Shuffleton - jms13@williams.edu")
+                    Text("Jenna Shuffelton - jms13@williams.edu")
                     Text("Addison Kiewert - amk12@williams.edu")
                     Text("Alex Chao - ac48@williams.edu")
                     Text("Alex Moon - ahm2@williams.edu")
@@ -89,7 +87,7 @@ struct AboutView: View {
                     Text("Lauren Hall - lkh3@williams.edu")
                     Text("Chiaka Leilah Duruaku - cjd4@williams.edu")
                     Text("Kez Osei-Agyemang - ko6@williams.edu")
-                    Text("Jack Allen - jag21@williams.edu")
+                    Text("Jack Allen Greenfield - jag21@williams.edu")
                     Text("Sam Wexler - saw9@williams.edu")
                     Text("Eliana Zitrin - edz1@williams.edu")
                     Text("Adhy Agarwala - aea3@williams.edu")
@@ -111,8 +109,6 @@ struct AboutView: View {
                 }
                 NavigationLink("WSO is made possible by users like you. Thank you!") {
                     EtherialView()
-                }.onTapGesture {
-                    impact.impactOccurred()
                 }
             }
             .task { await viewModel.loadWords() }
