@@ -12,7 +12,7 @@ import SwiftUI
 
 struct WCFMKeyView: View {
     @Environment(\.openURL) private var openURL
-    let impact = UIImpactFeedbackGenerator(style: .medium)
+    
 
     var body: some View {
         NavigationStack {
@@ -23,7 +23,7 @@ struct WCFMKeyView: View {
                     """
                 Text(introText.replacingOccurrences(of: "\n", with: " "))
                 Button {
-                    impact.impactOccurred()
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     openURL(URL(string: "https://laurenkhall.nekoweb.org/website/index.html")!)
                 } label: {
                     Label("WCFM Official Site", systemImage: "antenna.radiowaves.left.and.right")

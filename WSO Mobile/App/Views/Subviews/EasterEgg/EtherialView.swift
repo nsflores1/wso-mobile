@@ -38,7 +38,9 @@ struct EtherialView: View {
                         .background(.ultraThinMaterial, in: Capsule())
                     NavigationLink("Click if you like whimsy") {
                         EasterEggView()
-                    }
+                    }.simultaneousGesture(TapGesture().onEnded {
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    })
                     .buttonStyle(.borderedProminent)
                 }.padding(20)
             }

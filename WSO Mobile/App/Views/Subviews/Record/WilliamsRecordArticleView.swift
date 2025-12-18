@@ -10,7 +10,7 @@ import Kingfisher
 
 struct WilliamsRecordArticleView: View {
     let article: NewsFeed
-    let impact = UIImpactFeedbackGenerator(style: .medium)
+    
 
     var body: some View {
         ScrollView {

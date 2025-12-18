@@ -34,14 +34,12 @@ struct WilliamsRecordView: View {
                 .transition(.opacity)
             }
             if !viewModel.isLoading && viewModel.errorMessage == nil {
-                    // TODO: need to introduce a NavigationLink for posts
                 ForEach(viewModel.posts, id: \.title) { post in
                     NavigationLink() {
                         WilliamsRecordArticleView(article: post)
                     } label: {
                         VStack {
                             HStack {
-                                    // TODO: make the record article views nicer
                                 Text(post.title)
                                     .multilineTextAlignment(.leading)
                             }.frame(maxWidth: .infinity, alignment: .leading)
@@ -51,7 +49,9 @@ struct WilliamsRecordView: View {
                                     .multilineTextAlignment(.leading)
                                     .italic()
                             }.frame(maxWidth: .infinity, alignment: .leading)
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
                     }.transition(.move(edge: .trailing).combined(with: .opacity))
                 }
             }
@@ -60,8 +60,8 @@ struct WilliamsRecordView: View {
         .task { await viewModel.fetchIfNeeded() }
         .refreshable {
             await viewModel.forceRefresh()
-            let impact = UIImpactFeedbackGenerator(style: .medium)
-            impact.impactOccurred()
+            
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
     }
 }

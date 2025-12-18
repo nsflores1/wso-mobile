@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AboutView: View {
     @State private var viewModel = AboutViewModel()
-    let impact = UIImpactFeedbackGenerator(style: .medium)
+    
 
     var body: some View {
         NavigationStack {
@@ -40,7 +40,9 @@ struct AboutView: View {
                     HStack {
                         NavigationLink(destination: SneakyView()) {
                             Image(systemName: "questionmark")
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
                     }
                 }
             }
@@ -109,7 +111,9 @@ struct AboutView: View {
                 }
                 NavigationLink("WSO is made possible by users like you. Thank you!") {
                     EtherialView()
-                }
+                }.simultaneousGesture(TapGesture().onEnded {
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                })
             }
             .task { await viewModel.loadWords() }
         }

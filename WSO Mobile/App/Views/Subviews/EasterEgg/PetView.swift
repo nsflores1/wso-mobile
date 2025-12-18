@@ -17,7 +17,7 @@ struct DesktopPetModifier: ViewModifier {
     @State private var facingDirection = CGVector(dx: 1, dy: 0)
 
     let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
-    let impact = UIImpactFeedbackGenerator(style: .medium)
+    
 
     func body(content: Content) -> some View {
         ZStack {
@@ -26,7 +26,7 @@ struct DesktopPetModifier: ViewModifier {
                 .onTapGesture { location in
                     targetPosition = location
                     isWalking = true
-                    impact.impactOccurred()
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 }
 
             petSprite
@@ -57,7 +57,7 @@ struct DesktopPetModifier: ViewModifier {
             petPosition = target
             targetPosition = nil
             isWalking = false
-            impact.impactOccurred()
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             return
         }
 

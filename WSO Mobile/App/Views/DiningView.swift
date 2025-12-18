@@ -10,7 +10,7 @@ import SwiftUI
 struct DiningView: View {
     @State private var viewModel = DiningHoursViewModel()
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
-    let impact = UIImpactFeedbackGenerator(style: .medium)
+    
 
     var body: some View {
         NavigationStack {
@@ -31,16 +31,24 @@ struct DiningView: View {
                             Section {
                                 NavigationLink("Ephelia's Roots") {
                                     EpheliasRootHoursView()
-                                }
+                                }.simultaneousGesture(TapGesture().onEnded {
+                                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                                })
                                 NavigationLink("Spring Street Cafes") {
                                     SpringStreetCafesView()
-                                }
+                                }.simultaneousGesture(TapGesture().onEnded {
+                                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                                })
                                 NavigationLink("Spring Street Restaurants") {
                                     SpringStreetRestaurantView()
-                                }
+                                }.simultaneousGesture(TapGesture().onEnded {
+                                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                                })
                                 NavigationLink("Rest of Williamstown") {
                                     RestOfWilliamstownView()
-                                }
+                                }.simultaneousGesture(TapGesture().onEnded {
+                                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                                })
                             } header: {
                                 Text("Off-Campus & Campus Stores")
                                     .fontWeight(.semibold)
@@ -70,8 +78,8 @@ struct DiningView: View {
                     .refreshable {
                         URLCache.shared.removeCachedResponse(for: URLRequest(url: viewModel.diningURL))
                         await viewModel.forceRefresh()
-                        let impact = UIImpactFeedbackGenerator(style: .medium)
-                        impact.impactOccurred()
+                        
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     }
                     .navigationTitle(Text("Dining"))
                     .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))
@@ -80,7 +88,9 @@ struct DiningView: View {
                             HStack {
                                 NavigationLink(destination: DiningKeyView()) {
                                     Image(systemName: "questionmark")
-                                }
+                                }.simultaneousGesture(TapGesture().onEnded {
+                                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                                })
                             }
                         }
                     }

@@ -14,9 +14,6 @@ import Kingfisher
 struct WCFMView: View {
     @State private var player = WCFMViewModel(url: URL(string: "http://wcfm-streaming.williams.edu:8000/stream")!)
 
-    // haptic feedback
-    let impact = UIImpactFeedbackGenerator(style: .medium)
-
     var body: some View {
         NavigationStack {
             VStack {
@@ -49,14 +46,18 @@ struct WCFMView: View {
                     HStack {
                         NavigationLink(destination: WCFMShowsView()) {
                             Label("Shows", systemImage: "music.microphone")
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
                         .padding(10)
                         .buttonStyle(.borderedProminent)
                         .controlSize(ControlSize.large)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                         NavigationLink(destination: WCFMPlaylistView()) {
                             Label("Playlists", systemImage: "scroll")
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
                         .padding(10)
                         .buttonStyle(.borderedProminent)
                         .controlSize(ControlSize.large)
@@ -68,7 +69,7 @@ struct WCFMView: View {
                         // also, show info would be huge
 
                     Button {
-                        impact.impactOccurred()
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                         player.pause()
                     } label : {
                         Label("Pause", systemImage: "pause")
@@ -86,7 +87,7 @@ struct WCFMView: View {
                     .transition(.scale.combined(with: .opacity))
 
                     Button {
-                        impact.impactOccurred()
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                         player.play()
                     } label : {
                         Label("Play", systemImage: "play")
@@ -102,7 +103,9 @@ struct WCFMView: View {
                     HStack {
                         NavigationLink(destination: WCFMKeyView()) {
                             Image(systemName: "questionmark")
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
                     }
                 }
             }

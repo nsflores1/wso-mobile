@@ -12,7 +12,7 @@ struct WSOLoginView: View {
     @State private var password: String = ""
 
     @State private var authManager = AuthManager()
-    let impact = UIImpactFeedbackGenerator(style: .medium)
+    
 
     var body: some View {
         NavigationStack {
@@ -29,7 +29,7 @@ struct WSOLoginView: View {
                     .lineLimit(1)
                 Button("Login") {
                     Task {
-                        impact.impactOccurred()
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                         // TODO: try this
                         try await WSOAuthLogin(password: password, unixID: username)
                     }

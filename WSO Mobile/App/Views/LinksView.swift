@@ -10,18 +10,18 @@ import SwiftUI
 struct LinksView: View {
     @Environment(\.openURL) private var openURL
 
-    let impact = UIImpactFeedbackGenerator(style: .medium)
-
     var body: some View {
         NavigationStack {
             List {
                 Section {
                     NavigationLink(destination: SettingsView()) {
                         Label("App Settings", systemImage: "gear")
-                    }
+                    }.simultaneousGesture(TapGesture().onEnded {
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                    })
                     Button {
                         if let url = URL(string: "https://forms.gle/NqYdAAbZKPQmPq866"){
-                            impact.impactOccurred()
+                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                             openURL(url)
                         }
                     } label: {
@@ -32,7 +32,7 @@ struct LinksView: View {
                     .buttonStyle(.plain)
                     Button {
                         if let url = URL(string: "https://forms.gle/pJVhoyRU8A2ciDhz5"){
-                            impact.impactOccurred()
+                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                             openURL(url)
                         }
                     } label: {
@@ -49,7 +49,9 @@ struct LinksView: View {
                     HStack {
                         NavigationLink(destination: LinksKeyView()) {
                             Image(systemName: "questionmark")
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
                     }
                 }
             }

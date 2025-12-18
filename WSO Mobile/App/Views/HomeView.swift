@@ -19,7 +19,7 @@ struct HomeView: View {
     @State private var facebookWarn = false
 
     // impact used for all haptic actions
-    let impact = UIImpactFeedbackGenerator(style: .medium)
+    
 
     // TODO: this can jump around when scrolling
     // To fix this, find some way to make a skeleton that you fill in,
@@ -37,7 +37,7 @@ struct HomeView: View {
                             .textInputAutocapitalization(.never)
                         if !searchText.isEmpty {
                             Button {
-                                impact.impactOccurred()
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                 searchText = ""
                                 // TODO: clear search model if pressed
                             } label: {
@@ -54,7 +54,7 @@ struct HomeView: View {
                         GridItem(.flexible(), spacing: 8)
                     ], spacing: 12) {
                             Button {
-                                impact.impactOccurred()
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                 facTrakWarn = true
                             } label: {
                                 Label("FacTrak", systemImage: "graduationcap")
@@ -71,7 +71,7 @@ struct HomeView: View {
                                     Button("OK", role: .cancel) { }
                                 }
                             Button{
-                                impact.impactOccurred()
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                 facebookWarn = true
                             } label: {
                                 Label("Facebook", systemImage: "person")
@@ -88,7 +88,7 @@ struct HomeView: View {
                                     Button("OK", role: .cancel) { }
                                 }
                             Button{
-                                impact.impactOccurred()
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                 dormTrakWarn = true
                             } label: {
                                 Label("DormTrak", systemImage: "house")
@@ -105,7 +105,7 @@ struct HomeView: View {
                                     Button("OK", role: .cancel) { }
                                 }
                             Button {
-                                impact.impactOccurred()
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                 bookTrakWarn = true
                             } label: {
                                 Label("BookTrak", systemImage: "book.closed")
@@ -136,7 +136,7 @@ struct HomeView: View {
             }.refreshable {
                 await libraryViewModel.forceRefresh()
                 await dailyMessagesViewModel.forceRefresh()
-                impact.impactOccurred()
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
             HStack { } // hidden hstack wraps the text
             .listStyle(.grouped)
@@ -151,18 +151,24 @@ struct HomeView: View {
                         if #available(iOS 26.0, *) {
                             NavigationLink(destination: MapPageView()) {
                                 Image(systemName: "map")
-                            }
+                            }.simultaneousGesture(TapGesture().onEnded {
+                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            })
                         }
                         NavigationLink(destination: WSOLoginView()) {
                             Image(systemName: "person")
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
                     }
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     HStack {
                         NavigationLink(destination: AboutView()) {
                             Image(systemName: "wand.and.rays")
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
                     }
                 }
             }
