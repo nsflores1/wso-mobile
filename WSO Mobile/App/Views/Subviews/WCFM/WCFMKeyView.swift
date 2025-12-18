@@ -23,7 +23,7 @@ struct WCFMKeyView: View {
                     """
                 Text(introText.replacingOccurrences(of: "\n", with: " "))
                 Button {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     openURL(URL(string: "https://laurenkhall.nekoweb.org/website/index.html")!)
                 } label: {
                     Label("WCFM Official Site", systemImage: "antenna.radiowaves.left.and.right")

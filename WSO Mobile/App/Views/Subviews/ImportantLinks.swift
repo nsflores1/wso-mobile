@@ -57,7 +57,7 @@ struct ImportantLinksView: View {
     private func linkRow(_ title: String, url: String) -> some View {
         Button {
             guard let u = URL(string: url) else { return }
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
             openURL(u)
         } label: {
             HStack {

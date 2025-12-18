@@ -30,7 +30,7 @@ struct OnboardingThreeView: View {
                 Text("Ready to go!")
                 Button("Get started") {
                     hasSeenOnboarding = true
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                 }
                 .buttonStyle(.borderedProminent)
             }

@@ -22,20 +22,20 @@ struct SettingsView: View {
                     Toggle("Enable Notifications", isOn: $notificationManager.isAuthorized)
                         .disabled(true)
                         .task {
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                             _ = await notificationManager.requestPermission()
                         }
                     if !notificationManager.isAuthorized {
                         Button("Enable in Settings...") {
                             Task {
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                                 _ = await notificationManager.requestPermission()
                             }
                         }
                     }
                     Button("Test Notifications") {
                         Task {
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                             await notificationManager.scheduleLocal(
                                 title: "Hurray!",
                                 body: "Notifications actually work now!",
@@ -52,9 +52,13 @@ struct SettingsView: View {
                 }
                 Section {
                     Toggle("Mathematical Mode", isOn: $likesMath)
-                        .sensoryFeedback(.selection, trigger: likesMath)
+                        .simultaneousGesture(TapGesture().onEnded {
+                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                    })
                     Toggle("Hide All Restaurants", isOn: $hatesEatingOut)
-                        .sensoryFeedback(.selection, trigger: hatesEatingOut)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                        })
                 } header : {
                     Text("Toggles")
                         .fontWeight(.semibold)
@@ -62,12 +66,12 @@ struct SettingsView: View {
                 }
                 Section {
                     Button("Reset Onboarding") {
-                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         hasSeenOnboarding.toggle()
                     }.sensoryFeedback(.selection, trigger: hatesEatingOut)
                     Button("Force Clear Cache") {
                         Task {
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                             URLCache.shared.removeAllCachedResponses()
                             await notificationManager.scheduleLocal(
                                 title: "Cache cleared!",

@@ -60,7 +60,6 @@ struct WilliamsRecordView: View {
         .task { await viewModel.fetchIfNeeded() }
         .refreshable {
             await viewModel.forceRefresh()
-            
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
     }

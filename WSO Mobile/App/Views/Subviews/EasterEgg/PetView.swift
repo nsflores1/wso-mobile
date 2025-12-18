@@ -26,7 +26,7 @@ struct DesktopPetModifier: ViewModifier {
                 .onTapGesture { location in
                     targetPosition = location
                     isWalking = true
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                 }
 
             petSprite
@@ -57,7 +57,7 @@ struct DesktopPetModifier: ViewModifier {
             petPosition = target
             targetPosition = nil
             isWalking = false
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            UIImpactFeedbackGenerator(style: .soft).impactOccurred()
             return
         }
 
