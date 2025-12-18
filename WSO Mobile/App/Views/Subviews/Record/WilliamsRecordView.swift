@@ -49,9 +49,7 @@ struct WilliamsRecordView: View {
                                     .multilineTextAlignment(.leading)
                                     .italic()
                             }.frame(maxWidth: .infinity, alignment: .leading)
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
+                        }
                     }.transition(.move(edge: .trailing).combined(with: .opacity))
                 }
             }

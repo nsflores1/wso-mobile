@@ -111,9 +111,7 @@ struct AboutView: View {
                 }
                 NavigationLink("WSO is made possible by users like you. Thank you!") {
                     EtherialView()
-                }.simultaneousGesture(TapGesture().onEnded {
-                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                })
+                }
             }
             .task { await viewModel.loadWords() }
         }

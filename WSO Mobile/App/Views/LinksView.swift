@@ -16,9 +16,7 @@ struct LinksView: View {
                 Section {
                     NavigationLink(destination: SettingsView()) {
                         Label("App Settings", systemImage: "gear")
-                    }.simultaneousGesture(TapGesture().onEnded {
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    })
+                    }
                     Button {
                         if let url = URL(string: "https://forms.gle/NqYdAAbZKPQmPq866"){
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()

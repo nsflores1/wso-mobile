@@ -22,7 +22,6 @@ struct NewsView: View {
                     for: URLRequest(url: viewModel.requestURL)
                 )
             await viewModel.forceRefresh()
-            
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
     }
