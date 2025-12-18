@@ -13,7 +13,6 @@ class WCFMPlaylistViewModel {
     var isLoading: Bool = false
     var errorMessage: String?
     var currentPlaylist: WCFMPlaylist?
-    var requestURL = URL(string: "https://spinitron.com/api/playlists/")
     private var hasFetched = false
 
     func loadPlaylists() async {

@@ -30,6 +30,7 @@ struct WSOAuthLoginForm: Codable {
     var useIP: Bool
 }
 
+@available(macOS 14.0, *)
 func newWSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin {
     let parser = JSONParser<WSOAuthLogin>()
     let request = WebRequest<NoParser, JSONParser<WSOAuthLogin>>(
@@ -46,7 +47,9 @@ func WSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin
     var request = HTTPRequest(method: .post, url: URL(string: "https://wso.williams.edu/api/v2/auth/login")!)
     request.headerFields[.userAgent] = "New WSO Mobile/0.1"
 
-    let formData: WSOAuthLoginForm = .init(localIP: true, password: password, unixID: unixID, useIP: true)
+    // TODO: investigatory research reveals that our IP location DOES matter a lot.
+    // check our IP and see if we're in Williamstown. but how???
+    let formData: WSOAuthLoginForm = .init(localIP: false, password: password, unixID: unixID, useIP: true)
     request.headerFields[.contentType] = "application/json"
     request.headerFields[.accept] = "application/json"
     let formDataJSON = try JSONEncoder().encode(formData)

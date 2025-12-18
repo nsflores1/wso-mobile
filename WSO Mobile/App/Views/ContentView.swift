@@ -40,8 +40,6 @@ struct ContentView: View {
                 Tab("Links", systemImage: "link") {
                     LinksView()
                 }
-            }.onTapGesture {
-                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
         }
     }

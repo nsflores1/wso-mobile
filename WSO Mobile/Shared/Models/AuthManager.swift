@@ -23,6 +23,7 @@ enum KeychainError: Error {
     case unhandledError(status: OSStatus)
 }
 
+@available(macOS 14.0, *)
 @MainActor
 @Observable
 class AuthManager {

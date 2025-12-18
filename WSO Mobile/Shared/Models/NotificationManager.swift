@@ -10,6 +10,7 @@
 
 import UserNotifications
 
+@available(macOS 14.0, *)
 extension NotificationManager: UNUserNotificationCenterDelegate {
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
@@ -19,6 +20,7 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     }
 }
 
+@available(macOS 14.0, *)
 @MainActor
 @Observable
 class NotificationManager: NSObject {

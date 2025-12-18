@@ -158,6 +158,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 // a standard parser that deliberately fails.
 // this is when you don't want to just use "nil" for a type.
 // if you use this and use a method you're not supposed to, you're kind of a moron
+@available(macOS 14.0, *)
 struct NoParser: DataParser {
     typealias ParsedType = Never
     let acceptType = ""
