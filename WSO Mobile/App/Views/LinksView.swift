@@ -19,8 +19,8 @@ struct LinksView: View {
                     }
                     Button {
                         if let url = URL(string: "https://forms.gle/NqYdAAbZKPQmPq866"){
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             openURL(url)
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         }
                     } label: {
                         HStack {
@@ -30,8 +30,8 @@ struct LinksView: View {
                     .buttonStyle(.plain)
                     Button {
                         if let url = URL(string: "https://forms.gle/pJVhoyRU8A2ciDhz5"){
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             openURL(url)
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         }
                     } label: {
                         HStack {

@@ -13,7 +13,6 @@ class WilliamsRecordViewModel {
     var posts: [NewsFeed] = []
     var isLoading: Bool = false
     var errorMessage: String?
-    var requestURL: URL = URL(string: "https://www.williamsrecord.com/feed/")!
     private var hasFetched = false
 
     func loadContent() async {

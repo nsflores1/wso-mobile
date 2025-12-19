@@ -17,10 +17,6 @@ struct NewsView: View {
             .modifier(NavSubtitleIfAvailable(subtitle: "The latest happenings"))
             .navigationBarTitleDisplayMode(.large)
         }.refreshable {
-            URLCache.shared
-                .removeCachedResponse(
-                    for: URLRequest(url: viewModel.requestURL)
-                )
             await viewModel.forceRefresh()
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }

@@ -14,7 +14,6 @@ struct SettingsView: View {
 
     @State private var notificationManager = NotificationManager.shared
     
-
     var body: some View {
         NavigationStack {
             Form {

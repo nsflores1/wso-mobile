@@ -11,7 +11,6 @@ struct DiningView: View {
     @State private var viewModel = DiningHoursViewModel()
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
     
-
     var body: some View {
         NavigationStack {
             if viewModel.isLoading && viewModel.diningMenu.isEmpty {
@@ -68,7 +67,6 @@ struct DiningView: View {
                         }
                     }.listStyle(.sidebar)
                     .refreshable {
-                        URLCache.shared.removeCachedResponse(for: URLRequest(url: viewModel.diningURL))
                         await viewModel.forceRefresh()
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     }

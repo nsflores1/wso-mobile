@@ -105,6 +105,10 @@ extension Courses: Comparable {
 // meals are the trickest.
 // technically, no meal starts on the next calendar date,
 // so we compare JUST by that first date.
+
+// TODO: this is still weirdly bugged.
+// you probably need to parse this somewhat.
+
 extension Meal: Comparable {
     static func < (lhs: Meal, rhs: Meal) -> Bool {
         if lhs.openHours.contains("am") && rhs.openHours.contains("am") {

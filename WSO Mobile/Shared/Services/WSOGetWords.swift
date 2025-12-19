@@ -21,6 +21,7 @@ struct WSOWords: Codable {
 struct WSOGetWordsParseError: Error {}
 
 // yay new reference function!
+@available(macOS 14.0, *)
 func WSOGetWords() async throws -> String {
     let parser = JSONParser<WSOWords>()
     let request = WebRequest<JSONParser<WSOWords>, NoParser>(
@@ -31,20 +32,4 @@ func WSOGetWords() async throws -> String {
     print("finished!")
     print("data: \(try await request.get().data)")
     return try await request.get().data
-}
-
-func WSOOldGetWords() async throws -> String {
-    var request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/api/v2/words")!)
-    request.headerFields[.userAgent] = "New WSO Mobile/0.1"
-
-    do {
-        let (data, _) = try await URLSession.shared.data(for: request)
-        let decoder = JSONDecoder()
-
-        let decodedResponse = try decoder.decode(WSOWords.self, from: data)
-        // TODO: handle errors here better
-        return decodedResponse.data
-    } catch {
-        throw WSOGetWordsParseError()
-    }
 }

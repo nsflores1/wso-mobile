@@ -37,7 +37,6 @@ struct HomeView: View {
                             .textInputAutocapitalization(.never)
                         if !searchText.isEmpty {
                             Button {
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                 searchText = ""
                                 // TODO: clear search model if pressed
                             } label: {
