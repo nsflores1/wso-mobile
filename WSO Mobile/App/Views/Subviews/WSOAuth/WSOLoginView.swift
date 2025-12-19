@@ -11,7 +11,7 @@ struct WSOLoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var authManager = AuthManager()
-    
+    @State private var notificationManager = NotificationManager.shared
 
     var body: some View {
         NavigationStack {
@@ -29,8 +29,16 @@ struct WSOLoginView: View {
                 Button("Login") {
                     Task {
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                        // TODO: try this
-                        try await WSOAuthLogin(password: password, unixID: username)
+                        if try await authManager.login(
+                            username: username,
+                            password: password
+                        ) == true {
+                            await notificationManager.scheduleLocal(
+                                title: "Hurray!",
+                                body: "You have logged in successfully!",
+                                date: Date().addingTimeInterval(1)
+                            )
+                        }
                     }
                 }
                 .buttonStyle(.borderedProminent)

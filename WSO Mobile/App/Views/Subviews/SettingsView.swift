@@ -21,25 +21,25 @@ struct SettingsView: View {
                     Toggle("Enable Notifications", isOn: $notificationManager.isAuthorized)
                         .disabled(true)
                         .task {
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                             _ = await notificationManager.requestPermission()
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         }
                     if !notificationManager.isAuthorized {
                         Button("Enable in Settings...") {
                             Task {
-                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                                 _ = await notificationManager.requestPermission()
+                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                             }
                         }
                     }
                     Button("Test Notifications") {
                         Task {
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                             await notificationManager.scheduleLocal(
                                 title: "Hurray!",
                                 body: "Notifications actually work now!",
                                 date: Date().addingTimeInterval(1)
                             )
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         }
                     }
                     // TODO: implement a notification for upcoming record releases
@@ -65,18 +65,18 @@ struct SettingsView: View {
                 }
                 Section {
                     Button("Reset Onboarding") {
-                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         hasSeenOnboarding.toggle()
+                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                     }.sensoryFeedback(.selection, trigger: hatesEatingOut)
                     Button("Force Clear Cache") {
                         Task {
-                            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                             URLCache.shared.removeAllCachedResponses()
                             await notificationManager.scheduleLocal(
                                 title: "Cache cleared!",
                                 body: "Please restart the app.",
                                 date: Date().addingTimeInterval(1)
                             )
+                            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                         }
                     }
                 } header : {

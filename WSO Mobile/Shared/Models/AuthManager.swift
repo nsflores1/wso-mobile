@@ -53,13 +53,12 @@ class AuthManager {
         guard status == errSecSuccess else {
             throw KeychainError.unhandledError(status: status)
         }
-
     }
 
     // note that this can throw, so handle that!
     // in which case the user must manually re-enter auth details
     // every single time from their password booklet.
-    func getToken() async throws -> String {
+    func getToken() async throws -> Bool {
         let context = LAContext()
         context.localizedReason = "Authenticate to access your WSO account"
 
@@ -93,7 +92,8 @@ class AuthManager {
               let token = String(data: data, encoding: .utf8) else {
             throw KeychainError.unhandledError(status: status)
         }
-        return token
+        self.authToken = token
+        return true
     }
 
     func deleteToken() {
@@ -102,6 +102,9 @@ class AuthManager {
             kSecAttrAccount as String: keychainKey
         ]
         SecItemDelete(query as CFDictionary)
+        // we had better not keep using it, then
+        // if you call this, don't be a moron and remember to get a fresh token
+        self.authToken = nil
     }
 
     // this should be used in the case we need to login,
@@ -112,6 +115,9 @@ class AuthManager {
         let token = try await WSOAuthLogin(password: password, unixID: username)
         if token.data?.token != nil {
             try saveToken(token.data!.token!)
+            self.authToken = token.data!.token!
+            self.isAuthenticated = true
+            // TODO: get the current user and save it to ourselves
             return true
         }
         return false
