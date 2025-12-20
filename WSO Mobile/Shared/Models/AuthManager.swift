@@ -58,7 +58,7 @@ class AuthManager {
     // note that this can throw, so handle that!
     // in which case the user must manually re-enter auth details
     // every single time from their password booklet.
-    func getToken() async throws -> Bool {
+    func getToken() async throws -> String {
         let context = LAContext()
         context.localizedReason = "Authenticate to access your WSO account"
 
@@ -93,7 +93,7 @@ class AuthManager {
             throw KeychainError.unhandledError(status: status)
         }
         self.authToken = token
-        return true
+        return token
     }
 
     func deleteToken() {
@@ -116,9 +116,18 @@ class AuthManager {
         if token.data?.token != nil {
             try saveToken(token.data!.token!)
             self.authToken = token.data!.token!
-            self.isAuthenticated = true
-            // TODO: get the current user and save it to ourselves
-            return true
+            // now the moment of truth:
+            print(self.authToken ?? "(no token)")
+            self.currentUser = try await WSOGetUserSelf()
+            if self.currentUser != nil {
+                self.isAuthenticated = true
+                return true
+            } else {
+                // this token is clearly bogus
+                self.isAuthenticated = false
+                self.authToken = nil
+                return false
+            }
         }
         return false
         // TODO: Something that needs to be implemented in here:

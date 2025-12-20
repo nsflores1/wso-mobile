@@ -31,41 +31,18 @@ struct WSOAuthLoginForm: Codable {
 }
 
 @available(macOS 14.0, *)
-func newWSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin {
-    let parser = JSONParser<WSOAuthLogin>()
-    let request = WebRequest<NoParser, JSONParser<WSOAuthLogin>>(
+func WSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin {
+    let parser = JSONISO8601Parser<WSOAuthLogin>()
+    let request = WebRequest<NoParser, JSONISO8601Parser<WSOAuthLogin>>(
         url: URL(string: "https://wso.williams.edu/api/v2/auth/login")!,
         requestType: .post,
         postParser: parser
     )
-    let formData: WSOAuthLoginForm = .init(localIP: true, password: password, unixID: unixID, useIP: true)
-    let formDataJSON = try JSONEncoder().encode(formData)
-    return try await request.post(sendData: formDataJSON)
-}
-
-func WSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin {
-    var request = HTTPRequest(method: .post, url: URL(string: "https://wso.williams.edu/api/v2/auth/login")!)
-    request.headerFields[.userAgent] = "New WSO Mobile/0.1"
-
     // TODO: investigatory research reveals that our IP location DOES matter a lot.
     // check our IP and see if we're in Williamstown. but how???
     let formData: WSOAuthLoginForm = .init(localIP: false, password: password, unixID: unixID, useIP: true)
-    request.headerFields[.contentType] = "application/json"
-    request.headerFields[.accept] = "application/json"
     let formDataJSON = try JSONEncoder().encode(formData)
-    let str = (String(data: formDataJSON, encoding: .utf8) ?? "No data")
-    print(str)
-
-    let (data, _) = try await URLSession.shared.upload(for: request, from: formDataJSON)
-    let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .iso8601
-
-    let decodedResponse = try decoder.decode(
-        WSOAuthLogin.self,
-        from: data
-    )
-    print(decodedResponse.data?.token ?? "No token returned")
-    return decodedResponse
+    return try await request.post(sendData: formDataJSON)
 }
 
 // test debug login for CLI.
@@ -73,10 +50,4 @@ func WSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin
 func doWSOAuthLogin(password: String, unixID: String) async throws {
     let result = try await WSOAuthLogin(password: password, unixID: unixID)
     print(result.data?.token ?? "No token")
-}
-
-// stupid filler function for our buttons on the home screen
-// until we add the actual auth system
-func signIn() {
-    print("clicked!")
 }

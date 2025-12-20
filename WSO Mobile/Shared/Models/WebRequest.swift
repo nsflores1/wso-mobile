@@ -7,6 +7,7 @@
 
 // meta-class that handles the oft-annoying task of fetching data over the internet.
 
+import SwiftUI
 import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
@@ -25,6 +26,7 @@ protocol DataParser {
 enum WebRequestError : Error {
     case notFound           // resource doesn't exist
     case noInternet         // network unreachable
+    case noToken            // unable to authenticate
     case internalFailure    // parsing/data corruption/etc
     case noParser           // internal parsing failure, don't show to users
     case unknown(Error)     // catch-all wrapper
@@ -34,6 +36,8 @@ enum WebRequestError : Error {
                 return "Data not found on server"
             case .noInternet:
                 return "No internet connection available"
+            case .noToken:
+                return "No token found for authentication, or token is invalid"
             case .internalFailure:
                 return "Failed to process data"
             case .noParser:
@@ -56,6 +60,8 @@ enum WebRequestError : Error {
 // TODO: implement the various other HTTP request methods as they come up
 
 class WebRequest<GetParser: DataParser, PostParser: DataParser> {
+    @State private var authManager = AuthManager()
+
     private var session = URLSession.shared
     private let cache = URLCache.shared
 
@@ -101,13 +107,20 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
     }
 
     // TODO: make this actually make requests with authentication
-    func authGet(token: String) async throws -> GetParser.ParsedType {
+    func authGet() async throws -> GetParser.ParsedType {
         if getParser != nil {
             var request = HTTPRequest(method: .get, url: internalURL)
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
             request.headerFields[.accept] = getParser!.acceptType
 
+            let token = try await authManager.getToken()
+            request.headerFields[.authorization] = "Bearer \(token)"
+
             let (data, _) = try await session.data(for: request)
+
+            let str = (String(data: data, encoding: .utf8) ?? "No data")
+            print(str)
+
             return try await getParser!.parse(data: data)
         } else {
             throw WebRequestError.noParser
@@ -131,14 +144,20 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
     }
 
     // TODO: make this actually make requests with authentication
-    func authPost(token: String) async throws -> GetParser.ParsedType {
-        if getParser != nil {
-            var request = HTTPRequest(method: .get, url: internalURL)
+    func authPost(sendData: Data) async throws -> PostParser.ParsedType {
+        if postParser != nil {
+            var request = HTTPRequest(method: .post, url: internalURL)
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
-            request.headerFields[.accept] = getParser!.acceptType
+            request.headerFields[.accept] = postParser!.acceptType
+            request.headerFields[.contentType] = postParser!.contentType
 
-            let (data, _) = try await session.data(for: request)
-            return try await getParser!.parse(data: data)
+            let token = try await authManager.getToken()
+            request.headerFields[.authorization] = "Bearer \(token)"
+
+                // TODO: we should handle errors better than this
+            let (data, _) = try await session.upload(for: request, from: sendData)
+
+            return try await postParser!.parse(data: data)
         } else {
             throw WebRequestError.noParser
         }
@@ -179,6 +198,23 @@ class JSONParser<T: Codable>: DataParser {
         let str = (String(data: data, encoding: .utf8) ?? "No data")
         print(str)
         let decoder = JSONDecoder()
+        let decodedResponse = try decoder.decode(T.self, from: data)
+        return decodedResponse
+    }
+}
+
+// a parser for ISO8601-date JSON
+class JSONISO8601Parser<T: Codable>: DataParser {
+    typealias ParsedType = T
+
+    let acceptType: String = "application/json"
+    let contentType: String = "application/json"
+
+    func parse(data: Data) async throws -> T  {
+            //let str = (String(data: data, encoding: .utf8) ?? "No data")
+            //print(str)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         let decodedResponse = try decoder.decode(T.self, from: data)
         return decodedResponse
     }

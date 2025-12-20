@@ -16,6 +16,9 @@ struct WSOLoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                if authManager.currentUser != nil {
+                    Text("Welcome to WSO, \(authManager.currentUser!.williamsEmail)!")
+                }
                 Text("Enter your Unix login (no email):")
                 TextField("Username", text: $username)
                     .textInputAutocapitalization(.never)

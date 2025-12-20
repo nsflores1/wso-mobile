@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import HTTPTypes
+import HTTPTypesFoundation
 
 // WSO has a concept of a "user" which is present frequently throughout the code.
 // so this provides some abstractions by making a User class which is Codable
@@ -41,4 +43,29 @@ extension User: Comparable {
     static func == (lhs: User, rhs: User) -> Bool {
         lhs.name == rhs.name
     }
+}
+
+
+// helper method to get a user
+func WSOGetUser(userid: Int) async throws -> User {
+    let parser = JSONParser<User>()
+    let request = WebRequest<JSONParser<User>, NoParser>(
+        url: URL(string: "https://wso.williams.edu/api/v2/users/\(userid)")!,
+        requestType: .get,
+        getParser: parser
+    )
+    return try await request.authGet()
+}
+
+// helper method to get oneself
+func WSOGetUserSelf() async throws -> User {
+    let parser = JSONParser<User>()
+    let request = WebRequest<JSONParser<User>, NoParser>(
+        url: URL(string: "https://wso.williams.edu/api/v2/users/me")!,
+        requestType: .get,
+        getParser: parser
+    )
+    let str = try await request.authGet()
+    print(str.name)
+    return try await request.authGet()
 }
