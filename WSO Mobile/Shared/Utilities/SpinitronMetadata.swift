@@ -118,27 +118,10 @@ struct WCFMShowMeta: Codable {
     }
 }
 
-// a parser for ISO8601-date JSON
-class JSONISO8601Parser<T: Codable>: DataParser {
-    typealias ParsedType = T
-
-    let acceptType: String = "application/json"
-    let contentType: String = "application/json"
-
-    func parse(data: Data) async throws -> T  {
-        //let str = (String(data: data, encoding: .utf8) ?? "No data")
-        //print(str)
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        let decodedResponse = try decoder.decode(T.self, from: data)
-        return decodedResponse
-    }
-}
-
 func getWCFMPlaylist() async throws -> WCFMPlaylist {
     let parser = JSONISO8601Parser<WCFMPlaylist>()
     let request = WebRequest<JSONISO8601Parser<WCFMPlaylist>, NoParser>(
-        url: URL(string: "https://wso.williams.edu/playlists.json")!,
+        url: URL(string: "https://wso.williams.edu/mobile/playlists.json")!,
         requestType: .get,
         getParser: parser
     )
@@ -148,7 +131,7 @@ func getWCFMPlaylist() async throws -> WCFMPlaylist {
 func getWCFMSpin() async throws -> WCFMSpin {
     let parser = JSONISO8601Parser<WCFMSpin>()
     let request = WebRequest<JSONISO8601Parser<WCFMSpin>, NoParser>(
-        url: URL(string: "https://wso.williams.edu/spins.json")!,
+        url: URL(string: "https://wso.williams.edu/mobile/spins.json")!,
         requestType: .get,
         getParser: parser
     )
@@ -158,7 +141,7 @@ func getWCFMSpin() async throws -> WCFMSpin {
 func getWCFMShow() async throws -> WCFMShow {
     let parser = JSONISO8601Parser<WCFMShow>()
     let request = WebRequest<JSONISO8601Parser<WCFMShow>, NoParser>(
-        url: URL(string: "https://wso.williams.edu/shows.json")!,
+        url: URL(string: "https://wso.williams.edu/mobile/shows.json")!,
         requestType: .get,
         getParser: parser
     )
@@ -166,7 +149,7 @@ func getWCFMShow() async throws -> WCFMShow {
 }
 
 func oldGetWCFMPlaylist() async throws -> WCFMPlaylist {
-    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/playlists.json")!)
+    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/mobile/playlists.json")!)
 
     let (data, _) = try await URLSession.shared.data(for: request)
     let decoder = JSONDecoder()
@@ -177,7 +160,7 @@ func oldGetWCFMPlaylist() async throws -> WCFMPlaylist {
 }
 
 func oldGetWCFMSpin() async throws -> WCFMSpin {
-    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/spins.json")!)
+    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/mobile/spins.json")!)
 
     let (data, _) = try await URLSession.shared.data(for: request)
     let decoder = JSONDecoder()
@@ -188,7 +171,7 @@ func oldGetWCFMSpin() async throws -> WCFMSpin {
 }
 
 func oldGetWCFMShow() async throws -> WCFMShow {
-    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/shows.json")!)
+    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/mobile/shows.json")!)
 
     let (data, _) = try await URLSession.shared.data(for: request)
     let decoder = JSONDecoder()

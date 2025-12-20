@@ -16,7 +16,7 @@ struct LibraryHours: Codable, Hashable {
 struct LibraryHoursParseError : Error {}
 
 func parseLibraryHours() async throws -> [LibraryHours] {
-    let url = URL(string: "https://wso.williams.edu/library_hours_today.html")!
+    let url = URL(string: "https://wso.williams.edu/mobile/library_hours_today.html")!
     do {
         let (data, _) = try await URLSession.shared.data(from: url)
 

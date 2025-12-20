@@ -65,7 +65,7 @@ func parseArticleContent(_ content: String) async throws -> [ArticleElement] {
 }
 
 func parseWilliamsRecord() async throws -> [NewsFeed] {
-    let feed = try await RSSFeed(urlString: "https://wso.williams.edu/williams_record.rss")
+    let feed = try await RSSFeed(urlString: "https://wso.williams.edu/mobile/williams_record.rss")
     // this is probably safe but needs more sanity checks
     // also I could do this with a .map but it's simply too complicated to be worth it
     // this is naturally an iterative task. and its pretty fast too since n is small

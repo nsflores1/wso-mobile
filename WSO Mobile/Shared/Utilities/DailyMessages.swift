@@ -81,7 +81,7 @@ func parseDailyMessages() async throws -> [String: [DailyMessagePost]] {
 
 // TODO: delete this when you confirm the new one work
 func oldParseDailyMessages() async throws -> [String: [DailyMessagePost]] {
-    let url = URL(string: "https://wso.williams.edu/daily_messages.html")!
+    let url = URL(string: "https://wso.williams.edu/mobile/daily_messages.html")!
     let (data, _) = try await URLSession.shared.data(from: url)
 
         // debug feature, hidden. unhide to see raw URL read data
