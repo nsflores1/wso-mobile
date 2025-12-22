@@ -100,6 +100,8 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             request.headerFields[.accept] = getParser!.acceptType
 
             let (data, _) = try await session.data(for: request)
+            let str = String(data: data, encoding: .utf8)
+            print(str!)
             return try await getParser!.parse(data: data)
         } else {
             throw WebRequestError.noParser

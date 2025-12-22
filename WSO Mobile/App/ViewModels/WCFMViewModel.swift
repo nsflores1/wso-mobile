@@ -19,7 +19,7 @@ class WCFMViewModel {
     private var metadataTimer: Timer?
     var isPlaying = false
     var error: Error?
-    var streamURL = URL(string: "")
+    var streamURL = URL(string: "http://wcfm-streaming.williams.edu:8000/stream")
     var currentTrack: WCFMSpinItem?
 
     init(url: URL) {

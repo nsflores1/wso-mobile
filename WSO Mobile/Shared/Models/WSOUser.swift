@@ -66,6 +66,6 @@ func WSOGetUserSelf() async throws -> User {
         getParser: parser
     )
     let str = try await request.authGet()
-    print(str.name)
+    print(str.self)
     return try await request.authGet()
 }
