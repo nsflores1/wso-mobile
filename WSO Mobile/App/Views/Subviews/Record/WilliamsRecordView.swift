@@ -12,7 +12,8 @@ import SwiftSoup
 
 struct WilliamsRecordView: View {
     @State private var viewModel = WilliamsRecordViewModel()
-    
+    @AppStorage("likesSerifFont") private var likesSerifFont: Bool = false
+
     var body: some View {
         List {
             if viewModel.isLoading {

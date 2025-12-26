@@ -6,19 +6,23 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct SettingsView: View {
     @AppStorage("likesMath") var likesMath: Bool = false
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+    @AppStorage("likesSerifFont") private var likesSerifFont: Bool = false
 
-    @State private var notificationManager = NotificationManager.shared
-    
+    @Environment(NotificationManager.self) private var notificationManager
+    @Environment(AuthManager.self) private var authManager
+
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    Toggle("Enable Notifications", isOn: $notificationManager.isAuthorized)
+                    // TODO: rewrite this when Apple releases a less awful way of doing bindings in non-closure environments
+                    Toggle("Enable Notifications", isOn: Binding(get: { notificationManager.isAuthorized}, set: { _ in }))
                         .disabled(true)
                         .task {
                             _ = await notificationManager.requestPermission()
@@ -54,6 +58,10 @@ struct SettingsView: View {
                         .simultaneousGesture(TapGesture().onEnded {
                         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                     })
+                    Toggle("Use Serif Font For Record", isOn: $likesSerifFont)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                        })
                     Toggle("Hide All Restaurants", isOn: $hatesEatingOut)
                         .simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
@@ -70,9 +78,25 @@ struct SettingsView: View {
                     }.sensoryFeedback(.selection, trigger: hatesEatingOut)
                     Button("Force Clear Cache") {
                         Task {
+                            // URL requests
                             URLCache.shared.removeAllCachedResponses()
+                            // Kingfisher Image Data
+                            ImageCache.default.clearMemoryCache()
+                            await ImageCache.default.clearDiskCache()
+                            // we're done!
                             await notificationManager.scheduleLocal(
                                 title: "Cache cleared!",
+                                body: "Please restart the app.",
+                                date: Date().addingTimeInterval(1)
+                            )
+                            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                        }
+                    }
+                    Button("Logout of WSO") {
+                        Task {
+                            authManager.logout()
+                            await notificationManager.scheduleLocal(
+                                title: "Logout complete!",
                                 body: "Please restart the app.",
                                 date: Date().addingTimeInterval(1)
                             )
