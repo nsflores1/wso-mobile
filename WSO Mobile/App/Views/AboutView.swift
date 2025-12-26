@@ -283,9 +283,22 @@ struct AboutView: View {
                     }
                 }
                 Section("Special Mentions") {
-                    Text("Dylan Safai - das5@williams.edu")
+                    NavigationLink {
+                        WSOProfileView(viewModel: WSOUserViewModel(userID: 14046))
+                    } label: {
+                        Text("Dylan Safai - das5@williams.edu")
+                    }
                     Text("Ye Shu - https://shuye.dev")
-                    Text("Matthew Baya - mjb9@williams.edu")
+                    NavigationLink {
+                        WSOProfileView(viewModel: WSOUserViewModel(userID: 5515))
+                    } label: {
+                        Text("Matthew Baya - mjb9@williams.edu")
+                    }
+                    NavigationLink {
+                        WSOProfileView(viewModel: WSOUserViewModel(userID: 9487))
+                    } label: {
+                        Text("Dan Barowy - dwb1@williams.edu")
+                    }
                     Text("Aidan Lloyd-Tucker - aidanlloydtucker@gmail.com")
                     Text("The many WSO developers of yore").italic(true)
                 }

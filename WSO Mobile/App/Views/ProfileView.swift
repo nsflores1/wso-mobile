@@ -52,21 +52,40 @@ struct ProfileView: View {
                         }
                         HStack {
                             Text(viewModel.data?.name ?? "Loading...").bold()
-                            Text("(Class of \(viewModel.data?.classYear.description ?? "(N/A)"))").italic()
+                            if viewModel.data?.type == "staff" {
+                                Text("(Staff)").italic()
+                            } else if viewModel.data?.type == "professor" {
+                                Text("(Professor)").italic()
+                            } else if viewModel.data?.type == "student" {
+                                Text("(Class of \(viewModel.data?.classYear?.description ?? "(N/A)"))").italic()
+                            }
                         }
                         if let admin = viewModel.data?.admin {
                             if admin { Text("WSO Administrator").shimmering() }
                         }
+                        if viewModel.data?.type == "staff" || viewModel.data?.type == "professor" {
+                            if let title = viewModel.data?.title {
+                                Text(title).font(.headline)
+                            }
+                        }
                     }.frame(maxWidth: .infinity, alignment: .center)
                     VStack(alignment: .leading) {
                         Section {
-                            Text("Unix: ").bold() + Text(viewModel.data?.unixID ?? "Loading...").italic() + Text("@williams.edu")
-                            Text("Tags: ")
-                                .bold() + Text(
-                                    viewModel.data?.tags?
-                                        .compactMap(\.name)
-                                        .joined(separator: ", ") ?? "(No tags)"
-                                )
+                            Text("Unix: ").bold() + Text(viewModel.data?.unixID ?? "...").italic() + Text("@williams.edu")
+                            if let department = viewModel.data?.department {
+                                Text("Department: ").bold() + Text(department.name)
+                            }
+                            if let office = viewModel.data?.office {
+                                Text("Office: ").bold() + Text(office.number)
+                            }
+                            if viewModel.data?.type == "student" {
+                                Text("Tags: ")
+                                    .bold() + Text(
+                                        viewModel.data?.tags?
+                                            .compactMap(\.name)
+                                            .joined(separator: ", ") ?? "(No tags)"
+                                    )
+                            }
                             if let suBox = viewModel.data?.suBox {
                                 Text("SU Box: ").bold() + Text(suBox)
                             }
@@ -75,7 +94,9 @@ struct ProfileView: View {
                                     Text("Hometown: ").bold() + Text("\(homeTown), \(homeState)")
                                 }
                             }
-                            Text("Pronouns: ").bold() + Text(viewModel.data?.pronoun ?? "Loading...")
+                            if viewModel.data?.pronoun?.isEmpty == false {
+                                Text("Pronouns: ").bold() + Text(viewModel.data?.pronoun ?? "Loading...")
+                            }
                         }
                     }
                 } header : {
@@ -94,6 +115,14 @@ struct ProfileView: View {
             .task { await viewModel.fetchIfNeeded() }
             .refreshable {
                 await viewModel.forceRefresh()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        // TODO: ADD EDIT CAPABILITIES
+                        Label("Share", systemImage: "square.and.pencil")
+                    }
+                }
             }
         }
     }
