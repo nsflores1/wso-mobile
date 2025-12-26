@@ -27,6 +27,23 @@ struct SpringStreetRestaurantView: View {
                         Section
                         {
                             Text("Thai and Japanese lunch and dinner.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-458-0004")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-0004")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://bluemangothai.com")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("bluemangothai.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -48,6 +65,23 @@ struct SpringStreetRestaurantView: View {
                         Section
                         {
                             Text("Sandwiches, soups, and salads.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-458-5969")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-5969")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.yelp.com/biz/pappa-charlies-deli-williamstown")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("yelp.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -69,6 +103,23 @@ struct SpringStreetRestaurantView: View {
                         Section
                         {
                             Text("Pizzas and salads.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-884-6131")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-884-6131")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.crustpz.com")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("crustpz.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -100,6 +151,23 @@ struct SpringStreetRestaurantView: View {
                         Section
                         {
                             Text("Modern Indian lunch and dinner.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-458-5200")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-5200")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.spiceroot.com")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("spiceroot.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -123,6 +191,23 @@ struct SpringStreetRestaurantView: View {
                         Section
                         {
                             Text("Pizzeria and American-style dinner. Also the place for Trivia Nights.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-307-4521")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-307-4521")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.thelogbyramuntos.com")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("thelogbyramuntos.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -150,6 +235,23 @@ struct SpringStreetRestaurantView: View {
                         Section
                         {
                             Text("Mexican lunch and dinner.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-344-5121")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-5121")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.yelp.com/biz/tonys-sombrero-williamstown")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("yelp.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -174,6 +276,14 @@ struct SpringStreetRestaurantView: View {
                         {
                             Text("American pub.")
                             Text("Note: Purple Pub is likely closed for the forseeable future.").italic()
+                            Link(destination: URL(string: "https://thepurplepub.net")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("thepurplepub.net")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -199,6 +309,23 @@ struct SpringStreetRestaurantView: View {
                         Section
                         {
                             Text("Mediterranean cuisine.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-458-8676")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-8676")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.platesbistro.com")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("platesbistro.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()

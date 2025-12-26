@@ -26,6 +26,23 @@ struct RestOfWilliamstownView: View {
                         Section
                         {
                             Text("American tavern food.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-458-2175")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-2175")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.waterstgrill.com")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("waterstgrill.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -47,6 +64,23 @@ struct RestOfWilliamstownView: View {
                         Section
                         {
                             Text("Bakery selling many types of pastries.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-458-3600")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-3600")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.facebook.com/AFrameBakery/")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("facebook.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -72,6 +106,23 @@ struct RestOfWilliamstownView: View {
                         Section
                         {
                             Text("Mexican and Spanish dinner.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-458-4240")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-4240")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.facebook.com/coyoteflaco")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("facebook.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -99,6 +150,14 @@ struct RestOfWilliamstownView: View {
                         Section
                         {
                             Text("Mediterranean upscale multi-course dinner.")
+                            Link(destination: URL(string: "https://www.mezzerestaurant.com")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("mezzerestaurant.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()

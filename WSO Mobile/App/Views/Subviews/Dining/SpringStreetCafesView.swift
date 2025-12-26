@@ -26,6 +26,23 @@ struct SpringStreetCafesView: View {
                         Section
                         {
                             Text("Breakfast and lunch offerings.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-458-6192")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-6192")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.thespringstreetmarketandcafe.com")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("thespringstreetmarketandcafe.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
@@ -57,6 +74,14 @@ struct SpringStreetCafesView: View {
                                 .foregroundStyle(ColorScheme.dark.self == .dark ? Color.white : Color.black)
                                 .listRowBackground(Color.accent)
                         }
+                        Link(destination: URL(string: "https://www.teaandbobalounge.com")!)
+                        {
+                            HStack {
+                                Image(systemName: "network")
+                                Text("teaandbobalounge.com")
+                                    .foregroundStyle(.accent)
+                            }
+                        }
                         Section
                         {
                             Text("Monday-Saturday: 11AM-5PM")
@@ -74,6 +99,23 @@ struct SpringStreetCafesView: View {
                         Section
                         {
                             Text("Coffee, pastries, and breakfast.")
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: "tel://413-458-5010")!)
+                            }) {
+                                HStack {
+                                    Image(systemName: "phone")
+                                    Text("413-458-5010")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            Link(destination: URL(string: "https://www.tunnelcitycoffee.com")!)
+                            {
+                                HStack {
+                                    Image(systemName: "network")
+                                    Text("tunnelcitycoffee.com")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
                         } header : {
                             Text("Description")
                                 .italic()
