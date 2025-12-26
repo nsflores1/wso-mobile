@@ -14,74 +14,76 @@ struct DiningView: View {
     var body: some View {
         NavigationStack {
             if viewModel.isLoading && viewModel.diningMenu.isEmpty {
-                        // TODO: make a nicer ProgressView()
-                    ProgressView()
-                    .navigationTitle(Text("Dining"))
-                    // TODO: setting this three times is DUMB but whatevs
-                } else if let error = viewModel.errorMessage {
-                        // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
-                    Text(error).foregroundStyle(Color.red)
-                    .navigationTitle(Text("Dining"))
-                } else {
-                    // ALL dining hours stuff lives in here,
-                    // not just the dining hall ones.
-                    List {
-                        if (hatesEatingOut == false) {
-                            Section {
-                                NavigationLink("Ephelia's Roots") {
-                                    EpheliasRootHoursView()
-                                }
-                                NavigationLink("Spring Street Cafes") {
-                                    SpringStreetCafesView()
-                                }
-                                NavigationLink("Spring Street Restaurants") {
-                                    SpringStreetRestaurantView()
-                                }
-                                NavigationLink("Rest of Williamstown") {
-                                    RestOfWilliamstownView()
-                                }
-                            } header: {
-                                Text("Off-Campus & Campus Stores")
-                                    .fontWeight(.semibold)
-                                    .font(.title3)
-                            }
-                        }
+                ProgressView()
+                .navigationTitle(Text("Dining"))
+            } else if let err = viewModel.error {
+                Group {
+                    Text(err.localizedDescription).foregroundStyle(Color.red)
+                        .navigationTitle(Text("Dining"))
+                }.refreshable {
+                    await viewModel.forceRefresh()
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                }
+            } else {
+                // ALL dining hours stuff lives in here,
+                // not just the dining hall ones.
+                List {
+                    if (hatesEatingOut == false) {
                         Section {
-                            ForEach(
-                                viewModel.diningMenu.sorted(),
-                                id: \.hallName
-                            ) { hall in
-                                NavigationLink(destination: DiningVendorView(menu: hall)) {
-                                    HStack {
-                                        Text(hall.hallName)
-                                            // TODO: some way to track hall status here. is it open? is it closed?
-                                            // consider parsing everything as a date.
-                                    }
-                                }
-
+                            NavigationLink("Ephelia's Roots") {
+                                EpheliasRootHoursView()
+                            }
+                            NavigationLink("Spring Street Cafes") {
+                                SpringStreetCafesView()
+                            }
+                            NavigationLink("Spring Street Restaurants") {
+                                SpringStreetRestaurantView()
+                            }
+                            NavigationLink("Rest of Williamstown") {
+                                RestOfWilliamstownView()
                             }
                         } header: {
-                            Text("On-Campus Dining Halls")
+                            Text("Off-Campus & Campus Stores")
                                 .fontWeight(.semibold)
                                 .font(.title3)
                         }
-                    }.listStyle(.sidebar)
-                    .refreshable {
+                    }
+                    Section {
+                        ForEach(
+                            viewModel.diningMenu.sorted(),
+                            id: \.hallName
+                        ) { hall in
+                            NavigationLink(destination: DiningVendorView(menu: hall)) {
+                                HStack {
+                                    Text(hall.hallName)
+                                        // TODO: some way to track hall status here. is it open? is it closed?
+                                        // consider parsing everything as a date.
+                                }
+                            }
+
+                        }
+                    } header: {
+                        Text("On-Campus Dining Halls")
+                            .fontWeight(.semibold)
+                            .font(.title3)
+                    }
+                }.listStyle(.sidebar)
+                .refreshable {
                         await viewModel.forceRefresh()
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    }
-                    .navigationTitle(Text("Dining"))
-                    .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))
-                    .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            HStack {
-                                NavigationLink(destination: DiningKeyView()) {
-                                    Image(systemName: "questionmark")
-                                }
+                }
+                .navigationTitle(Text("Dining"))
+                .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HStack {
+                            NavigationLink(destination: DiningKeyView()) {
+                                Image(systemName: "questionmark")
                             }
                         }
                     }
                 }
+            }
         }.task { await viewModel.fetchIfNeeded() }
     }
 }

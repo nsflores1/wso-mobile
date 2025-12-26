@@ -132,7 +132,12 @@ struct HomeView: View {
                 }
                 LibraryHoursView()
                 DailyMessagesView()
-            }.refreshable {
+            }
+            .task {
+                await libraryViewModel.fetchIfNeeded()
+                await dailyMessagesViewModel.fetchIfNeeded()
+            }
+            .refreshable {
                 await libraryViewModel.forceRefresh()
                 await dailyMessagesViewModel.forceRefresh()
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()

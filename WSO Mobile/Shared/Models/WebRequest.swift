@@ -24,24 +24,33 @@ protocol DataParser {
 }
 
 enum WebRequestError : Error {
-    case notFound           // resource doesn't exist
-    case noInternet         // network unreachable
-    case noToken            // unable to authenticate
-    case internalFailure    // parsing/data corruption/etc
-    case noParser           // internal parsing failure, don't show to users
-    case unknown(Error)     // catch-all wrapper
+    case notFound                   // resource doesn't exist
+    case noInternet                 // network unreachable
+    case noToken                    // unable to authenticate
+    case invalidResponse            // HTTP code was invalid
+    case internalFailure            // parsing/data corruption/etc
+    case noParser                   // internal parsing failure, don't show to users
+    case parseError(DecodingError)  // error takes place inside the parsing step
+    case unknown(Error)             // catch-all wrapper
+}
+
+extension WebRequestError: LocalizedError {
     var errorDescription: String? {
         switch self {
             case .notFound:
-                return "Data not found on server"
+                return "Data not found on server."
             case .noInternet:
-                return "No internet connection available"
+                return "No internet connection available."
             case .noToken:
-                return "No token found for authentication, or token is invalid"
+                return "No token found for authentication, or token is invalid."
+            case .invalidResponse:
+                return "Invalid response from server."
             case .internalFailure:
-                return "Failed to process data"
+                return "Failed to process data."
             case .noParser:
                 return "Request was made yet no parser avaiable for it."
+            case .parseError(let error):
+                return "Error occured during parsing of data: \(error.localizedDescription)"
             case .unknown(let error):
                 return "Unexpected error: \(error.localizedDescription)"
         }
@@ -82,13 +91,6 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         self.postParser = postParser
         self.requestType = requestType
         self.internalURL = url
-
-        // crank the global cache all the way up
-        // TODO: find a better place to do this.
-        // this is OKAY, but will eventually introduce subtle problems, because like
-        // who in god's green earth would expect this code to be HERE of all places?
-        if cache.memoryCapacity >= 50_000_000 { cache.memoryCapacity = 50_000_000 }
-        if cache.diskCapacity >= 100_000_000 { cache.diskCapacity = 100_000_000 }
     }
 
     func get() async throws -> GetParser.ParsedType {
@@ -97,10 +99,18 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
             request.headerFields[.accept] = getParser!.acceptType
 
-            let (data, _) = try await session.data(for: request)
+            let (data, response) = try await session.data(for: request)
+            guard let http = response as HTTPResponse?,
+                  (200..<300).contains(http.status.code) else {
+                throw WebRequestError.invalidResponse
+            }
             let str = String(data: data, encoding: .utf8)
             print(str!)
-            return try await getParser!.parse(data: data)
+            do {
+                return try await getParser!.parse(data: data)
+            } catch let decoding as DecodingError {
+                throw WebRequestError.parseError(decoding)
+            }
         } else {
             throw WebRequestError.noParser
         }
@@ -121,12 +131,19 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             //print(token)
             request.headerFields[.authorization] = "Bearer \(token)"
 
-            let (data, _) = try await session.data(for: request)
+            let (data, response) = try await session.data(for: request)
+            guard let http = response as HTTPResponse?,
+                  (200..<300).contains(http.status.code) else {
+                throw WebRequestError.invalidResponse
+            }
 
             let str = (String(data: data, encoding: .utf8) ?? "No data")
             print(str)
-
-            return try await getParser!.parse(data: data)
+            do {
+                return try await getParser!.parse(data: data)
+            } catch let decoding as DecodingError {
+                throw WebRequestError.parseError(decoding)
+            }
         } else {
             throw WebRequestError.noParser
         }
@@ -139,19 +156,34 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             request.headerFields[.accept] = postParser!.acceptType
             request.headerFields[.contentType] = postParser!.contentType
 
-            // TODO: we should handle errors better than this
             // for the case where we do have data
             if sendData != nil {
-                let (data, _) = try await session.upload(for: request, from: sendData!)
+                let (data, response) = try await session.upload(for: request, from: sendData!)
+                guard let http = response as HTTPResponse?,
+                      (200..<300).contains(http.status.code) else {
+                    throw WebRequestError.invalidResponse
+                }
                 //let str = (String(data: data, encoding: .utf8) ?? "No data")
                 //print(str)
-                return try await postParser!.parse(data: data)
+                do {
+                    return try await postParser!.parse(data: data)
+                } catch let decoding as DecodingError {
+                    throw WebRequestError.parseError(decoding)
+                }
             // we don't have a message body in this case!
             } else {
-                let (data, _) = try await session.data(for: request)
+                let (data, response) = try await session.data(for: request)
+                guard let http = response as HTTPResponse?,
+                      (200..<300).contains(http.status.code) else {
+                    throw WebRequestError.invalidResponse
+                }
                 //let str = (String(data: data, encoding: .utf8) ?? "No data")
                 //print(str)
-                return try await postParser!.parse(data: data)
+                do {
+                    return try await postParser!.parse(data: data)
+                } catch let decoding as DecodingError {
+                    throw WebRequestError.parseError(decoding)
+                }
             }
         } else {
             throw WebRequestError.noParser
@@ -166,20 +198,33 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             request.headerFields[.accept] = postParser!.acceptType
             request.headerFields[.contentType] = postParser!.contentType
 
-            // note to future maintainers: this is using the singleton,
-            // not the environment object
             let token = try AuthManager.shared.getToken()
             request.headerFields[.authorization] = "Bearer \(token)"
 
-            // TODO: we should handle errors better than this
             // for the case where we do have data
             if sendData != nil {
-                let (data, _) = try await session.upload(for: request, from: sendData!)
-                return try await postParser!.parse(data: data)
+                let (data, response) = try await session.upload(for: request, from: sendData!)
+                guard let http = response as HTTPResponse?,
+                      (200..<300).contains(http.status.code) else {
+                    throw WebRequestError.invalidResponse
+                }
+                do {
+                    return try await postParser!.parse(data: data)
+                } catch let decoding as DecodingError {
+                    throw WebRequestError.parseError(decoding)
+                }
             // we don't have a message body in this case!
             } else {
-                let (data, _) = try await session.data(for: request)
-                return try await postParser!.parse(data: data)
+                let (data, response) = try await session.data(for: request)
+                guard let http = response as HTTPResponse?,
+                      (200..<300).contains(http.status.code) else {
+                    throw WebRequestError.invalidResponse
+                }
+                do {
+                    return try await postParser!.parse(data: data)
+                } catch let decoding as DecodingError {
+                    throw WebRequestError.parseError(decoding)
+                }
             }
         } else {
             throw WebRequestError.noParser

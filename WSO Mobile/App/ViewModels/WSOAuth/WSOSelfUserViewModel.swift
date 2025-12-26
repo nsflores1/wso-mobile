@@ -12,22 +12,22 @@ import SwiftUI
 class WSOSelfUserViewModel {
     var data: User? // this value MUST exist
     var isLoading: Bool = false
-    var errorMessage: String?
+    var error: WebRequestError?
     private var hasFetched = false
-
-    let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
     func loadUser() async {
         isLoading = true
-        errorMessage = nil
+        error = nil
 
         do {
-            // TODO: add loading state from backend
-            let fileURL = docDir.appendingPathComponent("viewmodel_state.json")
             let data: User = try await WSOGetUserSelf()
             self.data = data
+        } catch let err as WebRequestError {
+            self.error = err
+            self.data = nil
         } catch {
-            self.errorMessage = "Failed to load user."
+            self.error = WebRequestError.internalFailure
+            self.data = nil
         }
 
         isLoading = false

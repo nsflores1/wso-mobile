@@ -67,36 +67,14 @@ struct DailyMessagePost: Codable {
     }
 }
 
-struct DailyMessagesParseError : Error {}
-
 func parseDailyMessages() async throws -> [String: [DailyMessagePost]] {
     let parser = JSONParser<DailyMessageCategory>()
     let request = WebRequest<JSONParser<DailyMessageCategory>, NoParser>(
-        url: URL(string: "https://wso.williams.edu/api/v2/words")!,
+        url: URL(string: "https://wso.williams.edu/mobile/daily_messages.html")!,
         requestType: .get,
         getParser: parser
     )
     return try await request.get().categories
-}
-
-// TODO: delete this when you confirm the new one work
-func oldParseDailyMessages() async throws -> [String: [DailyMessagePost]] {
-    let url = URL(string: "https://wso.williams.edu/mobile/daily_messages.html")!
-    let (data, _) = try await URLSession.shared.data(from: url)
-
-        // debug feature, hidden. unhide to see raw URL read data
-        // let str = (String(data: data, encoding: .utf8) ?? "No data")
-
-    do {
-        let decodedResponse = try JSONDecoder().decode(DailyMessageCategory.self, from: data)
-        return decodedResponse.categories
-    } catch {
-        // TODO: handle this in the GUI.
-        // maybe we need some way to handle past daily messages,
-        // and be able to load those from remote.
-        // but for now this works.
-        throw DailyMessagesParseError()
-    }
 }
 
 func doDailyMessages() async {

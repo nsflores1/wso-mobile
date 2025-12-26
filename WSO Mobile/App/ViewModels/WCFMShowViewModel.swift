@@ -11,19 +11,22 @@ import SwiftUI
 @Observable
 class WCFMShowViewModel {
     var isLoading: Bool = false
-    var errorMessage: String?
+    var error: WebRequestError?
     var currentShows: WCFMShow?
     private var hasFetched = false
 
     func loadPlaylists() async {
         isLoading = true
-        errorMessage = nil
+        error = nil
 
         do {
             let data: WCFMShow = try await getWCFMShow()
             self.currentShows = data
+        }  catch let err as WebRequestError {
+            self.error = err
+            self.currentShows = nil
         } catch {
-            self.errorMessage = "Failed to load shows."
+            self.error = WebRequestError.internalFailure
             self.currentShows = nil
         }
 

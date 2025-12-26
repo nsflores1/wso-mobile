@@ -189,46 +189,6 @@ func parseWilliamsDining() async throws -> [DiningHall] {
     return flattenMenuResponse(data)
 }
 
-struct WilliamsDiningParseError : Error {}
-
-func oldParseWilliamsDining() async throws -> MenuResponse {
-    let url = URL(string: "https://wso.williams.edu/dining.json")!
-    do {
-        let (data, _) = try await URLSession.shared.data(from: url)
-
-        let response = try JSONDecoder().decode(MenuResponse.self, from: data)
-
-        return response
-    } catch {
-        throw WilliamsDiningParseError()
-    }
-}
-
-func oldDoWilliamsDining() async {
-    do {
-        let response = try await oldParseWilliamsDining()
-
-        for (_, vendor) in response.vendors {
-            print("vendor: \(vendor.name)")
-
-            for (_, meal) in vendor.meals {
-                print("  meal: \(meal.name) (\(meal.hours.open) - \(meal.hours.close))")
-
-                if let courses = meal.courses {
-                    for (_, course) in courses {
-                        print("    course: \(course.name)")
-                        for item in course.items {
-                            print("      - \(item.name)")
-                        }
-                    }
-                }
-            }
-        }
-    } catch {
-        print("No menu contents")
-    }
-}
-
 func doWilliamsDining() async {
     do {
         let response = try await parseWilliamsDining()

@@ -25,16 +25,19 @@ struct WilliamsRecordView: View {
                 .listRowSeparator(.hidden)
                 .transition(.opacity)
             }
-            if let error = viewModel.errorMessage {
-                    // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
+            if let err = viewModel.error {
                 HStack {
-                    Text(error)
+                    Text(err.localizedDescription)
                         .foregroundStyle(Color.red)
                 }
                 .listRowSeparator(.hidden)
                 .transition(.opacity)
+                .refreshable {
+                    await viewModel.forceRefresh()
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                }
             }
-            if !viewModel.isLoading && viewModel.errorMessage == nil {
+            if !viewModel.isLoading && viewModel.error == nil {
                 ForEach(viewModel.posts, id: \.title) { post in
                     NavigationLink() {
                         WilliamsRecordArticleView(article: post)

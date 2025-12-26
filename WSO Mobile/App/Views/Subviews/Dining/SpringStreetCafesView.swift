@@ -15,9 +15,9 @@ struct SpringStreetCafesView: View {
         if viewModel.isLoading {
                 // TODO: make a nicer ProgressView()
             Text("Loading...")
-        } else if let error = viewModel.errorMessage {
+        } else if let err = viewModel.error {
                 // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
-            Text(error).foregroundStyle(Color.red)
+            Text(err.localizedDescription).foregroundStyle(Color.red)
         } else {
             NavigationStack {
                 List {

@@ -19,10 +19,9 @@ struct DailyMessagesView: View {
                 }
                 .listRowSeparator(.hidden)
                 .transition(.opacity)
-            } else if let error = viewModel.errorMessage {
-                    // THIS STATE MEANS BAD. USERS SHOULD NEVER SEE THIS
+            } else if let err = viewModel.error {
                 HStack {
-                    Text(error).foregroundStyle(Color.red)
+                    Text(err.localizedDescription).foregroundStyle(Color.red)
                     Spacer()
                 }
                 .listRowSeparator(.hidden)

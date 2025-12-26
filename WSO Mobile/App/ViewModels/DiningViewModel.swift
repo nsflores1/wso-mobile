@@ -12,18 +12,22 @@ import SwiftUI
 class DiningHoursViewModel {
     var diningMenu: [DiningHall] = []
     var isLoading: Bool = false
-    var errorMessage: String?
+    var error: WebRequestError?
     private var hasFetched = false
 
     func loadMenus() async {
         isLoading = true
-        errorMessage = nil
+        error = nil
 
         do {
             let data: [DiningHall] = try await parseWilliamsDining()
             self.diningMenu = data
+        } catch let err as WebRequestError {
+            self.error = err
+            self.diningMenu = []
         } catch {
-            self.errorMessage = "Failed to load dining hours."
+            self.error = WebRequestError.internalFailure
+            self.diningMenu = []
         }
 
         isLoading = false

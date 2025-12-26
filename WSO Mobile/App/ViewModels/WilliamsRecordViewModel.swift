@@ -12,20 +12,22 @@ import SwiftUI
 class WilliamsRecordViewModel {
     var posts: [NewsFeed] = []
     var isLoading: Bool = false
-    var errorMessage: String?
+    var error: WebRequestError?
     private var hasFetched = false
 
     func loadContent() async {
         isLoading = true
-        errorMessage = nil
+        error = nil
 
         do {
             let data: [NewsFeed] = try await parseWilliamsRecord()
             self.posts = data
-        } catch {
-            self.errorMessage = "Failed to load the Williams Record."
+        }  catch let err as WebRequestError {
+            self.error = err
             self.posts = []
-                // TODO: this is probably fine to leave it as null, right?
+        } catch {
+            self.error = WebRequestError.internalFailure
+            self.posts = []
         }
 
         isLoading = false

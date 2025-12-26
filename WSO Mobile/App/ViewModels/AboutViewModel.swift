@@ -23,6 +23,8 @@ class AboutViewModel {
             let data: String = try await WSOGetWords()
             self.words = data
         } catch {
+            // we don't need robust error handling for this
+            // if it fails, it fails
             self.errorMessage = "Failed to load WSO words."
             self.words = "Williams Students Online"
         }
