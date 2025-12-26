@@ -118,7 +118,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             // note to future maintainers: this is using the singleton,
             // not the environment object
             let token = try AuthManager.shared.getToken()
-            print(token)
+            //print(token)
             request.headerFields[.authorization] = "Bearer \(token)"
 
             let (data, _) = try await session.data(for: request)

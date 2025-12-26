@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class WSOUserViewModel {
+class WSOSelfUserViewModel {
     var data: User? // this value MUST exist
     var isLoading: Bool = false
     var errorMessage: String?

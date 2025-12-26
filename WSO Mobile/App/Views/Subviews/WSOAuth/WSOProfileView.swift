@@ -1,21 +1,26 @@
 //
-//  ProfileView.swift
+//  WSOProfileView.swift
 //  WSO Mobile
 //
-//  Created by Nathaniel Flores on 2025-11-09.
+//  Created by Nathaniel Flores on 2025-12-26.
 //
+
+// this is for users OTHER than the logged in one. that one has a special
+// viewmodel, because we basically NEVER want to deallocate our own login
+// the code is MOSTLY copied from ProfileView, but there's enough differences
+// to justify splitting them into separate views
 
 import SwiftUI
 import System
 import Kingfisher
 import Shimmer
 
-struct ProfileView: View {
+struct WSOProfileView: View {
     @Environment(\.openURL) private var openURL
     @Environment(AuthManager.self) private var authManager
     @Environment(NotificationManager.self) private var notificationManager
 
-    @State private var viewModel = WSOSelfUserViewModel()
+    @State var viewModel: WSOUserViewModel
     @State private var imageData: Data?
 
     var body: some View {
@@ -28,12 +33,12 @@ struct ProfileView: View {
                                 if let unixID = viewModel.data?.unixID {
                                     KFImage(
                                         source:
-                                            .provider(
-                                                RawImageDataProvider(
-                                                    data: data,
-                                                    cacheKey: "\(unixID).jpg"
+                                                .provider(
+                                                    RawImageDataProvider(
+                                                        data: data,
+                                                        cacheKey: "\(unixID).jpg"
+                                                    )
                                                 )
-                                            )
                                     )
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -79,7 +84,7 @@ struct ProfileView: View {
                         }
                     }
                 } header : {
-                    Text("Your Profile")
+                    Text("User Profile")
                         .fontWeight(.semibold)
                         .font(.title3)
                 }
@@ -102,3 +107,4 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
 }
+

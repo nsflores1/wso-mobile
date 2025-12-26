@@ -36,7 +36,7 @@ struct User: Codable, Equatable, Hashable {
     let homeTown: String?
     let homeVisible: Bool
     let id: Int
-    let tags: [WSOUserTag]
+    let tags: [WSOUserTag]?
     let suBox: String?
     let name: String
     let pronoun: String

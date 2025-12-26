@@ -69,8 +69,8 @@ class AuthManager {
             if apiToken.data?.token != nil {
                 // now to decode our token
                 let jwtToken = try decode(jwt: apiToken.data!.token!)
-                print(apiToken.data!.token!)
-                print(jwtToken.body)
+                //print(apiToken.data!.token!)
+                //print(jwtToken.body)
                 self.authToken = apiToken.data!.token!
                 self.isAuthenticated = true
             }
