@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var libraryViewModel = LibraryHoursViewModel()
     @State private var dailyMessagesViewModel = DailyMessagesViewModel()
+    @Environment(AuthManager.self) private var authManager
     @State private var searchText: String = ""
 
     // these warnings are for the user when they're not logged in
@@ -19,7 +20,6 @@ struct HomeView: View {
     @State private var facebookWarn = false
 
     // impact used for all haptic actions
-    
 
     // TODO: this can jump around when scrolling
     // To fix this, find some way to make a skeleton that you fill in,
@@ -154,9 +154,16 @@ struct HomeView: View {
                                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             })
                         }
-                        NavigationLink(destination: WSOLoginView()) {
+                        NavigationLink(destination: {
+                            if authManager.isAuthenticated {
+                                ProfileView()
+                            } else {
+                                WSOLoginView()
+                            }
+                        }) {
                             Image(systemName: "person")
-                        }.simultaneousGesture(TapGesture().onEnded {
+                        }
+                        .simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         })
                     }

@@ -60,8 +60,6 @@ enum WebRequestError : Error {
 // TODO: implement the various other HTTP request methods as they come up
 
 class WebRequest<GetParser: DataParser, PostParser: DataParser> {
-    @State private var authManager = AuthManager()
-
     private var session = URLSession.shared
     private let cache = URLCache.shared
 
@@ -115,7 +113,12 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
             request.headerFields[.accept] = getParser!.acceptType
 
-            let token = try await authManager.getToken()
+            print("starting authget!")
+
+            // note to future maintainers: this is using the singleton,
+            // not the environment object
+            let token = try AuthManager.shared.getToken()
+            print(token)
             request.headerFields[.authorization] = "Bearer \(token)"
 
             let (data, _) = try await session.data(for: request)
@@ -129,7 +132,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         }
     }
 
-    func post(sendData: Data) async throws -> PostParser.ParsedType {
+    func post(sendData: Data? = nil) async throws -> PostParser.ParsedType {
         if postParser != nil {
             var request = HTTPRequest(method: .post, url: internalURL)
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
@@ -137,29 +140,47 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             request.headerFields[.contentType] = postParser!.contentType
 
             // TODO: we should handle errors better than this
-            let (data, _) = try await session.upload(for: request, from: sendData)
-
-            return try await postParser!.parse(data: data)
+            // for the case where we do have data
+            if sendData != nil {
+                let (data, _) = try await session.upload(for: request, from: sendData!)
+                //let str = (String(data: data, encoding: .utf8) ?? "No data")
+                //print(str)
+                return try await postParser!.parse(data: data)
+            // we don't have a message body in this case!
+            } else {
+                let (data, _) = try await session.data(for: request)
+                //let str = (String(data: data, encoding: .utf8) ?? "No data")
+                //print(str)
+                return try await postParser!.parse(data: data)
+            }
         } else {
             throw WebRequestError.noParser
         }
     }
 
     // TODO: make this actually make requests with authentication
-    func authPost(sendData: Data) async throws -> PostParser.ParsedType {
+    func authPost(sendData: Data? = nil) async throws -> PostParser.ParsedType {
         if postParser != nil {
             var request = HTTPRequest(method: .post, url: internalURL)
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
             request.headerFields[.accept] = postParser!.acceptType
             request.headerFields[.contentType] = postParser!.contentType
 
-            let token = try await authManager.getToken()
+            // note to future maintainers: this is using the singleton,
+            // not the environment object
+            let token = try AuthManager.shared.getToken()
             request.headerFields[.authorization] = "Bearer \(token)"
 
-                // TODO: we should handle errors better than this
-            let (data, _) = try await session.upload(for: request, from: sendData)
-
-            return try await postParser!.parse(data: data)
+            // TODO: we should handle errors better than this
+            // for the case where we do have data
+            if sendData != nil {
+                let (data, _) = try await session.upload(for: request, from: sendData!)
+                return try await postParser!.parse(data: data)
+            // we don't have a message body in this case!
+            } else {
+                let (data, _) = try await session.data(for: request)
+                return try await postParser!.parse(data: data)
+            }
         } else {
             throw WebRequestError.noParser
         }
@@ -186,6 +207,16 @@ struct NoParser: DataParser {
     let contentType = ""
     func parse(data: Data) async throws -> Never {
         fatalError("no parser configured")
+    }
+}
+
+// a standard parser that just gives you the raw data.
+struct RawParser: DataParser {
+    typealias ParsedType = Data
+    let acceptType = ""
+    let contentType = ""
+    func parse(data: Data) async throws -> Data {
+        return data
     }
 }
 

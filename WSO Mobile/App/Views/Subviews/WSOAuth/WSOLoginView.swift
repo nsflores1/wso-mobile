@@ -10,46 +10,38 @@ import SwiftUI
 struct WSOLoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var authManager = AuthManager()
-    @State private var notificationManager = NotificationManager.shared
+    @Environment(AuthManager.self) private var authManager
+    @Environment(NotificationManager.self) private var notificationManager
 
+    // wondering how the user goes back to the correct screen?
+    // this is a NavigationStack{}, so when we see our state updated at the
+    // higher-level HomeView(), we pop this off the stack
     var body: some View {
         NavigationStack {
             VStack {
-                if authManager.currentUser != nil {
-                    Text("Welcome to WSO, \(authManager.currentUser!.williamsEmail)!")
-                }
                 Text("Enter your Unix login (no email):")
                 TextField("Username", text: $username)
                     .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled(true)
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.username)
                 SecureField("Password", text: $password)
                     .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled(true)
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.password)
                     .lineLimit(1)
                 Button("Login") {
                     Task {
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                        if try await authManager.login(
-                            username: username,
-                            password: password
-                        ) == true {
-                            await notificationManager.scheduleLocal(
-                                title: "Hurray!",
-                                body: "You have logged in successfully!",
-                                date: Date().addingTimeInterval(1)
-                            )
-                        }
+                        try await authManager.login(username: username, password: password)
                     }
                 }
                 .buttonStyle(.borderedProminent)
             }.padding(10)
-            .navigationTitle(Text("Login to WSO"))
-            .modifier(NavSubtitleIfAvailable(subtitle: "If you meant to use FaceID, enable it in settings"))
+                .navigationTitle(Text("Login to WSO"))
+                .modifier(NavSubtitleIfAvailable(subtitle: "If you meant to use FaceID, enable it in settings"))
         }.padding(20)
-
     }
 }
 

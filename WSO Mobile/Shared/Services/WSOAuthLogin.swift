@@ -9,10 +9,6 @@ import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
 
-    // this section implements wsoGetWords(),
-    // which gets three random words from production.
-    // it is a good reference for implementing other HTTP request-based services.
-
 struct WSOAuthLogin: Codable {
     var status: Int?
     var data: WSOAuthLoginData?
@@ -23,31 +19,40 @@ struct WSOAuthLoginData: Codable {
     var token: String?
 }
 
+// this is undocumented, but by leaving out localIP and useIP,
+// you can get a level 3 token off or on campus. this is probably a bug
 struct WSOAuthLoginForm: Codable {
-    var localIP: Bool
     var password: String
     var unixID: String
-    var useIP: Bool
 }
 
+// takes a user password, returns an identitytoken
+// this should work both on and off campus
 @available(macOS 14.0, *)
-func WSOAuthLogin(password: String, unixID: String) async throws -> WSOAuthLogin {
+func WSOIdentityLogin(password: String, unixID: String) async throws -> WSOAuthLogin {
     let parser = JSONISO8601Parser<WSOAuthLogin>()
     let request = WebRequest<NoParser, JSONISO8601Parser<WSOAuthLogin>>(
         url: URL(string: "https://wso.williams.edu/api/v2/auth/login")!,
         requestType: .post,
         postParser: parser
     )
-    // TODO: investigatory research reveals that our IP location DOES matter a lot.
-    // check our IP and see if we're in Williamstown. but how???
-    let formData: WSOAuthLoginForm = .init(localIP: false, password: password, unixID: unixID, useIP: true)
+    let formData: WSOAuthLoginForm = .init(password: password, unixID: unixID)
     let formDataJSON = try JSONEncoder().encode(formData)
     return try await request.post(sendData: formDataJSON)
 }
 
-// test debug login for CLI.
-// DO NOT USE THIS IN PRODUCTION!
-func doWSOAuthLogin(password: String, unixID: String) async throws {
-    let result = try await WSOAuthLogin(password: password, unixID: unixID)
-    print(result.data?.token ?? "No token")
+// takes an identitytoken, return an apitoken
+func WSOAPILogin(identityToken: String) async throws -> WSOAuthLogin {
+    var request = HTTPRequest(method: .post, url: URL(string: "https://wso.williams.edu/api/v2/auth/api/token")!)
+    request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+    request.headerFields[.authorization] = "Bearer \(identityToken)"
+
+    let (data, _) = try await URLSession.shared.data(for: request)
+    //let str = (String(data: data, encoding: .utf8) ?? "No data")
+    //print(str)
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .iso8601
+
+    let decodedResponse = try decoder.decode(WSOAuthLogin.self, from: data)
+    return decodedResponse
 }

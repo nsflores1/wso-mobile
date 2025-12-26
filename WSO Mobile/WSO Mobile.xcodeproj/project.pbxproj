@@ -40,6 +40,12 @@
 		5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */; };
 		5B5632792EDB848200390AB8 /* FluidGradient in Frameworks */ = {isa = PBXBuildFile; productRef = 5B5632782EDB848200390AB8 /* FluidGradient */; };
 		5B56327B2EDB84B800390AB8 /* EtherialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56327A2EDB84A800390AB8 /* EtherialView.swift */; };
+		5B6252472EFDE24B00F1C814 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6252462EFDE24B00F1C814 /* JWTDecode */; };
+		5B6252502EFE08BF00F1C814 /* ebgaramond.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B62524F2EFE08BF00F1C814 /* ebgaramond.ttf */; };
+		5B6252522EFE0BB700F1C814 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252512EFE0BB500F1C814 /* FontExtension.swift */; };
+		5B6252532EFE0BB700F1C814 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252512EFE0BB500F1C814 /* FontExtension.swift */; };
+		5B6252552EFE0DA400F1C814 /* ProfileMockupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252542EFE0DA100F1C814 /* ProfileMockupView.swift */; };
+		5B6252572EFE412A00F1C814 /* WSOUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252562EFE412100F1C814 /* WSOUserViewModel.swift */; };
 		5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B99C22EEE16710046B3A7 /* LinksView.swift */; };
 		5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71D5F72EC802790051ABF5 /* ArgumentParser */; };
 		5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */; };
@@ -173,6 +179,10 @@
 		5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesView.swift; sourceTree = "<group>"; };
 		5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesViewModel.swift; sourceTree = "<group>"; };
 		5B56327A2EDB84A800390AB8 /* EtherialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherialView.swift; sourceTree = "<group>"; };
+		5B62524F2EFE08BF00F1C814 /* ebgaramond.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ebgaramond.ttf; sourceTree = "<group>"; };
+		5B6252512EFE0BB500F1C814 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		5B6252542EFE0DA100F1C814 /* ProfileMockupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMockupView.swift; sourceTree = "<group>"; };
+		5B6252562EFE412100F1C814 /* WSOUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOUserViewModel.swift; sourceTree = "<group>"; };
 		5B6B99C22EEE16710046B3A7 /* LinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksView.swift; sourceTree = "<group>"; };
 		5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningVendorView.swift; sourceTree = "<group>"; };
 		5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningCoursesView.swift; sourceTree = "<group>"; };
@@ -232,6 +242,7 @@
 			files = (
 				5BCDB8032EF1D795008B438C /* Kingfisher in Frameworks */,
 				5BDEED6E2ED0E6A400E150E6 /* HTTPTypes in Frameworks */,
+				5B6252472EFDE24B00F1C814 /* JWTDecode in Frameworks */,
 				5B93FE292EF20615008A2C1A /* Marquee in Frameworks */,
 				5B5632792EDB848200390AB8 /* FluidGradient in Frameworks */,
 				5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */,
@@ -332,6 +343,14 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		5B62524E2EFE088800F1C814 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5B62524F2EFE08BF00F1C814 /* ebgaramond.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5B71D5F62EC802790051ABF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +428,7 @@
 		5BEB32842EBFD89700F75A10 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				5B62524E2EFE088800F1C814 /* Fonts */,
 				5BEB328A2EBFDA0300F75A10 /* Assets */,
 				5BEB32892EBFD9FB00F75A10 /* ViewModels */,
 				5BEB32882EBFD9EF00F75A10 /* Views */,
@@ -446,6 +466,7 @@
 				5B4B3EF22EC10C9000277399 /* HomeView.swift */,
 				5BD358212ED3A7AC001AE153 /* AboutView.swift */,
 				5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */,
+				5B6252542EFE0DA100F1C814 /* ProfileMockupView.swift */,
 				5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */,
 				5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */,
 				5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */,
@@ -457,6 +478,7 @@
 		5BEB32892EBFD9FB00F75A10 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5B6252562EFE412100F1C814 /* WSOUserViewModel.swift */,
 				5BDA0FDA2EE122F2005D6AC4 /* WCFMShowViewModel.swift */,
 				5B515FAF2EDBC99600F166A1 /* WCFMPlaylistViewModel.swift */,
 				5BD50F0D2ED9497700806CA7 /* AboutViewModel.swift */,
@@ -481,7 +503,6 @@
 		5BEB328C2EBFDA3900F75A10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5B93FE202EF20193008A2C1A /* WSOUser.swift */,
 				5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */,
 				5BD50F122ED9DEF400806CA7 /* NotificationManager.swift */,
 				5BD50F0F2ED9DC9300806CA7 /* AuthManager.swift */,
@@ -499,6 +520,7 @@
 				5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */,
 				5BD50F162ED9E8B800806CA7 /* WSOAuthLogin.swift */,
 				5BDEED672ECF857700E150E6 /* WSOGetWords.swift */,
+				5B93FE202EF20193008A2C1A /* WSOUser.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -506,6 +528,7 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5B6252512EFE0BB500F1C814 /* FontExtension.swift */,
 				5B515FB42EDC8F0B00F166A1 /* NavStackShim.swift */,
 				5B515FB12EDBCE4F00F166A1 /* DateExtension.swift */,
 				5BDEED6A2ED0E62D00E150E6 /* SpinitronMetadata.swift */,
@@ -543,6 +566,7 @@
 				5B5632782EDB848200390AB8 /* FluidGradient */,
 				5BCDB8022EF1D795008B438C /* Kingfisher */,
 				5B93FE282EF20615008A2C1A /* Marquee */,
+				5B6252462EFDE24B00F1C814 /* JWTDecode */,
 			);
 			productName = "WSO Mobile";
 			productReference = 5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */;
@@ -656,6 +680,7 @@
 				5B5632772EDB848200390AB8 /* XCRemoteSwiftPackageReference "FluidGradient" */,
 				5B93FE232EF20402008A2C1A /* XCRemoteSwiftPackageReference "swift-log" */,
 				5B93FE272EF2060B008A2C1A /* XCRemoteSwiftPackageReference "Marquee" */,
+				5B6252452EFDE23600F1C814 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5BEB32502EBFD7F300F75A10 /* Products */;
@@ -675,6 +700,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B6252502EFE08BF00F1C814 /* ebgaramond.ttf in Resources */,
 				5BEB32572EBFD7F400F75A10 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,7 +755,9 @@
 				5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */,
 				5BD50F0E2ED9497900806CA7 /* AboutViewModel.swift in Sources */,
 				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
+				5B6252552EFE0DA400F1C814 /* ProfileMockupView.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
+				5B6252532EFE0BB700F1C814 /* FontExtension.swift in Sources */,
 				5BE3EE452ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */,
 				5B56327B2EDB84B800390AB8 /* EtherialView.swift in Sources */,
 				5B515FB02EDBC99C00F166A1 /* WCFMPlaylistViewModel.swift in Sources */,
@@ -749,6 +777,7 @@
 				5BCDB8012EF098CE008B438C /* SneakyView.swift in Sources */,
 				5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */,
 				5B05EF322ED8F98800802310 /* SpringStreetCafesView.swift in Sources */,
+				5B6252572EFE412A00F1C814 /* WSOUserViewModel.swift in Sources */,
 				5B3543DE2ED64E7B00A37A56 /* WCFMShowsView.swift in Sources */,
 				5BA37ED02EF08CB30011C245 /* WCFMKeyView.swift in Sources */,
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
@@ -796,6 +825,7 @@
 				5B0A2E8D2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5B93FE182EF1FE14008A2C1A /* WSODormTrak.swift in Sources */,
 				5B93FE1F2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */,
+				5B6252522EFE0BB700F1C814 /* FontExtension.swift in Sources */,
 				5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */,
 				5BE3EE4A2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
 				5BD50F132ED9DEF800806CA7 /* NotificationManager.swift in Sources */,
@@ -1212,6 +1242,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		5B6252452EFDE23600F1C814 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.0;
+			};
+		};
 		5B93FE232EF20402008A2C1A /* XCRemoteSwiftPackageReference "swift-log" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-log";
@@ -1269,6 +1307,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B5632772EDB848200390AB8 /* XCRemoteSwiftPackageReference "FluidGradient" */;
 			productName = FluidGradient;
+		};
+		5B6252462EFDE24B00F1C814 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B6252452EFDE23600F1C814 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
 		};
 		5B71D5F72EC802790051ABF5 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
