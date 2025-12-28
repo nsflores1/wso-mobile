@@ -13,6 +13,17 @@ struct NewsView: View {
     var body: some View {
         NavigationStack {
             WilliamsRecordView()
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        NavigationLink(destination: NewsKeyView()) {
+                            Image(systemName: "questionmark")
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
+                    }
+                }
+            }
             .navigationTitle(Text("News"))
             .modifier(NavSubtitleIfAvailable(subtitle: "The latest happenings"))
             .navigationBarTitleDisplayMode(.large)
