@@ -12,7 +12,6 @@ import SwiftUI
 
 struct WCFMKeyView: View {
     @Environment(\.openURL) private var openURL
-    
 
     var body: some View {
         NavigationStack {

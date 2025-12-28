@@ -86,9 +86,14 @@ struct WCFMView: View {
                 else {
                     Label("Player is inactive...",
                           systemImage: "antenna.radiowaves.left.and.right")
-                    .font(.title)
-                    .italic(true)
-                    .transition(.scale.combined(with: .opacity))
+                        .font(.title)
+                        .italic(true)
+                        .transition(.scale.combined(with: .opacity))
+
+                    Text("Note that the player only works if a DJ is in the station. Otherwise, you may not hear anything.")
+                        .padding(20)
+                        .italic()
+                        .transition(.scale.combined(with: .opacity))
 
                     Button {
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
