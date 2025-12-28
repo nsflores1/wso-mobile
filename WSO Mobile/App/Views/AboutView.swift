@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AboutView: View {
     @State private var viewModel = AboutViewModel()
-    
+    @Environment(AuthManager.self) private var authManager
 
     var body: some View {
         NavigationStack {
