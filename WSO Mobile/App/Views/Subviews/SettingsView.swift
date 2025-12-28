@@ -14,6 +14,8 @@ struct SettingsView: View {
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     @AppStorage("likesSerifFont") private var likesSerifFont: Bool = false
 
+    @AppStorage("userType") private var userType: UserType = .student
+
     @Environment(NotificationManager.self) private var notificationManager
     @Environment(AuthManager.self) private var authManager
 
@@ -56,6 +58,13 @@ struct SettingsView: View {
                         .font(.title3)
                 }
                 Section {
+                    Picker("User Type", selection: $userType) {
+                        Text("Student").tag(UserType.student)
+                        Text("Non-student").tag(UserType.nonstudent)
+                    }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                        })
                     Toggle("Mathematical Mode", isOn: $likesMath)
                         .simultaneousGesture(TapGesture().onEnded {
                         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
@@ -115,6 +124,17 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
             .modifier(NavSubtitleIfAvailable(subtitle: "App settings may require a restart"))
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        NavigationLink(destination: SettingsKeyView()) {
+                            Image(systemName: "questionmark")
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
+                    }
+                }
+            }
         }
     }
 }
