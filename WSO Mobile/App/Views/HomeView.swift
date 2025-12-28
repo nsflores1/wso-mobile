@@ -17,7 +17,6 @@ struct HomeView: View {
     @State private var facTrakWarn = false
     @State private var dormTrakWarn = false
     @State private var bookTrakWarn = false
-    @State private var facebookWarn = false
 
     // impact used for all haptic actions
 
@@ -48,78 +47,70 @@ struct HomeView: View {
                 }
                 // TODO: this does NOTHING, still need to implement
                 Section {
-                    LazyVGrid(columns: [
-                        GridItem(.flexible(), spacing: 8),
-                        GridItem(.flexible(), spacing: 8)
-                    ], spacing: 12) {
-                            Button {
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                facTrakWarn = true
-                            } label: {
-                                Label("FacTrak", systemImage: "graduationcap")
-                                    .foregroundStyle(.white, .accent)
-                            }.buttonStyle(.borderedProminent)
-                                .controlSize(ControlSize.large)
-                                .alert(
+                    HStack {
+                        Button {
+                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            facTrakWarn = true
+                        } label: {
+                            Label("FacTrak", systemImage: "graduationcap")
+
+                        }.buttonStyle(.borderless)
+                            .controlSize(ControlSize.large)
+                            .alert(
                                     """
                                     This feature hasn't been implemented yet!
                                     Please check back soon.
                                     """,
                                     isPresented: $facTrakWarn
-                                ) {
-                                    Button("OK", role: .cancel) { }
-                                }
-                            Button{
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                facebookWarn = true
-                            } label: {
-                                Label("Facebook", systemImage: "person")
-                                    .foregroundStyle(.white, .accent)
-                            }.buttonStyle(.borderedProminent)
-                                .controlSize(ControlSize.large)
-                                .alert(
-                                    """
-                                    This feature hasn't been implemented yet!
-                                    Please check back soon.
-                                    """,
-                                    isPresented: $facebookWarn
-                                ) {
-                                    Button("OK", role: .cancel) { }
-                                }
-                            Button{
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                dormTrakWarn = true
-                            } label: {
-                                Label("DormTrak", systemImage: "house")
-                                    .foregroundStyle(.white, .accent)
-                            }.buttonStyle(.borderedProminent)
-                                .controlSize(ControlSize.large)
-                                .alert(
+                            ) {
+                                Button("OK", role: .cancel) { }
+                        }
+                        Spacer()
+                        Text("Sell and buy textbooks")
+                            .foregroundStyle(Color(.secondaryLabel)).italic(true)
+                    }
+                    HStack {
+                        Button{
+                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            dormTrakWarn = true
+                        } label: {
+                            Label("DormTrak", systemImage: "house")
+
+                        }.buttonStyle(.borderless)
+                            .controlSize(ControlSize.large)
+                            .alert(
                                     """
                                     This feature hasn't been implemented yet!
                                     Please check back soon.
                                     """,
                                     isPresented: $dormTrakWarn
-                                ) {
-                                    Button("OK", role: .cancel) { }
-                                }
-                            Button {
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                bookTrakWarn = true
-                            } label: {
-                                Label("BookTrak", systemImage: "book.closed")
-                                    .foregroundStyle(.white, .accent)
-                            }.buttonStyle(.borderedProminent)
-                                .controlSize(ControlSize.large)
-                                .alert(
+                            ) {
+                                Button("OK", role: .cancel) { }
+                        }
+                        Spacer()
+                        Text("Rate on campus dorms")
+                            .foregroundStyle(Color(.secondaryLabel)).italic(true)
+                    }
+                    HStack {
+                        Button {
+                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            bookTrakWarn = true
+                        } label: {
+                            Label("BookTrak", systemImage: "book.closed")
+                        }.buttonStyle(.borderless)
+                            .controlSize(ControlSize.large)
+                            .alert(
                                     """
                                     This feature hasn't been implemented yet!
                                     Please check back soon.
                                     """,
                                     isPresented: $bookTrakWarn
-                                ) {
-                                    Button("OK", role: .cancel) { }
-                                }
+                            ) {
+                                Button("OK", role: .cancel) { }
+                        }
+                        Spacer()
+                        Text("Sell and buy textbooks")
+                            .foregroundStyle(Color(.secondaryLabel)).italic(true)
                     }
                 } header: {
                     HStack {
@@ -176,7 +167,16 @@ struct HomeView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack {
                         NavigationLink(destination: AboutView()) {
-                            Image(systemName: "wand.and.rays")
+                            Image(systemName: "questionmark")
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
+                    }
+                }
+                ToolbarItem(placement: .keyboard) {
+                    HStack {
+                        NavigationLink(destination: AboutView()) {
+                            Image(systemName: "questionmark")
                         }.simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         })
@@ -189,4 +189,6 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environment(AuthManager.shared)
+        .environment(NotificationManager.shared)
 }

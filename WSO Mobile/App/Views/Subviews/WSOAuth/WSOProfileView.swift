@@ -136,5 +136,7 @@ struct WSOProfileView: View {
 
 #Preview {
     ProfileView()
+        .environment(AuthManager.shared)
+        .environment(NotificationManager.shared)
 }
 

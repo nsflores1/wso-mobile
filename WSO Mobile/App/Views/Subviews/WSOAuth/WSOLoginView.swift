@@ -47,4 +47,6 @@ struct WSOLoginView: View {
 
 #Preview {
     WSOLoginView()
+        .environment(AuthManager.shared)
+        .environment(NotificationManager.shared)
 }

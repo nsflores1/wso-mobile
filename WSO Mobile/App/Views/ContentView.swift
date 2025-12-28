@@ -47,4 +47,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(AuthManager.shared)
+        .environment(NotificationManager.shared)
 }

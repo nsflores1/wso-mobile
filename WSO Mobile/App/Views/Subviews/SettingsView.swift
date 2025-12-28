@@ -121,4 +121,6 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environment(AuthManager.shared)
+        .environment(NotificationManager.shared)
 }
