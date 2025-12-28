@@ -17,6 +17,8 @@ struct SettingsView: View {
     @Environment(NotificationManager.self) private var notificationManager
     @Environment(AuthManager.self) private var authManager
 
+    private let cache = CacheManager.shared
+
     var body: some View {
         NavigationStack {
             Form {
@@ -83,6 +85,8 @@ struct SettingsView: View {
                             // Kingfisher Image Data
                             ImageCache.default.clearMemoryCache()
                             await ImageCache.default.clearDiskCache()
+                            // on disk cache
+                            await cache.clear()
                             // we're done!
                             await notificationManager.scheduleLocal(
                                 title: "Cache cleared!",

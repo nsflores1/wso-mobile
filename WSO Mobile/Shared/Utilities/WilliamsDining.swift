@@ -55,26 +55,26 @@ struct MenuItem: Codable {
 
 // internal structs. use these for the much flatter, actual state.
 
-struct DiningHall {
+struct DiningHall: Codable {
     let hallName: String
     let meals: [Meal]
     let onlineOrder: Bool
     let operating: Bool
 }
 
-struct Meal {
+struct Meal: Codable {
     let mealName: String
     let openHours: String
     let closeHours: String
     let courses: [Courses]
 }
 
-struct Courses {
+struct Courses: Codable {
     let courseTitle: String
     let foodItems: [FoodItem]
 }
 
-struct FoodItem {
+struct FoodItem: Codable {
     let name: String
     let isVegetarian: Bool
     let isVegan: Bool

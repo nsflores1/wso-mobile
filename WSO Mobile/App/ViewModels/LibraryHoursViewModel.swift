@@ -10,6 +10,8 @@ import SwiftUI
 @MainActor
 @Observable
 class LibraryHoursViewModel {
+    private let cache = CacheManager.shared
+    
     var libraryHours: [LibraryViewData] = []
     var isLoading: Bool = false
     var error: WebRequestError?
@@ -19,9 +21,23 @@ class LibraryHoursViewModel {
         isLoading = true
         error = nil
 
+        if let cached: [LibraryViewData] = await cache.load(
+            [LibraryViewData].self,
+            from: "viewmodelstate_library_hours.json",
+            maxAge: 3600 * 24
+        ) {
+            self.libraryHours = cached
+            self.isLoading = false
+            self.error = nil
+            return
+        }
+
         do {
             let data: [LibraryViewData] = try await parseLibraryHours()
             self.libraryHours = data
+            self.error = nil
+
+            try await cache.save(data, to: "viewmodelstate_library_hours.json")
         } catch let err as WebRequestError {
             self.error = err
             self.libraryHours = []
@@ -40,11 +56,27 @@ class LibraryHoursViewModel {
     }
 
     func forceRefresh() async {
-        hasFetched = false
-        await fetchIfNeeded()
+        isLoading = true
+
+        do {
+            let data: [LibraryViewData] = try await parseLibraryHours()
+            self.libraryHours = data
+            self.error = nil
+
+            try await cache.save(data, to: "viewmodelstate_library_hours.json")
+        } catch let err as WebRequestError {
+            self.error = err
+            self.libraryHours = []
+        } catch {
+            self.error = WebRequestError.internalFailure
+            self.libraryHours = []
+        }
+
+        isLoading = false
     }
 
     func clearCache() async {
+        await cache.clear(path: "viewmodelstate_library_hours.json")
         self.libraryHours = []
     }
 

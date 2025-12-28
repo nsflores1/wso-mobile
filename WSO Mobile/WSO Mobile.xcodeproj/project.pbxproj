@@ -85,6 +85,8 @@
 		5BCDB7FF2EF0973E008B438C /* LinksKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */; };
 		5BCDB8012EF098CE008B438C /* SneakyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB8002EF098CB008B438C /* SneakyView.swift */; };
 		5BCDB8032EF1D795008B438C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5BCDB8022EF1D795008B438C /* Kingfisher */; };
+		5BCF0D5B2F01ACE400E702EB /* CopyableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */; };
+		5BCF0D5C2F01ACE400E702EB /* CopyableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */; };
 		5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */; };
 		5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */; };
 		5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD358212ED3A7AC001AE153 /* AboutView.swift */; };
@@ -218,6 +220,7 @@
 		5BCDB7FC2EF09502008B438C /* MapPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPageView.swift; sourceTree = "<group>"; };
 		5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksKeyView.swift; sourceTree = "<group>"; };
 		5BCDB8002EF098CB008B438C /* SneakyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakyView.swift; sourceTree = "<group>"; };
+		5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableViews.swift; sourceTree = "<group>"; };
 		5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpheliaView.swift; sourceTree = "<group>"; };
 		5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOLoginView.swift; sourceTree = "<group>"; };
 		5BD358212ED3A7AC001AE153 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -548,6 +551,7 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */,
 				5B6252512EFE0BB500F1C814 /* FontExtension.swift */,
 				5B515FB42EDC8F0B00F166A1 /* NavStackShim.swift */,
 				5B515FB12EDBCE4F00F166A1 /* DateExtension.swift */,
@@ -780,6 +784,7 @@
 				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
 				5B6252552EFE0DA400F1C814 /* ProfileMockupView.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
+				5BCF0D5C2F01ACE400E702EB /* CopyableViews.swift in Sources */,
 				5B6252532EFE0BB700F1C814 /* FontExtension.swift in Sources */,
 				5BE3EE452ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */,
 				5B56327B2EDB84B800390AB8 /* EtherialView.swift in Sources */,
@@ -841,6 +846,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCF0D5B2F01ACE400E702EB /* CopyableViews.swift in Sources */,
 				5B93FE1C2EF1FE1D008A2C1A /* WSOBookTrak.swift in Sources */,
 				5B93FE162EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */,
 				5BD50F172ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */,

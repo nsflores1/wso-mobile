@@ -79,7 +79,9 @@ struct DiningView: View {
                         HStack {
                             NavigationLink(destination: DiningKeyView()) {
                                 Image(systemName: "questionmark")
-                            }
+                            }.simultaneousGesture(TapGesture().onEnded {
+                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            })
                         }
                     }
                 }

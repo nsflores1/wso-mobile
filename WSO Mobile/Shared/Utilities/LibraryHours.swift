@@ -31,7 +31,7 @@ struct LibraryHours: Codable {
 }
 
 // for the View
-struct LibraryViewData: Identifiable {
+struct LibraryViewData: Identifiable, Codable {
     let id: String           // stable key from the api
     let name: String
     let open: [String]

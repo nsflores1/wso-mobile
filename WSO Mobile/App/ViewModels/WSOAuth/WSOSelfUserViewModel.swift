@@ -10,6 +10,8 @@ import SwiftUI
 @MainActor
 @Observable
 class WSOSelfUserViewModel {
+    private let cache = CacheManager.shared
+
     var data: User? // this value MUST exist
     var isLoading: Bool = false
     var error: WebRequestError?
@@ -19,9 +21,23 @@ class WSOSelfUserViewModel {
         isLoading = true
         error = nil
 
+        if let cached: User = await cache.load(
+            User.self,
+            from: "userstate_me.json",
+            maxAge: 3600 * 24
+        ) {
+            self.data = cached
+            self.isLoading = false
+            self.error = nil
+            return
+        }
+
         do {
             let data: User = try await WSOGetUserSelf()
             self.data = data
+            self.error = nil
+
+            try await cache.save(data, to: "userstate_me.json")
         } catch let err as WebRequestError {
             self.error = err
             self.data = nil
@@ -40,11 +56,27 @@ class WSOSelfUserViewModel {
     }
 
     func forceRefresh() async {
-        hasFetched = false
-        await fetchIfNeeded()
+        isLoading = true
+
+        do {
+            let data: User = try await WSOGetUserSelf()
+            self.data = data
+            self.error = nil
+
+            try await cache.save(data, to: "userstate_me.json")
+        } catch let err as WebRequestError {
+            self.error = err
+            self.data = nil
+        } catch {
+            self.error = WebRequestError.internalFailure
+            self.data = nil
+        }
+
+        isLoading = false
     }
 
     func clearCache() async {
+        await cache.clear(path: "userstate_me.json")
         self.data = nil
     }
 }

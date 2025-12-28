@@ -14,14 +14,16 @@
 // cache client consumes and stores for future loading -> user refreshes,
 // we start back from the beginning...
 
+// Task is used to create a new calling context that isn't on the main
+// thread, so that we get a non-locking I/O interface. otherwise it runs
+// on the main thread and failing I/O can deadlock the whole app!
+
 import Foundation
 
 @Observable
 class CacheManager {
     static let shared = CacheManager()
-
     private let baseURL: URL
-    // use Task.detached(priority: .utility) to run off the main thread
 
     private init() {
         let fm = FileManager.default
@@ -32,41 +34,53 @@ class CacheManager {
     }
 
     func save<T: Codable>(_ data: T, to path: String) async throws {
-        let state = TimestampedData(timestamp: Date(), data: data)
-        let fileURL = baseURL.appendingPathComponent(path)
+        return try await Task {
+            let encoder = JSONEncoder()
+            let state = TimestampedData(timestamp: Date(), data: data)
+            let fileURL = self.baseURL.appendingPathComponent(path)
 
             // make parent dirs if needed
-        let parent = fileURL.deletingLastPathComponent()
-        try FileManager.default.createDirectory(at: parent, withIntermediateDirectories: true)
+            let parent = fileURL.deletingLastPathComponent()
+            try FileManager.default.createDirectory(at: parent, withIntermediateDirectories: true)
 
-        let encoded = try JSONEncoder().encode(state)
-        try encoded.write(to: fileURL)
+            let encoded = try encoder.encode(state)
+            try encoded.write(to: fileURL)
+        }.value
     }
 
     // default age is one day
     func load<T: Codable>(_ type: T.Type, from path: String,
                           maxAge: TimeInterval = 3600 * 24) async -> T? {
-        let fileURL = baseURL.appendingPathComponent(path)
+        return await Task {
+            let decoder = JSONDecoder()
+            let fileURL = self.baseURL.appendingPathComponent(path)
 
-        guard let data = try? Data(contentsOf: fileURL),
-              let state = try? JSONDecoder().decode(TimestampedData<T>.self, from: data) else {
-            return nil
-        }
+            guard let data = try? Data(contentsOf: fileURL),
+                  let state = try? decoder.decode(TimestampedData<T>.self, from: data) else {
+                return nil
+            }
 
-        if Date().timeIntervalSince(state.timestamp) > maxAge {
-            return nil
-        }
+            if Date().timeIntervalSince(state.timestamp) > maxAge {
+                return nil
+            }
 
-        return state.data
+            return state.data
+        }.value
     }
 
-    func clear(path: String? = nil) async throws {
-        if let path = path {
-            try FileManager.default.removeItem(at: baseURL.appendingPathComponent(path))
-        } else {
-            // nuclear option
-            try FileManager.default.removeItem(at: baseURL)
-            try FileManager.default.createDirectory(at: baseURL, withIntermediateDirectories: true)
+    func clear(path: String? = nil) async {
+        Task {
+            if let path = path {
+                try FileManager.default
+                    .removeItem(at: self.baseURL.appendingPathComponent(path))
+            } else {
+                    // nuclear option
+                try FileManager.default.removeItem(at: self.baseURL)
+                try FileManager.default.createDirectory(
+                        at: self.baseURL,
+                        withIntermediateDirectories: true
+                    )
+            }
         }
     }
 }
@@ -74,7 +88,7 @@ class CacheManager {
 // when we're saving data to disk, we use this,
 // so that we can bundle the data and a timestamp with it
 
-private struct TimestampedData<T: Codable>: Codable {
+struct TimestampedData<T: Codable>: Codable {
     let timestamp: Date
     let data: T
 }
