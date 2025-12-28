@@ -8,21 +8,25 @@
 import SwiftUI
 
 @MainActor
+@Observable
 class LibraryHoursViewModel {
-    var libraryHours: [LibraryHours] = []
+    var libraryHours: [LibraryViewData] = []
     var isLoading: Bool = false
-    var errorMessage: String?
+    var error: WebRequestError?
     private var hasFetched = false
 
     func loadHours() async {
         isLoading = true
-        errorMessage = nil
+        error = nil
 
         do {
-            let data: [LibraryHours] = try await parseLibraryHours()
+            let data: [LibraryViewData] = try await parseLibraryHours()
             self.libraryHours = data
+        } catch let err as WebRequestError {
+            self.error = err
+            self.libraryHours = []
         } catch {
-            self.errorMessage = "Failed to load library hours."
+            self.error = WebRequestError.internalFailure
             self.libraryHours = []
         }
 

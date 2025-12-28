@@ -72,7 +72,8 @@ struct WCFMSpinItem: Codable {
     var image: URL?
     var release: String?
     var released: Int?
-    // TODO: maybe add playlist_id here
+    var isrc: String?
+    var playlist_id: Int?
 }
 
 struct WCFMShow: Codable {
@@ -146,39 +147,6 @@ func getWCFMShow() async throws -> WCFMShow {
         getParser: parser
     )
     return try await request.get()
-}
-
-func oldGetWCFMPlaylist() async throws -> WCFMPlaylist {
-    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/mobile/playlists.json")!)
-
-    let (data, _) = try await URLSession.shared.data(for: request)
-    let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .iso8601
-
-    let decodedResponse = try decoder.decode(WCFMPlaylist.self, from: data)
-    return decodedResponse
-}
-
-func oldGetWCFMSpin() async throws -> WCFMSpin {
-    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/mobile/spins.json")!)
-
-    let (data, _) = try await URLSession.shared.data(for: request)
-    let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .iso8601
-
-    let decodedResponse = try decoder.decode(WCFMSpin.self, from: data)
-    return decodedResponse
-}
-
-func oldGetWCFMShow() async throws -> WCFMShow {
-    let request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/mobile/shows.json")!)
-
-    let (data, _) = try await URLSession.shared.data(for: request)
-    let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .iso8601
-
-    let decodedResponse = try decoder.decode(WCFMShow.self, from: data)
-    return decodedResponse
 }
 
 // strategy to get the latest playlist:

@@ -7,48 +7,51 @@
 
 import SwiftSoup
 import Foundation
+import HTTPTypes
+import HTTPTypesFoundation
 
-struct LibraryHours: Codable, Hashable {
+struct LibraryResponse: Codable {
+    let libraryServices: [String: LibraryService]
+    let updateTime: String
+
+    enum CodingKeys: String, CodingKey {
+        case libraryServices = "libraryservices"
+        case updateTime
+    }
+}
+
+struct LibraryService: Codable {
     let name: String
-    let hours: String
+    let hours: LibraryHours
 }
 
-struct LibraryHoursParseError : Error {}
-
-func parseLibraryHours() async throws -> [LibraryHours] {
-    let url = URL(string: "https://wso.williams.edu/mobile/library_hours_today.html")!
-    do {
-        let (data, _) = try await URLSession.shared.data(from: url)
-
-        let doc = try SwiftSoup.parse(data)
-        let rows = try doc.select("tr.hours-today-row")
-
-        return rows.compactMap { row in
-            guard let name = try? row.select("th.hours-col-loc").text(),
-                  let time = try? row.select("td.hours-col-time span.s-lc-time").text()
-            else { return nil }
-
-            let trimmedTime = time.trimmingCharacters(in: .whitespacesAndNewlines)
-            let hours = trimmedTime.isEmpty ? "(closed)" : trimmedTime
-
-            return LibraryHours(
-                name: name.trimmingCharacters(in: .whitespacesAndNewlines),
-                hours: hours
-            )
-        }
-    } catch {
-        throw LibraryHoursParseError()
-    }
+struct LibraryHours: Codable {
+    let open: [String]?
+    let close: [String]?
 }
 
-func doLibraryHours() async {
-    do {
-        let data = try await parseLibraryHours()
-        for item in data {
-            print("name: \(item.name), hours: \(item.hours)")
-        }
-    }
-    catch {
-        print("no hours today")
+// for the View
+struct LibraryViewData: Identifiable {
+    let id: String           // stable key from the api
+    let name: String
+    let open: [String]
+    let close: [String]
+}
+
+func parseLibraryHours() async throws -> [LibraryViewData] {
+    let parser = JSONParser<LibraryResponse>()
+    let request = WebRequest<JSONParser<LibraryResponse>, NoParser>(
+        url: URL(string: "https://wso.williams.edu/library.json")!,
+        requestType: .get,
+        getParser: parser
+    )
+    let data = try await request.get()
+    return data.libraryServices.sorted(by: { $0.key < $1.key }).map { key, value in
+        return LibraryViewData(
+            id: key,
+            name: value.name.cleanWhitespace(),
+            open: value.hours.open ?? [],
+            close: value.hours.close ?? []
+        )
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LibraryHoursView: View {
-    @State var viewModel = LibraryHoursViewModel()
+    @State private var viewModel = LibraryHoursViewModel()
 
     var body: some View {
         Section {
@@ -16,23 +16,31 @@ struct LibraryHoursView: View {
                 if viewModel.isLoading {
                     Text("Loading...")
                         .transition(.opacity)
-                }
-                if let error = viewModel.errorMessage {
-                    Text(error)
+                } else if let err = viewModel.error {
+                    Text(err.localizedDescription)
                         .foregroundStyle(.red)
                         .transition(.opacity)
-                }
-                if !viewModel.isLoading && viewModel.errorMessage == nil && viewModel.libraryHours.count > 0 {
-                    ForEach(viewModel.libraryHours, id: \.name) { place in
+                } else {
+                    ForEach(viewModel.libraryHours) { place in
                         HStack {
                             Text(place.name)
                             Spacer()
-                            Text(place.hours).foregroundStyle(.secondary)
+                            HStack {
+                                if !place.close.isEmpty {
+                                    Text(place.close.joined(separator: ", "))
+                                        .foregroundStyle(.secondary)
+                                }
+                                if !place.open.isEmpty {
+                                    Text(place.open.joined(separator: ", "))
+                                        .foregroundStyle(.secondary)
+                                }
+                                if place.open.isEmpty && place.close.isEmpty {
+                                    Text("(No hours today)")
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
                         }
                     }.transition(.move(edge: .top).combined(with: .opacity))
-                } else {
-                    Text("(Library hours not posted for today)")
-                        .italic()
                 }
             }
             .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)
@@ -44,8 +52,7 @@ struct LibraryHoursView: View {
                 Spacer()
                 Image(systemName: "book")
             }
-
-        } .task { await viewModel.fetchIfNeeded() }
+        }.task { await viewModel.fetchIfNeeded() }
     }
 }
 
