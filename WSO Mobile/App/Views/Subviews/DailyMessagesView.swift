@@ -26,6 +26,8 @@ struct DailyMessagesView: View {
                 }
                 .listRowSeparator(.hidden)
                 .transition(.opacity)
+            } else if viewModel.dailyMessageCategories.isEmpty {
+                Text("(No daily messages today)")
             } else {
                 // TODO: this can't be animated until you flatten this into something less painful
                 // maybe make it a simple flat array?

@@ -15,16 +15,32 @@ struct DailyMessageCategory: Codable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        let raw = try container.decode([String: [DailyMessagePost]].self)
 
-            // strip html from category names (the keys)
-        var cleaned: [String: [DailyMessagePost]] = [:]
-        for (rawKey, posts) in raw {
-            let cleanKey = Self.stripHTML(rawKey).cleanWhitespace()
-            cleaned[cleanKey] = posts
+        // case 1: the "real" data
+        if let raw = try? container.decode([String: [DailyMessagePost]].self) {
+            var cleaned: [String: [DailyMessagePost]] = [:]
+            for (rawKey, posts) in raw {
+                let cleanKey = Self.stripHTML(rawKey).cleanWhitespace()
+                cleaned[cleanKey] = posts
+            }
+            self.categories = cleaned
+            return
         }
 
-        self.categories = cleaned
+        // case 2: empty array means "no messages"
+        if let empty = try? container.decode([Never].self), empty.isEmpty {
+            self.categories = [:]
+            return
+        }
+
+        // anything else is genuinely broken
+        throw DecodingError.typeMismatch(
+            [String: [DailyMessagePost]].self,
+            DecodingError.Context(
+                codingPath: decoder.codingPath,
+                debugDescription: "expected object or empty array for DailyMessageCategory"
+            )
+        )
     }
 
     private static func stripHTML(_ html: String) -> String {
