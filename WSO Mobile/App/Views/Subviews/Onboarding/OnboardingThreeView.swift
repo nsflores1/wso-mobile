@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct OnboardingThreeView: View {
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
@@ -27,7 +28,7 @@ struct OnboardingThreeView: View {
             }.padding(20)
             Spacer()
             VStack {
-                Text("Ready to go!")
+                Text("Ready to go!").shimmering()
                 Button("Get started") {
                     hasSeenOnboarding = true
                     UIImpactFeedbackGenerator(style: .soft).impactOccurred()

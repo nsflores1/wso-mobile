@@ -11,7 +11,7 @@ struct OnboardingOneView: View {
     var body: some View {
         NavigationStack {
                 let mainText = """
-                You're testing WSO Mobile Beta v1.2.1.
+                You're testing WSO Mobile Beta v1.2.2.
                 
                 This app is in a preliminary state. Your feedback matters a lot! If you run into any issues, please report them as soon as possible.
                 
@@ -24,7 +24,7 @@ struct OnboardingOneView: View {
                 Text(mainText)
                 .padding(20)
                 .multilineTextAlignment(.leading)
-                .navigationTitle(Text("Welcome to WSO Beta!"))
+                .navigationTitle(Text("Welcome!"))
                 Spacer()
         }.padding(20)
     }
