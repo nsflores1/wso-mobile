@@ -87,6 +87,10 @@
 		5BCDB8032EF1D795008B438C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5BCDB8022EF1D795008B438C /* Kingfisher */; };
 		5BCF0D5B2F01ACE400E702EB /* CopyableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */; };
 		5BCF0D5C2F01ACE400E702EB /* CopyableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */; };
+		5BCF0D5E2F01EA9400E702EB /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D5D2F01EA9200E702EB /* UserType.swift */; };
+		5BCF0D5F2F01EA9400E702EB /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D5D2F01EA9200E702EB /* UserType.swift */; };
+		5BCF0D612F01EB5A00E702EB /* SettingsKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D602F01EB5600E702EB /* SettingsKeyView.swift */; };
+		5BCF0D642F01EE0600E702EB /* NewsKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D632F01EE0400E702EB /* NewsKeyView.swift */; };
 		5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */; };
 		5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */; };
 		5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD358212ED3A7AC001AE153 /* AboutView.swift */; };
@@ -221,6 +225,9 @@
 		5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksKeyView.swift; sourceTree = "<group>"; };
 		5BCDB8002EF098CB008B438C /* SneakyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakyView.swift; sourceTree = "<group>"; };
 		5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableViews.swift; sourceTree = "<group>"; };
+		5BCF0D5D2F01EA9200E702EB /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
+		5BCF0D602F01EB5600E702EB /* SettingsKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeyView.swift; sourceTree = "<group>"; };
+		5BCF0D632F01EE0400E702EB /* NewsKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsKeyView.swift; sourceTree = "<group>"; };
 		5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpheliaView.swift; sourceTree = "<group>"; };
 		5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOLoginView.swift; sourceTree = "<group>"; };
 		5BD358212ED3A7AC001AE153 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -330,6 +337,7 @@
 		5B3543E12ED652AE00A37A56 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				5BCF0D632F01EE0400E702EB /* NewsKeyView.swift */,
 				5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */,
 				5BE3EE532ECC3521009CDFD3 /* WilliamsRecordView.swift */,
 			);
@@ -348,6 +356,7 @@
 				5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */,
 				5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */,
 				5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */,
+				5BCF0D602F01EB5600E702EB /* SettingsKeyView.swift */,
 				5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */,
 				5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */,
 				5B0168402EC91BEC0092FBA3 /* MapView.swift */,
@@ -525,6 +534,7 @@
 		5BEB328C2EBFDA3900F75A10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5BCF0D5D2F01EA9200E702EB /* UserType.swift */,
 				5B6252622EFF26FE00F1C814 /* CacheManager.swift */,
 				5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */,
 				5BD50F122ED9DEF400806CA7 /* NotificationManager.swift */,
@@ -761,6 +771,7 @@
 				5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */,
 				5B379A152EE3D0A000A09DE4 /* PetView.swift in Sources */,
 				5B05EF262ED8EF9B00802310 /* OnboardingTwoView.swift in Sources */,
+				5BCF0D642F01EE0600E702EB /* NewsKeyView.swift in Sources */,
 				5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */,
 				5B93FE222EF20196008A2C1A /* WSOUser.swift in Sources */,
 				5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */,
@@ -770,6 +781,7 @@
 				5BE3EE522ECC3499009CDFD3 /* WilliamsRecordViewModel.swift in Sources */,
 				5BD50F182ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */,
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
+				5BCF0D612F01EB5A00E702EB /* SettingsKeyView.swift in Sources */,
 				5B515FB22EDBCE5300F166A1 /* DateExtension.swift in Sources */,
 				5BCDB7FF2EF0973E008B438C /* LinksKeyView.swift in Sources */,
 				5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */,
@@ -822,6 +834,7 @@
 				5BD50F142ED9DEF800806CA7 /* NotificationManager.swift in Sources */,
 				5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */,
 				5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */,
+				5BCF0D5E2F01EA9400E702EB /* UserType.swift in Sources */,
 				5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */,
 				5B62525E2EFEFA1300F1C814 /* WSOProfileView.swift in Sources */,
 				5B3543DC2ED64DDB00A37A56 /* WCFMPlaylistView.swift in Sources */,
@@ -848,6 +861,7 @@
 			files = (
 				5BCF0D5B2F01ACE400E702EB /* CopyableViews.swift in Sources */,
 				5B93FE1C2EF1FE1D008A2C1A /* WSOBookTrak.swift in Sources */,
+				5BCF0D5F2F01EA9400E702EB /* UserType.swift in Sources */,
 				5B93FE162EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */,
 				5BD50F172ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */,
 				5B515FB32EDBCE5300F166A1 /* DateExtension.swift in Sources */,
