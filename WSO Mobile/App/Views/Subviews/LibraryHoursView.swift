@@ -55,9 +55,9 @@ struct LibraryHoursView: View {
                 Image(systemName: "book")
             }
         }.task {
-            logger.info("Fetching library data...")
+            logger.trace("Fetching library data...")
             await viewModel.fetchIfNeeded()
-            logger.info("Fetch complete")
+            logger.trace("Fetch complete")
 
         }
     }

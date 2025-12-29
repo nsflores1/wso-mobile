@@ -120,14 +120,14 @@ struct WSOProfileView: View {
             .modifier(NavSubtitleIfAvailable(subtitle: "WSO Mobile version: 1.2.1"))
             .navigationBarTitleDisplayMode(.large)
             .task {
-                logger.info("Fetching user profile \(viewModel.userID)...")
+                logger.trace("Fetching user profile \(viewModel.userID)...")
                 await viewModel.fetchIfNeeded()
-                logger.info("Fetch complete for user profile \(viewModel.userID)")
+                logger.trace("Fetch complete for user profile \(viewModel.userID)")
             }
             .refreshable {
-                logger.info("User profile \(viewModel.userID) data is being forcibly refreshed...")
+                logger.trace("User profile \(viewModel.userID) data is being forcibly refreshed...")
                 await viewModel.forceRefresh()
-                logger.info("User profile \(viewModel.userID) data forcibly refreshed")
+                logger.trace("User profile \(viewModel.userID) data forcibly refreshed")
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

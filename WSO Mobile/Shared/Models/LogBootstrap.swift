@@ -68,7 +68,7 @@ extension Logger.Level {
     }
 }
 
-    // multiplexer to send to both
+// multiplexer to send to both
 struct MultiplexLogHandler: LogHandler {
     private var handlers: [LogHandler]
 

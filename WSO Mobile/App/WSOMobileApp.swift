@@ -50,11 +50,9 @@ struct WSOMobileApp: App {
                 FileLogHandler(label: label, fileURL: logFileURL)
             ])
             #if DEBUG
-            handler.logLevel = .trace // everything
-            #elseif TESTFLIGHT
-            handler.logLevel = .debug // so TestFlight can get debug symbols
+            handler.logLevel = .debug // everything
             #else
-            handler.logLevel = .info // change if needed
+            handler.logLevel = .debug // change if needed, .debug is perf hit!
             #endif
             return handler
         }

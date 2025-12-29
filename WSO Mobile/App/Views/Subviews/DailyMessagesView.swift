@@ -75,9 +75,9 @@ struct DailyMessagesView: View {
                 Image(systemName: "list.bullet.clipboard")
             }
         } .task {
-            logger.info("Fetching daily messages...")
+            logger.trace("Fetching daily messages...")
             await viewModel.fetchIfNeeded()
-            logger.info("Fetch complete")
+            logger.trace("Fetch complete")
         }
     }
 }

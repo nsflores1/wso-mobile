@@ -29,7 +29,5 @@ func WSOGetWords() async throws -> String {
         requestType: .get,
         getParser: parser
     )
-    print("finished!")
-    print("data: \(try await request.get().data)")
     return try await request.get().data
 }

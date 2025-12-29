@@ -9,6 +9,8 @@
 // also handles local and remote notifications.
 
 import UserNotifications
+import Logging
+import SwiftUI
 
 @available(macOS 14.0, *)
 extension NotificationManager: UNUserNotificationCenterDelegate {
@@ -24,6 +26,7 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
 @MainActor
 @Observable
 class NotificationManager: NSObject {
+    fileprivate let logger = Logger(label: "com.wso.NotificationManager")
     static let shared = NotificationManager()
 
     var isAuthorized = false
@@ -61,7 +64,7 @@ class NotificationManager: NSObject {
         let id = identifier ?? UUID().uuidString
 
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        print("scheduled notification \(id), \(content), \(trigger)")
+        logger.trace("New notification scheduled: \(request)")
         try? await center.add(request)
     }
 

@@ -76,9 +76,9 @@ struct WCFMView: View {
 
                     Button {
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                        logger.info("Radio playback is pausing...")
+                        logger.trace("Radio playback is pausing...")
                         player.pause()
-                        logger.info("Radio playback paused")
+                        logger.trace("Radio playback paused")
                     } label : {
                         Label("Pause", systemImage: "pause")
                     }
@@ -101,9 +101,9 @@ struct WCFMView: View {
 
                     Button {
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                        logger.info("Radio playback is starting...")
+                        logger.trace("Radio playback is starting...")
                         player.play()
-                        logger.info("Radio playback started")
+                        logger.trace("Radio playback started")
                     } label : {
                         Label("Play", systemImage: "play")
                     }

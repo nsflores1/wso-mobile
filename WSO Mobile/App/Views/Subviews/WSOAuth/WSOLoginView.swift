@@ -46,7 +46,7 @@ struct WSOLoginView: View {
                     .lineLimit(1)
                 Button("Login") {
                     Task {
-                        logger.info("Login is being attempted...")
+                        logger.trace("Login is being attempted...")
                         let generator = UINotificationFeedbackGenerator()
                         generator.prepare()
                         do {
@@ -54,7 +54,7 @@ struct WSOLoginView: View {
                             logger.info("Login succeeded")
                             generator.notificationOccurred(.success)
                         } catch {
-                            logger.info("Login failed")
+                            logger.error("Login failed")
                             generator.notificationOccurred(.error)
                             failedLogin()
                         }

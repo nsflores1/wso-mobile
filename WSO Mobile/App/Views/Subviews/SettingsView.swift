@@ -37,12 +37,12 @@ struct SettingsView: View {
                     if !notificationManager.isAuthorized {
                         Button("Enable in Settings...") {
                             Task {
-                                logger.info("User has attempted to enable notifications, waiting...")
+                                logger.trace("User has attempted to enable notifications, waiting...")
                                 let status = await notificationManager.requestPermission()
                                 if status {
                                     logger.info("User has enabled notifications")
                                 } else {
-                                    logger.info("User did not enable notifications")
+                                    logger.error("User did not enable notifications")
                                 }
                                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                             }
@@ -50,7 +50,7 @@ struct SettingsView: View {
                     }
                     Button("Test Notifications") {
                         Task {
-                            logger.info("User has tested notifications")
+                            logger.trace("User has tested notifications")
                             await notificationManager.scheduleLocal(
                                 title: "Hurray!",
                                 body: "Notifications actually work now!",
@@ -94,7 +94,7 @@ struct SettingsView: View {
                 Section {
                     Button("Reset Onboarding") {
                         hasSeenOnboarding.toggle()
-                        logger.info("User has reset onboarding state")
+                        logger.trace("User has reset onboarding state")
                         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                     }.sensoryFeedback(.selection, trigger: hatesEatingOut)
                     Button("Force Clear Cache") {
@@ -120,7 +120,7 @@ struct SettingsView: View {
                         Button("Logout of WSO") {
                             Task {
                                 authManager.logout()
-                                logger.info("User has logged out")
+                                logger.trace("User has logged out")
                                 await notificationManager.scheduleLocal(
                                     title: "Logout complete!",
                                     body: "Please restart the app.",

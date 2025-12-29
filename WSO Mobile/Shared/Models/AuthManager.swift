@@ -103,7 +103,7 @@ class AuthManager {
     }
 
     func logout() {
-        logger.info("User has logged out")
+        logger.trace("User has logged out")
         self.authToken = nil
         self.isAuthenticated = false
     }

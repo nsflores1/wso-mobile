@@ -97,7 +97,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 
     func get() async throws -> GetParser.ParsedType {
         if getParser != nil {
-            logger.info("Starting GET request to \(internalURL)")
+            logger.trace("Starting GET request to \(internalURL)")
             var request = HTTPRequest(method: .get, url: internalURL)
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
             request.headerFields[.accept] = getParser!.acceptType
@@ -114,9 +114,10 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 logger.debug("GET data: \(String(decoding: data, as: UTF8.self))")
             }
             do {
-                logger.info("GET request to \(internalURL) completed")
+                logger.trace("GET request to \(internalURL) completed")
                 return try await getParser!.parse(data: data)
             } catch let decoding as DecodingError {
+                logger.trace("GET error: decoding failed with \(decoding.localizedDescription)")
                 throw WebRequestError.parseError(decoding)
             }
         } else {
@@ -126,7 +127,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 
     func authGet() async throws -> GetParser.ParsedType {
         if getParser != nil {
-            logger.info("Starting GET (auth) request to \(internalURL)")
+            logger.trace("Starting GET (auth) request to \(internalURL)")
             var request = HTTPRequest(method: .get, url: internalURL)
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
             request.headerFields[.accept] = getParser!.acceptType
@@ -149,9 +150,10 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 logger.debug("GET (auth) data: \(String(decoding: data, as: UTF8.self))")
             }
             do {
-                logger.info("GET (auth) request to \(internalURL) completed")
+                logger.trace("GET (auth) request to \(internalURL) completed")
                 return try await getParser!.parse(data: data)
             } catch let decoding as DecodingError {
+                logger.trace("GET (auth) error: decoding failed with \(decoding.localizedDescription)")
                 throw WebRequestError.parseError(decoding)
             }
         } else {
@@ -161,7 +163,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 
     func post(sendData: Data? = nil) async throws -> PostParser.ParsedType {
         if postParser != nil {
-            logger.info("Starting POST request to \(internalURL)")
+            logger.trace("Starting POST request to \(internalURL)")
             var request = HTTPRequest(method: .post, url: internalURL)
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
             request.headerFields[.accept] = postParser!.acceptType
@@ -169,6 +171,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 
             // for the case where we do have data
             if sendData != nil {
+                logger.debug("POST payload: \(String(decoding: sendData!, as: UTF8.self))")
                 let (data, response) = try await session.upload(for: request, from: sendData!)
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
@@ -178,13 +181,15 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 logger.debug("POST success: the request HTTP status was \(response.status)")
                 logger.debug("POST data: \(String(decoding: data, as: UTF8.self))")
                 do {
-                    logger.info("POST request to \(internalURL) completed")
+                    logger.trace("POST request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
                 } catch let decoding as DecodingError {
+                    logger.trace("POST error: decoding failed with \(decoding.localizedDescription)")
                     throw WebRequestError.parseError(decoding)
                 }
             // we don't have a message body in this case!
             } else {
+                logger.debug("POST payload is empty")
                 let (data, response) = try await session.data(for: request)
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
@@ -194,9 +199,10 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 logger.debug("POST success: the request HTTP status was \(response.status)")
                 logger.debug("POST data: \(String(decoding: data, as: UTF8.self))")
                 do {
-                    logger.info("POST request to \(internalURL) completed")
+                    logger.trace("POST request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
                 } catch let decoding as DecodingError {
+                    logger.trace("POST error: decoding failed with \(decoding.localizedDescription)")
                     throw WebRequestError.parseError(decoding)
                 }
             }
@@ -207,7 +213,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 
     func authPost(sendData: Data? = nil) async throws -> PostParser.ParsedType {
         if postParser != nil {
-            logger.info("Starting POST (auth) request to \(internalURL)")
+            logger.trace("Starting POST (auth) request to \(internalURL)")
             var request = HTTPRequest(method: .post, url: internalURL)
             request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
             request.headerFields[.accept] = postParser!.acceptType
@@ -218,6 +224,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 
             // for the case where we do have data
             if sendData != nil {
+                logger.debug("POST (auth) payload: \(String(decoding: sendData!, as: UTF8.self))")
                 let (data, response) = try await session.upload(for: request, from: sendData!)
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
@@ -227,13 +234,15 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
                 logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self))")
                 do {
-                    logger.info("POST (auth) request to \(internalURL) completed")
+                    logger.trace("POST (auth) request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
                 } catch let decoding as DecodingError {
+                    logger.trace("POST (auth) error: decoding failed with \(decoding.localizedDescription)")
                     throw WebRequestError.parseError(decoding)
                 }
             // we don't have a message body in this case!
             } else {
+                logger.debug("POST (auth) payload is empty")
                 let (data, response) = try await session.data(for: request)
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
@@ -243,9 +252,10 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
                 logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self))")
                 do {
-                    logger.info("POST (auth) request to \(internalURL) completed")
+                    logger.trace("POST (auth) request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
                 } catch let decoding as DecodingError {
+                    logger.trace("POST (auth) error: decoding failed with \(decoding.localizedDescription)")
                     throw WebRequestError.parseError(decoding)
                 }
             }

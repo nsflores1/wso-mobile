@@ -71,9 +71,9 @@ struct DiningView: View {
                     }
                 }.listStyle(.sidebar)
                 .refreshable {
-                        logger.info("Dining data is being forcibly refreshed...")
+                        logger.trace("Dining data is being forcibly refreshed...")
                         await viewModel.forceRefresh()
-                        logger.info("Dining data forcibly refreshed")
+                        logger.trace("Dining data forcibly refreshed")
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 }
                 .navigationTitle(Text("Dining"))
@@ -91,9 +91,9 @@ struct DiningView: View {
                 }
             }
         }.task {
-            logger.info("Fetching dining data...")
+            logger.trace("Fetching dining data...")
             await viewModel.fetchIfNeeded()
-            logger.info("Fetch complete")
+            logger.trace("Fetch complete")
         }
     }
 }

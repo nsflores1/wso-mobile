@@ -115,14 +115,14 @@ struct ProfileView: View {
             .modifier(NavSubtitleIfAvailable(subtitle: "WSO Mobile version: 1.2.1"))
             .navigationBarTitleDisplayMode(.large)
             .task {
-                logger.info("Fetching user's personal profile...")
+                logger.trace("Fetching user's personal profile...")
                 await viewModel.fetchIfNeeded()
-                logger.info("Fetch complete")
+                logger.trace("Fetch complete")
             }
             .refreshable {
-                logger.info("User's personal profile data is being forcibly refreshed...")
+                logger.trace("User's personal profile data is being forcibly refreshed...")
                 await viewModel.forceRefresh()
-                logger.info("User's personal profile data forcibly refreshed")
+                logger.trace("User's personal profile data forcibly refreshed")
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

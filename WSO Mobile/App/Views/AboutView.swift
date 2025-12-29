@@ -299,9 +299,9 @@ struct AboutView: View {
                 }
             }
             .task {
-                logger.info("Fetching WSO words...")
+                logger.trace("Fetching WSO words...")
                 await viewModel.loadWords()
-                logger.info("WSO words fetch complete")
+                logger.trace("WSO words fetch complete")
             }
         }
     }

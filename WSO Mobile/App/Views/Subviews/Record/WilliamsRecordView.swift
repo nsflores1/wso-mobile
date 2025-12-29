@@ -60,14 +60,14 @@ struct WilliamsRecordView: View {
         }
         .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)
         .task {
-            logger.info("Fetching news data...")
+            logger.trace("Fetching news data...")
             await viewModel.fetchIfNeeded()
-            logger.info("Fetch complete")
+            logger.trace("Fetch complete")
         }
         .refreshable {
-            logger.info("News data is being forcibly refreshed...")
+            logger.trace("News data is being forcibly refreshed...")
             await viewModel.forceRefresh()
-            logger.info("News data forcibly refreshed")
+            logger.trace("News data forcibly refreshed")
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
     }

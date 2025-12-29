@@ -55,12 +55,16 @@ func WSOAPILogin(identityToken: String) async throws -> WSOAuthLogin {
         logger.error("POST (auth) request to https://wso.williams.edu/api/v2/auth/api/token failed due to invalid HTTP response: \(response.status)")
         throw WebRequestError.invalidResponse
     }
-    logger.debug("POST success: the request HTTP status was \(response.status)")
-    logger.debug("POST data: \(String(decoding: data, as: UTF8.self))")
+    logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
+    logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self))")
     let decoder = JSONDecoder()
     decoder.dateDecodingStrategy = .iso8601
-
-    let decodedResponse = try decoder.decode(WSOAuthLogin.self, from: data)
-    logger.info("POST (auth) request to completed")
-    return decodedResponse
+    do {
+        let decodedResponse = try decoder.decode(WSOAuthLogin.self, from: data)
+        logger.trace("POST (auth) request to completed")
+        return decodedResponse
+    } catch let decoding as DecodingError {
+        logger.error("POST (auth) failure: decoding API Token failed with \(decoding.localizedDescription)")
+        throw WebRequestError.parseError(decoding)
+    }
 }
