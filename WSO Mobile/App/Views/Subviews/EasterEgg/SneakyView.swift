@@ -45,7 +45,7 @@ import SwiftUI
 
 struct SneakyView: View {
     @State private var activated = false
-    @State private var particles: [Particle] = (0..<120).map { _ in Particle.random() }
+    @State private var particles: [Particle] = (0..<150).map { _ in Particle.random() }
 
     var body: some View {
         ZStack {
@@ -74,6 +74,13 @@ struct SneakyView: View {
                 let finalText = """
                     Hey, congrats on finding the last Easter Egg.
                     Why not take a break and stare at the stars?
+                    
+                           _(__)_        V
+                          '-e e -'__,--.__)
+                           (o_o)        ) 
+                              \\. /___.  |
+                               ||| _)/_)/
+                              //_(/_(/_(
                     """
                 Text(finalText)
                     .font(.system(.footnote, design: .monospaced))
@@ -81,7 +88,15 @@ struct SneakyView: View {
                     .padding()
                     .transition(.opacity)
             } else {
-                Text("Come back when you are enlightened,\nthen do as you were told.")
+                let mainText = """
+                    Definitely don't tap and hold the screen...
+                    I'm sure that won't do you any good.
+                    Not one bit.
+                    
+                    
+                    ...yep. Totally no secrets here.
+                    """
+                Text(mainText)
             }
         }
         .contentShape(Rectangle())

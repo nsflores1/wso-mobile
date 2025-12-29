@@ -35,16 +35,6 @@ struct AboutView: View {
                  who all contributed greatly:
                 """
                 Text(text.replacingOccurrences(of: "\n", with: ""))
-            }.toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
-                        NavigationLink(destination: SneakyView()) {
-                            Image(systemName: "questionmark")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
-                    }
-                }
             }
             List {
                 Section("Lead Developers (2026-2027)") {
@@ -303,7 +293,7 @@ struct AboutView: View {
                     Text("The many WSO developers of yore").italic(true)
                 }
                 NavigationLink("WSO is made possible by users like you. Thank you!") {
-                    EtherialView()
+                    SneakyView()
                 }
             }
             .task { await viewModel.loadWords() }
@@ -313,4 +303,6 @@ struct AboutView: View {
 
 #Preview {
     AboutView()
+        .environment(AuthManager.shared)
+        .environment(NotificationManager.shared)
 }
