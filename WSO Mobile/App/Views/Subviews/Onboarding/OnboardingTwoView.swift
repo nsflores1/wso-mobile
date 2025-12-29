@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct OnboardingTwoView: View {
     @AppStorage("userType") private var userType: UserType = .student
@@ -24,7 +25,9 @@ struct OnboardingTwoView: View {
                 .padding(20)
                 .multilineTextAlignment(.leading)
             VStack {
-                Text("Select a user type:").italic().foregroundStyle(Color(.secondaryLabel))
+                Text("Select a user type:")
+                    .italic()
+                    .shimmering()
                 Picker("User Type", selection: $userType) {
                     Text("Student").tag(UserType.student)
                     Text("Non-student").tag(UserType.nonstudent)

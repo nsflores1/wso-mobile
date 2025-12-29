@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct OnboardingOneView: View {
     var body: some View {
@@ -16,12 +17,17 @@ struct OnboardingOneView: View {
                 WSO (Williams Students Online) is a student organization at Williams College devoted to making software to help the college community, and this is our app!
                 
                 In the following pages, you will get information on how to use the app and set up some basic settings.
-                
+                """
+                let secondaryText = """
                 Swipe to the left to view the next page!
                 """
                 Text(mainText)
-                .padding(20)
-                .multilineTextAlignment(.leading)
+                    .padding(20)
+                    .multilineTextAlignment(.leading)
+                Text(secondaryText)
+                    .shimmering()
+                    .padding(5)
+                    .multilineTextAlignment(.center)
                 .navigationTitle(Text("Welcome!"))
                 Spacer()
         }.padding(20)
