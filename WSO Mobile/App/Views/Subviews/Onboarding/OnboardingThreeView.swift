@@ -16,11 +16,11 @@ struct OnboardingThreeView: View {
         NavigationStack {
             VStack {
                 let mainText = """
-                    Please submit feedback in a timely manner; new Beta versions are always coming out and so we are always changing things. It is possible whatever issue you have has already been resolved in a newer version.
+                    If you find any bugs with the app, please let us know by contacting us. You can do this from the forms on the Links tab of the app.
                     
-                    So make sure to update to the latest version before submitting feedback.
+                    WSO Mobile is always improving, so please be sure to update your app and clear caches before submitting feedback; it's possible that we have already removed a bug in the latest update!
                     
-                    Thanks again for testing out the app!
+                    Thanks again for using the app!
                     
                     If you want to see any of this text again, change the setting in the app to reset your onboarding progress.
                     """
@@ -36,7 +36,7 @@ struct OnboardingThreeView: View {
                 .buttonStyle(.borderedProminent)
             }
             Spacer()
-            .navigationTitle(Text("One More Thing"))
+            .navigationTitle(Text("Complete!"))
         }.padding(20)
     }
 }

@@ -13,112 +13,114 @@ struct HomeView: View {
     @Environment(AuthManager.self) private var authManager
     @State private var searchText: String = ""
 
-    // these warnings are for the user when they're not logged in
+    // these warnings are for the user because they aren't done yet
     @State private var facTrakWarn = false
     @State private var dormTrakWarn = false
     @State private var bookTrakWarn = false
 
-    // impact used for all haptic actions
-
-    // TODO: this can jump around when scrolling
-    // To fix this, find some way to make a skeleton that you fill in,
-    // or just don't show the page until it's done loading
+    @AppStorage("userType") private var userType: UserType = .student
 
     var body: some View {
         NavigationStack {
             List {
-                Section {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        // TODO: make this do something
-                        // TODO: hide this based on auth state
-                        TextField("Search users...", text: $searchText)
-                            .textInputAutocapitalization(.never)
-                        if !searchText.isEmpty {
-                            Button {
-                                searchText = ""
-                                // TODO: clear search model if pressed
-                            } label: {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundStyle(.secondary)
+                if userType == .student {
+                    Section {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                // TODO: make this do something
+                                // TODO: hide this based on auth state
+                            TextField("Search for users...", text: $searchText)
+                                .textInputAutocapitalization(.never)
+                            if !searchText.isEmpty {
+                                Button {
+                                    searchText = ""
+                                        // TODO: clear search model if pressed
+                                } label: {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundStyle(.secondary)
+                                }
                             }
                         }
                     }
+                } else {
+                    Text("App is in nonstudent mode").italic()
                 }
                 // TODO: this does NOTHING, still need to implement
-                Section {
-                    HStack {
-                        Button {
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                            facTrakWarn = true
-                        } label: {
-                            Label("FacTrak", systemImage: "graduationcap")
+                if userType == .student {
+                    Section {
+                        HStack {
+                            Button {
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                facTrakWarn = true
+                            } label: {
+                                Label("FacTrak", systemImage: "graduationcap")
 
-                        }.buttonStyle(.borderless)
-                            .controlSize(ControlSize.large)
-                            .alert(
+                            }.buttonStyle(.borderless)
+                                .controlSize(ControlSize.large)
+                                .alert(
                                     """
                                     This feature hasn't been implemented yet!
                                     Please check back soon.
                                     """,
                                     isPresented: $facTrakWarn
-                            ) {
-                                Button("OK", role: .cancel) { }
+                                ) {
+                                    Button("OK", role: .cancel) { }
+                                }
+                            Spacer()
+                            Text("Rate professors & courses")
+                                .foregroundStyle(Color(.secondaryLabel)).italic(true)
                         }
-                        Spacer()
-                        Text("Sell and buy textbooks")
-                            .foregroundStyle(Color(.secondaryLabel)).italic(true)
-                    }
-                    HStack {
-                        Button{
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                            dormTrakWarn = true
-                        } label: {
-                            Label("DormTrak", systemImage: "house")
+                        HStack {
+                            Button{
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                dormTrakWarn = true
+                            } label: {
+                                Label("DormTrak", systemImage: "house")
 
-                        }.buttonStyle(.borderless)
-                            .controlSize(ControlSize.large)
-                            .alert(
+                            }.buttonStyle(.borderless)
+                                .controlSize(ControlSize.large)
+                                .alert(
                                     """
                                     This feature hasn't been implemented yet!
                                     Please check back soon.
                                     """,
                                     isPresented: $dormTrakWarn
-                            ) {
-                                Button("OK", role: .cancel) { }
+                                ) {
+                                    Button("OK", role: .cancel) { }
+                                }
+                            Spacer()
+                            Text("Rate on-campus dorms")
+                                .foregroundStyle(Color(.secondaryLabel)).italic(true)
                         }
-                        Spacer()
-                        Text("Rate on campus dorms")
-                            .foregroundStyle(Color(.secondaryLabel)).italic(true)
-                    }
-                    HStack {
-                        Button {
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                            bookTrakWarn = true
-                        } label: {
-                            Label("BookTrak", systemImage: "book.closed")
-                        }.buttonStyle(.borderless)
-                            .controlSize(ControlSize.large)
-                            .alert(
+                        HStack {
+                            Button {
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                bookTrakWarn = true
+                            } label: {
+                                Label("BookTrak", systemImage: "book.closed")
+                            }.buttonStyle(.borderless)
+                                .controlSize(ControlSize.large)
+                                .alert(
                                     """
                                     This feature hasn't been implemented yet!
                                     Please check back soon.
                                     """,
                                     isPresented: $bookTrakWarn
-                            ) {
-                                Button("OK", role: .cancel) { }
+                                ) {
+                                    Button("OK", role: .cancel) { }
+                                }
+                            Spacer()
+                            Text("Buy and sell textbooks")
+                                .foregroundStyle(Color(.secondaryLabel)).italic(true)
                         }
-                        Spacer()
-                        Text("Sell and buy textbooks")
-                            .foregroundStyle(Color(.secondaryLabel)).italic(true)
-                    }
-                } header: {
-                    HStack {
-                        Text("WSO Features")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        Spacer()
-                        Image(systemName: "server.rack")
+                    } header: {
+                        HStack {
+                            Text("WSO Features")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                            Spacer()
+                            Image(systemName: "server.rack")
+                        }
                     }
                 }
                 LibraryHoursView()
@@ -136,12 +138,12 @@ struct HomeView: View {
             HStack { } // hidden hstack wraps the text
             .listStyle(.grouped)
             .navigationTitle(Text("WSO Mobile"))
-            .modifier(NavSubtitleIfAvailable(subtitle: "For students, by students!"))
+            .modifier(NavSubtitleIfAvailable(subtitle: userType == .student ? "For students, by students!" : "The official app of WSO!"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    // TODO: replace with WSOLoginView() later,
-                    // this is to placate Apple reviewers
+                        // TODO: replace with WSOLoginView() later,
+                        // this is to placate Apple reviewers
                     HStack {
                         if #available(iOS 26.0, *) {
                             NavigationLink(destination: MapPageView()) {
@@ -150,30 +152,23 @@ struct HomeView: View {
                                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             })
                         }
-                        NavigationLink(destination: {
-                            if authManager.isAuthenticated {
-                                ProfileView()
-                            } else {
-                                WSOLoginView()
+                        if userType == .student {
+                            NavigationLink(destination: {
+                                if authManager.isAuthenticated {
+                                    ProfileView()
+                                } else {
+                                    WSOLoginView()
+                                }
+                            }) {
+                                Image(systemName: "person")
                             }
-                        }) {
-                            Image(systemName: "person")
+                            .simultaneousGesture(TapGesture().onEnded {
+                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            })
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
                     }
                 }
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack {
-                        NavigationLink(destination: AboutView()) {
-                            Image(systemName: "questionmark")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
-                    }
-                }
-                ToolbarItem(placement: .keyboard) {
                     HStack {
                         NavigationLink(destination: AboutView()) {
                             Image(systemName: "questionmark")

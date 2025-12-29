@@ -105,15 +105,17 @@ struct SettingsView: View {
                             UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                         }
                     }
-                    Button("Logout of WSO") {
-                        Task {
-                            authManager.logout()
-                            await notificationManager.scheduleLocal(
-                                title: "Logout complete!",
-                                body: "Please restart the app.",
-                                date: Date().addingTimeInterval(1)
-                            )
-                            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                    if userType == .student {
+                        Button("Logout of WSO") {
+                            Task {
+                                authManager.logout()
+                                await notificationManager.scheduleLocal(
+                                    title: "Logout complete!",
+                                    body: "Please restart the app.",
+                                    date: Date().addingTimeInterval(1)
+                                )
+                                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                            }
                         }
                     }
                 } header : {
