@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Logging
 
 struct HomeView: View {
+    @Environment(\.logger) private var logger
     @State private var libraryViewModel = LibraryHoursViewModel()
     @State private var dailyMessagesViewModel = DailyMessagesViewModel()
     @Environment(AuthManager.self) private var authManager
@@ -127,12 +129,20 @@ struct HomeView: View {
                 DailyMessagesView()
             }
             .task {
+                logger.info("Fetching library data")
                 await libraryViewModel.fetchIfNeeded()
+                logger.info("Fetch complete")
+                logger.info("Fetching daily messages data")
                 await dailyMessagesViewModel.fetchIfNeeded()
+                logger.info("Fetch complete")
             }
             .refreshable {
+                logger.info("Library hours data is being forcibly refreshed...")
                 await libraryViewModel.forceRefresh()
+                logger.info("Library hours data forcibly refreshed")
+                logger.info("Daily messages data is being forcibly refreshed...")
                 await dailyMessagesViewModel.forceRefresh()
+                logger.info("Daily messages data forcibly refreshed")
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
             HStack { } // hidden hstack wraps the text

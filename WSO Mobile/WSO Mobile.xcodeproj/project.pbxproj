@@ -44,7 +44,6 @@
 		5B6252502EFE08BF00F1C814 /* ebgaramond.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B62524F2EFE08BF00F1C814 /* ebgaramond.ttf */; };
 		5B6252522EFE0BB700F1C814 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252512EFE0BB500F1C814 /* FontExtension.swift */; };
 		5B6252532EFE0BB700F1C814 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252512EFE0BB500F1C814 /* FontExtension.swift */; };
-		5B6252552EFE0DA400F1C814 /* ProfileMockupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252542EFE0DA100F1C814 /* ProfileMockupView.swift */; };
 		5B6252572EFE412A00F1C814 /* WSOSelfUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252562EFE412100F1C814 /* WSOSelfUserViewModel.swift */; };
 		5B62525C2EFE552000F1C814 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 5B62525B2EFE552000F1C814 /* Shimmer */; };
 		5B62525E2EFEFA1300F1C814 /* WSOProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62525D2EFEFA1000F1C814 /* WSOProfileView.swift */; };
@@ -52,6 +51,8 @@
 		5B6252632EFF270300F1C814 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252622EFF26FE00F1C814 /* CacheManager.swift */; };
 		5B6252642EFF270300F1C814 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252622EFF26FE00F1C814 /* CacheManager.swift */; };
 		5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B99C22EEE16710046B3A7 /* LinksView.swift */; };
+		5B6BECA02F0225EB00CE7CF0 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6BEC9F2F0225EB00CE7CF0 /* Logging */; };
+		5B6BECE32F03043500CE7CF0 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6BECE22F03043500CE7CF0 /* JWTDecode */; };
 		5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71D5F72EC802790051ABF5 /* ArgumentParser */; };
 		5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */; };
 		5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */; };
@@ -122,6 +123,9 @@
 		5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3EE532ECC3521009CDFD3 /* WilliamsRecordView.swift */; };
 		5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB32542EBFD7F300F75A10 /* ContentView.swift */; };
 		5BEB32572EBFD7F400F75A10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BEB32562EBFD7F400F75A10 /* Assets.xcassets */; };
+		5BFA32BF2F030FB8005D8F5C /* LogBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */; };
+		5BFA32C02F030FB8005D8F5C /* LogBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */; };
+		5BFA32C42F0312C3005D8F5C /* LogViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */; };
 		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -192,7 +196,6 @@
 		5B56327A2EDB84A800390AB8 /* EtherialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherialView.swift; sourceTree = "<group>"; };
 		5B62524F2EFE08BF00F1C814 /* ebgaramond.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ebgaramond.ttf; sourceTree = "<group>"; };
 		5B6252512EFE0BB500F1C814 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
-		5B6252542EFE0DA100F1C814 /* ProfileMockupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMockupView.swift; sourceTree = "<group>"; };
 		5B6252562EFE412100F1C814 /* WSOSelfUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOSelfUserViewModel.swift; sourceTree = "<group>"; };
 		5B62525D2EFEFA1000F1C814 /* WSOProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOProfileView.swift; sourceTree = "<group>"; };
 		5B6252602EFEFAD700F1C814 /* WSOUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOUserViewModel.swift; sourceTree = "<group>"; };
@@ -250,6 +253,8 @@
 		5BEB325C2EBFD7F400F75A10 /* WSOMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WSOMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WSOMobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WSOMobileCLI; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBootstrap.swift; sourceTree = "<group>"; };
+		5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewerView.swift; sourceTree = "<group>"; };
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +267,7 @@
 				5BDEED6E2ED0E6A400E150E6 /* HTTPTypes in Frameworks */,
 				5B6252472EFDE24B00F1C814 /* JWTDecode in Frameworks */,
 				5B62525C2EFE552000F1C814 /* Shimmer in Frameworks */,
+				5B6BECA02F0225EB00CE7CF0 /* Logging in Frameworks */,
 				5B93FE292EF20615008A2C1A /* Marquee in Frameworks */,
 				5B5632792EDB848200390AB8 /* FluidGradient in Frameworks */,
 				5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */,
@@ -290,6 +296,7 @@
 			files = (
 				5BE3EE502ECC3361009CDFD3 /* FeedKit in Frameworks */,
 				5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */,
+				5B6BECE32F03043500CE7CF0 /* JWTDecode in Frameworks */,
 				5BDEED722ED0E7FA00E150E6 /* HTTPTypesFoundation in Frameworks */,
 				5BDEED702ED0E6AA00E150E6 /* HTTPTypes in Frameworks */,
 				5B10FF962EC838DE0021597F /* SwiftSoup in Frameworks */,
@@ -347,6 +354,7 @@
 		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */,
 				5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */,
 				5BD2D2E82ED90E34009F3C3A /* EasterEgg */,
 				5B05EF212ED8EC1100802310 /* Onboarding */,
@@ -497,7 +505,6 @@
 				5B4B3EF22EC10C9000277399 /* HomeView.swift */,
 				5BD358212ED3A7AC001AE153 /* AboutView.swift */,
 				5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */,
-				5B6252542EFE0DA100F1C814 /* ProfileMockupView.swift */,
 				5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */,
 				5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */,
 				5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */,
@@ -534,6 +541,7 @@
 		5BEB328C2EBFDA3900F75A10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */,
 				5BCF0D5D2F01EA9200E702EB /* UserType.swift */,
 				5B6252622EFF26FE00F1C814 /* CacheManager.swift */,
 				5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */,
@@ -602,6 +610,7 @@
 				5B93FE282EF20615008A2C1A /* Marquee */,
 				5B6252462EFDE24B00F1C814 /* JWTDecode */,
 				5B62525B2EFE552000F1C814 /* Shimmer */,
+				5B6BEC9F2F0225EB00CE7CF0 /* Logging */,
 			);
 			productName = "WSO Mobile";
 			productReference = 5BEB324F2EBFD7F300F75A10 /* WSOMobile.app */;
@@ -666,6 +675,7 @@
 				5BE3EE4F2ECC3361009CDFD3 /* FeedKit */,
 				5BDEED6F2ED0E6AA00E150E6 /* HTTPTypes */,
 				5BDEED712ED0E7FA00E150E6 /* HTTPTypesFoundation */,
+				5B6BECE22F03043500CE7CF0 /* JWTDecode */,
 			);
 			productName = "WSO Mobile Debug";
 			productReference = 5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */;
@@ -794,12 +804,13 @@
 				5BD50F0E2ED9497900806CA7 /* AboutViewModel.swift in Sources */,
 				5B6252632EFF270300F1C814 /* CacheManager.swift in Sources */,
 				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
-				5B6252552EFE0DA400F1C814 /* ProfileMockupView.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BCF0D5C2F01ACE400E702EB /* CopyableViews.swift in Sources */,
+				5BFA32C42F0312C3005D8F5C /* LogViewerView.swift in Sources */,
 				5B6252532EFE0BB700F1C814 /* FontExtension.swift in Sources */,
 				5BE3EE452ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */,
 				5B56327B2EDB84B800390AB8 /* EtherialView.swift in Sources */,
+				5BFA32C02F030FB8005D8F5C /* LogBootstrap.swift in Sources */,
 				5B515FB02EDBC99C00F166A1 /* WCFMPlaylistViewModel.swift in Sources */,
 				5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */,
 				5B5597332EC8F80E00FB82D6 /* LibraryHoursViewModel.swift in Sources */,
@@ -878,6 +889,7 @@
 				5B10FF9B2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5BDEED6C2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
+				5BFA32BF2F030FB8005D8F5C /* LogBootstrap.swift in Sources */,
 				5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */,
 				5B93FE212EF20196008A2C1A /* WSOUser.swift in Sources */,
 				5B515FB52EDC8F1300F166A1 /* NavStackShim.swift in Sources */,
@@ -1373,6 +1385,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B62525A2EFE552000F1C814 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
+		};
+		5B6BEC9F2F0225EB00CE7CF0 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B93FE232EF20402008A2C1A /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		5B6BECE22F03043500CE7CF0 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B6252452EFDE23600F1C814 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
 		};
 		5B71D5F72EC802790051ABF5 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct EpheliaView: View {
     @State private var isPresented: Bool = false
-    
 
     var body: some View {
         NavigationStack {

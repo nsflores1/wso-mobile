@@ -10,8 +10,10 @@ import Foundation
 import AVFoundation
 import Marquee
 import Kingfisher
+import Logging
 
 struct WCFMView: View {
+    @Environment(\.logger) private var logger
     @State private var player = WCFMViewModel(url: URL(string: "http://wcfm-streaming.williams.edu:8000/stream")!)
 
     var body: some View {
@@ -74,7 +76,9 @@ struct WCFMView: View {
 
                     Button {
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        logger.info("Radio playback is pausing...")
                         player.pause()
+                        logger.info("Radio playback paused")
                     } label : {
                         Label("Pause", systemImage: "pause")
                     }
@@ -97,7 +101,9 @@ struct WCFMView: View {
 
                     Button {
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        logger.info("Radio playback is starting...")
                         player.play()
+                        logger.info("Radio playback started")
                     } label : {
                         Label("Play", systemImage: "play")
                     }

@@ -14,8 +14,10 @@ import SwiftUI
 import System
 import Kingfisher
 import Shimmer
+import Logging
 
 struct WSOProfileView: View {
+    @Environment(\.logger) private var logger
     @Environment(\.openURL) private var openURL
     @Environment(AuthManager.self) private var authManager
     @Environment(NotificationManager.self) private var notificationManager
@@ -117,9 +119,15 @@ struct WSOProfileView: View {
             .navigationTitle(Text("Profile"))
             .modifier(NavSubtitleIfAvailable(subtitle: "WSO Mobile version: 1.2.1"))
             .navigationBarTitleDisplayMode(.large)
-            .task { await viewModel.fetchIfNeeded() }
+            .task {
+                logger.info("Fetching user profile \(viewModel.userID)...")
+                await viewModel.fetchIfNeeded()
+                logger.info("Fetch complete for user profile \(viewModel.userID)")
+            }
             .refreshable {
+                logger.info("User profile \(viewModel.userID) data is being forcibly refreshed...")
                 await viewModel.forceRefresh()
+                logger.info("User profile \(viewModel.userID) data forcibly refreshed")
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

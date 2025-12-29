@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Logging
 
 struct NewsView: View {
+    @Environment(\.logger) private var logger
     @State private var viewModel = WilliamsRecordViewModel()
 
     var body: some View {
@@ -27,9 +29,6 @@ struct NewsView: View {
             .navigationTitle(Text("News"))
             .modifier(NavSubtitleIfAvailable(subtitle: "The latest happenings"))
             .navigationBarTitleDisplayMode(.large)
-        }.refreshable {
-            await viewModel.forceRefresh()
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
     }
 }

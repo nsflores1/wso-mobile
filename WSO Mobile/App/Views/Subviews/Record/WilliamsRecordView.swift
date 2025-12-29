@@ -5,12 +5,12 @@
 //  Created by Nathaniel Flores on 2025-11-18.
 //
 
-import FeedKit
 import SwiftUI
 import Foundation
-import SwiftSoup
+import Logging
 
 struct WilliamsRecordView: View {
+    @Environment(\.logger) private var logger
     @State private var viewModel = WilliamsRecordViewModel()
     @AppStorage("likesSerifFont") private var likesSerifFont: Bool = false
 
@@ -59,9 +59,15 @@ struct WilliamsRecordView: View {
             }
         }
         .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)
-        .task { await viewModel.fetchIfNeeded() }
+        .task {
+            logger.info("Fetching news data...")
+            await viewModel.fetchIfNeeded()
+            logger.info("Fetch complete")
+        }
         .refreshable {
+            logger.info("News data is being forcibly refreshed...")
             await viewModel.forceRefresh()
+            logger.info("News data forcibly refreshed")
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
     }

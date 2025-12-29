@@ -11,6 +11,7 @@ import SwiftUI
 import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
+import Logging
 
 // this defines a parser for some endpoint.
 protocol DataParser {
@@ -69,6 +70,7 @@ extension WebRequestError: LocalizedError {
 // TODO: implement the various other HTTP request methods as they come up
 
 class WebRequest<GetParser: DataParser, PostParser: DataParser> {
+    fileprivate let logger = Logger(label: "com.wso.WebRequest")
     private var session = URLSession.shared
     private let cache = URLCache.shared
 
@@ -95,18 +97,24 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 
     func get() async throws -> GetParser.ParsedType {
         if getParser != nil {
+            logger.info("Starting GET request to \(internalURL)")
             var request = HTTPRequest(method: .get, url: internalURL)
-            request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+            request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
             request.headerFields[.accept] = getParser!.acceptType
 
             let (data, response) = try await session.data(for: request)
             guard let http = response as HTTPResponse?,
                   (200..<300).contains(http.status.code) else {
+                logger.error("GET request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
                 throw WebRequestError.invalidResponse
             }
-            let str = String(data: data, encoding: .utf8)
-            print(str!)
+            logger.debug("GET success: the request HTTP status was \(response.status)")
+            // don't print image data out to console!
+            if !internalURL.absoluteString.contains(".jpg") {
+                logger.debug("GET data: \(String(decoding: data, as: UTF8.self))")
+            }
             do {
+                logger.info("GET request to \(internalURL) completed")
                 return try await getParser!.parse(data: data)
             } catch let decoding as DecodingError {
                 throw WebRequestError.parseError(decoding)
@@ -116,14 +124,12 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         }
     }
 
-    // TODO: make this actually make requests with authentication
     func authGet() async throws -> GetParser.ParsedType {
         if getParser != nil {
+            logger.info("Starting GET (auth) request to \(internalURL)")
             var request = HTTPRequest(method: .get, url: internalURL)
-            request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+            request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
             request.headerFields[.accept] = getParser!.acceptType
-
-            print("starting authget!")
 
             // note to future maintainers: this is using the singleton,
             // not the environment object
@@ -134,12 +140,16 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             let (data, response) = try await session.data(for: request)
             guard let http = response as HTTPResponse?,
                   (200..<300).contains(http.status.code) else {
+                logger.error("GET (auth) request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
                 throw WebRequestError.invalidResponse
             }
-
-            let str = (String(data: data, encoding: .utf8) ?? "No data")
-            print(str)
+            logger.debug("GET (auth) success: the request HTTP status was \(response.status)")
+            // don't print image data out to console!
+            if !internalURL.absoluteString.contains(".jpg") {
+                logger.debug("GET (auth) data: \(String(decoding: data, as: UTF8.self))")
+            }
             do {
+                logger.info("GET (auth) request to \(internalURL) completed")
                 return try await getParser!.parse(data: data)
             } catch let decoding as DecodingError {
                 throw WebRequestError.parseError(decoding)
@@ -151,8 +161,9 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
 
     func post(sendData: Data? = nil) async throws -> PostParser.ParsedType {
         if postParser != nil {
+            logger.info("Starting POST request to \(internalURL)")
             var request = HTTPRequest(method: .post, url: internalURL)
-            request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+            request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
             request.headerFields[.accept] = postParser!.acceptType
             request.headerFields[.contentType] = postParser!.contentType
 
@@ -161,11 +172,13 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 let (data, response) = try await session.upload(for: request, from: sendData!)
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
+                    logger.error("POST request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
                     throw WebRequestError.invalidResponse
                 }
-                //let str = (String(data: data, encoding: .utf8) ?? "No data")
-                //print(str)
+                logger.debug("POST success: the request HTTP status was \(response.status)")
+                logger.debug("POST data: \(String(decoding: data, as: UTF8.self))")
                 do {
+                    logger.info("POST request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
                 } catch let decoding as DecodingError {
                     throw WebRequestError.parseError(decoding)
@@ -175,11 +188,13 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 let (data, response) = try await session.data(for: request)
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
+                    logger.error("POST request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
                     throw WebRequestError.invalidResponse
                 }
-                //let str = (String(data: data, encoding: .utf8) ?? "No data")
-                //print(str)
+                logger.debug("POST success: the request HTTP status was \(response.status)")
+                logger.debug("POST data: \(String(decoding: data, as: UTF8.self))")
                 do {
+                    logger.info("POST request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
                 } catch let decoding as DecodingError {
                     throw WebRequestError.parseError(decoding)
@@ -190,11 +205,11 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         }
     }
 
-    // TODO: make this actually make requests with authentication
     func authPost(sendData: Data? = nil) async throws -> PostParser.ParsedType {
         if postParser != nil {
+            logger.info("Starting POST (auth) request to \(internalURL)")
             var request = HTTPRequest(method: .post, url: internalURL)
-            request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+            request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
             request.headerFields[.accept] = postParser!.acceptType
             request.headerFields[.contentType] = postParser!.contentType
 
@@ -206,9 +221,13 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 let (data, response) = try await session.upload(for: request, from: sendData!)
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
+                    logger.error("POST (auth) request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
                     throw WebRequestError.invalidResponse
                 }
+                logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
+                logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self))")
                 do {
+                    logger.info("POST (auth) request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
                 } catch let decoding as DecodingError {
                     throw WebRequestError.parseError(decoding)
@@ -218,9 +237,13 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 let (data, response) = try await session.data(for: request)
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
+                    logger.error("POST (auth) request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
                     throw WebRequestError.invalidResponse
                 }
+                logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
+                logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self))")
                 do {
+                    logger.info("POST (auth) request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
                 } catch let decoding as DecodingError {
                     throw WebRequestError.parseError(decoding)

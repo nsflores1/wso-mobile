@@ -7,8 +7,10 @@
 
 import SwiftUI
 import Kingfisher
+import Logging
 
 struct SettingsView: View {
+    @Environment(\.logger) private var logger
     @AppStorage("likesMath") var likesMath: Bool = false
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
@@ -35,13 +37,20 @@ struct SettingsView: View {
                     if !notificationManager.isAuthorized {
                         Button("Enable in Settings...") {
                             Task {
-                                _ = await notificationManager.requestPermission()
+                                logger.info("User has attempted to enable notifications, waiting...")
+                                let status = await notificationManager.requestPermission()
+                                if status {
+                                    logger.info("User has enabled notifications")
+                                } else {
+                                    logger.info("User did not enable notifications")
+                                }
                                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                             }
                         }
                     }
                     Button("Test Notifications") {
                         Task {
+                            logger.info("User has tested notifications")
                             await notificationManager.scheduleLocal(
                                 title: "Hurray!",
                                 body: "Notifications actually work now!",
@@ -85,6 +94,7 @@ struct SettingsView: View {
                 Section {
                     Button("Reset Onboarding") {
                         hasSeenOnboarding.toggle()
+                        logger.info("User has reset onboarding state")
                         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                     }.sensoryFeedback(.selection, trigger: hatesEatingOut)
                     Button("Force Clear Cache") {
@@ -102,6 +112,7 @@ struct SettingsView: View {
                                 body: "Please restart the app.",
                                 date: Date().addingTimeInterval(1)
                             )
+                            logger.info("Cache forcibly reset")
                             UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                         }
                     }
@@ -109,6 +120,7 @@ struct SettingsView: View {
                         Button("Logout of WSO") {
                             Task {
                                 authManager.logout()
+                                logger.info("User has logged out")
                                 await notificationManager.scheduleLocal(
                                     title: "Logout complete!",
                                     body: "Please restart the app.",
@@ -117,6 +129,9 @@ struct SettingsView: View {
                                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                             }
                         }
+                    }
+                    NavigationLink(destination: LogViewerView()) {
+                        Text("View Debug Log")
                     }
                 } header : {
                     Text("Reset & Cache")

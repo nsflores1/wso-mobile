@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Logging
 
 struct AboutView: View {
+    @Environment(\.logger) private var logger
     @State private var viewModel = AboutViewModel()
     @Environment(AuthManager.self) private var authManager
 
@@ -296,7 +298,11 @@ struct AboutView: View {
                     SneakyView()
                 }
             }
-            .task { await viewModel.loadWords() }
+            .task {
+                logger.info("Fetching WSO words...")
+                await viewModel.loadWords()
+                logger.info("WSO words fetch complete")
+            }
         }
     }
 }

@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Logging
 
 struct DiningView: View {
+    @Environment(\.logger) private var logger
     @State private var viewModel = DiningHoursViewModel()
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
-    
+
     var body: some View {
         NavigationStack {
             if viewModel.isLoading && viewModel.diningMenu.isEmpty {
@@ -69,7 +71,9 @@ struct DiningView: View {
                     }
                 }.listStyle(.sidebar)
                 .refreshable {
+                        logger.info("Dining data is being forcibly refreshed...")
                         await viewModel.forceRefresh()
+                        logger.info("Dining data forcibly refreshed")
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 }
                 .navigationTitle(Text("Dining"))
@@ -86,7 +90,11 @@ struct DiningView: View {
                     }
                 }
             }
-        }.task { await viewModel.fetchIfNeeded() }
+        }.task {
+            logger.info("Fetching dining data...")
+            await viewModel.fetchIfNeeded()
+            logger.info("Fetch complete")
+        }
     }
 }
 

@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Logging
 
 struct LibraryHoursView: View {
+    @Environment(\.logger) private var logger
     @State private var viewModel = LibraryHoursViewModel()
 
     var body: some View {
@@ -52,7 +54,12 @@ struct LibraryHoursView: View {
                 Spacer()
                 Image(systemName: "book")
             }
-        }.task { await viewModel.fetchIfNeeded() }
+        }.task {
+            logger.info("Fetching library data...")
+            await viewModel.fetchIfNeeded()
+            logger.info("Fetch complete")
+
+        }
     }
 }
 

@@ -8,6 +8,7 @@
 import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
+import Logging
 
 struct WSOAuthLogin: Codable {
     var status: Int?
@@ -43,16 +44,23 @@ func WSOIdentityLogin(password: String, unixID: String) async throws -> WSOAuthL
 
 // takes an identitytoken, return an apitoken
 func WSOAPILogin(identityToken: String) async throws -> WSOAuthLogin {
+    let logger = Logger(label: "com.wso.WebRequest") // technically not but whatever, this is a web request
     var request = HTTPRequest(method: .post, url: URL(string: "https://wso.williams.edu/api/v2/auth/api/token")!)
     request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
     request.headerFields[.authorization] = "Bearer \(identityToken)"
 
-    let (data, _) = try await URLSession.shared.data(for: request)
-    //let str = (String(data: data, encoding: .utf8) ?? "No data")
-    //print(str)
+    let (data, response) = try await URLSession.shared.data(for: request)
+    guard let http = response as HTTPResponse?,
+          (200..<300).contains(http.status.code) else {
+        logger.error("POST (auth) request to https://wso.williams.edu/api/v2/auth/api/token failed due to invalid HTTP response: \(response.status)")
+        throw WebRequestError.invalidResponse
+    }
+    logger.debug("POST success: the request HTTP status was \(response.status)")
+    logger.debug("POST data: \(String(decoding: data, as: UTF8.self))")
     let decoder = JSONDecoder()
     decoder.dateDecodingStrategy = .iso8601
 
     let decodedResponse = try decoder.decode(WSOAuthLogin.self, from: data)
+    logger.info("POST (auth) request to completed")
     return decodedResponse
 }

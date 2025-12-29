@@ -9,8 +9,10 @@ import SwiftUI
 import System
 import Kingfisher
 import Shimmer
+import Logging
 
 struct ProfileView: View {
+    @Environment(\.logger) private var logger
     @Environment(\.openURL) private var openURL
     @Environment(AuthManager.self) private var authManager
     @Environment(NotificationManager.self) private var notificationManager
@@ -112,9 +114,15 @@ struct ProfileView: View {
             .navigationTitle(Text("Profile"))
             .modifier(NavSubtitleIfAvailable(subtitle: "WSO Mobile version: 1.2.1"))
             .navigationBarTitleDisplayMode(.large)
-            .task { await viewModel.fetchIfNeeded() }
+            .task {
+                logger.info("Fetching user's personal profile...")
+                await viewModel.fetchIfNeeded()
+                logger.info("Fetch complete")
+            }
             .refreshable {
+                logger.info("User's personal profile data is being forcibly refreshed...")
                 await viewModel.forceRefresh()
+                logger.info("User's personal profile data forcibly refreshed")
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

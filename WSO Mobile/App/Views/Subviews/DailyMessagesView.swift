@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Logging
 
 struct DailyMessagesView: View {
+    @Environment(\.logger) private var logger
     @State var viewModel = DailyMessagesViewModel()
 
     var body: some View {
@@ -72,7 +74,11 @@ struct DailyMessagesView: View {
                 Spacer()
                 Image(systemName: "list.bullet.clipboard")
             }
-        } .task { await viewModel.fetchIfNeeded() }
+        } .task {
+            logger.info("Fetching daily messages...")
+            await viewModel.fetchIfNeeded()
+            logger.info("Fetch complete")
+        }
     }
 }
 
