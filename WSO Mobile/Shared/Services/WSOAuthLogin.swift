@@ -33,7 +33,7 @@ struct WSOAuthLoginForm: Codable {
 func WSOIdentityLogin(password: String, unixID: String) async throws -> WSOAuthLogin {
     let parser = JSONISO8601Parser<WSOAuthLogin>()
     let request = WebRequest<NoParser, JSONISO8601Parser<WSOAuthLogin>>(
-        url: URL(string: "https://wso.williams.edu/api/v2/auth/login")!,
+        url: URL(string: "https://wso.williams.edu/api/v2/auth/identity/token")!,
         requestType: .post,
         postParser: parser
     )

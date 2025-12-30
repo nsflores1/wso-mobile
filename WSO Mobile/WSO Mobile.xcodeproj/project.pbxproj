@@ -126,6 +126,7 @@
 		5BFA32BF2F030FB8005D8F5C /* LogBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */; };
 		5BFA32C02F030FB8005D8F5C /* LogBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */; };
 		5BFA32C42F0312C3005D8F5C /* LogViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */; };
+		5BFA32C62F033EB4005D8F5C /* HomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */; };
 		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -255,6 +256,7 @@
 		5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WSOMobileCLI; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBootstrap.swift; sourceTree = "<group>"; };
 		5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewerView.swift; sourceTree = "<group>"; };
+		5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonsView.swift; sourceTree = "<group>"; };
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -368,6 +370,7 @@
 				5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */,
 				5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */,
 				5B0168402EC91BEC0092FBA3 /* MapView.swift */,
+				5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -821,6 +824,7 @@
 				5B0A2E8C2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */,
 				5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */,
+				5BFA32C62F033EB4005D8F5C /* HomeButtonsView.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
 				5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */,
 				5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */,
