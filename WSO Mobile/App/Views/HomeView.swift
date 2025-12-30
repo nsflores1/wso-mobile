@@ -13,30 +13,43 @@ struct HomeView: View {
     @State private var libraryViewModel = LibraryHoursViewModel()
     @State private var dailyMessagesViewModel = DailyMessagesViewModel()
     @Environment(AuthManager.self) private var authManager
-    @State private var searchText: String = ""
 
-    // these warnings are for the user because they aren't done yet
-    @State private var facTrakWarn = false
-    @State private var dormTrakWarn = false
-    @State private var bookTrakWarn = false
+    // variables for the home screen search box
+    @State private var searchText: String = ""
+    @State var users: [User] = []
+    // task handle
+    @State private var searchTask: Task<Void, Never>?
 
     @AppStorage("userType") private var userType: UserType = .student
 
     var body: some View {
         NavigationStack {
             List {
-                if userType == .student {
+                if userType == .student && authManager.isAuthenticated {
                     Section {
                         HStack {
                             Image(systemName: "magnifyingglass")
-                                // TODO: make this do something
-                                // TODO: hide this based on auth state
                             TextField("Search for users...", text: $searchText)
                                 .textInputAutocapitalization(.never)
+                            // comment so beta test users don't have it for now
+//                                .onChange(of: searchText) { _, newValue in
+//                                    searchTask?.cancel()
+//                                    searchTask = Task {
+//                                        try? await Task.sleep(for: .milliseconds(300))
+//                                        guard !Task.isCancelled else { return }
+//                                            // an empty result will always fail so don't do it
+//                                        if !searchText.isEmpty {
+//                                            do {
+//                                                users = try await WSOFacebookSearch(query: newValue)
+//                                            } catch {
+//                                                logger.error("Failed to update search results: \(error.localizedDescription)")
+//                                            }
+//                                        }
+//                                    }
+//                                }
                             if !searchText.isEmpty {
                                 Button {
                                     searchText = ""
-                                        // TODO: clear search model if pressed
                                 } label: {
                                     Image(systemName: "xmark.circle.fill")
                                         .foregroundStyle(.secondary)
@@ -44,86 +57,14 @@ struct HomeView: View {
                             }
                         }
                     }
+                } else if userType == .student && !authManager.isAuthenticated {
+                    Text("Login to use search").italic()
                 } else {
                     Text("App is in nonstudent mode").italic()
                 }
                 // TODO: this does NOTHING, still need to implement
                 if userType == .student {
-                    Section {
-                        HStack {
-                            Button {
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                facTrakWarn = true
-                            } label: {
-                                Label("FacTrak", systemImage: "graduationcap")
-
-                            }.buttonStyle(.borderless)
-                                .controlSize(ControlSize.large)
-                                .alert(
-                                    """
-                                    This feature hasn't been implemented yet!
-                                    Please check back soon.
-                                    """,
-                                    isPresented: $facTrakWarn
-                                ) {
-                                    Button("OK", role: .cancel) { }
-                                }
-                            Spacer()
-                            Text("Rate professors & courses")
-                                .foregroundStyle(Color(.secondaryLabel)).italic(true)
-                        }
-                        HStack {
-                            Button{
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                dormTrakWarn = true
-                            } label: {
-                                Label("DormTrak", systemImage: "house")
-
-                            }.buttonStyle(.borderless)
-                                .controlSize(ControlSize.large)
-                                .alert(
-                                    """
-                                    This feature hasn't been implemented yet!
-                                    Please check back soon.
-                                    """,
-                                    isPresented: $dormTrakWarn
-                                ) {
-                                    Button("OK", role: .cancel) { }
-                                }
-                            Spacer()
-                            Text("Rate on-campus dorms")
-                                .foregroundStyle(Color(.secondaryLabel)).italic(true)
-                        }
-                        HStack {
-                            Button {
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                bookTrakWarn = true
-                            } label: {
-                                Label("BookTrak", systemImage: "book.closed")
-                            }.buttonStyle(.borderless)
-                                .controlSize(ControlSize.large)
-                                .alert(
-                                    """
-                                    This feature hasn't been implemented yet!
-                                    Please check back soon.
-                                    """,
-                                    isPresented: $bookTrakWarn
-                                ) {
-                                    Button("OK", role: .cancel) { }
-                                }
-                            Spacer()
-                            Text("Buy and sell textbooks")
-                                .foregroundStyle(Color(.secondaryLabel)).italic(true)
-                        }
-                    } header: {
-                        HStack {
-                            Text("WSO Features")
-                                .fontWeight(.semibold)
-                                .font(.title3)
-                            Spacer()
-                            Image(systemName: "server.rack")
-                        }
-                    }
+                    HomeButtonsView()
                 }
                 LibraryHoursView()
                 DailyMessagesView()

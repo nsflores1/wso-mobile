@@ -15,6 +15,7 @@ struct WSOLoginView: View {
 
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var showPassword: Bool = false
 
     // a handle to show the fail login screen, in case the user keeps retapping
     @State private var showError: Bool = false
@@ -38,12 +39,41 @@ struct WSOLoginView: View {
                     .autocorrectionDisabled(true)
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.username)
-                SecureField("Password", text: $password)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled(true)
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.password)
-                    .lineLimit(1)
+
+                Group {
+                    if showPassword {
+                        TextField("Password", text: $password)
+                    } else {
+                        SecureField("Password", text: $password)
+                    }
+                }
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled(true)
+                .textFieldStyle(.roundedBorder)
+                .textContentType(.password)
+                .lineLimit(1)
+                .overlay(alignment: .trailing) {
+                    HStack(spacing: 8) {
+                        if !password.isEmpty {
+                            Button {
+                                password = ""
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        Button {
+                            showPassword.toggle()
+                        } label: {
+                            Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .padding(6)
+                    .background(.ultraThinMaterial)
+                    .clipShape(Capsule())
+                }
+
                 Button("Login") {
                     Task {
                         logger.trace("Login is being attempted...")
