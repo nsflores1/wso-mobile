@@ -56,6 +56,7 @@ struct DailyMessagePost: Codable {
     private let rawContent: String
     private let rawLdapDepartment: String
     private let rawURL: String // named something weird internally
+    private let rawWebsiteURL: String // named something fucked internally
 
     // these weirdly come with whitespace, so we have to clean everything
     var title: String { stripHTML(rawTitle).cleanWhitespace() }
@@ -66,6 +67,7 @@ struct DailyMessagePost: Codable {
     var ldapDepartment: String { stripHTML(rawLdapDepartment).cleanWhitespace() }
     // if we can't find a unique event URL, falling back to the global event URL is okay
     var url: URL { URL(string: stripHTML(rawURL).cleanWhitespace()) ?? URL(string: "https://events.williams.edu/")! }
+    var itemURL: URL? { URL(string: stripHTML(rawWebsiteURL).cleanWhitespace()) }
 
     private func stripHTML(_ html: String) -> String {
         (try? SwiftSoup.parse(html).text()) ?? html
@@ -80,6 +82,7 @@ struct DailyMessagePost: Codable {
         case rawContent = "content"
         case rawLdapDepartment = "ldap_department"
         case rawURL = "guid"
+        case rawWebsiteURL = "website_url"
     }
 }
 

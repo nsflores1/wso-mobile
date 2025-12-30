@@ -127,6 +127,8 @@
 		5BFA32C02F030FB8005D8F5C /* LogBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */; };
 		5BFA32C42F0312C3005D8F5C /* LogViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */; };
 		5BFA32C62F033EB4005D8F5C /* HomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */; };
+		5BFA32CA2F0360B9005D8F5C /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32C92F0360B6005D8F5C /* HomeCardView.swift */; };
+		5BFA32CC2F036B4B005D8F5C /* DailyMessagesItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32CB2F036B45005D8F5C /* DailyMessagesItemView.swift */; };
 		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -257,6 +259,8 @@
 		5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBootstrap.swift; sourceTree = "<group>"; };
 		5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewerView.swift; sourceTree = "<group>"; };
 		5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonsView.swift; sourceTree = "<group>"; };
+		5BFA32C92F0360B6005D8F5C /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
+		5BFA32CB2F036B45005D8F5C /* DailyMessagesItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesItemView.swift; sourceTree = "<group>"; };
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -314,6 +318,7 @@
 				5B05EF272ED8EF9E00802310 /* OnboardingThreeView.swift */,
 				5B05EF252ED8EF9800802310 /* OnboardingTwoView.swift */,
 				5B05EF232ED8EF8D00802310 /* OnboardingOneView.swift */,
+				5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -368,8 +373,10 @@
 				5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */,
 				5BCF0D602F01EB5600E702EB /* SettingsKeyView.swift */,
 				5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */,
+				5BFA32CB2F036B45005D8F5C /* DailyMessagesItemView.swift */,
 				5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */,
 				5B0168402EC91BEC0092FBA3 /* MapView.swift */,
+				5BFA32C92F0360B6005D8F5C /* HomeCardView.swift */,
 				5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */,
 			);
 			path = Subviews;
@@ -501,9 +508,6 @@
 		5BEB32882EBFD9EF00F75A10 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5BCDB7FC2EF09502008B438C /* MapPageView.swift */,
-				5B6B99C22EEE16710046B3A7 /* LinksView.swift */,
-				5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */,
 				5B55972D2EC8F7B700FB82D6 /* Subviews */,
 				5B4B3EF22EC10C9000277399 /* HomeView.swift */,
 				5BD358212ED3A7AC001AE153 /* AboutView.swift */,
@@ -511,6 +515,8 @@
 				5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */,
 				5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */,
 				5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */,
+				5BCDB7FC2EF09502008B438C /* MapPageView.swift */,
+				5B6B99C22EEE16710046B3A7 /* LinksView.swift */,
 				5BEB32542EBFD7F300F75A10 /* ContentView.swift */,
 			);
 			path = Views;
@@ -801,6 +807,7 @@
 				5B05EF282ED8EFA300802310 /* OnboardingThreeView.swift in Sources */,
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
+				5BFA32CA2F0360B9005D8F5C /* HomeCardView.swift in Sources */,
 				5B05EF2E2ED8F96000802310 /* RestOfWilliamstownView.swift in Sources */,
 				5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */,
 				5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */,
@@ -817,6 +824,7 @@
 				5B515FB02EDBC99C00F166A1 /* WCFMPlaylistViewModel.swift in Sources */,
 				5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */,
 				5B5597332EC8F80E00FB82D6 /* LibraryHoursViewModel.swift in Sources */,
+				5BFA32CC2F036B4B005D8F5C /* DailyMessagesItemView.swift in Sources */,
 				5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */,
 				5BDEED642ECF7E9700E150E6 /* SpringStreetRestaurantView.swift in Sources */,
 				5B515FB62EDC8F1300F166A1 /* NavStackShim.swift in Sources */,

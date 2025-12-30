@@ -36,26 +36,7 @@ struct DailyMessagesView: View {
                 ForEach(viewModel.dailyMessageCategories.keys.sorted(), id: \.self) { category in
                     Section() {
                         ForEach(viewModel.dailyMessageCategories[category] ?? [], id: \.title) { post in
-                            DisclosureGroup {
-                                VStack {
-                                    Text(post.content)
-                                        .font(.subheadline)
-                                        .foregroundStyle(Color.secondary)
-                                        .multilineTextAlignment(.leading)
-                                }
-                            } label: {
-                                VStack() {
-                                    Text(post.title)
-                                        .multilineTextAlignment(.leading)
-                                } .swipeActions(edge: .trailing) {
-                                    // TODO: test this with working daily messages
-                                    ShareLink(item: post.url) {
-                                        Label("Share", systemImage: "square.and.arrow.up")
-                                    }
-                                    .tint(.blue)
-                                    // the .frame() trick is Dark Arts
-                                }.frame(maxWidth: .infinity, alignment: .leading)
-                            }
+                            DailyMessagesItemView(post: post)
                         }
                     } header: {
                         HStack() {
