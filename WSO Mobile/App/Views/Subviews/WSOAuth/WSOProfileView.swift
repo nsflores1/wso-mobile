@@ -23,7 +23,7 @@ struct WSOProfileView: View {
     @Environment(NotificationManager.self) private var notificationManager
 
     @State var viewModel: WSOUserViewModel
-    @State private var imageData: Data?
+    @State private var imageData: UIImage?
 
     var body: some View {
         NavigationStack {
@@ -31,30 +31,43 @@ struct WSOProfileView: View {
                 Section {
                     VStack {
                         Group {
-                            if let data = imageData {
-                                if let unixID = viewModel.data?.unixID {
-                                    KFImage(
-                                        source:
-                                                .provider(
-                                                    RawImageDataProvider(
-                                                        data: data,
-                                                        cacheKey: "\(unixID).jpg"
-                                                    )
-                                                )
-                                    )
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                    .frame(width: 200, height: 200)
-                                }
+                            if let image = imageData {
+                                Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .frame(width: 200, height: 200)
                             } else {
                                 ProgressView()
                                     .frame(width: 200, height: 200)
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
                         }.task(id: viewModel.data?.unixID) {
-                            if let unixID = viewModel.data?.unixID {
-                                imageData = try? await WSOGetUserImage(unix: unixID)
+                            guard let unixID = viewModel.data?.unixID else { return }
+                            let key = "\(viewModel.userID).jpg"
+
+                                // check memory
+                            if let cached = ImageCache.default.retrieveImageInMemoryCache(forKey: key) {
+                                imageData = cached
+                                return
+                            }
+
+                                // check disk
+                            let diskResult = try? await ImageCache.default.retrieveImage(forKey: key)
+                            if let diskImage = diskResult?.image {
+                                imageData = diskImage
+                                return
+                            }
+
+                                // fetch
+                            guard let data = try? await WSOGetUserImage(unix: unixID),
+                                  let image = UIImage(data: data) else { return }
+
+                            imageData = image
+                            do {
+                                try await ImageCache.default.store(image, forKey: key, toDisk: true)
+                            } catch {
+                                logger.error("Failed to cache image for Unix \(unixID), WSO ID \(viewModel.userID). Error: \(error.localizedDescription)")
                             }
                         }
                         HStack {

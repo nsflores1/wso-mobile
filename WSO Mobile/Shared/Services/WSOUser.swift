@@ -103,5 +103,3 @@ func WSOGetUserImage(unix: String, imageSize: String = "large") async throws -> 
     )
     return try await request.authGet()
 }
-
-
