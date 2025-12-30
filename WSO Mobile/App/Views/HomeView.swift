@@ -17,6 +17,7 @@ struct HomeView: View {
     // variables for the home screen search box
     @State private var searchText: String = ""
     @State var users: [User] = []
+    @State var userCount: Int = 0
     // task handle
     @State private var searchTask: Task<Void, Never>?
 
@@ -31,22 +32,24 @@ struct HomeView: View {
                             Image(systemName: "magnifyingglass")
                             TextField("Search for users...", text: $searchText)
                                 .textInputAutocapitalization(.never)
-                            // comment so beta test users don't have it for now
-//                                .onChange(of: searchText) { _, newValue in
-//                                    searchTask?.cancel()
-//                                    searchTask = Task {
-//                                        try? await Task.sleep(for: .milliseconds(300))
-//                                        guard !Task.isCancelled else { return }
-//                                            // an empty result will always fail so don't do it
-//                                        if !searchText.isEmpty {
-//                                            do {
-//                                                users = try await WSOFacebookSearch(query: newValue)
-//                                            } catch {
-//                                                logger.error("Failed to update search results: \(error.localizedDescription)")
-//                                            }
-//                                        }
-//                                    }
-//                                }
+                                .autocorrectionDisabled(true)
+                                .onChange(of: searchText) { _, newValue in
+                                    searchTask?.cancel()
+                                    searchTask = Task {
+                                        try? await Task.sleep(for: .milliseconds(300))
+                                        guard !Task.isCancelled else { return }
+                                            // an empty result will always fail so don't do it
+                                        if !searchText.isEmpty {
+                                            do {
+                                                let data = try await WSOFacebookSearch(query: newValue)
+                                                userCount = data.paginationTotal
+                                                users = data.data
+                                            } catch {
+                                                logger.error("Failed to update search results: \(error.localizedDescription)")
+                                            }
+                                        }
+                                    }
+                                }
                             if !searchText.isEmpty {
                                 Button {
                                     searchText = ""
@@ -62,13 +65,20 @@ struct HomeView: View {
                 } else {
                     Text("App is in nonstudent mode").italic()
                 }
-                // TODO: this does NOTHING, still need to implement
-                if userType == .student {
-                    HomeButtonsView()
+                if searchText.isEmpty {
+                    if userType == .student {
+                        HomeButtonsView()
+                    }
+                    LibraryHoursView()
+                    DailyMessagesView()
+                } else {
+                    ForEach(users) { user in
+                        HomeCardView(user: user)
+                    }
                 }
-                LibraryHoursView()
-                DailyMessagesView()
             }
+            .animation(.easeInOut(duration: 0.25), value: searchText.isEmpty)
+            .animation(.easeInOut(duration: 0.2), value: users.count)
             .task {
                 logger.trace("Fetching library data")
                 await libraryViewModel.fetchIfNeeded()
@@ -89,12 +99,10 @@ struct HomeView: View {
             HStack { } // hidden hstack wraps the text
             .listStyle(.grouped)
             .navigationTitle(Text("WSO Mobile"))
-            .modifier(NavSubtitleIfAvailable(subtitle: userType == .student ? "For students, by students!" : "The official app of WSO!"))
+            .modifier(NavSubtitleIfAvailable(subtitle: searchText.isEmpty ? "For students, by students!" : "Total results: \(userCount)"))
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                        // TODO: replace with WSOLoginView() later,
-                        // this is to placate Apple reviewers
                     HStack {
                         if #available(iOS 26.0, *) {
                             NavigationLink(destination: MapPageView()) {

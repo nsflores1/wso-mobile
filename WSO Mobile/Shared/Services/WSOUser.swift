@@ -32,7 +32,7 @@ struct WSOUserOffice: Codable, Hashable {
     let number: String
 }
 
-struct User: Codable, Equatable, Hashable {
+struct User: Codable, Equatable, Hashable, Identifiable {
     let admin: Bool
     let factrakAdmin: Bool
     let atWilliams: Bool

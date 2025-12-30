@@ -12,15 +12,16 @@ import HTTPTypesFoundation
 struct WSOFacebookData: Codable {
     var status: Int
     var data: [User]
+    var paginationTotal: Int
 }
 
 // gets a list of users with a given query string
-func WSOFacebookSearch(query: String) async throws -> [User] {
+func WSOFacebookSearch(query: String) async throws -> WSOFacebookData {
     let parser = JSONISO8601Parser<WSOFacebookData>()
     let request = WebRequest<JSONISO8601Parser<WSOFacebookData>, NoParser>(
         url: URL(string: "https://wso.williams.edu/api/v2/users?preload=tags&q=\(query)")!,
         requestType: .get,
         getParser: parser
     )
-    return try await request.authGet().data
+    return try await request.authGet()
 }
