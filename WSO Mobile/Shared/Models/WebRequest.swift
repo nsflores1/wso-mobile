@@ -111,7 +111,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             logger.debug("GET success: the request HTTP status was \(response.status)")
             // don't print image data out to console!
             if !internalURL.absoluteString.contains(".jpg") {
-                logger.debug("GET data: \(String(decoding: data, as: UTF8.self))")
+                logger.debug("GET data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
             }
             do {
                 logger.trace("GET request to \(internalURL) completed")
@@ -147,7 +147,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             logger.debug("GET (auth) success: the request HTTP status was \(response.status)")
             // don't print image data out to console!
             if !internalURL.absoluteString.contains(".jpg") {
-                logger.debug("GET (auth) data: \(String(decoding: data, as: UTF8.self))")
+                logger.debug("GET (auth) data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
             }
             do {
                 logger.trace("GET (auth) request to \(internalURL) completed")
@@ -179,7 +179,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                     throw WebRequestError.invalidResponse
                 }
                 logger.debug("POST success: the request HTTP status was \(response.status)")
-                logger.debug("POST data: \(String(decoding: data, as: UTF8.self))")
+                logger.debug("POST data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                 do {
                     logger.trace("POST request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
@@ -197,7 +197,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                     throw WebRequestError.invalidResponse
                 }
                 logger.debug("POST success: the request HTTP status was \(response.status)")
-                logger.debug("POST data: \(String(decoding: data, as: UTF8.self))")
+                logger.debug("POST data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                 do {
                     logger.trace("POST request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
@@ -232,7 +232,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                     throw WebRequestError.invalidResponse
                 }
                 logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
-                logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self))")
+                logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                 do {
                     logger.trace("POST (auth) request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
@@ -250,7 +250,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                     throw WebRequestError.invalidResponse
                 }
                 logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
-                logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self))")
+                logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                 do {
                     logger.trace("POST (auth) request to \(internalURL) completed")
                     return try await postParser!.parse(data: data)
