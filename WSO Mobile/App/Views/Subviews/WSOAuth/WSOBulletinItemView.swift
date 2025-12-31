@@ -1,99 +1,107 @@
 //
-//  HomeCardView.swift
+//  WSOBulletinItemView.swift
 //  WSO Mobile
 //
-//  Created by Nathaniel Flores on 2025-12-29.
+//  Created by Nathaniel Flores on 2025-12-30.
 //
 
 import SwiftUI
 import Kingfisher
 import Logging
-import Shimmer
 
-struct HomeCardView: View {
+struct WSOBulletinItemView: View {
     @Environment(\.logger) private var logger
 
-    let user: User
+    let post: WSOBulletinItem
+    let viewModel: WSOUserViewModel
 
     @State private var imageData: UIImage?
 
     var body: some View {
-        NavigationLink(destination: WSOProfileView(viewModel: WSOUserViewModel(userID: user.id))) {
+        let startDate = {
+            guard let postStartDate = post.startDate else { return "N/A" }
+            let displayFormatter = DateFormatter()
+            displayFormatter.dateFormat = "MMM d, yyyy"
+            return displayFormatter.string(from: postStartDate)
+        }
+        DisclosureGroup {
+            VStack {
+                Text(post.body)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.secondary)
+                    .multilineTextAlignment(.leading)
+            }
+        } label: {
             HStack {
                 VStack {
                     if let imageData = imageData {
                         Image(uiImage: imageData)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 100, height: 100)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .frame(width: 80, height: 80)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }  else {
                         ProgressView()
-                            .frame(width: 100, height: 100)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .frame(width: 80, height: 80)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }
-                VStack() {
+                VStack {
                     HStack {
-                        Text(user.name)
+                        Text(post.title)
                             .multilineTextAlignment(.leading)
                         Spacer()
                     }
                     HStack {
-                        Image(systemName: "envelope")
+                        Image(systemName: "clock")
                             .foregroundStyle(Color.accent)
-                        Text(user.unixID)
+                        Text(startDate())
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(Color.secondary)
-                            .italic()
                         Spacer()
                     }
-                    HStack {
-                        Image(systemName: "person")
-                            .foregroundStyle(Color.accent)
-                        if user.admin {
-                            // assuming WSO admins are always students
-                            Text("WSO Admin, \(user.classYear!.description)")
+                    if viewModel.data != nil {
+                        HStack {
+                            Image(systemName: "person")
+                                .foregroundStyle(Color.accent)
+                            Text("\(viewModel.data!.name) (\(viewModel.data!.unixID))")
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color.secondary)
-                                .italic()
-                                .shimmering()
-                        } else {
-                            if user.classYear != nil {
-                                Text("\(user.type.capitalized), \(user.classYear!.description)")
-                                    .multilineTextAlignment(.leading)
-                                    .foregroundStyle(Color.secondary)
-                                    .italic()
-                            } else {
-                                Text(user.type.capitalized)
-                                    .multilineTextAlignment(.leading)
-                                    .foregroundStyle(Color.secondary)
-                                    .italic()
-                            }
+                            Spacer()
                         }
-                        Spacer()
                     }
                 }.padding(.horizontal, 10)
             }
         }
-        .task(id: user.unixID) {
+        .swipeActions(edge: .trailing) {
+            Button {
+                UIPasteboard.general.string = post.body
+            } label: {
+                Label("Copy", systemImage: "document.on.document")
+            }
+            .tint(.blue)
+        }
+        .task {
+            await viewModel.fetchIfNeeded()
+            // this is so stupid. I can't believe it works
+            guard let user = viewModel.data else { return }
             let unixID = user.unixID
             let key = "\(user.id).jpg"
 
-            // check memory
+                // check memory
             if let cached = ImageCache.default.retrieveImageInMemoryCache(forKey: key) {
                 imageData = cached
                 return
             }
 
-            // check disk
+                // check disk
             let diskResult = try? await ImageCache.default.retrieveImage(forKey: key)
             if let diskImage = diskResult?.image {
                 imageData = diskImage
                 return
             }
 
-            // fetch
+                // fetch
             guard let data = try? await WSOGetUserImage(unix: unixID),
                   let image = UIImage(data: data) else { return }
 
@@ -105,10 +113,4 @@ struct HomeCardView: View {
             }
         }
     }
-}
-
-#Preview {
-    HomeView()
-        .environment(AuthManager.shared)
-        .environment(NotificationManager.shared)
 }

@@ -129,6 +129,12 @@
 		5BFA32C62F033EB4005D8F5C /* HomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */; };
 		5BFA32CA2F0360B9005D8F5C /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32C92F0360B6005D8F5C /* HomeCardView.swift */; };
 		5BFA32CC2F036B4B005D8F5C /* DailyMessagesItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32CB2F036B45005D8F5C /* DailyMessagesItemView.swift */; };
+		5BFA32CE2F048D04005D8F5C /* WSOBulletinListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32CD2F048CFE005D8F5C /* WSOBulletinListView.swift */; };
+		5BFA32D22F049446005D8F5C /* WSOBulletinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D12F04943D005D8F5C /* WSOBulletinViewModel.swift */; };
+		5BFA32D42F04D21F005D8F5C /* WSOBulletinItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D32F04D215005D8F5C /* WSOBulletinItemView.swift */; };
+		5BFA32D62F05E2FF005D8F5C /* StringTrim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */; };
+		5BFA32D72F05E2FF005D8F5C /* StringTrim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */; };
+		5BFA32D92F05E3F9005D8F5C /* WSOBulletinPerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */; };
 		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -261,6 +267,11 @@
 		5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonsView.swift; sourceTree = "<group>"; };
 		5BFA32C92F0360B6005D8F5C /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		5BFA32CB2F036B45005D8F5C /* DailyMessagesItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessagesItemView.swift; sourceTree = "<group>"; };
+		5BFA32CD2F048CFE005D8F5C /* WSOBulletinListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinListView.swift; sourceTree = "<group>"; };
+		5BFA32D12F04943D005D8F5C /* WSOBulletinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinViewModel.swift; sourceTree = "<group>"; };
+		5BFA32D32F04D215005D8F5C /* WSOBulletinItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinItemView.swift; sourceTree = "<group>"; };
+		5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrim.swift; sourceTree = "<group>"; };
+		5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinPerListView.swift; sourceTree = "<group>"; };
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -361,23 +372,14 @@
 		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */,
+				5BFA32D02F048D87005D8F5C /* Home */,
+				5BFA32CF2F048D73005D8F5C /* Links */,
 				5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */,
 				5BD2D2E82ED90E34009F3C3A /* EasterEgg */,
 				5B05EF212ED8EC1100802310 /* Onboarding */,
 				5B3543E12ED652AE00A37A56 /* Record */,
 				5B3543E02ED6526400A37A56 /* Dining */,
 				5B3543DF2ED6525700A37A56 /* WCFM */,
-				5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */,
-				5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */,
-				5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */,
-				5BCF0D602F01EB5600E702EB /* SettingsKeyView.swift */,
-				5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */,
-				5BFA32CB2F036B45005D8F5C /* DailyMessagesItemView.swift */,
-				5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */,
-				5B0168402EC91BEC0092FBA3 /* MapView.swift */,
-				5BFA32C92F0360B6005D8F5C /* HomeCardView.swift */,
-				5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -393,6 +395,7 @@
 		5B62525F2EFEFAC200F1C814 /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32D12F04943D005D8F5C /* WSOBulletinViewModel.swift */,
 				5B6252602EFEFAD700F1C814 /* WSOUserViewModel.swift */,
 				5B6252562EFE412100F1C814 /* WSOSelfUserViewModel.swift */,
 			);
@@ -446,6 +449,9 @@
 		5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32D32F04D215005D8F5C /* WSOBulletinItemView.swift */,
+				5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */,
+				5BFA32CD2F048CFE005D8F5C /* WSOBulletinListView.swift */,
 				5B62525D2EFEFA1000F1C814 /* WSOProfileView.swift */,
 				5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */,
 			);
@@ -578,6 +584,7 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */,
 				5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */,
 				5B6252512EFE0BB500F1C814 /* FontExtension.swift */,
 				5B515FB42EDC8F0B00F166A1 /* NavStackShim.swift */,
@@ -590,6 +597,31 @@
 				5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		5BFA32CF2F048D73005D8F5C /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */,
+				5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */,
+				5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */,
+				5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */,
+				5BCF0D602F01EB5600E702EB /* SettingsKeyView.swift */,
+			);
+			path = Links;
+			sourceTree = "<group>";
+		};
+		5BFA32D02F048D87005D8F5C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */,
+				5BFA32CB2F036B45005D8F5C /* DailyMessagesItemView.swift */,
+				5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */,
+				5B0168402EC91BEC0092FBA3 /* MapView.swift */,
+				5BFA32C92F0360B6005D8F5C /* HomeCardView.swift */,
+				5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -783,6 +815,7 @@
 			files = (
 				5BDA0FDB2EE122F8005D6AC4 /* WCFMShowViewModel.swift in Sources */,
 				5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */,
+				5BFA32D92F05E3F9005D8F5C /* WSOBulletinPerListView.swift in Sources */,
 				5B93FE1B2EF1FE1D008A2C1A /* WSOBookTrak.swift in Sources */,
 				5B93FE122EF1FE05008A2C1A /* WSOFacebook.swift in Sources */,
 				5BD50F112ED9DC9700806CA7 /* AuthManager.swift in Sources */,
@@ -814,6 +847,8 @@
 				5BD50F0E2ED9497900806CA7 /* AboutViewModel.swift in Sources */,
 				5B6252632EFF270300F1C814 /* CacheManager.swift in Sources */,
 				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
+				5BFA32CE2F048D04005D8F5C /* WSOBulletinListView.swift in Sources */,
+				5BFA32D62F05E2FF005D8F5C /* StringTrim.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BCF0D5C2F01ACE400E702EB /* CopyableViews.swift in Sources */,
 				5BFA32C42F0312C3005D8F5C /* LogViewerView.swift in Sources */,
@@ -851,9 +886,11 @@
 				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,
 				5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */,
 				5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */,
+				5BFA32D22F049446005D8F5C /* WSOBulletinViewModel.swift in Sources */,
 				5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */,
 				5BE3EE4B2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
 				5B5597312EC8F7CE00FB82D6 /* LibraryHoursView.swift in Sources */,
+				5BFA32D42F04D21F005D8F5C /* WSOBulletinItemView.swift in Sources */,
 				5BD50F142ED9DEF800806CA7 /* NotificationManager.swift in Sources */,
 				5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */,
 				5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */,
@@ -896,6 +933,7 @@
 				5B93FE1F2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */,
 				5B6252522EFE0BB700F1C814 /* FontExtension.swift in Sources */,
 				5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */,
+				5BFA32D72F05E2FF005D8F5C /* StringTrim.swift in Sources */,
 				5BE3EE4A2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
 				5BD50F132ED9DEF800806CA7 /* NotificationManager.swift in Sources */,
 				5B10FF9B2EC83C880021597F /* DailyMessages.swift in Sources */,
