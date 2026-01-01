@@ -25,14 +25,14 @@ protocol DataParser {
 }
 
 enum WebRequestError : Error {
-    case notFound                   // resource doesn't exist
-    case noInternet                 // network unreachable
-    case noToken                    // unable to authenticate
-    case invalidResponse            // HTTP code was invalid
-    case internalFailure            // parsing/data corruption/etc
-    case noParser                   // internal parsing failure, don't show to users
-    case parseError(DecodingError)  // error takes place inside the parsing step
-    case unknown(Error)             // catch-all wrapper
+    case notFound                                 // resource doesn't exist
+    case noInternet                               // network unreachable
+    case noToken                                  // unable to authenticate
+    case invalidResponse(HTTPResponse)            // HTTP code was invalid
+    case internalFailure                          // parsing/data corruption/etc
+    case noParser                                 // internal parsing failure, don't show to users
+    case parseError(DecodingError)                // error takes place inside the parsing step
+    case unknown(Error)                           // catch-all wrapper
 }
 
 extension WebRequestError: LocalizedError {
@@ -44,8 +44,8 @@ extension WebRequestError: LocalizedError {
                 return "No internet connection available."
             case .noToken:
                 return "No token found for authentication, or token is invalid."
-            case .invalidResponse:
-                return "Invalid response from server."
+            case .invalidResponse(let error):
+                return "Invalid response from server: \(error.status)."
             case .internalFailure:
                 return "Failed to process data."
             case .noParser:
@@ -106,7 +106,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             guard let http = response as HTTPResponse?,
                   (200..<300).contains(http.status.code) else {
                 logger.error("GET request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
-                throw WebRequestError.invalidResponse
+                throw WebRequestError.invalidResponse(response)
             }
             logger.debug("GET success: the request HTTP status was \(response.status)")
             // don't print image data out to console!
@@ -142,7 +142,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             guard let http = response as HTTPResponse?,
                   (200..<300).contains(http.status.code) else {
                 logger.error("GET (auth) request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
-                throw WebRequestError.invalidResponse
+                throw WebRequestError.invalidResponse(response)
             }
             logger.debug("GET (auth) success: the request HTTP status was \(response.status)")
             // don't print image data out to console!
@@ -176,7 +176,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
                     logger.error("POST request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
-                    throw WebRequestError.invalidResponse
+                    throw WebRequestError.invalidResponse(response)
                 }
                 logger.debug("POST success: the request HTTP status was \(response.status)")
                 logger.debug("POST data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
@@ -194,7 +194,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
                     logger.error("POST request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
-                    throw WebRequestError.invalidResponse
+                    throw WebRequestError.invalidResponse(response)
                 }
                 logger.debug("POST success: the request HTTP status was \(response.status)")
                 logger.debug("POST data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
@@ -229,7 +229,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
                     logger.error("POST (auth) request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
-                    throw WebRequestError.invalidResponse
+                    throw WebRequestError.invalidResponse(response)
                 }
                 logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
                 logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
@@ -247,7 +247,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
                     logger.error("POST (auth) request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
-                    throw WebRequestError.invalidResponse
+                    throw WebRequestError.invalidResponse(response)
                 }
                 logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
                 logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")

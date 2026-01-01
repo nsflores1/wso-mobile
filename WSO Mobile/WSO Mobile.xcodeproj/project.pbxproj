@@ -135,6 +135,7 @@
 		5BFA32D62F05E2FF005D8F5C /* StringTrim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */; };
 		5BFA32D72F05E2FF005D8F5C /* StringTrim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */; };
 		5BFA32D92F05E3F9005D8F5C /* WSOBulletinPerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */; };
+		5BFA32DD2F05EE75005D8F5C /* WSOBulletinKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */; };
 		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -272,6 +273,7 @@
 		5BFA32D32F04D215005D8F5C /* WSOBulletinItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinItemView.swift; sourceTree = "<group>"; };
 		5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrim.swift; sourceTree = "<group>"; };
 		5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinPerListView.swift; sourceTree = "<group>"; };
+		5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinKeyView.swift; sourceTree = "<group>"; };
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -449,6 +451,7 @@
 		5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */,
 				5BFA32D32F04D215005D8F5C /* WSOBulletinItemView.swift */,
 				5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */,
 				5BFA32CD2F048CFE005D8F5C /* WSOBulletinListView.swift */,
@@ -848,6 +851,7 @@
 				5B6252632EFF270300F1C814 /* CacheManager.swift in Sources */,
 				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
 				5BFA32CE2F048D04005D8F5C /* WSOBulletinListView.swift in Sources */,
+				5BFA32DD2F05EE75005D8F5C /* WSOBulletinKeyView.swift in Sources */,
 				5BFA32D62F05E2FF005D8F5C /* StringTrim.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BCF0D5C2F01ACE400E702EB /* CopyableViews.swift in Sources */,

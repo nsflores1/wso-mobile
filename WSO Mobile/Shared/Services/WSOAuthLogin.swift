@@ -53,7 +53,7 @@ func WSOAPILogin(identityToken: String) async throws -> WSOAuthLogin {
     guard let http = response as HTTPResponse?,
           (200..<300).contains(http.status.code) else {
         logger.error("POST (auth) request to https://wso.williams.edu/api/v2/auth/api/token failed due to invalid HTTP response: \(response.status)")
-        throw WebRequestError.invalidResponse
+        throw WebRequestError.invalidResponse(response)
     }
     logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
     logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self))")

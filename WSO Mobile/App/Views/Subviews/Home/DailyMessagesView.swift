@@ -31,8 +31,6 @@ struct DailyMessagesView: View {
             } else if viewModel.dailyMessageCategories.isEmpty {
                 Text("(No daily messages today)")
             } else {
-                // TODO: this can't be animated until you flatten this into something less painful
-                // maybe make it a simple flat array?
                 ForEach(viewModel.dailyMessageCategories.keys.sorted(), id: \.self) { category in
                     Section() {
                         ForEach(viewModel.dailyMessageCategories[category] ?? [], id: \.title) { post in

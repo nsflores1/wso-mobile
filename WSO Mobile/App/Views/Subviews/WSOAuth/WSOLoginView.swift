@@ -18,6 +18,7 @@ struct WSOLoginView: View {
     @State private var showPassword: Bool = false
 
     // a handle to show the fail login screen, in case the user keeps retapping
+    @State private var errorString: String = ""
     @State private var showError: Bool = false
     @State private var hideTask: Task<Void, Never>?
 
@@ -27,8 +28,13 @@ struct WSOLoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if showError {
+                if showError && errorString.contains("401") {
                     Text("Your password is wrong, please try again...")
+                        .foregroundStyle(.red)
+                        .transition(.opacity)
+                        .padding(.vertical, 20)
+                } else if showError {
+                    Text(errorString)
                         .foregroundStyle(.red)
                         .transition(.opacity)
                         .padding(.vertical, 20)
@@ -84,9 +90,9 @@ struct WSOLoginView: View {
                             logger.info("Login succeeded")
                             generator.notificationOccurred(.success)
                         } catch {
-                            logger.error("Login failed")
+                            logger.error("Login failed: \(error.localizedDescription)")
                             generator.notificationOccurred(.error)
-                            failedLogin()
+                            failedLogin(error.localizedDescription)
                         }
                     }
                 }
@@ -101,8 +107,9 @@ struct WSOLoginView: View {
 
     // I don't normally like to attach functions to views,
     // but this one is so small it really should just go here
-    func failedLogin() {
+    func failedLogin(_ text: String) {
         showError = true
+        errorString = text
 
         hideTask?.cancel()
         hideTask = Task {
@@ -110,6 +117,7 @@ struct WSOLoginView: View {
             guard !Task.isCancelled else { return }
             await MainActor.run {
                 showError = false
+                errorString = ""
             }
         }
     }
