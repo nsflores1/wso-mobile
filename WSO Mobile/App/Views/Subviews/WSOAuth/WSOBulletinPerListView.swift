@@ -13,6 +13,7 @@ import Logging
 
 struct WSOBulletinPerListView: View {
     let type: String
+    let prettyString: String
     @State private var viewModel = WSOBulletinViewModel()
     @State private var searchText = ""
 
@@ -40,6 +41,8 @@ struct WSOBulletinPerListView: View {
                     )
                 }
             }
+            .animation(.easeInOut(duration: 0.25), value: searchText.isEmpty)
+            .animation(.easeInOut(duration: 0.2), value: searchResults.count)
             .searchable(text: $searchText)
             .task {
                 await viewModel.fetchIfNeeded()
@@ -47,8 +50,19 @@ struct WSOBulletinPerListView: View {
             .refreshable {
                 await viewModel.forceRefresh()
             }
-            .navigationTitle(Text(type.capitalized))
-            .modifier(NavSubtitleIfAvailable(subtitle: "Posts on the \(type.capitalized) bulletin"))
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        NavigationLink(destination: WSOBulletinKeyView()) {
+                            Image(systemName: "questionmark")
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
+                    }
+                }
+            }
+            .navigationTitle(Text(prettyString))
+            .modifier(NavSubtitleIfAvailable(subtitle: "Posts on the \(prettyString) bulletin"))
         }
     }
 }

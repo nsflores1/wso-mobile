@@ -18,9 +18,6 @@ class WSOBulletinViewModel {
     // for rendering. show a preview with length of 10 items
     // TODO: discussions, rides, not present via this API.
     // need to write separate endpoints for them
-    var discussionsPreview: ArraySlice<WSOBulletinItem> {
-        data.filter { $0.type == "discussions" }.prefix(10)
-    }
     var announcementsPreview: ArraySlice<WSOBulletinItem> {
         data.filter { $0.type == "announcement" }.prefix(10)
     }
@@ -32,9 +29,6 @@ class WSOBulletinViewModel {
     }
     var jobsPreview: ArraySlice<WSOBulletinItem> {
         data.filter { $0.type == "job" }.prefix(10)
-    }
-    var ridesPreview: ArraySlice<WSOBulletinItem> {
-        data.filter { $0.type == "ride" }.prefix(10)
     }
 
     var isLoading: Bool = false

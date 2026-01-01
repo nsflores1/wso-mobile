@@ -26,7 +26,12 @@ struct WSOBulletinListView: View {
                             viewModel: WSOUserViewModel(userID: bulletin.userID)
                         )
                     }
-                    NavigationLink(destination: WSOBulletinPerListView(type: "announcement")) {
+                    NavigationLink(
+                        destination: WSOBulletinPerListView(
+                            type: "announcement",
+                            prettyString: "Announcements"
+                        )
+                    ) {
                         Text("View more posts...").italic()
                     }
                 } header : {
@@ -35,9 +40,10 @@ struct WSOBulletinListView: View {
                             .fontWeight(.semibold)
                             .font(.title3)
                         Spacer()
-                        Image(systemName: "book")
+                        Image(systemName: "megaphone")
                     }
                 }
+                .animation(.easeInOut(duration: 0.2), value: viewModel.announcementsPreview.count)
                 Section {
                     ForEach(viewModel.exchangePreview) { bulletin in
                         WSOBulletinItemView(
@@ -45,7 +51,12 @@ struct WSOBulletinListView: View {
                             viewModel: WSOUserViewModel(userID: bulletin.userID)
                         )
                     }
-                    NavigationLink(destination: WSOBulletinPerListView(type: "exchange")) {
+                    NavigationLink(
+                        destination: WSOBulletinPerListView(
+                            type: "exchange",
+                            prettyString: "Exchanges"
+                        )
+                    ) {
                         Text("View more posts...").italic()
                     }
                 } header : {
@@ -54,9 +65,10 @@ struct WSOBulletinListView: View {
                             .fontWeight(.semibold)
                             .font(.title3)
                         Spacer()
-                        Image(systemName: "book")
+                        Image(systemName: "gift")
                     }
                 }
+                .animation(.easeInOut(duration: 0.2), value: viewModel.exchangePreview.count)
                 Section {
                     ForEach(viewModel.jobsPreview) { bulletin in
                         WSOBulletinItemView(
@@ -64,7 +76,12 @@ struct WSOBulletinListView: View {
                             viewModel: WSOUserViewModel(userID: bulletin.userID)
                         )
                     }
-                    NavigationLink(destination: WSOBulletinPerListView(type: "job")) {
+                    NavigationLink(
+                        destination: WSOBulletinPerListView(
+                            type: "job",
+                            prettyString: "Jobs"
+                        )
+                    ) {
                         Text("View more posts...").italic()
                     }
                 } header : {
@@ -73,9 +90,10 @@ struct WSOBulletinListView: View {
                             .fontWeight(.semibold)
                             .font(.title3)
                         Spacer()
-                        Image(systemName: "book")
+                        Image(systemName: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
                     }
                 }
+                .animation(.easeInOut(duration: 0.2), value: viewModel.jobsPreview.count)
                 Section {
                     ForEach(viewModel.lostandfoundPreview) { bulletin in
                         WSOBulletinItemView(
@@ -83,7 +101,12 @@ struct WSOBulletinListView: View {
                             viewModel: WSOUserViewModel(userID: bulletin.userID)
                         )
                     }
-                    NavigationLink(destination: WSOBulletinPerListView(type: "lostAndFound")) {
+                    NavigationLink(
+                        destination: WSOBulletinPerListView(
+                            type: "lostAndFound",
+                            prettyString: "Lost & Found"
+                        )
+                    ) {
                         Text("View more posts...").italic()
                     }
                 } header : {
@@ -92,15 +115,27 @@ struct WSOBulletinListView: View {
                             .fontWeight(.semibold)
                             .font(.title3)
                         Spacer()
-                        Image(systemName: "book")
+                        Image(systemName: "suitcase")
                     }
                 }
+                .animation(.easeInOut(duration: 0.2), value: viewModel.lostandfoundPreview.count)
             }
             .task {
                 await viewModel.fetchIfNeeded()
             }
             .refreshable {
                 await viewModel.forceRefresh()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        NavigationLink(destination: WSOBulletinKeyView()) {
+                            Image(systemName: "questionmark")
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
+                    }
+                }
             }
             .listStyle(.sidebar)
             .navigationTitle("Bulletins")
