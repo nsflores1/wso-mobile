@@ -89,6 +89,10 @@ struct WSOLoginView: View {
                             try await authManager.login(username: username, password: password)
                             logger.info("Login succeeded")
                             generator.notificationOccurred(.success)
+                        } catch let error as DecodingError {
+                            logDecodingError(error, logger: logger)
+                            generator.notificationOccurred(.error)
+                            failedLogin(error.localizedDescription)
                         } catch {
                             logger.error("Login failed: \(error.localizedDescription)")
                             generator.notificationOccurred(.error)
