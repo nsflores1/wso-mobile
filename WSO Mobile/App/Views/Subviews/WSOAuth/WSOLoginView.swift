@@ -90,11 +90,42 @@ struct WSOLoginView: View {
                             logger.info("Login succeeded")
                             generator.notificationOccurred(.success)
                         } catch let error as DecodingError {
-                            logDecodingError(error, logger: logger)
+                            switch error {
+                                case .dataCorrupted(let context):
+                                    logger.error("""
+                                    dataCorrupted:
+                                    path: \(codingPath(context.codingPath))
+                                    debug: \(context.debugDescription)
+                                    underlying: \(String(reflecting: context.underlyingError))
+                                    """)
+                                case .keyNotFound(let key, let context):
+                                    logger.error("""
+                                    keyNotFound:
+                                    key: \(key.stringValue)
+                                    path: \(codingPath(context.codingPath))
+                                    debug: \(context.debugDescription)
+                                    """)
+                                case .typeMismatch(let type, let context):
+                                    logger.error("""
+                                    typeMismatch:
+                                    expected: \(type)
+                                    path: \(codingPath(context.codingPath))
+                                    debug: \(context.debugDescription)
+                                    """)
+                                case .valueNotFound(let type, let context):
+                                    logger.error("""
+                                    valueNotFound:
+                                    expected: \(type)
+                                    path: \(codingPath(context.codingPath))
+                                    debug: \(context.debugDescription)
+                                    """)
+                                @unknown default:
+                                    logger.error("Unknown decode error: \(String(reflecting: error))")
+                            }
                             generator.notificationOccurred(.error)
                             failedLogin(error.localizedDescription)
                         } catch {
-                            logger.error("Login failed: \(error.localizedDescription)")
+                            logger.error("Login failed: \(String(reflecting: error))")
                             generator.notificationOccurred(.error)
                             failedLogin(error.localizedDescription)
                         }
@@ -125,6 +156,11 @@ struct WSOLoginView: View {
             }
         }
     }
+    
+    func codingPath(_ path: [CodingKey]) -> String {
+        path.map { $0.stringValue }.joined(separator: ".")
+    }
+
 }
 
 #Preview {

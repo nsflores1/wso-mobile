@@ -18,128 +18,154 @@ struct WSOBulletinListView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    ForEach(viewModel.announcementsPreview) { bulletin in
-                        WSOBulletinItemView(
-                            post: bulletin,
-                            viewModel: WSOUserViewModel(userID: bulletin.userID)
-                        )
+            if let err = viewModel.error {
+                Group {
+                    Text(err.localizedDescription).foregroundStyle(Color.red)
+                        .navigationTitle(Text("Bulletins"))
+                }.refreshable {
+                    await viewModel.forceRefresh()
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                }
+            } else {
+                List {
+                    Section {
+                        if viewModel.isLoading {
+                            ProgressView()
+                        } else {
+                            ForEach(viewModel.announcementsPreview) { bulletin in
+                                WSOBulletinItemView(
+                                    post: bulletin,
+                                    viewModel: WSOUserViewModel(userID: bulletin.userID)
+                                )
+                            }
+                            NavigationLink(
+                                destination: WSOBulletinPerListView(
+                                    type: "announcement",
+                                    prettyString: "Announcements"
+                                )
+                            ) {
+                                Text("View more posts...").italic()
+                            }
+                        }
+                    } header : {
+                        HStack {
+                            Text("Announcements")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                            Spacer()
+                            Image(systemName: "megaphone")
+                        }
                     }
-                    NavigationLink(
-                        destination: WSOBulletinPerListView(
-                            type: "announcement",
-                            prettyString: "Announcements"
-                        )
-                    ) {
-                        Text("View more posts...").italic()
+                    .animation(.easeInOut(duration: 0.2), value: viewModel.announcementsPreview.count)
+                    Section {
+                        if viewModel.isLoading {
+                            ProgressView()
+                        } else {
+                            ForEach(viewModel.exchangePreview) { bulletin in
+                                WSOBulletinItemView(
+                                    post: bulletin,
+                                    viewModel: WSOUserViewModel(userID: bulletin.userID)
+                                )
+                            }
+                            NavigationLink(
+                                destination: WSOBulletinPerListView(
+                                    type: "exchange",
+                                    prettyString: "Exchanges"
+                                )
+                            ) {
+                                Text("View more posts...").italic()
+                            }
+                        }
+                    } header : {
+                        HStack {
+                            Text("Exchanges")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                            Spacer()
+                            Image(systemName: "gift")
+                        }
                     }
-                } header : {
-                    HStack {
-                        Text("Announcements")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        Spacer()
-                        Image(systemName: "megaphone")
+                    .animation(.easeInOut(duration: 0.2), value: viewModel.exchangePreview.count)
+                    Section {
+                        if viewModel.isLoading {
+                            ProgressView()
+                        } else {
+                            ForEach(viewModel.jobsPreview) { bulletin in
+                                WSOBulletinItemView(
+                                    post: bulletin,
+                                    viewModel: WSOUserViewModel(userID: bulletin.userID)
+                                )
+                            }
+                            NavigationLink(
+                                destination: WSOBulletinPerListView(
+                                    type: "job",
+                                    prettyString: "Jobs"
+                                )
+                            ) {
+                                Text("View more posts...").italic()
+                            }
+                        }
+                    } header : {
+                        HStack {
+                            Text("Jobs")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                            Spacer()
+                            Image(systemName: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
+                        }
+                    }
+                    .animation(.easeInOut(duration: 0.2), value: viewModel.jobsPreview.count)
+                    Section {
+                        if viewModel.isLoading {
+                            ProgressView()
+                        } else {
+                            ForEach(viewModel.lostandfoundPreview) { bulletin in
+                                WSOBulletinItemView(
+                                    post: bulletin,
+                                    viewModel: WSOUserViewModel(userID: bulletin.userID)
+                                )
+                            }
+                            NavigationLink(
+                                destination: WSOBulletinPerListView(
+                                    type: "lostAndFound",
+                                    prettyString: "Lost & Found"
+                                )
+                            ) {
+                                Text("View more posts...").italic()
+                            }
+                        }
+                    } header : {
+                        HStack {
+                            Text("Lost & Found")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                            Spacer()
+                            Image(systemName: "suitcase")
+                        }
+                    }
+                    .animation(.easeInOut(duration: 0.2), value: viewModel.lostandfoundPreview.count)
+                }
+                .task {
+                    await viewModel.fetchIfNeeded()
+                }
+                .refreshable {
+                    await viewModel.forceRefresh()
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HStack {
+                            NavigationLink(destination: WSOBulletinKeyView()) {
+                                Image(systemName: "questionmark")
+                            }.simultaneousGesture(TapGesture().onEnded {
+                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            })
+                        }
                     }
                 }
-                .animation(.easeInOut(duration: 0.2), value: viewModel.announcementsPreview.count)
-                Section {
-                    ForEach(viewModel.exchangePreview) { bulletin in
-                        WSOBulletinItemView(
-                            post: bulletin,
-                            viewModel: WSOUserViewModel(userID: bulletin.userID)
-                        )
-                    }
-                    NavigationLink(
-                        destination: WSOBulletinPerListView(
-                            type: "exchange",
-                            prettyString: "Exchanges"
-                        )
-                    ) {
-                        Text("View more posts...").italic()
-                    }
-                } header : {
-                    HStack {
-                        Text("Exchanges")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        Spacer()
-                        Image(systemName: "gift")
-                    }
-                }
-                .animation(.easeInOut(duration: 0.2), value: viewModel.exchangePreview.count)
-                Section {
-                    ForEach(viewModel.jobsPreview) { bulletin in
-                        WSOBulletinItemView(
-                            post: bulletin,
-                            viewModel: WSOUserViewModel(userID: bulletin.userID)
-                        )
-                    }
-                    NavigationLink(
-                        destination: WSOBulletinPerListView(
-                            type: "job",
-                            prettyString: "Jobs"
-                        )
-                    ) {
-                        Text("View more posts...").italic()
-                    }
-                } header : {
-                    HStack {
-                        Text("Jobs")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        Spacer()
-                        Image(systemName: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
-                    }
-                }
-                .animation(.easeInOut(duration: 0.2), value: viewModel.jobsPreview.count)
-                Section {
-                    ForEach(viewModel.lostandfoundPreview) { bulletin in
-                        WSOBulletinItemView(
-                            post: bulletin,
-                            viewModel: WSOUserViewModel(userID: bulletin.userID)
-                        )
-                    }
-                    NavigationLink(
-                        destination: WSOBulletinPerListView(
-                            type: "lostAndFound",
-                            prettyString: "Lost & Found"
-                        )
-                    ) {
-                        Text("View more posts...").italic()
-                    }
-                } header : {
-                    HStack {
-                        Text("Lost & Found")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        Spacer()
-                        Image(systemName: "suitcase")
-                    }
-                }
-                .animation(.easeInOut(duration: 0.2), value: viewModel.lostandfoundPreview.count)
+                .listStyle(.sidebar)
+                .navigationTitle("Bulletins")
+                .modifier(NavSubtitleIfAvailable(subtitle: "College discussion lists"))
             }
-            .task {
-                await viewModel.fetchIfNeeded()
-            }
-            .refreshable {
-                await viewModel.forceRefresh()
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
-                        NavigationLink(destination: WSOBulletinKeyView()) {
-                            Image(systemName: "questionmark")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
-                    }
-                }
-            }
-            .listStyle(.sidebar)
-            .navigationTitle("Bulletins")
-            .modifier(NavSubtitleIfAvailable(subtitle: "College discussion lists"))
         }
     }
 }

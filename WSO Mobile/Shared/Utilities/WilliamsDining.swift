@@ -67,6 +67,31 @@ struct Meal: Codable {
     let openHours: String
     let closeHours: String
     let courses: [Courses]
+
+    // some code that lets us handle the openHours and closeHours
+    private static let timeFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "en_US_POSIX")
+        df.dateFormat = "hh:mma"
+        return df
+    }()
+
+    func normalizedMinutes(cutoffHour: Int = 5) -> Int {
+        guard let date = Meal.timeFormatter.date(from: openHours.lowercased()) else {
+            fatalError("invalid time string: \(openHours)")
+        }
+
+        let calendar = Calendar(identifier: .gregorian)
+        let comps = calendar.dateComponents([.hour, .minute], from: date)
+        let hour = comps.hour!
+        let minute = comps.minute!
+
+        let raw = hour * 60 + minute
+        let cutoff = cutoffHour * 60
+
+        // anything before cutoff is considered "next day"
+        return raw < cutoff ? raw + 24 * 60 : raw
+    }
 }
 
 struct Courses: Codable {
@@ -102,36 +127,13 @@ extension Courses: Comparable {
     }
 }
 
-// meals are the trickest.
-// technically, no meal starts on the next calendar date,
-// so we compare JUST by that first date.
-
-// TODO: this is still weirdly bugged.
-// you probably need to parse this somewhat.
-
 extension Meal: Comparable {
     static func < (lhs: Meal, rhs: Meal) -> Bool {
-        if lhs.openHours.contains("am") && rhs.openHours.contains("am") {
-            // thing with the lower hours wins
-            return lhs.openHours < rhs.openHours
-        }
-        if lhs.openHours.contains("am") && (!rhs.openHours.contains("am")) {
-            return true
-        }
-        if lhs.openHours.contains("pm") && rhs.openHours.contains("pm") {
-            // thing with the lower hours wins
-            return lhs.openHours < rhs.openHours
-        }
-        if lhs.openHours.contains("pm") && (!rhs.openHours.contains("am")) {
-            return false
-        }
-        // if somehow none of these cases are satisfied, then fallback to normal comparison
-        // TODO: maybe we should throw an error here instead?
-        return lhs.openHours < rhs.openHours
+        lhs.normalizedMinutes() < rhs.normalizedMinutes()
     }
 
     static func == (lhs: Meal, rhs: Meal) -> Bool {
-        return lhs.openHours == rhs.openHours
+        lhs.normalizedMinutes() == rhs.normalizedMinutes()
     }
 }
 

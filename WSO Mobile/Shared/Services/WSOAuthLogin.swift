@@ -16,7 +16,7 @@ struct WSOAuthLogin: Codable {
 }
 
 struct WSOAuthLoginData: Codable {
-    var expire: Date?
+    var expire: String?
     var token: String?
 }
 

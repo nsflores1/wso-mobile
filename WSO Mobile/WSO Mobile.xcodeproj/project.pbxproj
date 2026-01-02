@@ -136,8 +136,6 @@
 		5BFA32D72F05E2FF005D8F5C /* StringTrim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */; };
 		5BFA32D92F05E3F9005D8F5C /* WSOBulletinPerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */; };
 		5BFA32DD2F05EE75005D8F5C /* WSOBulletinKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */; };
-		5BFA32DF2F07A2CA005D8F5C /* DecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32DE2F07A2C7005D8F5C /* DecodingError.swift */; };
-		5BFA32E02F07A2CA005D8F5C /* DecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32DE2F07A2C7005D8F5C /* DecodingError.swift */; };
 		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -276,7 +274,6 @@
 		5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrim.swift; sourceTree = "<group>"; };
 		5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinPerListView.swift; sourceTree = "<group>"; };
 		5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinKeyView.swift; sourceTree = "<group>"; };
-		5BFA32DE2F07A2C7005D8F5C /* DecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingError.swift; sourceTree = "<group>"; };
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -590,7 +587,6 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				5BFA32DE2F07A2C7005D8F5C /* DecodingError.swift */,
 				5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */,
 				5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */,
 				5B6252512EFE0BB500F1C814 /* FontExtension.swift */,
@@ -835,7 +831,6 @@
 				5B93FE222EF20196008A2C1A /* WSOUser.swift in Sources */,
 				5BEB32552EBFD7F300F75A10 /* ContentView.swift in Sources */,
 				5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */,
-				5BFA32E02F07A2CA005D8F5C /* DecodingError.swift in Sources */,
 				5B05EF242ED8EF9100802310 /* OnboardingOneView.swift in Sources */,
 				5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */,
 				5BE3EE522ECC3499009CDFD3 /* WilliamsRecordViewModel.swift in Sources */,
@@ -940,7 +935,6 @@
 				5B0A2E8D2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5B93FE182EF1FE14008A2C1A /* WSODormTrak.swift in Sources */,
 				5B93FE1F2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */,
-				5BFA32DF2F07A2CA005D8F5C /* DecodingError.swift in Sources */,
 				5B6252522EFE0BB700F1C814 /* FontExtension.swift in Sources */,
 				5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */,
 				5BFA32D72F05E2FF005D8F5C /* StringTrim.swift in Sources */,
