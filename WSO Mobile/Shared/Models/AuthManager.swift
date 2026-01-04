@@ -51,9 +51,21 @@ class AuthManager {
 
     }
 
+    func isExpired(token: WSOAuthLogin) throws -> Bool {
+        do {
+            let jwtToken = try decode(jwt: token.data!.token!)
+            return jwtToken.expired
+        } catch {
+            // if it can't be decoded, our token is already expired
+            return true
+        }
+    }
+
     // note that this can throw, so handle that!
     // in which case the user must manually re-enter auth details
     // every single time from their password booklet.
+
+    // TODO: fetch this from the local keychain the right way.
     func getToken() throws -> String {
         if self.authToken != nil {
             return self.authToken!
@@ -68,6 +80,7 @@ class AuthManager {
         self.authToken = nil
     }
 
+    // TODO: look at the code for WSOProvider.js in the old app
     func login(username: String, password: String) async throws {
         // this should be used in the case we need to login,
         // but only fall back to this if getToken() throws.
@@ -87,7 +100,8 @@ class AuthManager {
                 logger.info("Auth token successfully fetched")
                 logger.debug("Auth token data: \(apiToken.data!.token!)")
                 // now to decode our token
-                _ = try decode(jwt: apiToken.data!.token!)
+
+
                 //print(apiToken.data!.token!)
                 //print(jwtToken.body)
                 self.authToken = apiToken.data!.token!

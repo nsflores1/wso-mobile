@@ -50,6 +50,7 @@ struct DiningView: View {
                                 .font(.title3)
                         }
                     }
+                    // TODO: need a button here that selects the day we want
                     Section {
                         ForEach(
                             viewModel.diningMenu.sorted(),

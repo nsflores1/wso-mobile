@@ -17,6 +17,14 @@ class DiningHoursViewModel {
     var error: WebRequestError?
     private var hasFetched = false
 
+    // TODO: this needs a rewrite as follows:
+    // - loadMenus() should take an optional argument for fetching a specific day
+    // - new function loadDays() should fetch the list of days. if that fails,
+    //   gracefully degrade to normal one-day performance.
+    // - we need a way to compare dates. by looking at them, we should be able to
+    //   determine if the date is over a week old and then purge it from user cache,
+    //   which clearCache() should do with a wildcard file operation since
+    //   enumerating the days is too hard
     func loadMenus() async {
         isLoading = true
         error = nil

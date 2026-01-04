@@ -136,6 +136,9 @@
 		5BFA32D72F05E2FF005D8F5C /* StringTrim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */; };
 		5BFA32D92F05E3F9005D8F5C /* WSOBulletinPerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */; };
 		5BFA32DD2F05EE75005D8F5C /* WSOBulletinKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */; };
+		5BFA32E22F0AD078005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E12F0AD071005D8F5C /* README.md */; };
+		5BFA32E42F0AD0CC005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E32F0AD0C9005D8F5C /* README.md */; };
+		5BFA32E62F0AD206005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E52F0AD203005D8F5C /* README.md */; };
 		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -274,6 +277,9 @@
 		5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrim.swift; sourceTree = "<group>"; };
 		5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinPerListView.swift; sourceTree = "<group>"; };
 		5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinKeyView.swift; sourceTree = "<group>"; };
+		5BFA32E12F0AD071005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5BFA32E32F0AD0C9005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5BFA32E52F0AD203005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,6 +403,7 @@
 		5B62525F2EFEFAC200F1C814 /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32E12F0AD071005D8F5C /* README.md */,
 				5BFA32D12F04943D005D8F5C /* WSOBulletinViewModel.swift */,
 				5B6252602EFEFAD700F1C814 /* WSOUserViewModel.swift */,
 				5B6252562EFE412100F1C814 /* WSOSelfUserViewModel.swift */,
@@ -451,6 +458,7 @@
 		5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32E52F0AD203005D8F5C /* README.md */,
 				5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */,
 				5BFA32D32F04D215005D8F5C /* WSOBulletinItemView.swift */,
 				5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */,
@@ -534,6 +542,7 @@
 		5BEB32892EBFD9FB00F75A10 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32E32F0AD0C9005D8F5C /* README.md */,
 				5B62525F2EFEFAC200F1C814 /* WSOAuth */,
 				5BDA0FDA2EE122F2005D6AC4 /* WCFMShowViewModel.swift */,
 				5B515FAF2EDBC99600F166A1 /* WCFMPlaylistViewModel.swift */,
@@ -790,7 +799,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BFA32E22F0AD078005D8F5C /* README.md in Resources */,
 				5B6252502EFE08BF00F1C814 /* ebgaramond.ttf in Resources */,
+				5BFA32E62F0AD206005D8F5C /* README.md in Resources */,
+				5BFA32E42F0AD0CC005D8F5C /* README.md in Resources */,
 				5BEB32572EBFD7F400F75A10 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
