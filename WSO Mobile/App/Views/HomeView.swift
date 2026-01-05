@@ -72,12 +72,19 @@ struct HomeView: View {
                         }
                     }
                 } else if userType == .student && !authManager.isAuthenticated {
-                    Text("Login to use WSO features...").italic()
+                    NavigationLink {
+                        AuthGate {
+                            ProfileView()
+                        }
+                    } label: {
+                        Text("Login to use WSO features...")
+                            .italic()
+                    }
                 } else {
                     Text("App is in nonstudent mode").italic()
                 }
                 if searchText.isEmpty {
-                    if userType == .student {
+                    if userType == .student && authManager.isAuthenticated {
                         HomeButtonsView()
                     }
                     LibraryHoursView()

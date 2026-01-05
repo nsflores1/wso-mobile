@@ -118,25 +118,36 @@ struct DiningView: View {
 
                             }
                         } else {
-                            ForEach(
-                                pastViewModel.diningMenu.sorted(),
-                                id: \.hallName
-                            ) { hall in
-                                NavigationLink(destination: DiningVendorView(menu: hall)) {
-                                    HStack {
-                                        Circle()
-                                            .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
-                                            .frame(width: 10, height: 10)
-                                    }
-                                    Text(hall.hallName)
-                                    if hall.hasCoursesToday() {
-                                        Text("(Not serving today)")
-                                            .foregroundStyle(Color(.secondaryLabel))
+                            if pastViewModel.isLoading {
+                                ProgressView()
+                            } else if let err = pastViewModel.error {
+                                Group {
+                                    Text(err.localizedDescription).foregroundStyle(Color.red)
+                                }.refreshable {
+                                    await pastViewModel.forceRefresh()
+                                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                }
+                            } else {
+                                ForEach(
+                                    pastViewModel.diningMenu.sorted(),
+                                    id: \.hallName
+                                ) { hall in
+                                    NavigationLink(destination: DiningVendorView(menu: hall)) {
+                                        HStack {
+                                            Circle()
+                                                .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
+                                                .frame(width: 10, height: 10)
+                                        }
+                                        Text(hall.hallName)
+                                        if hall.hasCoursesToday() {
+                                            Text("(Not serving today)")
+                                                .foregroundStyle(Color(.secondaryLabel))
+                                        }
                                     }
                                 }
-                            }
-                            .task {
-                                await pastViewModel.fetchIfNeeded()
+                                .task {
+                                    await pastViewModel.fetchIfNeeded()
+                                }
                             }
                         }
                     } header: {

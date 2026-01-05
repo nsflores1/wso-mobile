@@ -124,8 +124,16 @@ class DiningHoursViewModel {
 
     func clearCache() async {
         await cache.clear(path: "viewmodelstate_dining_menus.json")
-        // TODO: figure out how to clear the past menus from here as well
-        // we should be regularly purging them from here
+        // now go and delete all past menus
+        let cacheURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            .appendingPathComponent("cache")
+        let filesToDelete = (try? FileManager.default.contentsOfDirectory(at: cacheURL, includingPropertiesForKeys: nil))?.filter {
+            $0.lastPathComponent.contains("past_menu")
+        } ?? []
+
+        for file in filesToDelete {
+            try? FileManager.default.removeItem(at: file)
+        }
         self.diningMenu = []
     }
 }
