@@ -20,7 +20,7 @@ struct HomeButtonsView: View {
     var body: some View {
         Section {
             HStack {
-                NavigationLink(destination: WSOBulletinListView()) {
+                NavigationLink(destination: AuthGate { WSOBulletinListView() }) {
                     Label("Bulletins", systemImage: "megaphone")
                         .foregroundStyle(Color.accent)
                     Spacer()

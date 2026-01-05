@@ -35,12 +35,12 @@ struct WSOMobileApp: App {
 
         // truncate the log and rotate it
         // TODO: clean this up later
-//        if let attrs = try? FileManager.default.attributesOfItem(atPath: logFileURL.path),
-//           let size = attrs[.size] as? UInt64, size > 5_000_000 { // 5mb
-//            let archived = logFileURL.deletingLastPathComponent()
-//                .appendingPathComponent("app-\(Date().timeIntervalSince1970).log")
-//            try? FileManager.default.moveItem(at: logFileURL, to: archived)
-//        }
+        // if let attrs = try? FileManager.default.attributesOfItem(atPath: logFileURL.path),
+        //    let size = attrs[.size] as? UInt64, size > 5_000_000 { // 5mb
+        //    let archived = logFileURL.deletingLastPathComponent()
+        //        .appendingPathComponent("app-\(Date().timeIntervalSince1970).log")
+        //    try? FileManager.default.moveItem(at: logFileURL, to: archived)
+        // }
         // nuke the log every boot
         try? FileManager.default.removeItem(at: logFileURL)
 

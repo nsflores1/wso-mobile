@@ -75,6 +75,8 @@
 		5B93FE292EF20615008A2C1A /* Marquee in Frameworks */ = {isa = PBXBuildFile; productRef = 5B93FE282EF20615008A2C1A /* Marquee */; };
 		5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */; };
 		5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */; };
+		5B9808E32F0C24600001F8D4 /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E22F0C245E0001F8D4 /* AuthGate.swift */; };
+		5B9808E42F0C24600001F8D4 /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E22F0C245E0001F8D4 /* AuthGate.swift */; };
 		5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */; };
 		5BA37ED02EF08CB30011C245 /* WCFMKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */; };
 		5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9B2EC0ED9900A242A1 /* WSOMobileApp.swift */; };
@@ -136,12 +138,6 @@
 		5BFA32D72F05E2FF005D8F5C /* StringTrim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */; };
 		5BFA32D92F05E3F9005D8F5C /* WSOBulletinPerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */; };
 		5BFA32DD2F05EE75005D8F5C /* WSOBulletinKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */; };
-		5BFA32E22F0AD078005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E12F0AD071005D8F5C /* README.md */; };
-		5BFA32E42F0AD0CC005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E32F0AD0C9005D8F5C /* README.md */; };
-		5BFA32E62F0AD206005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E52F0AD203005D8F5C /* README.md */; };
-		5BFA32E82F0B0155005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E72F0B0151005D8F5C /* README.md */; };
-		5BFA32EA2F0C1CE4005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E92F0C1CDE005D8F5C /* README.md */; };
-		5BFA32EC2F0C1D3B005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32EB2F0C1D34005D8F5C /* README.md */; };
 		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -230,6 +226,7 @@
 		5B93FE202EF20193008A2C1A /* WSOUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOUser.swift; sourceTree = "<group>"; };
 		5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMView.swift; sourceTree = "<group>"; };
 		5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMViewModel.swift; sourceTree = "<group>"; };
+		5B9808E22F0C245E0001F8D4 /* AuthGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGate.swift; sourceTree = "<group>"; };
 		5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantLinks.swift; sourceTree = "<group>"; };
 		5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMKeyView.swift; sourceTree = "<group>"; };
 		5BB76F952EC0ED7500A242A1 /* WSOMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileTests.swift; sourceTree = "<group>"; };
@@ -280,12 +277,6 @@
 		5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTrim.swift; sourceTree = "<group>"; };
 		5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinPerListView.swift; sourceTree = "<group>"; };
 		5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOBulletinKeyView.swift; sourceTree = "<group>"; };
-		5BFA32E12F0AD071005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5BFA32E32F0AD0C9005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5BFA32E52F0AD203005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5BFA32E72F0B0151005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5BFA32E92F0C1CDE005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5BFA32EB2F0C1D34005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -409,7 +400,6 @@
 		5B62525F2EFEFAC200F1C814 /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
-				5BFA32E12F0AD071005D8F5C /* README.md */,
 				5BFA32D12F04943D005D8F5C /* WSOBulletinViewModel.swift */,
 				5B6252602EFEFAD700F1C814 /* WSOUserViewModel.swift */,
 				5B6252562EFE412100F1C814 /* WSOSelfUserViewModel.swift */,
@@ -464,7 +454,6 @@
 		5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
-				5BFA32E52F0AD203005D8F5C /* README.md */,
 				5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */,
 				5BFA32D32F04D215005D8F5C /* WSOBulletinItemView.swift */,
 				5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */,
@@ -548,7 +537,6 @@
 		5BEB32892EBFD9FB00F75A10 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5BFA32E32F0AD0C9005D8F5C /* README.md */,
 				5B62525F2EFEFAC200F1C814 /* WSOAuth */,
 				5BDA0FDA2EE122F2005D6AC4 /* WCFMShowViewModel.swift */,
 				5B515FAF2EDBC99600F166A1 /* WCFMPlaylistViewModel.swift */,
@@ -574,7 +562,6 @@
 		5BEB328C2EBFDA3900F75A10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5BFA32E72F0B0151005D8F5C /* README.md */,
 				5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */,
 				5BCF0D5D2F01EA9200E702EB /* UserType.swift */,
 				5B6252622EFF26FE00F1C814 /* CacheManager.swift */,
@@ -588,7 +575,6 @@
 		5BEB328D2EBFDA3F00F75A10 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				5BFA32E92F0C1CDE005D8F5C /* README.md */,
 				5BFA32EF2F0C1D60005D8F5C /* Other */,
 				5BFA32ED2F0C1D4F005D8F5C /* WSO */,
 				5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */,
@@ -606,7 +592,7 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				5BFA32EB2F0C1D34005D8F5C /* README.md */,
+				5B9808E22F0C245E0001F8D4 /* AuthGate.swift */,
 				5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */,
 				5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */,
 				5B6252512EFE0BB500F1C814 /* FontExtension.swift */,
@@ -824,13 +810,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BFA32E82F0B0155005D8F5C /* README.md in Resources */,
-				5BFA32E22F0AD078005D8F5C /* README.md in Resources */,
 				5B6252502EFE08BF00F1C814 /* ebgaramond.ttf in Resources */,
-				5BFA32EA2F0C1CE4005D8F5C /* README.md in Resources */,
-				5BFA32E62F0AD206005D8F5C /* README.md in Resources */,
-				5BFA32E42F0AD0CC005D8F5C /* README.md in Resources */,
-				5BFA32EC2F0C1D3B005D8F5C /* README.md in Resources */,
 				5BEB32572EBFD7F400F75A10 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -933,6 +913,7 @@
 				5BFA32D22F049446005D8F5C /* WSOBulletinViewModel.swift in Sources */,
 				5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */,
 				5BE3EE4B2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
+				5B9808E42F0C24600001F8D4 /* AuthGate.swift in Sources */,
 				5B5597312EC8F7CE00FB82D6 /* LibraryHoursView.swift in Sources */,
 				5BFA32D42F04D21F005D8F5C /* WSOBulletinItemView.swift in Sources */,
 				5BD50F142ED9DEF800806CA7 /* NotificationManager.swift in Sources */,
@@ -977,6 +958,7 @@
 				5B93FE1F2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */,
 				5B6252522EFE0BB700F1C814 /* FontExtension.swift in Sources */,
 				5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */,
+				5B9808E32F0C24600001F8D4 /* AuthGate.swift in Sources */,
 				5BFA32D72F05E2FF005D8F5C /* StringTrim.swift in Sources */,
 				5BE3EE4A2ECC30F5009CDFD3 /* StringExtension.swift in Sources */,
 				5BD50F132ED9DEF800806CA7 /* NotificationManager.swift in Sources */,

@@ -66,7 +66,7 @@ struct HomeView: View {
                     Text("App is in nonstudent mode").italic()
                 }
                 if searchText.isEmpty {
-                    if userType == .student && authManager.isAuthenticated {
+                    if userType == .student {
                         HomeButtonsView()
                     }
                     LibraryHoursView()
@@ -113,10 +113,8 @@ struct HomeView: View {
                         }
                         if userType == .student {
                             NavigationLink(destination: {
-                                if authManager.isAuthenticated {
+                                AuthGate {
                                     ProfileView()
-                                } else {
-                                    WSOLoginView()
                                 }
                             }) {
                                 Image(systemName: "person")
