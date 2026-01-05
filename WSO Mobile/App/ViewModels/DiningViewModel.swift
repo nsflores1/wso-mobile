@@ -124,7 +124,8 @@ class DiningHoursViewModel {
 
     func clearCache() async {
         await cache.clear(path: "viewmodelstate_dining_menus.json")
+        // TODO: figure out how to clear the past menus from here as well
+        // we should be regularly purging them from here
         self.diningMenu = []
     }
-
 }

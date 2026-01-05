@@ -14,7 +14,7 @@ struct LibraryHoursView: View {
 
     var body: some View {
         Section {
-            VStack {
+            Group {
                 if viewModel.isLoading {
                     Text("Loading...")
                         .transition(.opacity)
@@ -26,21 +26,27 @@ struct LibraryHoursView: View {
                     ForEach(viewModel.libraryHours) { place in
                         HStack {
                             Text(place.name)
-                            Spacer()
                             HStack {
                                 if !place.close.isEmpty {
                                     Text(place.close.joined(separator: ", "))
                                         .foregroundStyle(.secondary)
+                                } else {
+                                    Text("N/A")
+                                        .foregroundStyle(.secondary)
                                 }
+                                Text("-").foregroundStyle(.secondary)
                                 if !place.open.isEmpty {
                                     Text(place.open.joined(separator: ", "))
+                                        .foregroundStyle(.secondary)
+                                } else {
+                                    Text("N/A")
                                         .foregroundStyle(.secondary)
                                 }
                                 if place.open.isEmpty && place.close.isEmpty {
                                     Text("(No hours today)")
                                         .foregroundStyle(.secondary)
                                 }
-                            }
+                            }.padding(.horizontal, 5)
                         }
                     }.transition(.move(edge: .top).combined(with: .opacity))
                 }
