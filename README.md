@@ -9,8 +9,10 @@ Not sure what to do next? Check the To-Do List or the Issues!
 Swift is a programming language made by Apple that you should learn; it's pretty good. This project has a special layout that you should respect.
 
 - The `App` folder is for `Views`, which are the GUI screens of the app, and `ViewModels`, which are the underlying data structure that represent the stateful data which will be rendered by `Views`.
-- The `CLI` folder is for the CLI client to WSO Mobile. Why create this? The main reason was that we wanted it to be easy to test some features without running the iOS simulator, which is computationally expensive. Since only macOS can build the iOS app, this gives a way for Windows-using contributors to work on the code.
-- The `Shared` folder contains all core logic code that both the `App` and `CLI` share. It is where basically all non-GUI code should go, such as helper functions, anything iterative, and all functions that actually do any data parsing. If it modifies a data structure in a non-declarative way, it *must* live here.
+- The `CLI` folder is for the CLI client to WSO Mobile. It's there so that you can quickly and efficiently test some parts of the app without needing to launch a whole iPhone simulator. Feel free to use it if this fits the needs of what you're working on; otherwise ignore it.
+- The `Shared` folder contains all core logic code. It is where basically all non-GUI code should go, such as helper functions, anything iterative, and all functions that actually do any data parsing. If it modifies a data structure in a non-declarative way, it *must* live here.
+
+Throughout the project are various Markdown files describing how to use a certain directory or how to extend something, along with many helpful comments. You should read them!
 
 Also: `swiftlint` is turned on. To turn it off, add the following to your `.swiftlint.yml`:
 ```yaml
@@ -23,9 +25,6 @@ Ordered from most to least important:
 - Implement JWT Token support and add that to the user's keychain (unlock with FaceID)
 - Complete the radio player show view
 - Add views for all core WSO services
-- Add good logging support
-- Document all the code, agree on a core Swift style
-- Make the CLI not painful to use (better debugging mode)
 - Decent watchOS support
 - Decent iPadOS support
 

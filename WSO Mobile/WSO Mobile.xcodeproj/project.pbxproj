@@ -139,6 +139,9 @@
 		5BFA32E22F0AD078005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E12F0AD071005D8F5C /* README.md */; };
 		5BFA32E42F0AD0CC005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E32F0AD0C9005D8F5C /* README.md */; };
 		5BFA32E62F0AD206005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E52F0AD203005D8F5C /* README.md */; };
+		5BFA32E82F0B0155005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E72F0B0151005D8F5C /* README.md */; };
+		5BFA32EA2F0C1CE4005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32E92F0C1CDE005D8F5C /* README.md */; };
+		5BFA32EC2F0C1D3B005D8F5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5BFA32EB2F0C1D34005D8F5C /* README.md */; };
 		5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -280,6 +283,9 @@
 		5BFA32E12F0AD071005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5BFA32E32F0AD0C9005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5BFA32E52F0AD203005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5BFA32E72F0B0151005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5BFA32E92F0C1CDE005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5BFA32EB2F0C1D34005D8F5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -568,6 +574,7 @@
 		5BEB328C2EBFDA3900F75A10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32E72F0B0151005D8F5C /* README.md */,
 				5BFA32BE2F030FB1005D8F5C /* LogBootstrap.swift */,
 				5BCF0D5D2F01EA9200E702EB /* UserType.swift */,
 				5B6252622EFF26FE00F1C814 /* CacheManager.swift */,
@@ -581,6 +588,9 @@
 		5BEB328D2EBFDA3F00F75A10 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32E92F0C1CDE005D8F5C /* README.md */,
+				5BFA32EF2F0C1D60005D8F5C /* Other */,
+				5BFA32ED2F0C1D4F005D8F5C /* WSO */,
 				5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */,
 				5B93FE1A2EF1FE17008A2C1A /* WSOBookTrak.swift */,
 				5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */,
@@ -596,17 +606,13 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5BFA32EB2F0C1D34005D8F5C /* README.md */,
 				5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */,
 				5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */,
 				5B6252512EFE0BB500F1C814 /* FontExtension.swift */,
 				5B515FB42EDC8F0B00F166A1 /* NavStackShim.swift */,
 				5B515FB12EDBCE4F00F166A1 /* DateExtension.swift */,
-				5BDEED6A2ED0E62D00E150E6 /* SpinitronMetadata.swift */,
-				5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */,
 				5BE3EE492ECC30E7009CDFD3 /* StringExtension.swift */,
-				5B10FF9C2EC83CA50021597F /* LibraryHours.swift */,
-				5B10FF992EC83C820021597F /* DailyMessages.swift */,
-				5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -634,6 +640,25 @@
 				5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		5BFA32ED2F0C1D4F005D8F5C /* WSO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WSO;
+			sourceTree = "<group>";
+		};
+		5BFA32EF2F0C1D60005D8F5C /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5BDEED6A2ED0E62D00E150E6 /* SpinitronMetadata.swift */,
+				5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */,
+				5B10FF9C2EC83CA50021597F /* LibraryHours.swift */,
+				5B10FF992EC83C820021597F /* DailyMessages.swift */,
+				5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -799,10 +824,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BFA32E82F0B0155005D8F5C /* README.md in Resources */,
 				5BFA32E22F0AD078005D8F5C /* README.md in Resources */,
 				5B6252502EFE08BF00F1C814 /* ebgaramond.ttf in Resources */,
+				5BFA32EA2F0C1CE4005D8F5C /* README.md in Resources */,
 				5BFA32E62F0AD206005D8F5C /* README.md in Resources */,
 				5BFA32E42F0AD0CC005D8F5C /* README.md in Resources */,
+				5BFA32EC2F0C1D3B005D8F5C /* README.md in Resources */,
 				5BEB32572EBFD7F400F75A10 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
