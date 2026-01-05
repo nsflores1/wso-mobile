@@ -77,6 +77,7 @@
 		5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */; };
 		5B9808E32F0C24600001F8D4 /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E22F0C245E0001F8D4 /* AuthGate.swift */; };
 		5B9808E42F0C24600001F8D4 /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E22F0C245E0001F8D4 /* AuthGate.swift */; };
+		5B9808E62F0C5E7D0001F8D4 /* PastMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E52F0C5E790001F8D4 /* PastMenuViewModel.swift */; };
 		5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */; };
 		5BA37ED02EF08CB30011C245 /* WCFMKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */; };
 		5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9B2EC0ED9900A242A1 /* WSOMobileApp.swift */; };
@@ -227,6 +228,7 @@
 		5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMView.swift; sourceTree = "<group>"; };
 		5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMViewModel.swift; sourceTree = "<group>"; };
 		5B9808E22F0C245E0001F8D4 /* AuthGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGate.swift; sourceTree = "<group>"; };
+		5B9808E52F0C5E790001F8D4 /* PastMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastMenuViewModel.swift; sourceTree = "<group>"; };
 		5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantLinks.swift; sourceTree = "<group>"; };
 		5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMKeyView.swift; sourceTree = "<group>"; };
 		5BB76F952EC0ED7500A242A1 /* WSOMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileTests.swift; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 				5B515FAF2EDBC99600F166A1 /* WCFMPlaylistViewModel.swift */,
 				5BD50F0D2ED9497700806CA7 /* AboutViewModel.swift */,
 				5B0A2E8E2ECEC38200DC3485 /* DiningViewModel.swift */,
+				5B9808E52F0C5E790001F8D4 /* PastMenuViewModel.swift */,
 				5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */,
 				5BE3EE512ECC3491009CDFD3 /* WilliamsRecordViewModel.swift */,
 				5B0168422EC91D650092FBA3 /* MapViewModel.swift */,
@@ -863,6 +866,7 @@
 				5B05EF282ED8EFA300802310 /* OnboardingThreeView.swift in Sources */,
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
+				5B9808E62F0C5E7D0001F8D4 /* PastMenuViewModel.swift in Sources */,
 				5BFA32CA2F0360B9005D8F5C /* HomeCardView.swift in Sources */,
 				5B05EF2E2ED8F96000802310 /* RestOfWilliamstownView.swift in Sources */,
 				5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */,

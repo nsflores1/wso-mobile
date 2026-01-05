@@ -11,6 +11,8 @@ import Logging
 struct DiningView: View {
     @Environment(\.logger) private var logger
     @State private var viewModel = DiningHoursViewModel()
+    @State private var selected: Date?
+    @State private var showPicker = false
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
 
     var body: some View {
@@ -52,16 +54,46 @@ struct DiningView: View {
                     }
                     // TODO: need a button here that selects the day we want
                     Section {
+//                        if viewModel.pastList != [] {
+//                            DisclosureGroup(
+//                                isExpanded: $showPicker,
+//                                content: {
+//                                    Picker("Date", selection: $selected) {
+//                                        ForEach(viewModel.pastList, id: \.self) { date in
+//                                            Text(date, format: .dateTime.year().month().day())
+//                                                .tag(Optional(date))
+//                                        }
+//                                    }
+//                                    .pickerStyle(.wheel)
+//                                    .frame(maxWidth: .infinity)
+//                                },
+//                                label: {
+//                                    if let date = selected {
+//                                        Text(date, format: .dateTime.year().month().day())
+//                                            .italic(true)
+//                                    } else {
+//                                        Text("(Click to select a different day...)")
+//                                            .foregroundStyle(Color(.secondaryLabel))
+//                                            .italic()
+//                                    }
+//                                }
+//                            )
+//                        }
                         ForEach(
                             viewModel.diningMenu.sorted(),
                             id: \.hallName
                         ) { hall in
                             NavigationLink(destination: DiningVendorView(menu: hall)) {
                                 HStack {
+                                    Circle()
+                                        .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
+                                        .frame(width: 10, height: 10)
+                                    }
                                     Text(hall.hallName)
-                                        // TODO: some way to track hall status here. is it open? is it closed?
-                                        // consider parsing everything as a date.
-                                }
+                                    if hall.hasCoursesToday() {
+                                        Text("(Not serving today)")
+                                            .foregroundStyle(Color(.secondaryLabel))
+                                    }
                             }
 
                         }
@@ -97,6 +129,21 @@ struct DiningView: View {
             logger.trace("Fetch complete")
         }
     }
+
+    // this stops assuming a day around the cutoff, which is important for avoiding
+    // all sorts of weird time bugs that would otherwise happen around 4am
+    func normalizedNowMinutes(cutoffHour: Int = 5) -> Int {
+        let calendar = Calendar(identifier: .gregorian)
+        let comps = calendar.dateComponents([.hour, .minute], from: Date())
+        let hour = comps.hour!
+        let minute = comps.minute!
+
+        let raw = hour * 60 + minute
+        let cutoff = cutoffHour * 60
+
+        return raw < cutoff ? raw + 24 * 60 : raw
+    }
+
 }
 
 #Preview {

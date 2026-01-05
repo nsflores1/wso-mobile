@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import Logging
 
 @MainActor
 @Observable
 class DiningHoursViewModel {
     private let cache = CacheManager.shared
+    fileprivate let logger = Logger(label: "com.wso.DiningViewModel")
 
     var diningMenu: [DiningHall] = []
+    var pastList: [Date] = []
     var isLoading: Bool = false
     var error: WebRequestError?
     private var hasFetched = false
@@ -57,10 +60,34 @@ class DiningHoursViewModel {
         isLoading = false
     }
 
+    // this can load in the background, it's fine. no need to block
+    func loadDays() async {
+        if let cached: [Date] = await cache.load(
+            [Date].self,
+            from: "viewmodelstate_dining_menus_past_list.json",
+            maxAge: 3600 * 24 // one day is prob fine
+        ) {
+            self.pastList = cached
+            return
+        }
+
+        do {
+            let data: [Date] = try await getListPastWilliamsDiningMenus()
+            try await cache.save(data, to: "viewmodelstate_dining_menus_past_list.json")
+        } catch let err as WebRequestError {
+            logger.error("Error on fetching past days: \(err)")
+            self.pastList = []
+        } catch {
+            logger.critical("Something has gone horribly wrong with fetching past menu days, and WebRequest died!")
+            self.pastList = []
+        }
+    }
+
     func fetchIfNeeded() async {
         guard !hasFetched else { return }
         hasFetched = true
         await loadMenus()
+        await loadDays()
     }
 
     func forceRefresh() async {
@@ -78,6 +105,18 @@ class DiningHoursViewModel {
         } catch {
             self.error = WebRequestError.internalFailure
             self.diningMenu = []
+        }
+
+        // then, once we've got the main menu, then fetch last ones
+        do {
+            let dateData: [Date] = try await getListPastWilliamsDiningMenus()
+            try await cache.save(dateData, to: "viewmodelstate_dining_menus_past_list.json")
+        } catch let err as WebRequestError {
+            logger.error("Error on fetching past days: \(err)")
+            self.pastList = []
+        } catch {
+            logger.critical("Something has gone horribly wrong with fetching past menu days, and WebRequest died!")
+            self.pastList = []
         }
 
         isLoading = false
