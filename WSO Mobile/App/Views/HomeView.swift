@@ -18,6 +18,7 @@ struct HomeView: View {
     @State private var searchText: String = ""
     @State var users: [User] = []
     @State var userCount: Int = 0
+    @FocusState private var isFocused
     // task handle
     @State private var searchTask: Task<Void, Never>?
 
@@ -50,11 +51,21 @@ struct HomeView: View {
                                         }
                                     }
                                 }
+                                .focused($isFocused)
                             if !searchText.isEmpty {
                                 Button {
                                     searchText = ""
+                                    isFocused = false
                                 } label: {
                                     Image(systemName: "xmark.circle.fill")
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            if isFocused {
+                                Button {
+                                    isFocused = false
+                                } label: {
+                                    Image(systemName: "keyboard.chevron.compact.down")
                                         .foregroundStyle(.secondary)
                                 }
                             }
