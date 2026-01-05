@@ -11,7 +11,14 @@ import Logging
 struct DiningView: View {
     @Environment(\.logger) private var logger
     @State private var viewModel = DiningHoursViewModel()
-    @State private var selected: Date?
+    @State private var pastViewModel = PastMenuViewModel(Date())
+
+    // note that this isn't optional because we need .onChange(), which doesn't
+    // support using optionals in iOS 17. this is just some arbitrary choice,
+    // which is arguably a bit moronic, but I never let common sense stop me
+    // from working code. pragmatism should be your guide always when coding
+    @State private var selected: Date = Date.distantPast
+
     @State private var showPicker = false
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
 
@@ -52,50 +59,85 @@ struct DiningView: View {
                                 .font(.title3)
                         }
                     }
-                    // TODO: need a button here that selects the day we want
                     Section {
-//                        if viewModel.pastList != [] {
-//                            DisclosureGroup(
-//                                isExpanded: $showPicker,
-//                                content: {
-//                                    Picker("Date", selection: $selected) {
-//                                        ForEach(viewModel.pastList, id: \.self) { date in
-//                                            Text(date, format: .dateTime.year().month().day())
-//                                                .tag(Optional(date))
-//                                        }
-//                                    }
-//                                    .pickerStyle(.wheel)
-//                                    .frame(maxWidth: .infinity)
-//                                },
-//                                label: {
-//                                    if let date = selected {
-//                                        Text(date, format: .dateTime.year().month().day())
-//                                            .italic(true)
-//                                    } else {
-//                                        Text("(Click to select a different day...)")
-//                                            .foregroundStyle(Color(.secondaryLabel))
-//                                            .italic()
-//                                    }
-//                                }
-//                            )
-//                        }
-                        ForEach(
-                            viewModel.diningMenu.sorted(),
-                            id: \.hallName
-                        ) { hall in
-                            NavigationLink(destination: DiningVendorView(menu: hall)) {
-                                HStack {
-                                    Circle()
-                                        .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
-                                        .frame(width: 10, height: 10)
+                        if viewModel.pastList != [] {
+                            DisclosureGroup(
+                                isExpanded: $showPicker,
+                                content: {
+                                    Picker("Date", selection: $selected) {
+                                        // sorted in descending (most recent) order
+                                        ForEach(viewModel.pastList.sorted(by: >), id: \.self) { date in
+                                            Text(date, format: .dateTime.year().month().day())
+                                                .tag(Optional(date))
+                                        }
+                                    }
+                                    .pickerStyle(.wheel)
+                                    .frame(maxWidth: .infinity)
+                                },
+                                label: {
+                                    if selected != Date.distantPast {
+                                        Text(selected, format: .dateTime.year().month().day())
+                                            .italic(true)
+                                    } else {
+                                        Text("(Click to select a different day...)")
+                                            .foregroundStyle(Color(.secondaryLabel))
+                                            .italic()
+                                    }
+                                    if selected != Date.distantPast {
+                                        Button {
+                                            selected = Date.distantPast
+                                        } label: {
+                                            Image(systemName: "xmark.circle.fill")
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
+                                }
+                            ).onChange(of: selected) { old, new in
+                                Task {
+                                    await pastViewModel.updateDate(new)
+                                }
+                            }
+                        }
+                        if selected == Date.distantPast {
+                            ForEach(
+                                viewModel.diningMenu.sorted(),
+                                id: \.hallName
+                            ) { hall in
+                                NavigationLink(destination: DiningVendorView(menu: hall)) {
+                                    HStack {
+                                        Circle()
+                                            .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
+                                            .frame(width: 10, height: 10)
                                     }
                                     Text(hall.hallName)
                                     if hall.hasCoursesToday() {
                                         Text("(Not serving today)")
                                             .foregroundStyle(Color(.secondaryLabel))
                                     }
-                            }
+                                }
 
+                            }
+                        } else {
+                            ForEach(
+                                pastViewModel.diningMenu.sorted(),
+                                id: \.hallName
+                            ) { hall in
+                                NavigationLink(destination: DiningVendorView(menu: hall)) {
+                                    HStack {
+                                        Circle()
+                                            .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
+                                            .frame(width: 10, height: 10)
+                                    }
+                                    Text(hall.hallName)
+                                    if hall.hasCoursesToday() {
+                                        Text("(Not serving today)")
+                                            .foregroundStyle(Color(.secondaryLabel))
+                                    }
+                                }
+                            }
+                            .task {
+                                await pastViewModel.fetchIfNeeded()
+                            }
                         }
                     } header: {
                         Text("On-Campus Dining Halls")
@@ -109,6 +151,7 @@ struct DiningView: View {
                         logger.trace("Dining data forcibly refreshed")
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 }
+                .animation(.easeInOut(duration: 0.25), value: selected)
                 .navigationTitle(Text("Dining"))
                 .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))
                 .toolbar {

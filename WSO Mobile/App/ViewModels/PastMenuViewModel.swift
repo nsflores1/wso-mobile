@@ -20,10 +20,21 @@ class PastMenuViewModel {
     var error: WebRequestError?
     private var hasFetched = false
 
-    let pastDay: Date
+    var pastDay: Date
 
     init(_ date: Date) {
         self.pastDay = date
+    }
+
+    // needed to regenerate this
+    func updateDate(_ date: Date) async {
+        self.pastDay = date
+        // reset state
+        self.diningMenu = []
+        self.isLoading = false
+        self.error = nil
+        // now let's force refresh, since our state is empty
+        await loadMenus()
     }
 
     // gonna need this a lot
@@ -40,6 +51,12 @@ class PastMenuViewModel {
     func loadMenus() async {
         isLoading = true
         error = nil
+
+        // skip in our weird edge case where we use the default date
+        if self.pastDay == Date.distantPast {
+            isLoading = false
+            return // no need to fetch, this is an invisible state
+        }
 
         if let cached: [DiningHall] = await cache.load(
             [DiningHall].self,
@@ -77,6 +94,12 @@ class PastMenuViewModel {
 
     func forceRefresh() async {
         isLoading = true
+
+        // skip in our weird edge case where we use the default date
+        if self.pastDay == Date.distantPast {
+            isLoading = false
+            return // no need to fetch, this is an invisible state
+        }
 
         do {
             let data: [DiningHall] = try await getSinglePastWilliamsDiningMenus(date: pastDay)
