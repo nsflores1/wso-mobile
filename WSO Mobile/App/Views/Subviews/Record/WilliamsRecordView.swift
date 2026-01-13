@@ -51,8 +51,8 @@ struct WilliamsRecordView: View {
                                 Image(systemName: "person")
                                 Text(post.author)
                                     .multilineTextAlignment(.leading)
-                                    .italic()
                             }.frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle(Color.secondary)
                         }
                     }.transition(.move(edge: .trailing).combined(with: .opacity))
                 }

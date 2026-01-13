@@ -24,10 +24,9 @@ struct WilliamsRecordArticleView: View {
                         .padding(20)
                     HStack {
                         Image(systemName: "person")
-                        Text("Written by: \(article.author)")
-                            .italic(true)
+                        Text(article.author)
                             .font(likesSerifFont ? .garamond(.body) : .body)
-                    }
+                    }.foregroundStyle(Color.secondary)
                 }
                 Divider()
                 Section {
