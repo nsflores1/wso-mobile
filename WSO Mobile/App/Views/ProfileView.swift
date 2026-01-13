@@ -104,10 +104,26 @@ struct ProfileView: View {
                             if let suBox = viewModel.data?.suBox {
                                 Text("SU Box: ").bold() + Text(suBox)
                             }
-                            if let homeTown = viewModel.data?.homeTown {
-                                if let homeState = viewModel.data?.homeState {
-                                    Text("Hometown: ").bold() + Text("\(homeTown), \(homeState)")
+                            // some shenanigains with the hometown.
+                            // swift really doesn't like conditional text,
+                            // but this is a nice functional way of handling it.
+                            let parts: [Text] = [
+                                viewModel.data?.homeTown.map {
+                                    Text("Hometown: ").bold() + Text($0)
+                                },
+                                viewModel.data?.homeZip.map {
+                                    Text(" (ZIP: \($0))")
+                                },
+                                viewModel.data?.homeState.map {
+                                    Text(", \($0)")
+                                },
+                                viewModel.data?.homeCountry.map {
+                                    Text(", \($0)")
                                 }
+                            ].compactMap { $0 }
+                            // this shows the hometown by checking if we're allowed to
+                            if let showHome = viewModel.data?.homeVisible {
+                                if showHome { parts.reduce(Text(""), +) }
                             }
                             if viewModel.data?.pronoun?.isEmpty == false {
                                 Text("Pronouns: ").bold() + Text(viewModel.data?.pronoun ?? "Loading...")
