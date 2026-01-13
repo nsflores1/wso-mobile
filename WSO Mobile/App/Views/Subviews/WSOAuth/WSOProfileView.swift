@@ -118,9 +118,6 @@ struct WSOProfileView: View {
                                 viewModel.data?.homeTown.map {
                                     Text("Hometown: ").bold() + Text($0)
                                 },
-                                viewModel.data?.homeZip.map {
-                                    Text(" (ZIP: \($0))")
-                                },
                                 viewModel.data?.homeState.map {
                                     Text(", \($0)")
                                 },
@@ -141,9 +138,6 @@ struct WSOProfileView: View {
                     Text("\(viewModel.data?.type.capitalized ?? "User") Profile")
                         .fontWeight(.semibold)
                         .font(.title3)
-                }
-                Section {
-                    Text("The final version will look different than this!").italic()
                 }
             }
             .listStyle(.grouped)

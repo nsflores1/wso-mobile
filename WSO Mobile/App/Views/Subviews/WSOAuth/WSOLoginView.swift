@@ -23,6 +23,8 @@ struct WSOLoginView: View {
     @State private var hideTask: Task<Void, Never>?
     @FocusState private var isFocused
 
+    @AppStorage("surferErrors") private var surferErrors: Bool = false
+
     // wondering how the user goes back to the correct screen?
     // this is a NavigationStack{}, so when we see our state updated at the
     // higher-level HomeView(), we pop this off the stack
@@ -30,10 +32,16 @@ struct WSOLoginView: View {
         NavigationStack {
             VStack {
                 if showError && errorString.contains("401") {
-                    Text("Your password is wrong, please try again...")
-                        .foregroundStyle(.red)
-                        .transition(.opacity)
-                        .padding(.vertical, 20)
+                    Group {
+                        if surferErrors {
+                            Text("Wipeout, man! Password FAILED.")
+                        } else {
+                            Text("Your password is wrong, please try again...")
+                        }
+                    }
+                    .foregroundStyle(.red)
+                    .transition(.opacity)
+                    .padding(.vertical, 20)
                 } else if showError {
                     Text(errorString)
                         .foregroundStyle(.red)
