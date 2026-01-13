@@ -24,7 +24,7 @@ class LibraryHoursViewModel {
         if let cached: [LibraryViewData] = await cache.load(
             [LibraryViewData].self,
             from: "viewmodelstate_library_hours.json",
-            maxAge: 3600 * 24
+            maxAge: 3600 * 4 // four hours
         ) {
             self.libraryHours = cached
             self.isLoading = false

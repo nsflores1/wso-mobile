@@ -24,7 +24,7 @@ class DailyMessagesViewModel {
         if let cached: [String: [DailyMessagePost]] = await cache.load(
             [String: [DailyMessagePost]].self,
             from: "viewmodelstate_daily_messages.json",
-            maxAge: 3600 * 24
+            maxAge: 3600 * 4 // four hours
         ) {
             self.dailyMessageCategories = cached
             self.isLoading = false

@@ -35,7 +35,7 @@ class DiningHoursViewModel {
         if let cached: [DiningHall] = await cache.load(
             [DiningHall].self,
             from: "viewmodelstate_dining_menus.json",
-            maxAge: 3600 * 24 // one day is probably fine
+            maxAge: 3600 * 1 // four hours
         ) {
             self.diningMenu = cached
             self.isLoading = false
@@ -65,7 +65,7 @@ class DiningHoursViewModel {
         if let cached: [Date] = await cache.load(
             [Date].self,
             from: "viewmodelstate_dining_menus_past_list.json",
-            maxAge: 3600 * 24 // one day is prob fine
+            maxAge: 3600 * 4 // four hours
         ) {
             self.pastList = cached
             return
