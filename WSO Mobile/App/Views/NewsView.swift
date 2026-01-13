@@ -14,6 +14,7 @@ struct NewsView: View {
 
     var body: some View {
         NavigationStack {
+            // TODO: add more news sources here
             WilliamsRecordView()
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

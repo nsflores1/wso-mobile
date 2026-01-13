@@ -22,7 +22,7 @@ struct NewsKeyView: View {
                     UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     openURL(URL(string: "https://williamsrecord.com")!)
                 } label: {
-                    Label("WCFM Official Site", systemImage: "newspaper")
+                    Label("Williams Record Official Site", systemImage: "newspaper")
                 }
                 Section {
                     let explanationText = """
