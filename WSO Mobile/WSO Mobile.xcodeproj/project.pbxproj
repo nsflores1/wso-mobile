@@ -72,7 +72,6 @@
 		5B93FE1F2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */; };
 		5B93FE212EF20196008A2C1A /* WSOUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE202EF20193008A2C1A /* WSOUser.swift */; };
 		5B93FE222EF20196008A2C1A /* WSOUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE202EF20193008A2C1A /* WSOUser.swift */; };
-		5B93FE292EF20615008A2C1A /* Marquee in Frameworks */ = {isa = PBXBuildFile; productRef = 5B93FE282EF20615008A2C1A /* Marquee */; };
 		5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CA2ECD5E920078DCE2 /* WCFMView.swift */; };
 		5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */; };
 		5B9808E32F0C24600001F8D4 /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E22F0C245E0001F8D4 /* AuthGate.swift */; };
@@ -292,7 +291,6 @@
 				5B6252472EFDE24B00F1C814 /* JWTDecode in Frameworks */,
 				5B62525C2EFE552000F1C814 /* Shimmer in Frameworks */,
 				5B6BECA02F0225EB00CE7CF0 /* Logging in Frameworks */,
-				5B93FE292EF20615008A2C1A /* Marquee in Frameworks */,
 				5B5632792EDB848200390AB8 /* FluidGradient in Frameworks */,
 				5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */,
 				5BE3EE4E2ECC3358009CDFD3 /* FeedKit in Frameworks */,
@@ -674,7 +672,6 @@
 				5BDEED732ED0E80000E150E6 /* HTTPTypesFoundation */,
 				5B5632782EDB848200390AB8 /* FluidGradient */,
 				5BCDB8022EF1D795008B438C /* Kingfisher */,
-				5B93FE282EF20615008A2C1A /* Marquee */,
 				5B6252462EFDE24B00F1C814 /* JWTDecode */,
 				5B62525B2EFE552000F1C814 /* Shimmer */,
 				5B6BEC9F2F0225EB00CE7CF0 /* Logging */,
@@ -791,7 +788,6 @@
 				5BE3EE4C2ECC3294009CDFD3 /* XCRemoteSwiftPackageReference "FeedKit" */,
 				5B5632772EDB848200390AB8 /* XCRemoteSwiftPackageReference "FluidGradient" */,
 				5B93FE232EF20402008A2C1A /* XCRemoteSwiftPackageReference "swift-log" */,
-				5B93FE272EF2060B008A2C1A /* XCRemoteSwiftPackageReference "Marquee" */,
 				5B6252452EFDE23600F1C814 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 				5B62525A2EFE552000F1C814 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
@@ -1406,14 +1402,6 @@
 				minimumVersion = 1.8.0;
 			};
 		};
-		5B93FE272EF2060B008A2C1A /* XCRemoteSwiftPackageReference "Marquee" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stonko1994/Marquee";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.1;
-			};
-		};
 		5BE3EE472ECC2F46009CDFD3 /* XCRemoteSwiftPackageReference "swift-http-types" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-http-types";
@@ -1480,11 +1468,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B3B65962EC800DB0001B28A /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
-		};
-		5B93FE282EF20615008A2C1A /* Marquee */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B93FE272EF2060B008A2C1A /* XCRemoteSwiftPackageReference "Marquee" */;
-			productName = Marquee;
 		};
 		5BCDB8022EF1D795008B438C /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

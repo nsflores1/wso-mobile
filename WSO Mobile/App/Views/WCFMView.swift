@@ -8,7 +8,6 @@
 import SwiftUI
 import Foundation
 import AVFoundation
-import Marquee
 import Kingfisher
 import Logging
 
@@ -26,18 +25,11 @@ struct WCFMView: View {
                         .frame(width: 200, height: 200)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .transition(.scale.combined(with: .opacity))
-                    // TODO: this needs testing
-                    Marquee {
-                        Text(track.song)
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .padding(5)
-                    }
-                    .marqueeDuration(10)
-                    .marqueeAutoreverses(true)
-                    .marqueeWhenNotFit(true)
-                    .marqueeIdleAlignment(.center)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    Text(track.song)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .padding(5)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
                     Text("\(track.artist ?? "Anonymous") - \(track.release ?? "(unknown)")")
                         .font(.headline)
                         .foregroundStyle(.secondary)
