@@ -27,6 +27,11 @@ struct WilliamsRecordArticleView: View {
                         Text(article.author)
                             .font(likesSerifFont ? .garamond(.body) : .body)
                     }.foregroundStyle(Color.secondary)
+                    HStack {
+                        Image(systemName: "clock")
+                        Text(article.pubDate.shorterDisplay)
+                            .font(likesSerifFont ? .garamond(.body) : .body)
+                    }.foregroundStyle(Color.secondary)
                 }
                 Divider()
                 Section {

@@ -36,6 +36,8 @@ struct LibraryViewData: Identifiable, Codable {
     let name: String
     let open: [String]
     let close: [String]
+    // again, pointlessly copied, but cheaper than wrapper class
+    let updateTime: String
 }
 
 func parseLibraryHours() async throws -> [LibraryViewData] {
@@ -51,7 +53,8 @@ func parseLibraryHours() async throws -> [LibraryViewData] {
             id: key,
             name: value.name.cleanWhitespace(),
             open: value.hours.open ?? [],
-            close: value.hours.close ?? []
+            close: value.hours.close ?? [],
+            updateTime: data.updateTime
         )
     }
 }

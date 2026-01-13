@@ -16,6 +16,18 @@ struct NewsFeed: Codable {
     let author: String
     let description: String
     let content: [ArticleElement]
+    let updateTime: Date?
+    let category: [RSSFeedCategory]?
+}
+
+// it makes most sense to sort them by date, from oldest to newest
+extension NewsFeed: Comparable {
+    static func < (lhs: NewsFeed, rhs: NewsFeed) -> Bool {
+        return lhs.pubDate > rhs.pubDate
+    }
+    static func == (lhs: NewsFeed, rhs: NewsFeed) -> Bool {
+        return lhs.pubDate == rhs.pubDate
+    }
 }
 
 enum ArticleElement: Codable {
@@ -79,7 +91,9 @@ func parseWilliamsRecord() async throws -> [NewsFeed] {
                     pubDate: post.pubDate!, // TODO: implement a thing which gives us 8am of last wednesday
                     author: post.dublinCore?.creator ?? "(unknown author)",
                     description: post.description ?? "(no description)",
-                    content: try await parseArticleContent(post.content?.encoded ?? "")
+                    content: try await parseArticleContent(post.content?.encoded ?? ""),
+                    updateTime: post.pubDate,
+                    category: post.categories
                 )
             )
     }

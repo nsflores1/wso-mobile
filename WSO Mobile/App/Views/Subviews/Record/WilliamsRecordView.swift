@@ -38,7 +38,7 @@ struct WilliamsRecordView: View {
                 }
             }
             if !viewModel.isLoading && viewModel.error == nil {
-                ForEach(viewModel.posts, id: \.title) { post in
+                ForEach(viewModel.posts.sorted(), id: \.title) { post in
                     NavigationLink() {
                         WilliamsRecordArticleView(article: post)
                     } label: {
@@ -53,6 +53,12 @@ struct WilliamsRecordView: View {
                                     .multilineTextAlignment(.leading)
                             }.frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle(Color.secondary)
+                            HStack {
+                                Image(systemName: "clock")
+                                Text(post.pubDate.shorterDisplay)
+                                    .multilineTextAlignment(.leading)
+                            }.frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundStyle(Color.secondary)
                         }
                     }.transition(.move(edge: .trailing).combined(with: .opacity))
                 }

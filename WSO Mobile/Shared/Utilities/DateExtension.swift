@@ -26,7 +26,7 @@ extension Date {
 extension Date {
     static let evenShorterDisplayFormatter: DateFormatter = {
         let f = DateFormatter()
-        f.dateFormat = "E, d MMM"
+        f.dateFormat = "EEEE, d MMM"
         return f
     }()
 
