@@ -34,13 +34,13 @@ struct SettingsKeyView: View {
                         Text("User Type: ").bold() + Text("this setting allows non-students to hide/disable interface items which would require a student login.")
                     }
                     HStack {
-                        Text("Mathematical Mode: ").bold() + Text("changes the dining menu's logo on the tab bar to a mathematical symbol which has a similar-sounding name to a particular dessert item.")
+                        Text("Use Serif Font For Record: ").bold() + Text("changes the font used in the in-app Williams Record reader to the same serif font used in the physical newsprint version (the default is a sans serif font).")
                     }
                     HStack {
-                        Text("Use Serif Font For Record: ").bold() + Text("Changes the font used in the in-app Williams Record reader to the same serif font used in the physical newsprint version (the default is a sans serif font).")
+                        Text("Hide All Restaurants: ").bold() + Text("hides all non-dining halls from the Dining tab of the app.")
                     }
                     HStack {
-                        Text("Hide All Restaurants: ").bold() + Text("hides all non-dining halls from the Dining tab of the app")
+                        Text("Enable Beta Options: ").bold() + Text("does exactly what it says it does. If you are a WSO developer or just curious about new features, you can use this to test new features that are not yet available to the general public.")
                     }
                 } header : {
                     Text("Toggles")

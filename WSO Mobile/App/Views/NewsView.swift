@@ -28,7 +28,7 @@ struct NewsView: View {
                 }
             }
             .navigationTitle(Text("News"))
-            .modifier(NavSubtitleIfAvailable(subtitle: "The latest happenings"))
+            .modifier(NavSubtitleIfAvailable(subtitle: "The latest updates"))
             .navigationBarTitleDisplayMode(.large)
         }
     }

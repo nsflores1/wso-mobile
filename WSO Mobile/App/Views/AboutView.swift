@@ -7,11 +7,14 @@
 
 import SwiftUI
 import Logging
+import Shimmer
 
 struct AboutView: View {
     @Environment(\.logger) private var logger
     @State private var viewModel = AboutViewModel()
     @Environment(AuthManager.self) private var authManager
+
+    @AppStorage("secretEnabled") private var secretEnabled: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -390,8 +393,17 @@ struct AboutView: View {
                     Text("Aidan Lloyd-Tucker - aidanlloydtucker@gmail.com")
                     Text("The many WSO developers of yore").italic(true)
                 }
-                NavigationLink("WSO is made possible by users like you. Thank you!") {
-                    SneakyView()
+                // EASTER EGG
+                if secretEnabled {
+                    Text("WSO is made possible by users like you. Thank you!")
+                    NavigationLink {
+                        SneakyView()
+                    } label: {
+                        Text("Nothing to see here...")
+                            .shimmering()
+                    }
+                } else {
+                    Text("WSO is made possible by users like you. Thank you!")
                 }
             }
             .task {

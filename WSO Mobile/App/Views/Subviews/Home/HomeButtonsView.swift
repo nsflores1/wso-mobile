@@ -17,6 +17,8 @@ struct HomeButtonsView: View {
     // this warning is for the user because they aren't done yet
     @State private var notImplementedWarn = false
 
+    // TODO: go back and add code for the unimplemented parts
+
     var body: some View {
         Section {
             HStack {
@@ -28,28 +30,28 @@ struct HomeButtonsView: View {
                         .foregroundStyle(Color(.secondaryLabel)).italic(true)
                 }
             }
-            HStack {
-                Button {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    notImplementedWarn = true
-                } label: {
-                    Label("Discussions", systemImage: "message")
-
-                }.buttonStyle(.borderless)
-                    .controlSize(ControlSize.large)
-                    .alert(
-                                    """
-                                    This feature hasn't been implemented yet!
-                                    Please check back soon.
-                                    """,
-                                    isPresented: $notImplementedWarn
-                    ) {
-                        Button("OK", role: .cancel) { }
-                    }
-                Spacer()
-                Text("Chat about topics")
-                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
-            }
+//            HStack {
+//                Button {
+//                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+//                    notImplementedWarn = true
+//                } label: {
+//                    Label("Discussions", systemImage: "message")
+//
+//                }.buttonStyle(.borderless)
+//                    .controlSize(ControlSize.large)
+//                    .alert(
+//                                    """
+//                                    This feature hasn't been implemented yet!
+//                                    Please check back soon.
+//                                    """,
+//                                    isPresented: $notImplementedWarn
+//                    ) {
+//                        Button("OK", role: .cancel) { }
+//                    }
+//                Spacer()
+//                Text("Chat about topics")
+//                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
+//            }
             HStack {
                 Button {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
@@ -72,71 +74,71 @@ struct HomeButtonsView: View {
                 Text("Carpool with peers")
                     .foregroundStyle(Color(.secondaryLabel)).italic(true)
             }
-            HStack {
-                Button {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    notImplementedWarn = true
-                } label: {
-                    Label("FacTrak", systemImage: "graduationcap")
-
-                }.buttonStyle(.borderless)
-                    .controlSize(ControlSize.large)
-                    .alert(
-                                    """
-                                    This feature hasn't been implemented yet!
-                                    Please check back soon.
-                                    """,
-                                    isPresented: $notImplementedWarn
-                    ) {
-                        Button("OK", role: .cancel) { }
-                    }
-                Spacer()
-                Text("Rate professors & courses")
-                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
-            }
-            HStack {
-                Button{
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    notImplementedWarn = true
-                } label: {
-                    Label("DormTrak", systemImage: "house")
-
-                }.buttonStyle(.borderless)
-                    .controlSize(ControlSize.large)
-                    .alert(
-                                    """
-                                    This feature hasn't been implemented yet!
-                                    Please check back soon.
-                                    """,
-                                    isPresented: $notImplementedWarn
-                    ) {
-                        Button("OK", role: .cancel) { }
-                    }
-                Spacer()
-                Text("Rate on-campus dorms")
-                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
-            }
-            HStack {
-                Button {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    notImplementedWarn = true
-                } label: {
-                    Label("BookTrak", systemImage: "book.closed")
-                }.buttonStyle(.borderless)
-                    .controlSize(ControlSize.large)
-                    .alert(
-                                    """
-                                    This feature hasn't been implemented yet!
-                                    Please check back soon.
-                                    """,
-                                    isPresented: $notImplementedWarn
-                    ) {
-                        Button("OK", role: .cancel) { }
-                    }
-                Spacer()
-                Text("Buy and sell textbooks")
-                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
-            }
+//            HStack {
+//                Button {
+//                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+//                    notImplementedWarn = true
+//                } label: {
+//                    Label("FacTrak", systemImage: "graduationcap")
+//
+//                }.buttonStyle(.borderless)
+//                    .controlSize(ControlSize.large)
+//                    .alert(
+//                                    """
+//                                    This feature hasn't been implemented yet!
+//                                    Please check back soon.
+//                                    """,
+//                                    isPresented: $notImplementedWarn
+//                    ) {
+//                        Button("OK", role: .cancel) { }
+//                    }
+//                Spacer()
+//                Text("Rate professors & courses")
+//                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
+//            }
+//            HStack {
+//                Button{
+//                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+//                    notImplementedWarn = true
+//                } label: {
+//                    Label("DormTrak", systemImage: "house")
+//
+//                }.buttonStyle(.borderless)
+//                    .controlSize(ControlSize.large)
+//                    .alert(
+//                                    """
+//                                    This feature hasn't been implemented yet!
+//                                    Please check back soon.
+//                                    """,
+//                                    isPresented: $notImplementedWarn
+//                    ) {
+//                        Button("OK", role: .cancel) { }
+//                    }
+//                Spacer()
+//                Text("Rate on-campus dorms")
+//                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
+//            }
+//            HStack {
+//                Button {
+//                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+//                    notImplementedWarn = true
+//                } label: {
+//                    Label("BookTrak", systemImage: "book.closed")
+//                }.buttonStyle(.borderless)
+//                    .controlSize(ControlSize.large)
+//                    .alert(
+//                                    """
+//                                    This feature hasn't been implemented yet!
+//                                    Please check back soon.
+//                                    """,
+//                                    isPresented: $notImplementedWarn
+//                    ) {
+//                        Button("OK", role: .cancel) { }
+//                    }
+//                Spacer()
+//                Text("Buy and sell textbooks")
+//                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
+//            }
         } header: {
             HStack {
                 Text("WSO Features")
