@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0168402EC91BEC0092FBA3 /* MapView.swift */; };
-		5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0168422EC91D650092FBA3 /* MapViewModel.swift */; };
 		5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */; };
 		5B05EF242ED8EF9100802310 /* OnboardingOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF232ED8EF8D00802310 /* OnboardingOneView.swift */; };
 		5B05EF262ED8EF9B00802310 /* OnboardingTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF252ED8EF9800802310 /* OnboardingTwoView.swift */; };
@@ -181,8 +179,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5B0168402EC91BEC0092FBA3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		5B0168422EC91D650092FBA3 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5B05EF232ED8EF8D00802310 /* OnboardingOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingOneView.swift; sourceTree = "<group>"; };
 		5B05EF252ED8EF9800802310 /* OnboardingTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTwoView.swift; sourceTree = "<group>"; };
@@ -545,7 +541,6 @@
 				5B9808E52F0C5E790001F8D4 /* PastMenuViewModel.swift */,
 				5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */,
 				5BE3EE512ECC3491009CDFD3 /* WilliamsRecordViewModel.swift */,
-				5B0168422EC91D650092FBA3 /* MapViewModel.swift */,
 				5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */,
 				5B5597322EC8F80900FB82D6 /* LibraryHoursViewModel.swift */,
 			);
@@ -578,14 +573,6 @@
 			children = (
 				5BFA32EF2F0C1D60005D8F5C /* Other */,
 				5BFA32ED2F0C1D4F005D8F5C /* WSO */,
-				5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */,
-				5B93FE1A2EF1FE17008A2C1A /* WSOBookTrak.swift */,
-				5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */,
-				5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */,
-				5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */,
-				5BD50F162ED9E8B800806CA7 /* WSOAuthLogin.swift */,
-				5BDEED672ECF857700E150E6 /* WSOGetWords.swift */,
-				5B93FE202EF20193008A2C1A /* WSOUser.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -622,7 +609,6 @@
 				5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */,
 				5BFA32CB2F036B45005D8F5C /* DailyMessagesItemView.swift */,
 				5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */,
-				5B0168402EC91BEC0092FBA3 /* MapView.swift */,
 				5BFA32C92F0360B6005D8F5C /* HomeCardView.swift */,
 				5BFA32C52F033EB1005D8F5C /* HomeButtonsView.swift */,
 			);
@@ -632,6 +618,14 @@
 		5BFA32ED2F0C1D4F005D8F5C /* WSO */ = {
 			isa = PBXGroup;
 			children = (
+				5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */,
+				5B93FE1A2EF1FE17008A2C1A /* WSOBookTrak.swift */,
+				5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */,
+				5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */,
+				5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */,
+				5BD50F162ED9E8B800806CA7 /* WSOAuthLogin.swift */,
+				5BDEED672ECF857700E150E6 /* WSOGetWords.swift */,
+				5B93FE202EF20193008A2C1A /* WSOUser.swift */,
 			);
 			path = WSO;
 			sourceTree = "<group>";
@@ -866,10 +860,8 @@
 				5BFA32CA2F0360B9005D8F5C /* HomeCardView.swift in Sources */,
 				5B05EF2E2ED8F96000802310 /* RestOfWilliamstownView.swift in Sources */,
 				5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */,
-				5B0168432EC91D690092FBA3 /* MapViewModel.swift in Sources */,
 				5BD50F0E2ED9497900806CA7 /* AboutViewModel.swift in Sources */,
 				5B6252632EFF270300F1C814 /* CacheManager.swift in Sources */,
-				5B0168412EC91BF00092FBA3 /* MapView.swift in Sources */,
 				5BFA32CE2F048D04005D8F5C /* WSOBulletinListView.swift in Sources */,
 				5BFA32DD2F05EE75005D8F5C /* WSOBulletinKeyView.swift in Sources */,
 				5BFA32D62F05E2FF005D8F5C /* StringTrim.swift in Sources */,
