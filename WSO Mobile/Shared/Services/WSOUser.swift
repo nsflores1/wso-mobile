@@ -44,6 +44,7 @@ struct User: Codable, Equatable, Hashable, Identifiable {
     let homePhone: String?
     let homeState: String?
     let homeTown: String?
+    let homeZip: String?
     let homeVisible: Bool
     let id: Int
     let type: String
