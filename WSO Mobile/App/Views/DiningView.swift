@@ -21,6 +21,7 @@ struct DiningView: View {
 
     @State private var showPicker = false
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
+    @AppStorage("betaFutureMenusEnabled") private var betaFutureMenusEnabled: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -60,64 +61,47 @@ struct DiningView: View {
                         }
                     }
                     Section {
-                        if viewModel.pastList != [] {
-                            DisclosureGroup(
-                                isExpanded: $showPicker,
-                                content: {
-                                    Picker("Date", selection: $selected) {
-                                        // sorted in descending (most recent) order
-                                        ForEach(viewModel.pastList.sorted(by: >), id: \.self) { date in
-                                            Text(date, format: .dateTime.year().month().day())
-                                                .tag(Optional(date))
+                        // user must opt-in to this feature
+                        // it's a bit ugly and the code doesn't look nice either. sorry
+                        if betaFutureMenusEnabled {
+                            if viewModel.pastList != [] {
+                                DisclosureGroup(
+                                    isExpanded: $showPicker,
+                                    content: {
+                                        Picker("Date", selection: $selected) {
+                                                // sorted in descending (most recent) order
+                                            ForEach(viewModel.pastList.sorted(by: >), id: \.self) { date in
+                                                Text(date, format: .dateTime.year().month().day())
+                                                    .tag(Optional(date))
+                                            }
+                                        }
+                                        .pickerStyle(.wheel)
+                                        .frame(maxWidth: .infinity)
+                                    },
+                                    label: {
+                                        if selected != Date.distantPast {
+                                            Text(selected, format: .dateTime.year().month().day())
+                                                .italic(true)
+                                        } else {
+                                            Text("(Click to select a different day...)")
+                                                .foregroundStyle(Color(.secondaryLabel))
+                                                .italic()
+                                        }
+                                        if selected != Date.distantPast {
+                                            Button {
+                                                selected = Date.distantPast
+                                            } label: {
+                                                Image(systemName: "xmark.circle.fill")
+                                                    .foregroundStyle(.secondary)
+                                            }
                                         }
                                     }
-                                    .pickerStyle(.wheel)
-                                    .frame(maxWidth: .infinity)
-                                },
-                                label: {
-                                    if selected != Date.distantPast {
-                                        Text(selected, format: .dateTime.year().month().day())
-                                            .italic(true)
-                                    } else {
-                                        Text("(Click to select a different day...)")
-                                            .foregroundStyle(Color(.secondaryLabel))
-                                            .italic()
+                                ).onChange(of: selected) { old, new in
+                                    Task {
+                                        await pastViewModel.updateDate(new)
                                     }
-                                    if selected != Date.distantPast {
-                                        Button {
-                                            selected = Date.distantPast
-                                        } label: {
-                                            Image(systemName: "xmark.circle.fill")
-                                                .foregroundStyle(.secondary)
-                                        }
-                                    }
-                                }
-                            ).onChange(of: selected) { old, new in
-                                Task {
-                                    await pastViewModel.updateDate(new)
                                 }
                             }
-                        }
-                        if selected == Date.distantPast {
-                            ForEach(
-                                viewModel.diningMenu.sorted(),
-                                id: \.hallName
-                            ) { hall in
-                                NavigationLink(destination: DiningVendorView(menu: hall)) {
-                                    HStack {
-                                        Circle()
-                                            .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
-                                            .frame(width: 10, height: 10)
-                                    }
-                                    Text(hall.hallName)
-                                    if hall.hasCoursesToday() {
-                                        Text("(Not serving today)")
-                                            .foregroundStyle(Color(.secondaryLabel))
-                                    }
-                                }
-
-                            }
-                        } else {
                             if pastViewModel.isLoading {
                                 ProgressView()
                             } else if let err = pastViewModel.error {
@@ -150,6 +134,27 @@ struct DiningView: View {
                                 }
                             }
                         }
+                        // if we selected the distant past, fall back, same if it's disabled
+                        if selected == Date.distantPast || betaFutureMenusEnabled == false {
+                            ForEach(
+                                viewModel.diningMenu.sorted(),
+                                id: \.hallName
+                            ) { hall in
+                                NavigationLink(destination: DiningVendorView(menu: hall)) {
+                                    HStack {
+                                        Circle()
+                                            .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
+                                            .frame(width: 10, height: 10)
+                                    }
+                                    Text(hall.hallName)
+                                    if hall.hasCoursesToday() {
+                                        Text("(Not serving today)")
+                                            .foregroundStyle(Color(.secondaryLabel))
+                                    }
+                                }
+
+                            }
+                        }
                     } header: {
                         Text("On-Campus Dining Halls")
                             .fontWeight(.semibold)
@@ -164,7 +169,7 @@ struct DiningView: View {
                 }
                 .animation(.easeInOut(duration: 0.25), value: selected)
                 .navigationTitle(Text("Dining"))
-                .modifier(NavSubtitleIfAvailable(subtitle: "Halls and other places"))
+                .modifier(NavSubtitleIfAvailable(subtitle: "Last updated: \(viewModel.diningMenu.first?.updateTime ?? "(Not yet updated)")"))
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack {

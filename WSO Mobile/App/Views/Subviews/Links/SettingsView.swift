@@ -12,14 +12,23 @@ import Logging
 struct SettingsView: View {
     @Environment(\.logger) private var logger
     @AppStorage("likesMath") var likesMath: Bool = false
+    @AppStorage("surferErrors") private var surferErrors: Bool = false
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     @AppStorage("likesSerifFont") private var likesSerifFont: Bool = false
+
+    @AppStorage("betaOptionsEnabled") private var betaOptionsEnabled: Bool = false
+    @AppStorage("betaFutureMenusEnabled") private var betaFutureMenusEnabled: Bool = false
+
+    // easter egg
+    @AppStorage("whimsyEnabled") private var whimsyEnabled: Bool = false
+    @AppStorage("secretEnabled") private var secretEnabled: Bool = false
 
     @AppStorage("userType") private var userType: UserType = .student
 
     @Environment(NotificationManager.self) private var notificationManager
     @Environment(AuthManager.self) private var authManager
+    @Environment(\.openURL) private var openURL
 
     private let cache = CacheManager.shared
 
@@ -74,15 +83,25 @@ struct SettingsView: View {
                         .simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         })
-                    Toggle("Mathematical Mode", isOn: $likesMath)
-                        .simultaneousGesture(TapGesture().onEnded {
-                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                    })
+                    if whimsyEnabled {
+                        Toggle("Mathematical Mode", isOn: $likesMath)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                            })
+                        Toggle("Surfer Errors on Login", isOn: $surferErrors)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                            })
+                    }
                     Toggle("Use Serif Font For Record", isOn: $likesSerifFont)
                         .simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         })
                     Toggle("Hide All Restaurants", isOn: $hatesEatingOut)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                        })
+                    Toggle("Enable Beta Options", isOn: $betaOptionsEnabled)
                         .simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         })
@@ -130,13 +149,70 @@ struct SettingsView: View {
                             }
                         }
                     }
-                    NavigationLink(destination: LogViewerView()) {
-                        Text("View Debug Log")
-                    }
                 } header : {
                     Text("Reset & Cache")
                         .fontWeight(.semibold)
                         .font(.title3)
+                }
+                if betaOptionsEnabled {
+                    Section {
+                        Text("""
+                        Using these may crash your app or show you things you shouldn't see. Use with caution.
+                        
+                        The WSO development team makes NO guarantees as to beta feature functionality and may remove them at any time.
+                        """)
+                        NavigationLink(destination: LogViewerView()) {
+                            Text("View Debug Log")
+                        }
+                        Toggle("Enable Future Menus", isOn: $betaFutureMenusEnabled)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                            })
+                        Text("See menus up to one week into the future. May be inaccurate. May not work.").italic()
+                        Toggle("Enable whimsy", isOn: $whimsyEnabled)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                            })
+                        Text("Adds back some beta-exclusive features which were left out during the app's public release.").italic()
+                        if whimsyEnabled {
+                            // EASTER EGG
+                            Button {
+                                secretEnabled.toggle()
+                                Task {
+                                    if secretEnabled {
+                                        logger.trace("User has enabled the easter egg")
+                                        await notificationManager.scheduleLocal(
+                                            title: "綺麗な星空を眺める",
+                                            body: "「ABOUT」と言うページを見たらいいと思うよ",
+                                            date: Date().addingTimeInterval(1)
+                                        )
+                                    }
+                                }
+                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                            } label: {
+                                HStack {
+                                    if secretEnabled {
+                                        Text("🐮")
+                                    }
+                                    Text("エフェリア君の内緒を聞く...")
+                                }
+                            }
+                            Text("星の動きを観察する")
+                        }
+                        // rickroll people who think this would actually work. deserved
+                        Button {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            openURL(URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!)
+                        } label: {
+                            Label("Ban WSO Users...", systemImage: "person.fill.xmark")
+                        }
+                    } header : {
+                        VStack {
+                            Text("Experimental (Beta) Options")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                        }
+                    }
                 }
             }
             .navigationTitle("Settings")

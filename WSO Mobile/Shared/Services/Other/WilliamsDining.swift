@@ -21,6 +21,7 @@ import HTTPTypesFoundation
 
 struct MenuResponse: Codable {
     let vendors: [String: Vendor]
+    let updateTime: String
 }
 
 struct Vendor: Codable {
@@ -78,6 +79,8 @@ struct DiningHall: Codable {
         // it's just easier to express it above, like so
         return !truth
     }
+    // the same for all dining halls. sloppy but it works
+    let updateTime: String
 }
 
 struct Meal: Codable {
@@ -211,7 +214,8 @@ func flattenMenuResponse(_ response: MenuResponse) -> [DiningHall] {
                 )
             },
             onlineOrder: vendor.onlineOrder,
-            operating: vendor.operating
+            operating: vendor.operating,
+            updateTime: response.updateTime
         )
     }
 }
