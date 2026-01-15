@@ -30,6 +30,15 @@ struct HomeButtonsView: View {
                         .foregroundStyle(Color(.secondaryLabel)).italic(true)
                 }
             }
+            HStack {
+                NavigationLink(destination: AuthGate { WSORidesView() }) {
+                    Label("Rides", systemImage: "car.side")
+                        .foregroundStyle(Color.accent)
+                    Spacer()
+                    Text("Carpool with peers")
+                        .foregroundStyle(Color(.secondaryLabel)).italic(true)
+                }
+            }
 //            HStack {
 //                Button {
 //                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
@@ -52,28 +61,6 @@ struct HomeButtonsView: View {
 //                Text("Chat about topics")
 //                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
 //            }
-            HStack {
-                Button {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    notImplementedWarn = true
-                } label: {
-                    Label("Rides", systemImage: "car.side")
-
-                }.buttonStyle(.borderless)
-                    .controlSize(ControlSize.large)
-                    .alert(
-                                    """
-                                    This feature hasn't been implemented yet!
-                                    Please check back soon.
-                                    """,
-                                    isPresented: $notImplementedWarn
-                    ) {
-                        Button("OK", role: .cancel) { }
-                    }
-                Spacer()
-                Text("Carpool with peers")
-                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
-            }
 //            HStack {
 //                Button {
 //                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()

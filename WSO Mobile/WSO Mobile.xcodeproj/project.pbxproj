@@ -61,6 +61,11 @@
 		5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */; };
 		5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */; };
 		5B7F6EA42EECA40C00895BB3 /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */; };
+		5B8117012F19939B00985804 /* WSORides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117002F19939800985804 /* WSORides.swift */; };
+		5B8117022F19939B00985804 /* WSORides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117002F19939800985804 /* WSORides.swift */; };
+		5B8117042F19955400985804 /* WSORidesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117032F19954C00985804 /* WSORidesViewModel.swift */; };
+		5B8117062F1995BE00985804 /* WSORidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117052F1995BA00985804 /* WSORidesView.swift */; };
+		5B8117082F199DAF00985804 /* WSORidesItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117072F199DAC00985804 /* WSORidesItemView.swift */; };
 		5B93FE122EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */; };
@@ -221,6 +226,10 @@
 		5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningItemsView.swift; sourceTree = "<group>"; };
 		5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileCLI.swift; sourceTree = "<group>"; };
 		5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequest.swift; sourceTree = "<group>"; };
+		5B8117002F19939800985804 /* WSORides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORides.swift; sourceTree = "<group>"; };
+		5B8117032F19954C00985804 /* WSORidesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORidesViewModel.swift; sourceTree = "<group>"; };
+		5B8117052F1995BA00985804 /* WSORidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORidesView.swift; sourceTree = "<group>"; };
+		5B8117072F199DAC00985804 /* WSORidesItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORidesItemView.swift; sourceTree = "<group>"; };
 		5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacebook.swift; sourceTree = "<group>"; };
 		5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrak.swift; sourceTree = "<group>"; };
 		5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSODormTrak.swift; sourceTree = "<group>"; };
@@ -404,6 +413,7 @@
 		5B62525F2EFEFAC200F1C814 /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
+				5B8117032F19954C00985804 /* WSORidesViewModel.swift */,
 				5BFA32D12F04943D005D8F5C /* WSOBulletinViewModel.swift */,
 				5B6252602EFEFAD700F1C814 /* WSOUserViewModel.swift */,
 				5B6252562EFE412100F1C814 /* WSOSelfUserViewModel.swift */,
@@ -458,6 +468,8 @@
 		5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
+				5B8117072F199DAC00985804 /* WSORidesItemView.swift */,
+				5B8117052F1995BA00985804 /* WSORidesView.swift */,
 				5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */,
 				5BFA32D32F04D215005D8F5C /* WSOBulletinItemView.swift */,
 				5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */,
@@ -630,6 +642,7 @@
 		5BFA32ED2F0C1D4F005D8F5C /* WSO */ = {
 			isa = PBXGroup;
 			children = (
+				5B8117002F19939800985804 /* WSORides.swift */,
 				5B93FE1D2EF1FE20008A2C1A /* WSOBulletins.swift */,
 				5B93FE1A2EF1FE17008A2C1A /* WSOBookTrak.swift */,
 				5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */,
@@ -867,9 +880,11 @@
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
 				5BCF0D612F01EB5A00E702EB /* SettingsKeyView.swift in Sources */,
 				5B515FB22EDBCE5300F166A1 /* DateExtension.swift in Sources */,
+				5B8117042F19955400985804 /* WSORidesViewModel.swift in Sources */,
 				5BCDB7FF2EF0973E008B438C /* LinksKeyView.swift in Sources */,
 				5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */,
 				5B05EF282ED8EFA300802310 /* OnboardingThreeView.swift in Sources */,
+				5B8117082F199DAF00985804 /* WSORidesItemView.swift in Sources */,
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5B9808E62F0C5E7D0001F8D4 /* PastMenuViewModel.swift in Sources */,
@@ -898,6 +913,7 @@
 				5B93FE1E2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */,
 				5B0A2E8C2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */,
 				5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */,
+				5B8117022F19939B00985804 /* WSORides.swift in Sources */,
 				5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */,
 				5BFA32C62F033EB4005D8F5C /* HomeButtonsView.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
@@ -928,6 +944,7 @@
 				5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */,
 				5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */,
 				5BCF0D5E2F01EA9400E702EB /* UserType.swift in Sources */,
+				5B8117062F1995BE00985804 /* WSORidesView.swift in Sources */,
 				5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */,
 				5B62525E2EFEFA1300F1C814 /* WSOProfileView.swift in Sources */,
 				5B3543DC2ED64DDB00A37A56 /* WCFMPlaylistView.swift in Sources */,
@@ -973,6 +990,7 @@
 				5B10FF9B2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5BDEED6C2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
+				5B8117012F19939B00985804 /* WSORides.swift in Sources */,
 				5BFA32BF2F030FB8005D8F5C /* LogBootstrap.swift in Sources */,
 				5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */,
 				5B93FE212EF20196008A2C1A /* WSOUser.swift in Sources */,

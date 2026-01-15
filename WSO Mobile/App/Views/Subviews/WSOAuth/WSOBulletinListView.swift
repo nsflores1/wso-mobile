@@ -21,7 +21,7 @@ struct WSOBulletinListView: View {
             if let err = viewModel.error {
                 Group {
                     Text(err.localizedDescription).foregroundStyle(Color.red)
-                        .navigationTitle(Text("Bulletins"))
+                        .navigationTitle("Bulletins")
                 }.refreshable {
                     await viewModel.forceRefresh()
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
