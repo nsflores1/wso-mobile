@@ -136,6 +136,18 @@ struct SettingsView: View {
                         }
                     }
                     if userType == .student {
+                        Button("Force Refresh Token") {
+                            Task {
+                                let _ = try await authManager.refreshToken()
+                                logger.trace("User has refreshed token")
+                                await notificationManager.scheduleLocal(
+                                    title: "Refresh complete!",
+                                    body: "Please restart the app.",
+                                    date: Date().addingTimeInterval(1)
+                                )
+                                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                            }
+                        }
                         Button("Logout of WSO") {
                             Task {
                                 authManager.logout()

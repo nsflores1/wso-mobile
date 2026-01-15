@@ -41,6 +41,7 @@ class AuthManager {
     // some internal state
     var isAuthenticated = false
     let context = LAContext()
+
     static let server = "wso.williams.edu"
     static let account = "tokens"
 
@@ -62,12 +63,24 @@ class AuthManager {
     private func save(_ tokens: StoredTokens) throws {
         let data = try JSONEncoder().encode(tokens)
 
+        let access = SecAccessControlCreateWithFlags(
+            nil,
+            kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+            [.biometryCurrentSet],
+            nil
+        )!
+
+        // let the system be smart
+        context.interactionNotAllowed = true
+
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: AuthManager.server,
             kSecAttrAccount as String: AuthManager.account,
             kSecValueData as String: data,
-            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+            kSecAttrAccessControl as String: access,
+            kSecUseAuthenticationContext as String: context,
+            kSecUseAuthenticationUI as String: kSecUseAuthenticationContext
         ]
 
         SecItemDelete(query as CFDictionary)
@@ -78,11 +91,16 @@ class AuthManager {
     }
 
     private func load() throws -> StoredTokens {
+        context.localizedReason = "Authenticating..."
+        context.interactionNotAllowed = false
+
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: AuthManager.server,
             kSecAttrAccount as String: AuthManager.account,
-            kSecReturnData as String: true
+            kSecReturnData as String: true,
+            kSecUseAuthenticationContext as String: context,
+            kSecUseAuthenticationUI as String: kSecUseAuthenticationContext
         ]
 
         var item: CFTypeRef?
@@ -108,19 +126,6 @@ class AuthManager {
 
     func refreshToken() async throws -> String {
         let tokens = try load()
-
-        let context = LAContext()
-        context.localizedReason = "Authenticate to continue."
-
-        // force biometric check
-        guard context.canEvaluatePolicy(
-            .deviceOwnerAuthentication,
-            error: nil
-        ) else {
-            throw NSError(domain: "auth", code: -1)
-        }
-
-        // TODO: implement auth token refresh
         let response = try await WSOAPIRefresh()
 
         guard let update = response.data?.token else {

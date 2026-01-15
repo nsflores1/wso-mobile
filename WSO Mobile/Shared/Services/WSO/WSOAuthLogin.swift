@@ -47,7 +47,7 @@ func WSOIdentityLogin(password: String, unixID: String) async throws -> WSOAuthL
 func WSOAPIRefresh() async throws -> WSOAuthLogin {
     let parser = JSONISO8601Parser<WSOAuthLogin>()
     let request = WebRequest<JSONISO8601Parser<WSOAuthLogin>, NoParser>(
-        url: URL(string: "https://wso.williams.edu/api/v2/auth/refresh")!,
+        url: URL(string: "https://wso.williams.edu/api/v2/auth/api/refresh")!,
         requestType: .get,
         getParser: parser
     )
