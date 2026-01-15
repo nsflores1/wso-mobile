@@ -63,6 +63,7 @@ class AuthManager {
     private func save(_ tokens: StoredTokens) throws {
         let data = try JSONEncoder().encode(tokens)
 
+        logger.debug("Created SecAccessControlFlags")
         let access = SecAccessControlCreateWithFlags(
             nil,
             kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
@@ -73,6 +74,7 @@ class AuthManager {
         // let the system be smart
         context.interactionNotAllowed = true
 
+        logger.debug("Query started with kSecUseAuthenticationContext")
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: AuthManager.server,
@@ -83,9 +85,12 @@ class AuthManager {
             kSecUseAuthenticationUI as String: kSecUseAuthenticationContext
         ]
 
+        logger.debug("Deleting SecItemDelete")
         SecItemDelete(query as CFDictionary)
+        logger.debug("Adding SecItemAdd")
         let status = SecItemAdd(query as CFDictionary, nil)
         guard status == errSecSuccess else {
+            logger.debug("something's fucked up on save!!! abort!!!")
             throw NSError(domain: "keychain", code: Int(status))
         }
     }
@@ -94,6 +99,7 @@ class AuthManager {
         context.localizedReason = "Authenticating..."
         context.interactionNotAllowed = false
 
+        logger.debug("Load query started with kSecUseAuthenticationContext")
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: AuthManager.server,
@@ -104,9 +110,11 @@ class AuthManager {
         ]
 
         var item: CFTypeRef?
+        logger.debug("Checking: does SecItemCopyMatching not segfault?")
         let status = SecItemCopyMatching(query as CFDictionary, &item)
         guard status == errSecSuccess,
               let data = item as? Data else {
+            logger.debug("something's fucked up on load!!! abort!!!")
             throw NSError(domain: "keychain", code: Int(status))
         }
 
@@ -114,19 +122,25 @@ class AuthManager {
     }
 
     func getToken() async throws -> String {
-        let tokens = try load()
-
+        logger.debug("Loading token from memory...")
+        let tokens: StoredTokens? = try load()
+        guard let tokens else { throw KeychainError.noToken }
         if tokens.authExpiry > Date() {
+            logger.debug("Loading token from memory success, in cache")
             self.isAuthenticated = true
             return tokens.authToken
+        } else {
+            logger.debug("Loading token is out of date, retrying now...")
+            return try await refreshToken()
         }
-
-        return try await refreshToken()
     }
 
     func refreshToken() async throws -> String {
-        let tokens = try load()
-        let response = try await WSOAPIRefresh()
+        logger.debug("Loading token from memory...")
+        let tokens: StoredTokens? = try load()
+        guard let tokens else { throw KeychainError.noToken }
+        let response: WSOAuthLogin? = try await WSOAPIRefresh()
+        guard let response else { throw KeychainError.authenticationFailed }
 
         guard let update = response.data?.token else {
             throw KeychainError.noRefreshToken

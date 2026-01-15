@@ -42,7 +42,7 @@ struct WSOMobileApp: App {
         //    try? FileManager.default.moveItem(at: logFileURL, to: archived)
         // }
         // nuke the log every boot
-        try? FileManager.default.removeItem(at: logFileURL)
+        //try? FileManager.default.removeItem(at: logFileURL)
 
         LoggingSystem.bootstrap { label in
              var handler = MultiplexLogHandler(handlers: [
