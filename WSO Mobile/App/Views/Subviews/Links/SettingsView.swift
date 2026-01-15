@@ -204,7 +204,7 @@ struct SettingsView: View {
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             openURL(URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!)
                         } label: {
-                            Label("Ban WSO Users...", systemImage: "person.fill.xmark")
+                            Text("Ban WSO Users...")
                         }
                     } header : {
                         VStack {

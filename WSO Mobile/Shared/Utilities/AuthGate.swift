@@ -11,6 +11,8 @@ import SwiftUI
 
 struct AuthGate<Content: View>: View {
     @State var authManager = AuthManager.shared
+    @State var isLoading: Bool = true
+
     let content: () -> Content
 
     init(@ViewBuilder content: @escaping () -> Content) {
@@ -18,11 +20,32 @@ struct AuthGate<Content: View>: View {
     }
 
     var body: some View {
-        Group {
+        if isLoading {
+            ProgressView()
+                .task {
+                    await attemptAuth()
+                }
+        } else {
+            // we authed either through token or login
             if authManager.isAuthenticated {
                 content()
+                    .transition(.opacity.animation(.easeInOut(duration: 0.25)))
             } else {
                 WSOLoginView()
+            }
+        }
+    }
+
+    private func attemptAuth() async {
+        do {
+            _ = try await authManager.getToken()
+            withAnimation(.easeInOut(duration: 0.25)) {
+                isLoading = false
+            }
+        } catch {
+            // if we fail that's ok, just note that we're done trying
+            withAnimation(.easeInOut(duration: 0.25)) {
+                isLoading = false
             }
         }
     }

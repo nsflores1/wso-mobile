@@ -17,6 +17,9 @@
 		5B0A2E8C2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */; };
 		5B0A2E8D2ECEBE6600DC3485 /* WilliamsDining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */; };
 		5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0A2E8E2ECEC38200DC3485 /* DiningViewModel.swift */; };
+		5B0DCD222F18607D00059C2A /* EpheliaPurple.icon in Resources */ = {isa = PBXBuildFile; fileRef = 5B0DCD212F18607D00059C2A /* EpheliaPurple.icon */; };
+		5B0DCD242F18608300059C2A /* EpheliaGold.icon in Resources */ = {isa = PBXBuildFile; fileRef = 5B0DCD232F18608300059C2A /* EpheliaGold.icon */; };
+		5B0DCD262F18608700059C2A /* WSORetro.icon in Resources */ = {isa = PBXBuildFile; fileRef = 5B0DCD252F18608700059C2A /* WSORetro.icon */; };
 		5B10FF962EC838DE0021597F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 5B10FF952EC838DE0021597F /* SwiftSoup */; };
 		5B10FF982EC838E50021597F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 5B10FF972EC838E50021597F /* SwiftSoup */; };
 		5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B10FF992EC83C820021597F /* DailyMessages.swift */; };
@@ -77,6 +80,7 @@
 		5B9808E62F0C5E7D0001F8D4 /* PastMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E52F0C5E790001F8D4 /* PastMenuViewModel.swift */; };
 		5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */; };
 		5BA37ED02EF08CB30011C245 /* WCFMKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */; };
+		5BA6E8FD2F18540D0064A1FE /* WSOClassic.icon in Resources */ = {isa = PBXBuildFile; fileRef = 5BA6E8FC2F18540D0064A1FE /* WSOClassic.icon */; };
 		5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9B2EC0ED9900A242A1 /* WSOMobileApp.swift */; };
 		5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */; };
 		5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */; };
@@ -188,6 +192,9 @@
 		5B05EF312ED8F98300802310 /* SpringStreetCafesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringStreetCafesView.swift; sourceTree = "<group>"; };
 		5B0A2E8B2ECEBE6000DC3485 /* WilliamsDining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsDining.swift; sourceTree = "<group>"; };
 		5B0A2E8E2ECEC38200DC3485 /* DiningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningViewModel.swift; sourceTree = "<group>"; };
+		5B0DCD212F18607D00059C2A /* EpheliaPurple.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = EpheliaPurple.icon; sourceTree = "<group>"; };
+		5B0DCD232F18608300059C2A /* EpheliaGold.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = EpheliaGold.icon; sourceTree = "<group>"; };
+		5B0DCD252F18608700059C2A /* WSORetro.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = WSORetro.icon; sourceTree = "<group>"; };
 		5B10FF992EC83C820021597F /* DailyMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMessages.swift; sourceTree = "<group>"; };
 		5B10FF9C2EC83CA50021597F /* LibraryHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHours.swift; sourceTree = "<group>"; };
 		5B3543DB2ED64DD600A37A56 /* WCFMPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMPlaylistView.swift; sourceTree = "<group>"; };
@@ -226,6 +233,7 @@
 		5B9808E52F0C5E790001F8D4 /* PastMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastMenuViewModel.swift; sourceTree = "<group>"; };
 		5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantLinks.swift; sourceTree = "<group>"; };
 		5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMKeyView.swift; sourceTree = "<group>"; };
+		5BA6E8FC2F18540D0064A1FE /* WSOClassic.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = WSOClassic.icon; sourceTree = "<group>"; };
 		5BB76F952EC0ED7500A242A1 /* WSOMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileTests.swift; sourceTree = "<group>"; };
 		5BB76F972EC0ED7500A242A1 /* WSOMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileUITests.swift; sourceTree = "<group>"; };
 		5BB76F982EC0ED7500A242A1 /* WSOMobileUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -551,6 +559,10 @@
 			isa = PBXGroup;
 			children = (
 				5BEB32562EBFD7F400F75A10 /* Assets.xcassets */,
+				5BA6E8FC2F18540D0064A1FE /* WSOClassic.icon */,
+				5B0DCD212F18607D00059C2A /* EpheliaPurple.icon */,
+				5B0DCD232F18608300059C2A /* EpheliaGold.icon */,
+				5B0DCD252F18608700059C2A /* WSORetro.icon */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -803,7 +815,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BA6E8FD2F18540D0064A1FE /* WSOClassic.icon in Resources */,
+				5B0DCD242F18608300059C2A /* EpheliaGold.icon in Resources */,
 				5B6252502EFE08BF00F1C814 /* ebgaramond.ttf in Resources */,
+				5B0DCD262F18608700059C2A /* WSORetro.icon in Resources */,
+				5B0DCD222F18607D00059C2A /* EpheliaPurple.icon in Resources */,
 				5BEB32572EBFD7F400F75A10 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -986,7 +1002,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1051,7 +1070,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1108,15 +1130,17 @@
 		5BEB32712EBFD7F400F75A10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "EpheliaPurple EpheliaGold WSORetro";
+				ASSETCATALOG_COMPILER_APPICON_NAME = EpheliaPurple;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 64;
+				CURRENT_PROJECT_VERSION = 65;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WSO-Mobile-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "WSO Mobile Beta";
+				INFOPLIST_KEY_CFBundleDisplayName = "WSO Mobile";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"WSO needs this to unlock your data.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1145,15 +1169,17 @@
 		5BEB32722EBFD7F400F75A10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "EpheliaPurple EpheliaGold WSORetro";
+				ASSETCATALOG_COMPILER_APPICON_NAME = EpheliaPurple;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 64;
+				CURRENT_PROJECT_VERSION = 65;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WSO-Mobile-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "WSO Mobile Beta";
+				INFOPLIST_KEY_CFBundleDisplayName = "WSO Mobile";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"WSO needs this to unlock your data.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -42,6 +42,18 @@ func WSOIdentityLogin(password: String, unixID: String) async throws -> WSOAuthL
     return try await request.post(sendData: formDataJSON)
 }
 
+// takes an apitoken, returns a NEW apitoken with a new timestamp
+// note that we don't pass it as an argument because we'll use the one from the authentication manager
+func WSOAPIRefresh() async throws -> WSOAuthLogin {
+    let parser = JSONISO8601Parser<WSOAuthLogin>()
+    let request = WebRequest<JSONISO8601Parser<WSOAuthLogin>, NoParser>(
+        url: URL(string: "https://wso.williams.edu/api/v2/auth/refresh")!,
+        requestType: .get,
+        getParser: parser
+    )
+    return try await request.authGet()
+}
+
 // takes an identitytoken, return an apitoken
 func WSOAPILogin(identityToken: String) async throws -> WSOAuthLogin {
     let logger = Logger(label: "com.wso.WebRequest") // technically not but whatever, this is a web request

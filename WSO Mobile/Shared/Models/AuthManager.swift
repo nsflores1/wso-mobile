@@ -15,6 +15,7 @@ import JWTDecode
 import Logging
 
 enum KeychainError: Error {
+    case noUsername
     case noToken
     case noRefreshToken
     case invalidToken
@@ -33,78 +34,140 @@ enum KeychainError: Error {
 class AuthManager {
     fileprivate let logger = Logger(label: "com.wso.AuthManager")
     static let shared = AuthManager()
+
     private var keychainKey = "com.wsomobile.authToken"
     private let keychainUsername = "com.wsomobile.username"
 
+    // some internal state
     var isAuthenticated = false
+    let context = LAContext()
+    static let server = "wso.williams.edu"
+    static let account = "tokens"
 
     // our tokens
-    private var identityToken: String?
-    private var authToken: String?
+    struct StoredTokens: Codable {
+        let identityToken: String
+        let authToken: String
+        let authExpiry: Date
+    }
+    private var tokens: StoredTokens?
 
     // some info about auth state
     private var tokenExpiry: Date?
     private var biometricFailCount = 0
     private let maxBiometricAttempts = 3
 
-    private init() {
+    private init() { }
 
-    }
+    private func save(_ tokens: StoredTokens) throws {
+        let data = try JSONEncoder().encode(tokens)
 
-    func isExpired(token: WSOAuthLogin) throws -> Bool {
-        do {
-            let jwtToken = try decode(jwt: token.data!.token!)
-            return jwtToken.expired
-        } catch {
-            // if it can't be decoded, our token is already expired
-            return true
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: AuthManager.server,
+            kSecAttrAccount as String: AuthManager.account,
+            kSecValueData as String: data,
+            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+        ]
+
+        SecItemDelete(query as CFDictionary)
+        let status = SecItemAdd(query as CFDictionary, nil)
+        guard status == errSecSuccess else {
+            throw NSError(domain: "keychain", code: Int(status))
         }
     }
 
-    // note that this can throw, so handle that!
-    // in which case the user must manually re-enter auth details
-    // every single time from their password booklet.
+    private func load() throws -> StoredTokens {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: AuthManager.server,
+            kSecAttrAccount as String: AuthManager.account,
+            kSecReturnData as String: true
+        ]
 
-    // TODO: fetch this from the local keychain the right way.
-    func getToken() throws -> String {
-        if self.authToken != nil {
-            return self.authToken!
-        } else {
-            throw KeychainError.noToken
+        var item: CFTypeRef?
+        let status = SecItemCopyMatching(query as CFDictionary, &item)
+        guard status == errSecSuccess,
+              let data = item as? Data else {
+            throw NSError(domain: "keychain", code: Int(status))
         }
+
+        return try JSONDecoder().decode(StoredTokens.self, from: data)
+    }
+
+    func getToken() async throws -> String {
+        let tokens = try load()
+
+        if tokens.authExpiry > Date() {
+            self.isAuthenticated = true
+            return tokens.authToken
+        }
+
+        return try await refreshToken()
+    }
+
+    func refreshToken() async throws -> String {
+        let tokens = try load()
+
+        let context = LAContext()
+        context.localizedReason = "Authenticate to continue."
+
+        // force biometric check
+        guard context.canEvaluatePolicy(
+            .deviceOwnerAuthentication,
+            error: nil
+        ) else {
+            throw NSError(domain: "auth", code: -1)
+        }
+
+        // TODO: implement auth token refresh
+        let response = try await WSOAPIRefresh()
+
+        guard let update = response.data?.token else {
+            throw KeychainError.noRefreshToken
+        }
+
+        let updated = StoredTokens(
+            identityToken: tokens.identityToken,
+            authToken: update,
+            authExpiry: try decode(jwt: update).expiresAt!
+        )
+
+        try save(updated)
+        self.isAuthenticated = true
+        return update
     }
 
     func deleteToken() {
-        // we had better not keep using it, then
-        // if you call this, don't be a moron and remember to get a fresh token
-        self.authToken = nil
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: AuthManager.server,
+            kSecAttrAccount as String: AuthManager.account
+        ]
+        SecItemDelete(query as CFDictionary)
     }
 
-    // TODO: look at the code for WSOProvider.js in the old app
     func login(username: String, password: String) async throws {
-        // this should be used in the case we need to login,
-        // but only fall back to this if getToken() throws.
-        // initially, you should start by trying to getToken(),
-        // and then switch back to a login screen.
-        let identityToken = try await WSOIdentityLogin(
-            password: password,
-            unixID: username
-        )
+        let identityToken = try await WSOIdentityLogin(password: password, unixID: username)
         logger.info("Identity token is being fetched...")
+
         if identityToken.data?.token != nil {
             logger.info("Identity token successfully fetched")
             logger.debug("Identity token data: \(identityToken.data!.token!)")
             logger.info("Auth token is being fetched...")
+
             let apiToken = try await WSOAPILogin(identityToken: identityToken.data!.token!)
+
             if apiToken.data?.token != nil {
                 logger.info("Auth token successfully fetched")
                 logger.debug("Auth token data: \(apiToken.data!.token!)")
-                // now to decode our token
-
-
-                //print(apiToken.data!.token!)
-                //print(jwtToken.body)
-                self.authToken = apiToken.data!.token!
+                self.tokens = StoredTokens(
+                    identityToken: identityToken.data!.token!,
+                    authToken: apiToken.data!.token!,
+                    authExpiry: try decode(jwt: apiToken.data!.token!).expiresAt!
+                )
+                // if we get to this point it def exists so unwrap ok
+                try save(self.tokens!)
                 self.isAuthenticated = true
             } else {
                 logger.error("Auth token could not be fetched")
@@ -118,7 +181,8 @@ class AuthManager {
 
     func logout() {
         logger.trace("User has logged out")
-        self.authToken = nil
+        deleteToken()
+        self.tokens = nil
         self.isAuthenticated = false
     }
 }
