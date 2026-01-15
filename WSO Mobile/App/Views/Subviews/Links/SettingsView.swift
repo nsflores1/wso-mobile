@@ -136,12 +136,12 @@ struct SettingsView: View {
                         }
                     }
                     if userType == .student {
-                        Button("Force Refresh Token") {
+                        Button("Force Wipe Token") {
                             Task {
-                                let _ = try await authManager.refreshToken()
-                                logger.trace("User has refreshed token")
+                                authManager.wipeAppKeychain()
+                                logger.trace("User has deleted token")
                                 await notificationManager.scheduleLocal(
-                                    title: "Refresh complete!",
+                                    title: "Delete complete!",
                                     body: "Please restart the app.",
                                     date: Date().addingTimeInterval(1)
                                 )

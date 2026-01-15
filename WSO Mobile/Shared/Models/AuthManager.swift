@@ -166,6 +166,23 @@ class AuthManager {
         SecItemDelete(query as CFDictionary)
     }
 
+    func wipeAppKeychain() {
+        let secItemClasses = [
+            kSecClassGenericPassword,
+            kSecClassInternetPassword,
+            kSecClassCertificate,
+            kSecClassKey,
+            kSecClassIdentity
+        ]
+
+        for secClass in secItemClasses {
+            let query: [String: Any] = [
+                kSecClass as String: secClass
+            ]
+            SecItemDelete(query as CFDictionary)
+        }
+    }
+
     func login(username: String, password: String) async throws {
         let identityToken = try await WSOIdentityLogin(password: password, unixID: username)
         logger.info("Identity token is being fetched...")
