@@ -10,10 +10,14 @@ import SwiftUI
 @MainActor
 @Observable
 class DailyMessagesViewModel {
+        // this one is instantiated globally,
+        // because the home page needs to be able to refresh it
+    static let shared = DailyMessagesViewModel()
     private let cache = CacheManager.shared
 
     var dailyMessageCategories: [String: [DailyMessagePost]] = [:]
     var isLoading: Bool = false
+    var lastUpdated: Date? = nil
     var error: WebRequestError?
 
     private var hasFetched = false
@@ -21,12 +25,13 @@ class DailyMessagesViewModel {
     func loadContent() async {
         isLoading = true
 
-        if let cached: [String: [DailyMessagePost]] = await cache.load(
+        if let cached: TimestampedData<[String: [DailyMessagePost]]> = await cache.load(
             [String: [DailyMessagePost]].self,
             from: "viewmodelstate_daily_messages.json",
             maxAge: 3600 * 4 // four hours
         ) {
-            self.dailyMessageCategories = cached
+            self.dailyMessageCategories = cached.data
+            self.lastUpdated = cached.timestamp
             self.isLoading = false
             self.error = nil
             return
@@ -34,6 +39,7 @@ class DailyMessagesViewModel {
 
         do {
             let data: [String: [DailyMessagePost]] = try await parseDailyMessages()
+            self.lastUpdated = Date()
             self.dailyMessageCategories = data
             self.error = nil
 
@@ -59,6 +65,7 @@ class DailyMessagesViewModel {
 
         do {
             let data: [String: [DailyMessagePost]] = try await parseDailyMessages()
+            self.lastUpdated = Date()
             self.dailyMessageCategories = data
             self.error = nil
 
@@ -77,6 +84,7 @@ class DailyMessagesViewModel {
     func clearCache() async {
         await cache.clear(path: "viewmodelstate_daily_messages.json")
         self.dailyMessageCategories = [:]
+        self.lastUpdated = nil
     }
 
 }

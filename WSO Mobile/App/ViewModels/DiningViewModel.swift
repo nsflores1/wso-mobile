@@ -15,6 +15,7 @@ class DiningHoursViewModel {
     fileprivate let logger = Logger(label: "com.wso.DiningViewModel")
 
     var diningMenu: [DiningHall] = []
+    var lastUpdated: Date? = nil
     var pastList: [Date] = []
     var isLoading: Bool = false
     var error: WebRequestError?
@@ -32,12 +33,13 @@ class DiningHoursViewModel {
         isLoading = true
         error = nil
 
-        if let cached: [DiningHall] = await cache.load(
+        if let cached: TimestampedData<[DiningHall]> = await cache.load(
             [DiningHall].self,
             from: "viewmodelstate_dining_menus.json",
             maxAge: 3600 * 1 // four hours
         ) {
-            self.diningMenu = cached
+            self.diningMenu = cached.data
+            self.lastUpdated = cached.timestamp
             self.isLoading = false
             self.error = nil
             return
@@ -45,6 +47,7 @@ class DiningHoursViewModel {
 
         do {
             let data: [DiningHall] = try await parseWilliamsDining()
+            self.lastUpdated = Date()
             self.diningMenu = data
             self.error = nil
 
@@ -62,22 +65,25 @@ class DiningHoursViewModel {
 
     // this can load in the background, it's fine. no need to block
     func loadDays() async {
-        if let cached: [Date] = await cache.load(
+        if let cached: TimestampedData<[Date]> = await cache.load(
             [Date].self,
             from: "viewmodelstate_dining_menus_past_list.json",
             maxAge: 3600 * 4 // four hours
         ) {
-            self.pastList = cached
+            self.pastList = cached.data
+            self.lastUpdated = cached.timestamp
             return
         }
 
         do {
             let data: [Date] = try await getListPastWilliamsDiningMenus()
+            self.lastUpdated = Date()
             try await cache.save(data, to: "viewmodelstate_dining_menus_past_list.json")
         } catch let err as WebRequestError {
             logger.error("Error on fetching past days: \(err)")
             self.pastList = []
         } catch {
+            // this should never execute
             logger.critical("Something has gone horribly wrong with fetching past menu days, and WebRequest died!")
             self.pastList = []
         }
@@ -95,6 +101,7 @@ class DiningHoursViewModel {
 
         do {
             let data: [DiningHall] = try await parseWilliamsDining()
+            self.lastUpdated = Date()
             self.diningMenu = data
             self.error = nil
 
@@ -135,5 +142,6 @@ class DiningHoursViewModel {
             try? FileManager.default.removeItem(at: file)
         }
         self.diningMenu = []
+        self.lastUpdated = nil
     }
 }

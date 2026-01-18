@@ -14,6 +14,7 @@ class WilliamsRecordViewModel {
 
     var posts: [NewsFeed] = []
     var isLoading: Bool = false
+    var lastUpdated: Date? = nil
     var error: WebRequestError?
     private var hasFetched = false
 
@@ -21,12 +22,13 @@ class WilliamsRecordViewModel {
         isLoading = true
         error = nil
 
-        if let cached: [NewsFeed] = await cache.load(
+        if let cached: TimestampedData<[NewsFeed]> = await cache.load(
             [NewsFeed].self,
             from: "viewmodelstate_williams_record.json",
-            maxAge: 3600 * 24 * 6 // a little under one week
+            maxAge: 3600 * 18 // a little under a day
         ) {
-            self.posts = cached
+            self.posts = cached.data
+            self.lastUpdated = cached.timestamp
             self.isLoading = false
             self.error = nil
             return
@@ -34,6 +36,7 @@ class WilliamsRecordViewModel {
 
         do {
             let data: [NewsFeed] = try await parseWilliamsRecord()
+            self.lastUpdated = Date()
             self.posts = data
             self.error = nil
 
@@ -60,6 +63,7 @@ class WilliamsRecordViewModel {
 
         do {
             let data: [NewsFeed] = try await parseWilliamsRecord()
+            self.lastUpdated = Date()
             self.posts = data
             self.error = nil
 
@@ -78,6 +82,7 @@ class WilliamsRecordViewModel {
     func clearCache() async {
         await cache.clear(path: "viewmodelstate_williams_record.json")
         self.posts = []
+        self.lastUpdated = nil
     }
 
 }

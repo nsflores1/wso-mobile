@@ -10,7 +10,6 @@ import Logging
 
 struct NewsView: View {
     @Environment(\.logger) private var logger
-    @State private var viewModel = WilliamsRecordViewModel()
 
     var body: some View {
         NavigationStack {
@@ -28,8 +27,10 @@ struct NewsView: View {
                 }
             }
             .navigationTitle(Text("News"))
-            .modifier(NavSubtitleIfAvailable(subtitle: "The latest updates"))
             .navigationBarTitleDisplayMode(.large)
+            // the modifier is set within WilliamsRecordView!
+            // a bit counterintuitive, but Views can't pass data up. questionable architecture?
+            // futureproofing for when we add new content to the system? you decide.
         }
     }
 }

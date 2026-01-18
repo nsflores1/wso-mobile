@@ -169,7 +169,11 @@ struct DiningView: View {
                 }
                 .animation(.easeInOut(duration: 0.25), value: selected)
                 .navigationTitle(Text("Dining"))
-                .modifier(NavSubtitleIfAvailable(subtitle: "Last updated: \(viewModel.diningMenu.first?.updateTime ?? "(Not yet updated)")"))
+                .modifier(
+                    NavSubtitleIfAvailable(
+                        subtitle: "Last updated: \(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")"
+                    )
+                )
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack {

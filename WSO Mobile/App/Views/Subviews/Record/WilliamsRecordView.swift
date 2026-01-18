@@ -76,6 +76,11 @@ struct WilliamsRecordView: View {
             logger.trace("News data forcibly refreshed")
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
+        .modifier(
+            NavSubtitleIfAvailable(
+                subtitle: "Last updated: \(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")"
+            )
+        )
     }
 }
 

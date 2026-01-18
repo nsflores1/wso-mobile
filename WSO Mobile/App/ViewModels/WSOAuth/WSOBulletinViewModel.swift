@@ -40,12 +40,12 @@ class WSOBulletinViewModel {
         error = nil
 
         // only last about an hour
-        if let cached: [WSOBulletinItem] = await cache.load(
+        if let cached: TimestampedData<[WSOBulletinItem]> = await cache.load(
             [WSOBulletinItem].self,
             from: "bulletin_allData.json",
             maxAge: 3600
         ) {
-            self.data = cached
+            self.data = cached.data
             self.isLoading = false
             self.error = nil
             return

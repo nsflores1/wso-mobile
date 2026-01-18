@@ -135,7 +135,7 @@ struct ProfileView: View {
             }
             .listStyle(.grouped)
             .navigationTitle(Text("Profile"))
-            .modifier(NavSubtitleIfAvailable(subtitle: "WSO Mobile version: 1.2.1"))
+            .modifier(NavSubtitleIfAvailable(subtitle: "Last updated: \(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")"))
             .navigationBarTitleDisplayMode(.large)
             .task {
                 logger.trace("Fetching user's personal profile...")

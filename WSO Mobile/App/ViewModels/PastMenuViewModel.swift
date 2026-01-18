@@ -58,12 +58,12 @@ class PastMenuViewModel {
             return // no need to fetch, this is an invisible state
         }
 
-        if let cached: [DiningHall] = await cache.load(
+        if let cached: TimestampedData<[DiningHall]> = await cache.load(
             [DiningHall].self,
             from: "viewmodelstate_dining_menu_past_menu_\(dateToString(pastDay)).json",
             maxAge: 3600 * 24 // one day is probably fine
         ) {
-            self.diningMenu = cached
+            self.diningMenu = cached.data
             self.isLoading = false
             self.error = nil
             return

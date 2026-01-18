@@ -50,7 +50,7 @@ class CacheManager {
 
     // default age is one day
     func load<T: Codable>(_ type: T.Type, from path: String,
-                          maxAge: TimeInterval = 3600 * 24) async -> T? {
+                          maxAge: TimeInterval = 3600 * 24) async -> TimestampedData<T>? {
         return await Task {
             let decoder = JSONDecoder()
             let fileURL = self.baseURL.appendingPathComponent(path)
@@ -64,7 +64,7 @@ class CacheManager {
                 return nil
             }
 
-            return state.data
+            return state
         }.value
     }
 

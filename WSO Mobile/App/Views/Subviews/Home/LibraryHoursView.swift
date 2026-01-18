@@ -10,7 +10,7 @@ import Logging
 
 struct LibraryHoursView: View {
     @Environment(\.logger) private var logger
-    @State private var viewModel = LibraryHoursViewModel()
+    @State private var viewModel = LibraryHoursViewModel.shared
 
     var body: some View {
         Section {
@@ -59,9 +59,14 @@ struct LibraryHoursView: View {
             .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.isLoading)
         } header : {
             HStack {
-                Text("Library Hours")
-                    .fontWeight(.semibold)
-                    .font(.title3)
+                VStack(alignment: .leading) {
+                    Text("Library Hours")
+                        .fontWeight(.semibold)
+                        .font(.title3)
+                    Text("Last updated: \(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")")
+                        .fontWeight(.regular)
+                        .font(.subheadline)
+                }
                 Spacer()
                 Image(systemName: "book")
             }
@@ -69,7 +74,6 @@ struct LibraryHoursView: View {
             logger.trace("Fetching library data...")
             await viewModel.fetchIfNeeded()
             logger.trace("Fetch complete")
-
         }
     }
 }

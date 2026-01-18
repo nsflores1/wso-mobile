@@ -10,8 +10,8 @@ import Logging
 
 struct HomeView: View {
     @Environment(\.logger) private var logger
-    @State private var libraryViewModel = LibraryHoursViewModel()
-    @State private var dailyMessagesViewModel = DailyMessagesViewModel()
+    @State private var libraryViewModel = LibraryHoursViewModel.shared
+    @State private var dailyMessagesViewModel = DailyMessagesViewModel.shared
     @Environment(AuthManager.self) private var authManager
 
     // variables for the home screen search box
@@ -77,14 +77,14 @@ struct HomeView: View {
                             ProfileView()
                         }
                     } label: {
-                        Text("Login to use WSO features...")
+                        Text("Login to search users...")
                             .italic()
                     }
                 } else {
                     Text("App is in nonstudent mode").italic()
                 }
                 if searchText.isEmpty {
-                    if userType == .student && authManager.isAuthenticated {
+                    if userType == .student {
                         HomeButtonsView()
                     }
                     LibraryHoursView()

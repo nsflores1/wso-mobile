@@ -10,10 +10,14 @@ import SwiftUI
 @MainActor
 @Observable
 class LibraryHoursViewModel {
+    // this one is instantiated globally,
+    // because the home page needs to be able to refresh it
+    static let shared = LibraryHoursViewModel()
     private let cache = CacheManager.shared
     
     var libraryHours: [LibraryViewData] = []
     var isLoading: Bool = false
+    var lastUpdated: Date? = nil
     var error: WebRequestError?
     private var hasFetched = false
 
@@ -21,12 +25,13 @@ class LibraryHoursViewModel {
         isLoading = true
         error = nil
 
-        if let cached: [LibraryViewData] = await cache.load(
+        if let cached: TimestampedData<[LibraryViewData]> = await cache.load(
             [LibraryViewData].self,
             from: "viewmodelstate_library_hours.json",
             maxAge: 3600 * 4 // four hours
         ) {
-            self.libraryHours = cached
+            self.libraryHours = cached.data
+            self.lastUpdated = cached.timestamp
             self.isLoading = false
             self.error = nil
             return
@@ -34,6 +39,7 @@ class LibraryHoursViewModel {
 
         do {
             let data: [LibraryViewData] = try await parseLibraryHours()
+            self.lastUpdated = Date()
             self.libraryHours = data
             self.error = nil
 
@@ -60,6 +66,7 @@ class LibraryHoursViewModel {
 
         do {
             let data: [LibraryViewData] = try await parseLibraryHours()
+            self.lastUpdated = Date()
             self.libraryHours = data
             self.error = nil
 
@@ -78,6 +85,7 @@ class LibraryHoursViewModel {
     func clearCache() async {
         await cache.clear(path: "viewmodelstate_library_hours.json")
         self.libraryHours = []
+        self.lastUpdated = nil
     }
 
 }

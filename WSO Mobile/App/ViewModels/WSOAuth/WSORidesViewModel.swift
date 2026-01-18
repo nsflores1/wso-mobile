@@ -12,7 +12,7 @@ import SwiftUI
 class WSORidesViewModel {
     private let cache = CacheManager.shared
 
-        // contains ALL data.
+    // contains ALL data.
     var data: [WSORidesItem] = []
 
     var isLoading: Bool = false
@@ -24,12 +24,12 @@ class WSORidesViewModel {
         error = nil
 
             // only last about an hour
-        if let cached: [WSORidesItem] = await cache.load(
+        if let cached: TimestampedData<[WSORidesItem]> = await cache.load(
             [WSORidesItem].self,
             from: "bulletin_rides.json",
             maxAge: 3600
         ) {
-            self.data = cached
+            self.data = cached.data
             self.isLoading = false
             self.error = nil
             return

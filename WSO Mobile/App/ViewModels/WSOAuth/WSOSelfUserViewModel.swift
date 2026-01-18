@@ -14,6 +14,7 @@ class WSOSelfUserViewModel {
 
     var data: User? // this value MUST exist
     var isLoading: Bool = false
+    var lastUpdated: Date? = nil
     var error: WebRequestError?
     private var hasFetched = false
 
@@ -21,12 +22,13 @@ class WSOSelfUserViewModel {
         isLoading = true
         error = nil
 
-        if let cached: User = await cache.load(
+        if let cached: TimestampedData<User> = await cache.load(
             User.self,
             from: "userstate_me.json",
             maxAge: 3600 * 24
         ) {
-            self.data = cached
+            self.data = cached.data
+            self.lastUpdated = cached.timestamp
             self.isLoading = false
             self.error = nil
             return
@@ -34,6 +36,7 @@ class WSOSelfUserViewModel {
 
         do {
             let data: User = try await WSOGetUserSelf()
+            self.lastUpdated = Date()
             self.data = data
             self.error = nil
 
@@ -60,6 +63,7 @@ class WSOSelfUserViewModel {
 
         do {
             let data: User = try await WSOGetUserSelf()
+            self.lastUpdated = Date()
             self.data = data
             self.error = nil
 
@@ -78,5 +82,6 @@ class WSOSelfUserViewModel {
     func clearCache() async {
         await cache.clear(path: "userstate_me.json")
         self.data = nil
+        self.lastUpdated = nil
     }
 }

@@ -10,7 +10,7 @@ import Logging
 
 struct DailyMessagesView: View {
     @Environment(\.logger) private var logger
-    @State var viewModel = DailyMessagesViewModel()
+    @State var viewModel = DailyMessagesViewModel.shared
 
     var body: some View {
         Section {
@@ -47,9 +47,14 @@ struct DailyMessagesView: View {
             }
         } header : {
             HStack {
-                Text("Daily Messages")
-                    .fontWeight(.semibold)
-                    .font(.title3)
+                VStack(alignment: .leading) {
+                    Text("Daily Messages")
+                        .fontWeight(.semibold)
+                        .font(.title3)
+                    Text("Last updated: \(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")")
+                        .fontWeight(.regular)
+                        .font(.subheadline)
+                }
                 Spacer()
                 Image(systemName: "envelope.stack")
             }
