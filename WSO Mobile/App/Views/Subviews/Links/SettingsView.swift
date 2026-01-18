@@ -39,10 +39,6 @@ struct SettingsView: View {
                     // TODO: rewrite this when Apple releases a less awful way of doing bindings in non-closure environments
                     Toggle("Enable Notifications", isOn: Binding(get: { notificationManager.isAuthorized}, set: { _ in }))
                         .disabled(true)
-                        .task {
-                            _ = await notificationManager.requestPermission()
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                        }
                     if !notificationManager.isAuthorized {
                         Button("Enable in Settings...") {
                             Task {
@@ -136,12 +132,12 @@ struct SettingsView: View {
                         }
                     }
                     if userType == .student {
-                        Button("Force Wipe Token") {
+                        Button("Force Refresh Token") {
                             Task {
-                                authManager.wipeAppKeychain()
+                                let _  = try await authManager.refreshToken()
                                 logger.trace("User has deleted token")
                                 await notificationManager.scheduleLocal(
-                                    title: "Delete complete!",
+                                    title: "Refresh complete!",
                                     body: "Please restart the app.",
                                     date: Date().addingTimeInterval(1)
                                 )
@@ -150,6 +146,7 @@ struct SettingsView: View {
                         }
                         Button("Logout of WSO") {
                             Task {
+                                authManager.wipeAppKeychain()
                                 authManager.logout()
                                 logger.trace("User has logged out")
                                 await notificationManager.scheduleLocal(

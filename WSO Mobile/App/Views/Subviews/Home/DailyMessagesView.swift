@@ -51,7 +51,7 @@ struct DailyMessagesView: View {
                     .fontWeight(.semibold)
                     .font(.title3)
                 Spacer()
-                Image(systemName: "list.bullet.clipboard")
+                Image(systemName: "envelope.stack")
             }
         } .task {
             logger.trace("Fetching daily messages...")
@@ -63,4 +63,6 @@ struct DailyMessagesView: View {
 
 #Preview {
     HomeView()
+        .environment(AuthManager.shared)
+        .environment(NotificationManager.shared)
 }

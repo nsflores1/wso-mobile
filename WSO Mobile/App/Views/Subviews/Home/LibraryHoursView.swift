@@ -28,6 +28,7 @@ struct LibraryHoursView: View {
                             Text(place.name)
                             HStack {
                                 HStack {
+                                    Spacer()
                                         // only render hours if there's anything to show in the first place
                                     if !place.open.isEmpty && !place.close.isEmpty {
                                         if !place.open.isEmpty {
@@ -75,4 +76,6 @@ struct LibraryHoursView: View {
 
 #Preview {
     HomeView()
+        .environment(AuthManager.shared)
+        .environment(NotificationManager.shared)
 }

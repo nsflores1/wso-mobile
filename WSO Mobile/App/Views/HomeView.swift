@@ -88,6 +88,7 @@ struct HomeView: View {
                         HomeButtonsView()
                     }
                     LibraryHoursView()
+                    BookingLinkView()
                     DailyMessagesView()
                 } else {
                     ForEach(users) { user in

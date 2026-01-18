@@ -66,6 +66,7 @@
 		5B8117042F19955400985804 /* WSORidesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117032F19954C00985804 /* WSORidesViewModel.swift */; };
 		5B8117062F1995BE00985804 /* WSORidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117052F1995BA00985804 /* WSORidesView.swift */; };
 		5B8117082F199DAF00985804 /* WSORidesItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117072F199DAC00985804 /* WSORidesItemView.swift */; };
+		5B81170A2F1D6A7200985804 /* BookingLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117092F1D6A6E00985804 /* BookingLinkView.swift */; };
 		5B93FE122EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */; };
@@ -230,6 +231,7 @@
 		5B8117032F19954C00985804 /* WSORidesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORidesViewModel.swift; sourceTree = "<group>"; };
 		5B8117052F1995BA00985804 /* WSORidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORidesView.swift; sourceTree = "<group>"; };
 		5B8117072F199DAC00985804 /* WSORidesItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORidesItemView.swift; sourceTree = "<group>"; };
+		5B8117092F1D6A6E00985804 /* BookingLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLinkView.swift; sourceTree = "<group>"; };
 		5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacebook.swift; sourceTree = "<group>"; };
 		5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrak.swift; sourceTree = "<group>"; };
 		5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSODormTrak.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 		5BFA32D02F048D87005D8F5C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5B8117092F1D6A6E00985804 /* BookingLinkView.swift */,
 				5B5597342EC907FA00FB82D6 /* DailyMessagesView.swift */,
 				5BFA32CB2F036B45005D8F5C /* DailyMessagesItemView.swift */,
 				5B5597302EC8F7CA00FB82D6 /* LibraryHoursView.swift */,
@@ -943,6 +946,7 @@
 				5BD50F142ED9DEF800806CA7 /* NotificationManager.swift in Sources */,
 				5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */,
 				5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */,
+				5B81170A2F1D6A7200985804 /* BookingLinkView.swift in Sources */,
 				5BCF0D5E2F01EA9400E702EB /* UserType.swift in Sources */,
 				5B8117062F1995BE00985804 /* WSORidesView.swift in Sources */,
 				5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */,

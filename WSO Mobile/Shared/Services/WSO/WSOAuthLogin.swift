@@ -46,7 +46,7 @@ func WSOIdentityLogin(password: String, unixID: String) async throws -> WSOAuthL
 // note that we don't pass it as an argument because we'll use the one from the authentication manager
 func WSOAPIRefresh(identityToken: String) async throws -> WSOAuthLogin {
     let logger = Logger(label: "com.wso.WebRequest") // technically not but whatever, this is a web request
-    var request = HTTPRequest(method: .post, url: URL(string: "https://wso.williams.edu/api/v2/auth/api/refresh")!)
+    var request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/api/v2/auth/api/refresh")!)
     request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
     request.headerFields[.authorization] = "Bearer \(identityToken)"
 

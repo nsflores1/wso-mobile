@@ -67,7 +67,7 @@ class AuthManager {
         let access = SecAccessControlCreateWithFlags(
             nil,
             kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
-            [.biometryCurrentSet],
+            [.userPresence],
             nil
         )!
 
