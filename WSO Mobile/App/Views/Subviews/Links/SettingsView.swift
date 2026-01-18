@@ -26,6 +26,11 @@ struct SettingsView: View {
 
     @AppStorage("userType") private var userType: UserType = .student
 
+    // user toggles
+    @AppStorage("newsIsShown") private var newsIsShown: Bool = true
+    @AppStorage("wcfmIsShown") private var wcfmIsShown: Bool = true
+    @AppStorage("diningIsShown") private var diningIsShown: Bool = true
+
     @Environment(NotificationManager.self) private var notificationManager
     @Environment(AuthManager.self) private var authManager
     @Environment(\.openURL) private var openURL
@@ -86,6 +91,22 @@ struct SettingsView: View {
                             })
                         Toggle("Surfer Errors on Login", isOn: $surferErrors)
                             .simultaneousGesture(TapGesture().onEnded {
+                                Task {
+                                    if surferErrors {
+                                        await notificationManager.scheduleLocal(
+                                            title: "Hit the beach!",
+                                            body: "Gnarly, dude! Let's hope you don't wipeout on login!",
+                                            date: Date().addingTimeInterval(1)
+                                        )
+                                    } else if !surferErrors {
+                                        await notificationManager.scheduleLocal(
+                                            title: "Surf's up!",
+                                            body: "(You hear the sound of a surfboard being put away.)",
+                                            date: Date().addingTimeInterval(1)
+                                        )
+
+                                    }
+                                }
                                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                             })
                     }
@@ -103,6 +124,39 @@ struct SettingsView: View {
                         })
                 } header : {
                     Text("Toggles")
+                        .fontWeight(.semibold)
+                        .font(.title3)
+                }
+                Section {
+                    Toggle("Hide Dining Menus", isOn: $diningIsShown)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                        })
+                    Toggle("Hide News Reader", isOn: $newsIsShown)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                        })
+                    Toggle("Hide WCFM Player", isOn: $wcfmIsShown)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            Task {
+                                if !wcfmIsShown && whimsyEnabled {
+                                    await notificationManager.scheduleLocal(
+                                        title: ":(",
+                                        body: "I worked hard on that player, you know...",
+                                        date: Date().addingTimeInterval(1)
+                                    )
+                                } else if wcfmIsShown && whimsyEnabled {
+                                    await notificationManager.scheduleLocal(
+                                        title: ":)",
+                                        body: "Enjoy the music!!!",
+                                        date: Date().addingTimeInterval(1)
+                                    )
+                                }
+                            }
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                        })
+                } header : {
+                    Text("Hide Sections")
                         .fontWeight(.semibold)
                         .font(.title3)
                 }
@@ -182,7 +236,7 @@ struct SettingsView: View {
                             .simultaneousGesture(TapGesture().onEnded {
                                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                             })
-                        Text("Adds back some beta-exclusive features which were left out during the app's public release.").italic()
+                        Text("Adds back some beta-exclusive \"features\" (mostly bad jokes) which were left out during the app's public release.").italic()
                         if whimsyEnabled {
                             // EASTER EGG
                             Button {
@@ -203,10 +257,18 @@ struct SettingsView: View {
                                     if secretEnabled {
                                         Text("🐮")
                                     }
-                                    Text("エフェリア君の内緒を聞く...")
+                                    VStack(alignment: .leading) {
+                                        Text("エフェリア君の内緒を聞く...")
+                                        Text("Hear Ephelia's secret...")
+                                            .font(.caption)
+                                    }
                                 }
                             }
-                            Text("星の動きを観察する")
+                            VStack(alignment: .leading) {
+                                Text("星の動きを観察する")
+                                Text("Observe the motion of the stars")
+                                    .font(.caption)
+                            }
                         }
                         // rickroll people who think this would actually work. deserved
                         Button {

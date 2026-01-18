@@ -51,7 +51,7 @@
 		5B6252612EFEFADA00F1C814 /* WSOUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252602EFEFAD700F1C814 /* WSOUserViewModel.swift */; };
 		5B6252632EFF270300F1C814 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252622EFF26FE00F1C814 /* CacheManager.swift */; };
 		5B6252642EFF270300F1C814 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6252622EFF26FE00F1C814 /* CacheManager.swift */; };
-		5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B99C22EEE16710046B3A7 /* LinksView.swift */; };
+		5B6B99C32EEE16740046B3A7 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B99C22EEE16710046B3A7 /* MoreView.swift */; };
 		5B6BECA02F0225EB00CE7CF0 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6BEC9F2F0225EB00CE7CF0 /* Logging */; };
 		5B6BECE32F03043500CE7CF0 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6BECE22F03043500CE7CF0 /* JWTDecode */; };
 		5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71D5F72EC802790051ABF5 /* ArgumentParser */; };
@@ -67,6 +67,8 @@
 		5B8117062F1995BE00985804 /* WSORidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117052F1995BA00985804 /* WSORidesView.swift */; };
 		5B8117082F199DAF00985804 /* WSORidesItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117072F199DAC00985804 /* WSORidesItemView.swift */; };
 		5B81170A2F1D6A7200985804 /* BookingLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117092F1D6A6E00985804 /* BookingLinkView.swift */; };
+		5B81170C2F1D984600985804 /* ImportantPhoneNumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81170B2F1D983700985804 /* ImportantPhoneNumView.swift */; };
+		5B81170E2F1D9D0900985804 /* LinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81170D2F1D9D0600985804 /* LinksView.swift */; };
 		5B93FE122EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */; };
@@ -84,7 +86,6 @@
 		5B9808E32F0C24600001F8D4 /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E22F0C245E0001F8D4 /* AuthGate.swift */; };
 		5B9808E42F0C24600001F8D4 /* AuthGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E22F0C245E0001F8D4 /* AuthGate.swift */; };
 		5B9808E62F0C5E7D0001F8D4 /* PastMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9808E52F0C5E790001F8D4 /* PastMenuViewModel.swift */; };
-		5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */; };
 		5BA37ED02EF08CB30011C245 /* WCFMKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */; };
 		5BA6E8FD2F18540D0064A1FE /* WSOClassic.icon in Resources */ = {isa = PBXBuildFile; fileRef = 5BA6E8FC2F18540D0064A1FE /* WSOClassic.icon */; };
 		5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9B2EC0ED9900A242A1 /* WSOMobileApp.swift */; };
@@ -221,7 +222,7 @@
 		5B62525D2EFEFA1000F1C814 /* WSOProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOProfileView.swift; sourceTree = "<group>"; };
 		5B6252602EFEFAD700F1C814 /* WSOUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOUserViewModel.swift; sourceTree = "<group>"; };
 		5B6252622EFF26FE00F1C814 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
-		5B6B99C22EEE16710046B3A7 /* LinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksView.swift; sourceTree = "<group>"; };
+		5B6B99C22EEE16710046B3A7 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningVendorView.swift; sourceTree = "<group>"; };
 		5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningCoursesView.swift; sourceTree = "<group>"; };
 		5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningItemsView.swift; sourceTree = "<group>"; };
@@ -232,6 +233,8 @@
 		5B8117052F1995BA00985804 /* WSORidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORidesView.swift; sourceTree = "<group>"; };
 		5B8117072F199DAC00985804 /* WSORidesItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORidesItemView.swift; sourceTree = "<group>"; };
 		5B8117092F1D6A6E00985804 /* BookingLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLinkView.swift; sourceTree = "<group>"; };
+		5B81170B2F1D983700985804 /* ImportantPhoneNumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPhoneNumView.swift; sourceTree = "<group>"; };
+		5B81170D2F1D9D0600985804 /* LinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksView.swift; sourceTree = "<group>"; };
 		5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacebook.swift; sourceTree = "<group>"; };
 		5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrak.swift; sourceTree = "<group>"; };
 		5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSODormTrak.swift; sourceTree = "<group>"; };
@@ -242,7 +245,6 @@
 		5B9460CC2ECD5ED40078DCE2 /* WCFMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMViewModel.swift; sourceTree = "<group>"; };
 		5B9808E22F0C245E0001F8D4 /* AuthGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGate.swift; sourceTree = "<group>"; };
 		5B9808E52F0C5E790001F8D4 /* PastMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastMenuViewModel.swift; sourceTree = "<group>"; };
-		5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantLinks.swift; sourceTree = "<group>"; };
 		5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMKeyView.swift; sourceTree = "<group>"; };
 		5BA6E8FC2F18540D0064A1FE /* WSOClassic.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = WSOClassic.icon; sourceTree = "<group>"; };
 		5BB76F952EC0ED7500A242A1 /* WSOMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileTests.swift; sourceTree = "<group>"; };
@@ -546,7 +548,7 @@
 				5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */,
 				5BB76F9D2EC0F1F300A242A1 /* NewsView.swift */,
 				5BCDB7FC2EF09502008B438C /* MapPageView.swift */,
-				5B6B99C22EEE16710046B3A7 /* LinksView.swift */,
+				5B6B99C22EEE16710046B3A7 /* MoreView.swift */,
 				5BEB32542EBFD7F300F75A10 /* ContentView.swift */,
 			);
 			path = Views;
@@ -620,9 +622,10 @@
 		5BFA32CF2F048D73005D8F5C /* Links */ = {
 			isa = PBXGroup;
 			children = (
+				5B81170D2F1D9D0600985804 /* LinksView.swift */,
+				5B81170B2F1D983700985804 /* ImportantPhoneNumView.swift */,
 				5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */,
 				5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */,
-				5BA3055B2ECA29F2007CFA8F /* ImportantLinks.swift */,
 				5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */,
 				5BCF0D602F01EB5600E702EB /* SettingsKeyView.swift */,
 			);
@@ -898,6 +901,7 @@
 				5B6252632EFF270300F1C814 /* CacheManager.swift in Sources */,
 				5BFA32CE2F048D04005D8F5C /* WSOBulletinListView.swift in Sources */,
 				5BFA32DD2F05EE75005D8F5C /* WSOBulletinKeyView.swift in Sources */,
+				5B81170E2F1D9D0900985804 /* LinksView.swift in Sources */,
 				5BFA32D62F05E2FF005D8F5C /* StringTrim.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BCF0D5C2F01ACE400E702EB /* CopyableViews.swift in Sources */,
@@ -907,7 +911,6 @@
 				5B56327B2EDB84B800390AB8 /* EtherialView.swift in Sources */,
 				5BFA32C02F030FB8005D8F5C /* LogBootstrap.swift in Sources */,
 				5B515FB02EDBC99C00F166A1 /* WCFMPlaylistViewModel.swift in Sources */,
-				5BA3055C2ECA29F8007CFA8F /* ImportantLinks.swift in Sources */,
 				5B5597332EC8F80E00FB82D6 /* LibraryHoursViewModel.swift in Sources */,
 				5BFA32CC2F036B4B005D8F5C /* DailyMessagesItemView.swift in Sources */,
 				5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */,
@@ -918,6 +921,7 @@
 				5BE3EE542ECC3526009CDFD3 /* WilliamsRecordView.swift in Sources */,
 				5B8117022F19939B00985804 /* WSORides.swift in Sources */,
 				5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */,
+				5B81170C2F1D984600985804 /* ImportantPhoneNumView.swift in Sources */,
 				5BFA32C62F033EB4005D8F5C /* HomeButtonsView.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
 				5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */,
@@ -935,7 +939,7 @@
 				5BCDB7FD2EF09506008B438C /* MapPageView.swift in Sources */,
 				5B93FE192EF1FE14008A2C1A /* WSODormTrak.swift in Sources */,
 				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,
-				5B6B99C32EEE16740046B3A7 /* LinksView.swift in Sources */,
+				5B6B99C32EEE16740046B3A7 /* MoreView.swift in Sources */,
 				5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */,
 				5BFA32D22F049446005D8F5C /* WSOBulletinViewModel.swift in Sources */,
 				5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */,
@@ -1157,7 +1161,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1196,7 +1200,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

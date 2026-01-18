@@ -19,7 +19,7 @@ struct AboutView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("🐮 WSO Mobile 🐮")
+                Text("WSO Mobile")
                     .font(.title)
                     .fontWeight(.bold)
                     // TODO: secretly make this a button as an easter egg

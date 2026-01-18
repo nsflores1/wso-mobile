@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LinksView: View {
+struct MoreView: View {
     @Environment(\.openURL) private var openURL
 
     var body: some View {
@@ -16,6 +16,9 @@ struct LinksView: View {
                 Section {
                     NavigationLink(destination: SettingsView()) {
                         Label("App Settings", systemImage: "gear")
+                    }
+                    NavigationLink(destination: ImportantPhoneNumView()) {
+                        Label("Emergency Numbers", systemImage: "phone")
                     }
                     Button {
                         if let url = URL(string: "https://forms.gle/NqYdAAbZKPQmPq866"){
@@ -28,6 +31,9 @@ struct LinksView: View {
                         }
                     }
                     .buttonStyle(.plain)
+                    NavigationLink(destination: LinksView()) {
+                        Label("Important Links", systemImage: "link")
+                    }
                     Button {
                         if let url = URL(string: "https://forms.gle/pJVhoyRU8A2ciDhz5"){
                             openURL(url)
@@ -40,25 +46,22 @@ struct LinksView: View {
                     }
                     .buttonStyle(.plain)
                 }
-                ImportantLinksView()
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
-                        NavigationLink(destination: LinksKeyView()) {
-                            Image(systemName: "questionmark")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
-                    }
+                Section {
+                    Text("""
+                        You're using WSO Mobile Rewritten, version 1.2.0 (beta build 83)!
+                        
+                        Please send all feedback to the developers via the "Send Feedback" button. You can also add links to the "Important Links" page by clicking "Suggest Important Link".
+                        
+                        Thank you as always for using the app!
+                        """)
                 }
             }
-            .navigationTitle(Text("Links"))
-            .modifier(NavSubtitleIfAvailable(subtitle: "Important campus resources"))
+            .navigationTitle(Text("More Stuff"))
+            .modifier(NavSubtitleIfAvailable(subtitle: "Campus resources & settings"))
         }
     }
 }
 
 #Preview {
-    LinksView()
+    MoreView()
 }

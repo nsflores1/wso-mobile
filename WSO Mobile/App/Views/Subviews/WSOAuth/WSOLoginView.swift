@@ -145,7 +145,7 @@ struct WSOLoginView: View {
             .animation(.easeInOut(duration: 0.2), value: showError)
             .padding(10)
             .navigationTitle(Text("Login to WSO"))
-            .modifier(NavSubtitleIfAvailable(subtitle: "If you meant to use FaceID, enable it in settings"))
+            .modifier(NavSubtitleIfAvailable(subtitle: "Authentication required before proceeding"))
         }.padding(20)
          .onAppear {
              isFocused = true

@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    // silly options
     @AppStorage("likesMath") var likesMath: Bool = false
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+
+    // user toggles
+    @AppStorage("newsIsShown") private var newsIsShown: Bool = true
+    @AppStorage("wcfmIsShown") private var wcfmIsShown: Bool = true
+    @AppStorage("diningIsShown") private var diningIsShown: Bool = true
+
 
     var body: some View {
         if (!hasSeenOnboarding) {
@@ -20,25 +27,31 @@ struct ContentView: View {
                 Tab("Home", systemImage: "house") {
                     HomeView()
                 }
-                Tab("News", systemImage: "calendar") {
-                    NewsView()
-                }
-                Tab
-                {
-                    DiningView()
-                } label: {
-                    if likesMath {
-                        Label("Dining", systemImage: "pi")
-                    } else {
-                        Label("Dining", systemImage: "fork.knife")
+                if newsIsShown {
+                    Tab("News", systemImage: "calendar") {
+                        NewsView()
                     }
                 }
-                Tab("WCFM", systemImage: "radio")
-                {
-                    WCFMView()
+                if diningIsShown {
+                    Tab
+                    {
+                        DiningView()
+                    } label: {
+                        if likesMath {
+                            Label("Dining", systemImage: "pi")
+                        } else {
+                            Label("Dining", systemImage: "fork.knife")
+                        }
+                    }
                 }
-                Tab("Links", systemImage: "link") {
-                    LinksView()
+                if wcfmIsShown {
+                    Tab("WCFM", systemImage: "radio")
+                    {
+                        WCFMView()
+                    }
+                }
+                Tab("More", systemImage: "ellipsis.curlybraces") {
+                    MoreView()
                 }
             }
         }
