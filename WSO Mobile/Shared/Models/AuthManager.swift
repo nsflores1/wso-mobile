@@ -139,7 +139,7 @@ class AuthManager {
         logger.debug("Loading token from memory...")
         let tokens: StoredTokens? = try load()
         guard let tokens else { throw KeychainError.noToken }
-        let response: WSOAuthLogin? = try await WSOAPIRefresh()
+        let response: WSOAuthLogin? = try await WSOAPIRefresh(identityToken: tokens.identityToken)
         guard let response else { throw KeychainError.authenticationFailed }
 
         guard let update = response.data?.token else {

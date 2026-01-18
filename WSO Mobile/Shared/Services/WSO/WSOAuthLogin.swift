@@ -42,16 +42,32 @@ func WSOIdentityLogin(password: String, unixID: String) async throws -> WSOAuthL
     return try await request.post(sendData: formDataJSON)
 }
 
-// takes an apitoken, returns a NEW apitoken with a new timestamp
+// takes an identitytoken, returns a NEW apitoken with a new timestamp
 // note that we don't pass it as an argument because we'll use the one from the authentication manager
-func WSOAPIRefresh() async throws -> WSOAuthLogin {
-    let parser = JSONISO8601Parser<WSOAuthLogin>()
-    let request = WebRequest<JSONISO8601Parser<WSOAuthLogin>, NoParser>(
-        url: URL(string: "https://wso.williams.edu/api/v2/auth/api/refresh")!,
-        requestType: .get,
-        getParser: parser
-    )
-    return try await request.authGet()
+func WSOAPIRefresh(identityToken: String) async throws -> WSOAuthLogin {
+    let logger = Logger(label: "com.wso.WebRequest") // technically not but whatever, this is a web request
+    var request = HTTPRequest(method: .post, url: URL(string: "https://wso.williams.edu/api/v2/auth/api/refresh")!)
+    request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+    request.headerFields[.authorization] = "Bearer \(identityToken)"
+
+    let (data, response) = try await URLSession.shared.data(for: request)
+    guard let http = response as HTTPResponse?,
+          (200..<300).contains(http.status.code) else {
+        logger.error("POST (auth) request to https://wso.williams.edu/api/v2/auth/api/refresh failed due to invalid HTTP response: \(response.status)")
+        throw WebRequestError.invalidResponse(response)
+    }
+    logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
+    logger.debug("POST (auth) data: \(String(decoding: data, as: UTF8.self))")
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .iso8601
+    do {
+        let decodedResponse = try decoder.decode(WSOAuthLogin.self, from: data)
+        logger.trace("POST (auth) request to completed")
+        return decodedResponse
+    } catch let decoding as DecodingError {
+        logger.error("POST (auth) failure: decoding API Token failed with \(decoding.localizedDescription)")
+        throw WebRequestError.parseError(decoding)
+    }
 }
 
 // takes an identitytoken, return an apitoken
