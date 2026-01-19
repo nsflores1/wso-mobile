@@ -21,7 +21,6 @@ struct WSOLoginView: View {
     @State private var errorString: String = ""
     @State private var showError: Bool = false
     @State private var hideTask: Task<Void, Never>?
-    @FocusState private var isFocused
 
     @AppStorage("surferErrors") private var surferErrors: Bool = false
 
@@ -54,7 +53,6 @@ struct WSOLoginView: View {
                     .autocorrectionDisabled(true)
                     .textFieldStyle(.roundedBorder)
                     .textContentType(.username)
-                    .focused($isFocused)
                 Group {
                     if showPassword {
                         TextField("Password", text: $password)
@@ -147,9 +145,6 @@ struct WSOLoginView: View {
             .navigationTitle(Text("Login to WSO"))
             .modifier(NavSubtitleIfAvailable(subtitle: "Authentication required before proceeding"))
         }.padding(20)
-         .onAppear {
-             isFocused = true
-        }
     }
 
     // I don't normally like to attach functions to views,
