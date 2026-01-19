@@ -139,6 +139,15 @@ struct WSOProfileView: View {
                         .fontWeight(.semibold)
                         .font(.title3)
                 }
+                if #unavailable(iOS 26) {
+                    Section {
+                        Text("\(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")")
+                    } header: {
+                        Text("Last Updated")
+                            .fontWeight(.semibold)
+                            .font(.title3)
+                    }
+                }
             }
             .listStyle(.grouped)
             .navigationTitle(Text("Profile"))
