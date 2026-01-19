@@ -69,6 +69,10 @@
 		5B81170A2F1D6A7200985804 /* BookingLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117092F1D6A6E00985804 /* BookingLinkView.swift */; };
 		5B81170C2F1D984600985804 /* ImportantPhoneNumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81170B2F1D983700985804 /* ImportantPhoneNumView.swift */; };
 		5B81170E2F1D9D0900985804 /* LinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81170D2F1D9D0600985804 /* LinksView.swift */; };
+		5B8117102F1DBE3C00985804 /* LinksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81170F2F1DBE3900985804 /* LinksViewModel.swift */; };
+		5B8117122F1DBE7800985804 /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117112F1DBE7500985804 /* ImportantLinks.swift */; };
+		5B8117132F1DBE7800985804 /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117112F1DBE7500985804 /* ImportantLinks.swift */; };
+		5B8117152F1DC45200985804 /* LinksSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117142F1DC44E00985804 /* LinksSectionView.swift */; };
 		5B93FE122EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */; };
@@ -235,6 +239,9 @@
 		5B8117092F1D6A6E00985804 /* BookingLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLinkView.swift; sourceTree = "<group>"; };
 		5B81170B2F1D983700985804 /* ImportantPhoneNumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPhoneNumView.swift; sourceTree = "<group>"; };
 		5B81170D2F1D9D0600985804 /* LinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksView.swift; sourceTree = "<group>"; };
+		5B81170F2F1DBE3900985804 /* LinksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksViewModel.swift; sourceTree = "<group>"; };
+		5B8117112F1DBE7500985804 /* ImportantLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantLinks.swift; sourceTree = "<group>"; };
+		5B8117142F1DC44E00985804 /* LinksSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksSectionView.swift; sourceTree = "<group>"; };
 		5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacebook.swift; sourceTree = "<group>"; };
 		5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrak.swift; sourceTree = "<group>"; };
 		5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSODormTrak.swift; sourceTree = "<group>"; };
@@ -567,6 +574,7 @@
 				5BE3EE512ECC3491009CDFD3 /* WilliamsRecordViewModel.swift */,
 				5B5597362EC9086800FB82D6 /* DailyMessagesViewModel.swift */,
 				5B5597322EC8F80900FB82D6 /* LibraryHoursViewModel.swift */,
+				5B81170F2F1DBE3900985804 /* LinksViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -622,6 +630,7 @@
 		5BFA32CF2F048D73005D8F5C /* Links */ = {
 			isa = PBXGroup;
 			children = (
+				5B8117142F1DC44E00985804 /* LinksSectionView.swift */,
 				5B81170D2F1D9D0600985804 /* LinksView.swift */,
 				5B81170B2F1D983700985804 /* ImportantPhoneNumView.swift */,
 				5BFA32C32F0312C1005D8F5C /* LogViewerView.swift */,
@@ -664,6 +673,7 @@
 		5BFA32EF2F0C1D60005D8F5C /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				5B8117112F1DBE7500985804 /* ImportantLinks.swift */,
 				5BDEED6A2ED0E62D00E150E6 /* SpinitronMetadata.swift */,
 				5BE3EE442ECBE859009CDFD3 /* WilliamsRecord.swift */,
 				5B10FF9C2EC83CA50021597F /* LibraryHours.swift */,
@@ -895,6 +905,7 @@
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5B9808E62F0C5E7D0001F8D4 /* PastMenuViewModel.swift in Sources */,
 				5BFA32CA2F0360B9005D8F5C /* HomeCardView.swift in Sources */,
+				5B8117152F1DC45200985804 /* LinksSectionView.swift in Sources */,
 				5B05EF2E2ED8F96000802310 /* RestOfWilliamstownView.swift in Sources */,
 				5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */,
 				5BD50F0E2ED9497900806CA7 /* AboutViewModel.swift in Sources */,
@@ -913,6 +924,7 @@
 				5B515FB02EDBC99C00F166A1 /* WCFMPlaylistViewModel.swift in Sources */,
 				5B5597332EC8F80E00FB82D6 /* LibraryHoursViewModel.swift in Sources */,
 				5BFA32CC2F036B4B005D8F5C /* DailyMessagesItemView.swift in Sources */,
+				5B8117102F1DBE3C00985804 /* LinksViewModel.swift in Sources */,
 				5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */,
 				5BDEED642ECF7E9700E150E6 /* SpringStreetRestaurantView.swift in Sources */,
 				5B515FB62EDC8F1300F166A1 /* NavStackShim.swift in Sources */,
@@ -939,6 +951,7 @@
 				5BCDB7FD2EF09506008B438C /* MapPageView.swift in Sources */,
 				5B93FE192EF1FE14008A2C1A /* WSODormTrak.swift in Sources */,
 				5B0A2E8F2ECEC38500DC3485 /* DiningViewModel.swift in Sources */,
+				5B8117132F1DBE7800985804 /* ImportantLinks.swift in Sources */,
 				5B6B99C32EEE16740046B3A7 /* MoreView.swift in Sources */,
 				5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */,
 				5BFA32D22F049446005D8F5C /* WSOBulletinViewModel.swift in Sources */,
@@ -978,6 +991,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BCF0D5B2F01ACE400E702EB /* CopyableViews.swift in Sources */,
+				5B8117122F1DBE7800985804 /* ImportantLinks.swift in Sources */,
 				5B93FE1C2EF1FE1D008A2C1A /* WSOBookTrak.swift in Sources */,
 				5BCF0D5F2F01EA9400E702EB /* UserType.swift in Sources */,
 				5B93FE162EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */,
@@ -1161,7 +1175,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 80;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1200,7 +1214,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 80;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

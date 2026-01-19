@@ -22,46 +22,37 @@
 import SwiftUI
 
 struct LinksView: View {
-    @Environment(\.openURL) private var openURL
+    @State private var viewModel = LinksViewModel()
 
     var body: some View {
         NavigationStack {
             List {
-                Section {
-                    linkRow("Williams College Homepage", url: "https://williams.edu")
-                    linkRow("Williams College Sports", url: "https://ephsports.williams.edu/")
-                    linkRow("Academic Calendar", url: "https://catalog.williams.edu/academic-calendar/")
-                    linkRow("Course Catalog", url: "https://catalog.williams.edu")
-                } header : {
-                    HStack {
-                        Image(systemName: "crown")
-                        Text("Official Stuff")
-                    }
-                }
-                Section {
-                    linkRow("WSO Homepage", url: "https://wso.williams.edu")
-                    linkRow("Willipedia Student Wiki", url: "https://wiki-wso.williams.edu")
-                    linkRow("Listserv Interface", url: "https://listserv-wso.williams.edu")
-                    linkRow("WSO GitHub ", url: "https://github.com/WilliamsStudentsOnline")
-                    linkRow("WSO Server Status ", url: "https://status-wso.williams.edu/")
-                } header : {
-                    HStack {
-                        Image(systemName: "network")
-                        Text("Williams Students Online")
-                    }
-                }
-                Section {
-                    linkRow("Department Homepage", url: "https://geosciences.williams.edu")
-                    linkRow("Future Course Planner", url: "https://geosciences.williams.edu/the-major/major-requirements/")
-                } header: {
-                    HStack {
-                        Image(systemName: "fossil.shell")
-                        Text("Geosciences Department")
+                if viewModel.isLoading {
+                    ProgressView()
+                } else if let err = viewModel.error {
+                    Text(err.localizedDescription).foregroundStyle(Color.red)
+                } else {
+                    ForEach(viewModel.data, id: \.id) { section in
+                        NavigationLink(destination: LinksSectionView(links: section)) {
+                            HStack {
+                                if let objectSymbol = section.header.sfSymbol {
+                                    Label(section.header.title, systemImage: objectSymbol)
+                                } else {
+                                    Text(section.header.title)
+                                }
+                            }
+                        }
                     }
                 }
             }
+            .task {
+                await viewModel.fetchIfNeeded()
+            }
+            .refreshable {
+                await viewModel.forceRefresh()
+            }
             .navigationBarTitle("Important Links")
-            .modifier(NavSubtitleIfAvailable(subtitle: "Links shared by the campus community"))
+            .modifier(NavSubtitleIfAvailable(subtitle: "Last updated: \(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")"))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack {
@@ -72,21 +63,6 @@ struct LinksView: View {
                         })
                     }
                 }
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func linkRow(_ title: String, url: String) -> some View {
-        Button {
-            guard let u = URL(string: url) else { return }
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            openURL(u)
-        } label: {
-            HStack {
-                Text(title)
-                Spacer()
-                Image(systemName: "chevron.right")
             }
         }
     }

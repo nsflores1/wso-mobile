@@ -90,6 +90,21 @@ struct ImportantPhoneNumView: View {
                             }
                         }
                     }
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: "tel://413-597-2486")!)
+                    }) {
+                        HStack {
+                            Image(systemName: "phone")
+                            VStack(alignment: .leading) {
+                                Text("Facilities Help line")
+                                    .fontWeight(.regular)
+                                    .font(.title3)
+                                Text("413-597-2486")
+                                    .fontWeight(.regular)
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
                 }
             }
             .navigationTitle(Text("Emergency Numbers"))
