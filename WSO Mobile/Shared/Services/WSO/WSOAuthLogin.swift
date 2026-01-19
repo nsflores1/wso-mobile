@@ -44,11 +44,11 @@ func WSOIdentityLogin(password: String, unixID: String) async throws -> WSOAuthL
 
 // takes an identitytoken, returns a NEW apitoken with a new timestamp
 // note that we don't pass it as an argument because we'll use the one from the authentication manager
-func WSOAPIRefresh(identityToken: String) async throws -> WSOAuthLogin {
+func WSOAPIRefresh(apiToken: String) async throws -> WSOAuthLogin {
     let logger = Logger(label: "com.wso.WebRequest") // technically not but whatever, this is a web request
     var request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/api/v2/auth/api/refresh")!)
     request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
-    request.headerFields[.authorization] = "Bearer \(identityToken)"
+    request.headerFields[.authorization] = "Bearer \(apiToken)"
 
     let (data, response) = try await URLSession.shared.data(for: request)
     guard let http = response as HTTPResponse?,
