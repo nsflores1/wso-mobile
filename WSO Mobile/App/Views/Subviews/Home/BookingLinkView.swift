@@ -32,9 +32,17 @@ struct BookingLinkView: View {
             }
             VStack {
                 Link(destination: URL(string: "https://music.williams.edu/room-schedules/")!) {
-                    HStack {
-                        Image(systemName: "music.pages")
-                        Text("Music Hall Booking")
+                    // these icons are left out in iOS 18
+                    if #unavailable(iOS 26) {
+                        HStack {
+                            Image(systemName: "music.note")
+                            Text("Music Hall Booking")
+                        }
+                    } else {
+                        HStack {
+                            Image(systemName: "music.pages")
+                            Text("Music Hall Booking")
+                        }
                     }
                 }
             }
@@ -44,7 +52,12 @@ struct BookingLinkView: View {
                     .fontWeight(.semibold)
                     .font(.title3)
                 Spacer()
-                Image(systemName: "ellipsis.calendar")
+                // these icons are left out in iOS 18
+                if #unavailable(iOS 26) {
+                    Image(systemName: "calendar")
+                } else {
+                    Image(systemName: "ellipsis.calendar")
+                }
             }
         }
     }

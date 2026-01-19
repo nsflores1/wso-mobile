@@ -128,15 +128,15 @@ struct SettingsView: View {
                         .font(.title3)
                 }
                 Section {
-                    Toggle("Hide Dining Menus", isOn: $diningIsShown)
+                    Toggle("Show Dining Menus", isOn: $diningIsShown)
                         .simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         })
-                    Toggle("Hide News Reader", isOn: $newsIsShown)
+                    Toggle("Show News Reader", isOn: $newsIsShown)
                         .simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         })
-                    Toggle("Hide WCFM Player", isOn: $wcfmIsShown)
+                    Toggle("Show WCFM Player", isOn: $wcfmIsShown)
                         .simultaneousGesture(TapGesture().onEnded {
                             Task {
                                 if !wcfmIsShown && whimsyEnabled {
@@ -156,7 +156,7 @@ struct SettingsView: View {
                             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         })
                 } header : {
-                    Text("Hide Sections")
+                    Text("Show Sections")
                         .fontWeight(.semibold)
                         .font(.title3)
                 }

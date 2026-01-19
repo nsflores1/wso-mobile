@@ -40,6 +40,16 @@ struct DiningView: View {
                 // ALL dining hours stuff lives in here,
                 // not just the dining hall ones.
                 List {
+                    // subtitles not shown in iOS 26, so present timestamp another way
+                    if #unavailable(iOS 26) {
+                        Section {
+                            Text("\(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")")
+                        } header: {
+                            Text("Last Updated")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                        }
+                    }
                     if (hatesEatingOut == false) {
                         Section {
                             NavigationLink("Ephelia's Roots") {

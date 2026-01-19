@@ -38,29 +38,44 @@ struct WilliamsRecordView: View {
                 }
             }
             if !viewModel.isLoading && viewModel.error == nil {
-                ForEach(viewModel.posts.sorted(), id: \.title) { post in
-                    NavigationLink() {
-                        WilliamsRecordArticleView(article: post)
-                    } label: {
-                        VStack {
-                            HStack {
-                                Text(post.title)
-                                    .multilineTextAlignment(.leading)
-                            }.frame(maxWidth: .infinity, alignment: .leading)
-                            HStack {
-                                Image(systemName: "person")
-                                Text(post.author)
-                                    .multilineTextAlignment(.leading)
-                            }.frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle(Color.secondary)
-                            HStack {
-                                Image(systemName: "clock")
-                                Text(post.pubDate.shorterDisplay)
-                                    .multilineTextAlignment(.leading)
-                            }.frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundStyle(Color.secondary)
-                        }
-                    }.transition(.move(edge: .trailing).combined(with: .opacity))
+                if #unavailable(iOS 26) {
+                    Section {
+                        Text("\(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")")
+                    } header: {
+                        Text("Last Updated")
+                            .fontWeight(.semibold)
+                            .font(.title3)
+                    }
+                }
+                Section {
+                    ForEach(viewModel.posts.sorted(), id: \.title) { post in
+                        NavigationLink() {
+                            WilliamsRecordArticleView(article: post)
+                        } label: {
+                            VStack {
+                                HStack {
+                                    Text(post.title)
+                                        .multilineTextAlignment(.leading)
+                                }.frame(maxWidth: .infinity, alignment: .leading)
+                                HStack {
+                                    Image(systemName: "person")
+                                    Text(post.author)
+                                        .multilineTextAlignment(.leading)
+                                }.frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundStyle(Color.secondary)
+                                HStack {
+                                    Image(systemName: "clock")
+                                    Text(post.pubDate.shorterDisplay)
+                                        .multilineTextAlignment(.leading)
+                                }.frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundStyle(Color.secondary)
+                            }
+                        }.transition(.move(edge: .trailing).combined(with: .opacity))
+                    }
+                } header: {
+                    Text("Williams Record")
+                        .fontWeight(.semibold)
+                        .font(.title3)
                 }
             }
         }
