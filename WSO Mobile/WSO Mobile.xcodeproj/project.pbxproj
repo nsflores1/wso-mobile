@@ -10,7 +10,7 @@
 		5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */; };
 		5B05EF242ED8EF9100802310 /* OnboardingOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF232ED8EF8D00802310 /* OnboardingOneView.swift */; };
 		5B05EF262ED8EF9B00802310 /* OnboardingTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF252ED8EF9800802310 /* OnboardingTwoView.swift */; };
-		5B05EF282ED8EFA300802310 /* OnboardingThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF272ED8EF9E00802310 /* OnboardingThreeView.swift */; };
+		5B05EF282ED8EFA300802310 /* OnboardingFiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF272ED8EF9E00802310 /* OnboardingFiveView.swift */; };
 		5B05EF2A2ED8F92E00802310 /* EpheliasRootsHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF292ED8F92A00802310 /* EpheliasRootsHours.swift */; };
 		5B05EF2E2ED8F96000802310 /* RestOfWilliamstownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF2D2ED8F95400802310 /* RestOfWilliamstownView.swift */; };
 		5B05EF322ED8F98800802310 /* SpringStreetCafesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B05EF312ED8F98300802310 /* SpringStreetCafesView.swift */; };
@@ -73,6 +73,12 @@
 		5B8117122F1DBE7800985804 /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117112F1DBE7500985804 /* ImportantLinks.swift */; };
 		5B8117132F1DBE7800985804 /* ImportantLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117112F1DBE7500985804 /* ImportantLinks.swift */; };
 		5B8117152F1DC45200985804 /* LinksSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117142F1DC44E00985804 /* LinksSectionView.swift */; };
+		5B8117172F1DD7BA00985804 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117162F1DD7B600985804 /* PrivacyPolicyView.swift */; };
+		5B8117192F1DD7FF00985804 /* PrivacyPolicyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117182F1DD7FA00985804 /* PrivacyPolicyTextView.swift */; };
+		5B81171B2F1DDBC000985804 /* SoftwareLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81171A2F1DDBB600985804 /* SoftwareLicenseView.swift */; };
+		5B81171D2F1DDBCB00985804 /* SoftwareLicenseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81171C2F1DDBC400985804 /* SoftwareLicenseTextView.swift */; };
+		5B81171F2F1DE10F00985804 /* OnboardingThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B81171E2F1DE10A00985804 /* OnboardingThreeView.swift */; };
+		5B8117212F1DE9CF00985804 /* OnboardingFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8117202F1DE9CB00985804 /* OnboardingFourView.swift */; };
 		5B93FE122EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE132EF1FE05008A2C1A /* WSOFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */; };
 		5B93FE152EF1FE0D008A2C1A /* WSOFacTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */; };
@@ -197,7 +203,7 @@
 		5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5B05EF232ED8EF8D00802310 /* OnboardingOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingOneView.swift; sourceTree = "<group>"; };
 		5B05EF252ED8EF9800802310 /* OnboardingTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTwoView.swift; sourceTree = "<group>"; };
-		5B05EF272ED8EF9E00802310 /* OnboardingThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThreeView.swift; sourceTree = "<group>"; };
+		5B05EF272ED8EF9E00802310 /* OnboardingFiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFiveView.swift; sourceTree = "<group>"; };
 		5B05EF292ED8F92A00802310 /* EpheliasRootsHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpheliasRootsHours.swift; sourceTree = "<group>"; };
 		5B05EF2D2ED8F95400802310 /* RestOfWilliamstownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestOfWilliamstownView.swift; sourceTree = "<group>"; };
 		5B05EF312ED8F98300802310 /* SpringStreetCafesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringStreetCafesView.swift; sourceTree = "<group>"; };
@@ -242,6 +248,12 @@
 		5B81170F2F1DBE3900985804 /* LinksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksViewModel.swift; sourceTree = "<group>"; };
 		5B8117112F1DBE7500985804 /* ImportantLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantLinks.swift; sourceTree = "<group>"; };
 		5B8117142F1DC44E00985804 /* LinksSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksSectionView.swift; sourceTree = "<group>"; };
+		5B8117162F1DD7B600985804 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		5B8117182F1DD7FA00985804 /* PrivacyPolicyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyTextView.swift; sourceTree = "<group>"; };
+		5B81171A2F1DDBB600985804 /* SoftwareLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareLicenseView.swift; sourceTree = "<group>"; };
+		5B81171C2F1DDBC400985804 /* SoftwareLicenseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareLicenseTextView.swift; sourceTree = "<group>"; };
+		5B81171E2F1DE10A00985804 /* OnboardingThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThreeView.swift; sourceTree = "<group>"; };
+		5B8117202F1DE9CB00985804 /* OnboardingFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFourView.swift; sourceTree = "<group>"; };
 		5B93FE112EF1FDFC008A2C1A /* WSOFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacebook.swift; sourceTree = "<group>"; };
 		5B93FE142EF1FE08008A2C1A /* WSOFacTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrak.swift; sourceTree = "<group>"; };
 		5B93FE172EF1FE11008A2C1A /* WSODormTrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSODormTrak.swift; sourceTree = "<group>"; };
@@ -355,7 +367,9 @@
 		5B05EF212ED8EC1100802310 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				5B05EF272ED8EF9E00802310 /* OnboardingThreeView.swift */,
+				5B05EF272ED8EF9E00802310 /* OnboardingFiveView.swift */,
+				5B8117202F1DE9CB00985804 /* OnboardingFourView.swift */,
+				5B81171E2F1DE10A00985804 /* OnboardingThreeView.swift */,
 				5B05EF252ED8EF9800802310 /* OnboardingTwoView.swift */,
 				5B05EF232ED8EF8D00802310 /* OnboardingOneView.swift */,
 				5B05EF1F2ED8EB5A00802310 /* OnboardingView.swift */,
@@ -630,6 +644,10 @@
 		5BFA32CF2F048D73005D8F5C /* Links */ = {
 			isa = PBXGroup;
 			children = (
+				5B81171C2F1DDBC400985804 /* SoftwareLicenseTextView.swift */,
+				5B81171A2F1DDBB600985804 /* SoftwareLicenseView.swift */,
+				5B8117182F1DD7FA00985804 /* PrivacyPolicyTextView.swift */,
+				5B8117162F1DD7B600985804 /* PrivacyPolicyView.swift */,
 				5B8117142F1DC44E00985804 /* LinksSectionView.swift */,
 				5B81170D2F1D9D0600985804 /* LinksView.swift */,
 				5B81170B2F1D983700985804 /* ImportantPhoneNumView.swift */,
@@ -892,6 +910,7 @@
 				5B05EF242ED8EF9100802310 /* OnboardingOneView.swift in Sources */,
 				5BFAABD02EEDA26800D76F34 /* SettingsView.swift in Sources */,
 				5BE3EE522ECC3499009CDFD3 /* WilliamsRecordViewModel.swift in Sources */,
+				5B81171F2F1DE10F00985804 /* OnboardingThreeView.swift in Sources */,
 				5BD50F182ED9E8BC00806CA7 /* WSOAuthLogin.swift in Sources */,
 				5B4B3EF32EC10C9200277399 /* HomeView.swift in Sources */,
 				5BCF0D612F01EB5A00E702EB /* SettingsKeyView.swift in Sources */,
@@ -899,8 +918,9 @@
 				5B8117042F19955400985804 /* WSORidesViewModel.swift in Sources */,
 				5BCDB7FF2EF0973E008B438C /* LinksKeyView.swift in Sources */,
 				5B9460CB2ECD5E950078DCE2 /* WCFMView.swift in Sources */,
-				5B05EF282ED8EFA300802310 /* OnboardingThreeView.swift in Sources */,
+				5B05EF282ED8EFA300802310 /* OnboardingFiveView.swift in Sources */,
 				5B8117082F199DAF00985804 /* WSORidesItemView.swift in Sources */,
+				5B8117172F1DD7BA00985804 /* PrivacyPolicyView.swift in Sources */,
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5B9808E62F0C5E7D0001F8D4 /* PastMenuViewModel.swift in Sources */,
@@ -937,6 +957,7 @@
 				5BFA32C62F033EB4005D8F5C /* HomeButtonsView.swift in Sources */,
 				5BB76F9C2EC0ED9900A242A1 /* WSOMobileApp.swift in Sources */,
 				5B05EF202ED8EB5E00802310 /* OnboardingView.swift in Sources */,
+				5B8117212F1DE9CF00985804 /* OnboardingFourView.swift in Sources */,
 				5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */,
 				5BDEED6B2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
 				5BCDB8012EF098CE008B438C /* SneakyView.swift in Sources */,
@@ -947,6 +968,8 @@
 				5B3543DE2ED64E7B00A37A56 /* WCFMShowsView.swift in Sources */,
 				5BA37ED02EF08CB30011C245 /* WCFMKeyView.swift in Sources */,
 				5B5597352EC907FD00FB82D6 /* DailyMessagesView.swift in Sources */,
+				5B8117192F1DD7FF00985804 /* PrivacyPolicyTextView.swift in Sources */,
+				5B81171B2F1DDBC000985804 /* SoftwareLicenseView.swift in Sources */,
 				5B05EF2A2ED8F92E00802310 /* EpheliasRootsHours.swift in Sources */,
 				5BCDB7FD2EF09506008B438C /* MapPageView.swift in Sources */,
 				5B93FE192EF1FE14008A2C1A /* WSODormTrak.swift in Sources */,
@@ -962,6 +985,7 @@
 				5BFA32D42F04D21F005D8F5C /* WSOBulletinItemView.swift in Sources */,
 				5BD50F142ED9DEF800806CA7 /* NotificationManager.swift in Sources */,
 				5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */,
+				5B81171D2F1DDBCB00985804 /* SoftwareLicenseTextView.swift in Sources */,
 				5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */,
 				5B81170A2F1D6A7200985804 /* BookingLinkView.swift in Sources */,
 				5BCF0D5E2F01EA9400E702EB /* UserType.swift in Sources */,

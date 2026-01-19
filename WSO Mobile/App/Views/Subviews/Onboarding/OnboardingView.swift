@@ -18,6 +18,8 @@ struct OnboardingView: View {
             OnboardingOneView().tag(0)
             OnboardingTwoView().tag(1)
             OnboardingThreeView().tag(2)
+            OnboardingFourView().tag(3)
+            OnboardingFiveView().tag(4)
         }
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .always))

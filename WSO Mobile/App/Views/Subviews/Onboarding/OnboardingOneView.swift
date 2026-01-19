@@ -11,6 +11,7 @@ import Shimmer
 struct OnboardingOneView: View {
     var body: some View {
         NavigationStack {
+            VStack {
                 let mainText = """
                 You're using WSO Mobile Beta v1.2.2.
                 
@@ -28,8 +29,9 @@ struct OnboardingOneView: View {
                     .shimmering()
                     .padding(5)
                     .multilineTextAlignment(.center)
-                .navigationTitle(Text("Welcome!"))
                 Spacer()
+            }
+            .navigationTitle(Text("Welcome!"))
         }.padding(20)
     }
 }

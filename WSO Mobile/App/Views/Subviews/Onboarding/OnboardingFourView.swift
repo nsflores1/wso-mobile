@@ -1,5 +1,5 @@
 //
-//  OnboardingThreeView.swift
+//  OnboardingFourView.swift
 //  WSO Mobile
 //
 //  Created by Nathaniel Flores on 2026-01-18.
@@ -8,14 +8,14 @@
 import SwiftUI
 import Shimmer
 
-struct OnboardingThreeView: View {
+struct OnboardingFourView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("WSO Mobile requires agreeing to a privacy policy to use the app. Please read the contents before using the app.")
+                Text("WSO Mobile requires agreeing to a software license to use the app. Please read the contents before using the app.")
                     .padding(20)
                     .multilineTextAlignment(.leading)
-                PrivacyPolicyTextView()
+                SoftwareLicenseTextView()
                     .frame(maxWidth: .infinity, maxHeight: 400)
                 Text("Swipe to the left to agree to the policy.")
                     .shimmering()
@@ -23,11 +23,11 @@ struct OnboardingThreeView: View {
                     .multilineTextAlignment(.center)
                 Spacer()
             }
-            .navigationTitle(Text("Privacy Policy"))
+            .navigationTitle(Text("Software License"))
         }.padding(20)
     }
 }
 
 #Preview {
-    OnboardingThreeView()
+    OnboardingFourView()
 }

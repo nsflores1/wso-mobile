@@ -31,6 +31,12 @@ struct MoreView: View {
                         }
                     }
                     .buttonStyle(.plain)
+                    NavigationLink(destination: PrivacyPolicyView()) {
+                        Label("Privacy Policy", systemImage: "document")
+                    }
+                    NavigationLink(destination: SoftwareLicenseView()) {
+                        Label("Software License", systemImage: "document")
+                    }
                     NavigationLink(destination: LinksView()) {
                         Label("Important Links", systemImage: "link")
                     }
@@ -50,7 +56,7 @@ struct MoreView: View {
                     Text("""
                         You're using WSO Mobile Rewritten, version 1.2.0 (beta build 83)!
                         
-                        Please send all feedback to the developers via the "Send Feedback" button. You can also add links to the "Important Links" page by clicking "Suggest Important Link".
+                        Please send all feedback to the developers via the "Send Feedback" button.
                         
                         Thank you as always for using the app!
                         """)
