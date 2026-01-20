@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 @MainActor
 @Observable
@@ -21,6 +22,19 @@ class LibraryHoursViewModel {
     var error: WebRequestError?
     private var hasFetched = false
 
+    // this special function exists for all widget-having ViewModels and allows them
+    // to fetch data and stash it into the widget.
+    func widgetUpdate(_ data: Codable) {
+        if let sharedDefaults = UserDefaults(suiteName: "group.com.WSO") {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(data) {
+                sharedDefaults.set(encoded, forKey: "libraries")
+                // push data out to widgets
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
+    }
+
     func loadHours() async {
         isLoading = true
         error = nil
@@ -31,6 +45,7 @@ class LibraryHoursViewModel {
             maxAge: 3600 * 4 // four hours
         ) {
             self.libraryHours = cached.data
+            widgetUpdate(cached.data)
             self.lastUpdated = cached.timestamp
             self.isLoading = false
             self.error = nil
@@ -39,6 +54,7 @@ class LibraryHoursViewModel {
 
         do {
             let data: [LibraryViewData] = try await parseLibraryHours()
+            widgetUpdate(data)
             self.lastUpdated = Date()
             self.libraryHours = data
             self.error = nil
@@ -66,6 +82,7 @@ class LibraryHoursViewModel {
 
         do {
             let data: [LibraryViewData] = try await parseLibraryHours()
+            widgetUpdate(data)
             self.lastUpdated = Date()
             self.libraryHours = data
             self.error = nil

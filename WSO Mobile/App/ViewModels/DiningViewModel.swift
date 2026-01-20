@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Logging
+import WidgetKit
 
 @MainActor
 @Observable
@@ -21,14 +22,19 @@ class DiningHoursViewModel {
     var error: WebRequestError?
     private var hasFetched = false
 
-    // TODO: this needs a rewrite as follows:
-    // - loadMenus() should take an optional argument for fetching a specific day
-    // - new function loadDays() should fetch the list of days. if that fails,
-    //   gracefully degrade to normal one-day performance.
-    // - we need a way to compare dates. by looking at them, we should be able to
-    //   determine if the date is over a week old and then purge it from user cache,
-    //   which clearCache() should do with a wildcard file operation since
-    //   enumerating the days is too hard
+    // this special function exists for all widget-having ViewModels and allows them
+    // to fetch data and stash it into the widget.
+    func widgetUpdate(_ data: Codable) {
+        if let sharedDefaults = UserDefaults(suiteName: "group.com.WSO") {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(data) {
+                sharedDefaults.set(encoded, forKey: "halls")
+                // push data out to widgets
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
+    }
+
     func loadMenus() async {
         isLoading = true
         error = nil
@@ -39,6 +45,7 @@ class DiningHoursViewModel {
             maxAge: 3600 * 1 // four hours
         ) {
             self.diningMenu = cached.data
+            widgetUpdate(cached.data)
             self.lastUpdated = cached.timestamp
             self.isLoading = false
             self.error = nil
@@ -47,6 +54,7 @@ class DiningHoursViewModel {
 
         do {
             let data: [DiningHall] = try await parseWilliamsDining()
+            widgetUpdate(data)
             self.lastUpdated = Date()
             self.diningMenu = data
             self.error = nil
@@ -64,6 +72,7 @@ class DiningHoursViewModel {
     }
 
     // this can load in the background, it's fine. no need to block
+    // this isn't critical, so we don't err if it explodes
     func loadDays() async {
         if let cached: TimestampedData<[Date]> = await cache.load(
             [Date].self,
@@ -93,6 +102,7 @@ class DiningHoursViewModel {
         guard !hasFetched else { return }
         hasFetched = true
         await loadMenus()
+        // realistically, nobody should be using this, but we'll put it here anyways
         await loadDays()
     }
 
@@ -101,6 +111,7 @@ class DiningHoursViewModel {
 
         do {
             let data: [DiningHall] = try await parseWilliamsDining()
+            widgetUpdate(data)
             self.lastUpdated = Date()
             self.diningMenu = data
             self.error = nil
@@ -115,6 +126,7 @@ class DiningHoursViewModel {
         }
 
         // then, once we've got the main menu, then fetch last ones
+        // this isn't critical, so we don't err if it explodes
         do {
             let dateData: [Date] = try await getListPastWilliamsDiningMenus()
             try await cache.save(dateData, to: "viewmodelstate_dining_menus_past_list.json")

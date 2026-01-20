@@ -58,6 +58,8 @@
 		5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */; };
 		5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */; };
 		5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */; };
+		5B77241A2F1F28E600AAF049 /* Dining WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5B7724072F1F28E500AAF049 /* Dining WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B7724522F1F38BE00AAF049 /* Library WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5B7724452F1F38BD00AAF049 /* Library WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */; };
 		5B7F6EA32EECA40C00895BB3 /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */; };
 		5B7F6EA42EECA40C00895BB3 /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */; };
@@ -161,6 +163,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5B7724182F1F28E600AAF049 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BEB32472EBFD7F300F75A10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B7724062F1F28E500AAF049;
+			remoteInfo = "Dining WidgetExtension";
+		};
+		5B7724502F1F38BE00AAF049 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BEB32472EBFD7F300F75A10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B7724442F1F38BD00AAF049;
+			remoteInfo = "Library WidgetExtension";
+		};
 		5BEB325D2EBFD7F400F75A10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5BEB32472EBFD7F300F75A10 /* Project object */;
@@ -196,6 +212,18 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		5BEE24DD2F1EF8B200BA3311 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5B77241A2F1F28E600AAF049 /* Dining WidgetExtension.appex in Embed Foundation Extensions */,
+				5B7724522F1F38BE00AAF049 /* Library WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -236,6 +264,10 @@
 		5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningVendorView.swift; sourceTree = "<group>"; };
 		5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningCoursesView.swift; sourceTree = "<group>"; };
 		5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningItemsView.swift; sourceTree = "<group>"; };
+		5B7724072F1F28E500AAF049 /* Dining WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dining WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B7724222F1F2DDD00AAF049 /* Dining WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dining WidgetExtension.entitlements"; sourceTree = "<group>"; };
+		5B7724452F1F38BD00AAF049 /* Library WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Library WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B7724592F1F3B2200AAF049 /* Library WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Library WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileCLI.swift; sourceTree = "<group>"; };
 		5B7F6EA22EECA3FF00895BB3 /* WebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequest.swift; sourceTree = "<group>"; };
 		5B8117002F19939800985804 /* WSORides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSORides.swift; sourceTree = "<group>"; };
@@ -266,6 +298,7 @@
 		5B9808E52F0C5E790001F8D4 /* PastMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastMenuViewModel.swift; sourceTree = "<group>"; };
 		5BA37ECF2EF08CB00011C245 /* WCFMKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCFMKeyView.swift; sourceTree = "<group>"; };
 		5BA6E8FC2F18540D0064A1FE /* WSOClassic.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = WSOClassic.icon; sourceTree = "<group>"; };
+		5BB381542F1F202400A365EE /* WSOMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WSOMobile.entitlements; sourceTree = "<group>"; };
 		5BB76F952EC0ED7500A242A1 /* WSOMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileTests.swift; sourceTree = "<group>"; };
 		5BB76F972EC0ED7500A242A1 /* WSOMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileUITests.swift; sourceTree = "<group>"; };
 		5BB76F982EC0ED7500A242A1 /* WSOMobileUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOMobileUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -317,7 +350,57 @@
 		5BFAABCF2EEDA26400D76F34 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5B7724242F1F329200AAF049 /* Exceptions for "Dining Widget" folder in "Dining WidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5B7724062F1F28E500AAF049 /* Dining WidgetExtension */;
+		};
+		5B7724532F1F38BE00AAF049 /* Exceptions for "Library Widget" folder in "Library WidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5B7724442F1F38BD00AAF049 /* Library WidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5B77240A2F1F28E500AAF049 /* Dining Widget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5B7724242F1F329200AAF049 /* Exceptions for "Dining Widget" folder in "Dining WidgetExtension" target */,
+			);
+			path = "Dining Widget";
+			sourceTree = "<group>";
+		};
+		5B7724482F1F38BD00AAF049 /* Library Widget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5B7724532F1F38BE00AAF049 /* Exceptions for "Library Widget" folder in "Library WidgetExtension" target */,
+			);
+			path = "Library Widget";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		5B7724042F1F28E500AAF049 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B7724422F1F38BD00AAF049 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEB324C2EBFD7F300F75A10 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -446,13 +529,6 @@
 			path = WSOAuth;
 			sourceTree = "<group>";
 		};
-		5B71D5F62EC802790051ABF5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		5BB76F962EC0ED7500A242A1 /* WSOMobileTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,10 +584,14 @@
 		5BEB32462EBFD7F300F75A10 = {
 			isa = PBXGroup;
 			children = (
+				5B7724592F1F3B2200AAF049 /* Library WidgetExtension.entitlements */,
+				5B7724222F1F2DDD00AAF049 /* Dining WidgetExtension.entitlements */,
+				5BB381542F1F202400A365EE /* WSOMobile.entitlements */,
 				5BEB32872EBFD9AB00F75A10 /* Shared */,
 				5BEB32852EBFD8A600F75A10 /* CLI */,
 				5BEB32842EBFD89700F75A10 /* App */,
-				5B71D5F62EC802790051ABF5 /* Frameworks */,
+				5B77240A2F1F28E500AAF049 /* Dining Widget */,
+				5B7724482F1F38BD00AAF049 /* Library Widget */,
 				5BEB32502EBFD7F300F75A10 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -523,6 +603,8 @@
 				5BEB325C2EBFD7F400F75A10 /* WSOMobileTests.xctest */,
 				5BEB32662EBFD7F400F75A10 /* WSOMobileUITests.xctest */,
 				5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */,
+				5B7724072F1F28E500AAF049 /* Dining WidgetExtension.appex */,
+				5B7724452F1F38BD00AAF049 /* Library WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -704,6 +786,50 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B7724062F1F28E500AAF049 /* Dining WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B77241C2F1F28E600AAF049 /* Build configuration list for PBXNativeTarget "Dining WidgetExtension" */;
+			buildPhases = (
+				5B7724032F1F28E500AAF049 /* Sources */,
+				5B7724042F1F28E500AAF049 /* Frameworks */,
+				5B7724052F1F28E500AAF049 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5B77240A2F1F28E500AAF049 /* Dining Widget */,
+			);
+			name = "Dining WidgetExtension";
+			packageProductDependencies = (
+			);
+			productName = "Dining WidgetExtension";
+			productReference = 5B7724072F1F28E500AAF049 /* Dining WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		5B7724442F1F38BD00AAF049 /* Library WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B7724542F1F38BE00AAF049 /* Build configuration list for PBXNativeTarget "Library WidgetExtension" */;
+			buildPhases = (
+				5B7724412F1F38BD00AAF049 /* Sources */,
+				5B7724422F1F38BD00AAF049 /* Frameworks */,
+				5B7724432F1F38BD00AAF049 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5B7724482F1F38BD00AAF049 /* Library Widget */,
+			);
+			name = "Library WidgetExtension";
+			packageProductDependencies = (
+			);
+			productName = "Library WidgetExtension";
+			productReference = 5B7724452F1F38BD00AAF049 /* Library WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		5BEB324E2EBFD7F300F75A10 /* WSOMobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BEB32702EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSOMobile" */;
@@ -712,10 +838,13 @@
 				5BEB324C2EBFD7F300F75A10 /* Frameworks */,
 				5BEB324D2EBFD7F300F75A10 /* Resources */,
 				5B2FCB1E2ECE594400A960F3 /* Embed Watch Content */,
+				5BEE24DD2F1EF8B200BA3311 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5B7724192F1F28E600AAF049 /* PBXTargetDependency */,
+				5B7724512F1F38BE00AAF049 /* PBXTargetDependency */,
 			);
 			name = WSOMobile;
 			packageProductDependencies = (
@@ -805,9 +934,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2610;
+				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					5B7724062F1F28E500AAF049 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					5B7724442F1F38BD00AAF049 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					5BEB324E2EBFD7F300F75A10 = {
 						CreatedOnToolsVersion = 26.1;
 					};
@@ -853,11 +988,27 @@
 				5BEB325B2EBFD7F400F75A10 /* WSOMobileTests */,
 				5BEB32652EBFD7F400F75A10 /* WSOMobileUITests */,
 				5BEB327C2EBFD83200F75A10 /* WSOMobileCLI */,
+				5B7724062F1F28E500AAF049 /* Dining WidgetExtension */,
+				5B7724442F1F38BD00AAF049 /* Library WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B7724052F1F28E500AAF049 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B7724432F1F38BD00AAF049 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEB324D2EBFD7F300F75A10 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -888,6 +1039,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B7724032F1F28E500AAF049 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B7724412F1F38BD00AAF049 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEB324B2EBFD7F300F75A10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1049,6 +1214,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5B7724192F1F28E600AAF049 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B7724062F1F28E500AAF049 /* Dining WidgetExtension */;
+			targetProxy = 5B7724182F1F28E600AAF049 /* PBXContainerItemProxy */;
+		};
+		5B7724512F1F38BE00AAF049 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B7724442F1F38BD00AAF049 /* Library WidgetExtension */;
+			targetProxy = 5B7724502F1F38BE00AAF049 /* PBXContainerItemProxy */;
+		};
 		5BEB325E2EBFD7F400F75A10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5BEB324E2EBFD7F300F75A10 /* WSOMobile */;
@@ -1062,6 +1237,134 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5B77241D2F1F28E600AAF049 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Dining WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 95;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dining Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dining Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.Dining-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B77241E2F1F28E600AAF049 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Dining WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 95;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dining Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dining Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.Dining-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5B7724552F1F38BE00AAF049 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Library WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Library Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Library Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.Library-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B7724562F1F38BE00AAF049 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Library WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Library Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Library Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.Library-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		5BEB326E2EBFD7F400F75A10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1070,6 +1373,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_STICKER_CONTENT = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1138,6 +1442,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_STICKER_CONTENT = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1198,6 +1503,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = EpheliaPurple;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = WSOMobile.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 95;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
@@ -1237,6 +1543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = EpheliaPurple;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = WSOMobile.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 95;
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
@@ -1388,6 +1695,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B77241C2F1F28E600AAF049 /* Build configuration list for PBXNativeTarget "Dining WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B77241D2F1F28E600AAF049 /* Debug */,
+				5B77241E2F1F28E600AAF049 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B7724542F1F38BE00AAF049 /* Build configuration list for PBXNativeTarget "Library WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B7724552F1F38BE00AAF049 /* Debug */,
+				5B7724562F1F38BE00AAF049 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5BEB324A2EBFD7F300F75A10 /* Build configuration list for PBXProject "WSO Mobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
