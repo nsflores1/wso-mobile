@@ -32,7 +32,9 @@ enum KeychainError: Error {
 @MainActor
 @Observable
 class AuthManager {
-    fileprivate let logger = Logger(label: "com.wso.AuthManager")
+    // static instance prevents object recreation
+    private static let _logger = Logger(label: "com.wso.AuthManager")
+    private var logger: Logger { Self._logger }
     static let shared = AuthManager()
 
     private var keychainKey = "com.wsomobile.authToken"
@@ -90,9 +92,13 @@ class AuthManager {
         logger.debug("Adding SecItemAdd")
         let status = SecItemAdd(query as CFDictionary, nil)
         guard status == errSecSuccess else {
-            logger.debug("something's fucked up on save!!! abort!!!")
+            logger.debug("Something's fucked up on save!!! Abandon ship!!!")
             throw NSError(domain: "keychain", code: Int(status))
         }
+        logger.debug("Updating built-in tokens...")
+        self.tokens = tokens
+        self.tokenExpiry = tokens.authExpiry
+        logger.debug("Update complete. New token expires at \(tokens.authExpiry.shortDisplay)")
     }
 
     private func load() throws -> StoredTokens {
@@ -114,7 +120,7 @@ class AuthManager {
         let status = SecItemCopyMatching(query as CFDictionary, &item)
         guard status == errSecSuccess,
               let data = item as? Data else {
-            logger.debug("something's fucked up on load!!! abort!!!")
+            logger.debug("Something's fucked up on load!!! Abandon ship!!!")
             throw NSError(domain: "keychain", code: Int(status))
         }
 
@@ -139,13 +145,16 @@ class AuthManager {
         logger.debug("Loading token from memory...")
         let tokens: StoredTokens? = try load()
         guard let tokens else { throw KeychainError.noToken }
+        logger.debug("Tokens are loaded")
         let response: WSOAuthLogin? = try await WSOAPIRefresh(apiToken: tokens.authToken)
         guard let response else { throw KeychainError.authenticationFailed }
 
+        logger.debug("Checking for response data...")
         guard let update = response.data?.token else {
             throw KeychainError.noRefreshToken
         }
 
+        logger.debug("The new token will be added to the keychain now.")
         let updated = StoredTokens(
             identityToken: tokens.identityToken,
             authToken: update,
@@ -154,16 +163,19 @@ class AuthManager {
 
         try save(updated)
         self.isAuthenticated = true
+        logger.debug("Token refresh complete!")
         return update
     }
 
     func deleteToken() {
+        logger.debug("Preparing to delete token...")
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: AuthManager.server,
             kSecAttrAccount as String: AuthManager.account
         ]
         SecItemDelete(query as CFDictionary)
+        logger.debug("Token deletion complete")
     }
 
     func wipeAppKeychain() {
@@ -181,6 +193,7 @@ class AuthManager {
             ]
             SecItemDelete(query as CFDictionary)
         }
+        logger.debug("All tokens are wiped!")
     }
 
     func login(username: String, password: String) async throws {

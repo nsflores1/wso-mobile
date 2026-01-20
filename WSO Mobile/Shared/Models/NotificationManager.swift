@@ -25,8 +25,12 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
 @available(macOS 14.0, *)
 @MainActor
 @Observable
+// the NSObject is legacy, unfortunately. apple made this the only sane way to do it
+// TODO: modernize this once apple gets it together
 class NotificationManager: NSObject {
-    fileprivate let logger = Logger(label: "com.wso.NotificationManager")
+    // static instance prevents object recreation
+    private static let _logger = Logger(label: "com.wso.NotificationManager")
+    private var logger: Logger { Self._logger }
     static let shared = NotificationManager()
 
     var isAuthorized = false
@@ -64,7 +68,7 @@ class NotificationManager: NSObject {
         let id = identifier ?? UUID().uuidString
 
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        logger.trace("New notification scheduled: \(request)")
+        logger.debug("New notification scheduled: \(request)")
         try? await center.add(request)
     }
 
