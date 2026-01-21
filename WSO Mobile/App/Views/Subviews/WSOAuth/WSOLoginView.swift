@@ -127,7 +127,7 @@ struct WSOLoginView: View {
                                     debug: \(context.debugDescription)
                                     """)
                                 @unknown default:
-                                    logger.error("Unknown decode error: \(String(reflecting: error))")
+                                    logger.error("Unexpected decode error: \(String(reflecting: error))")
                             }
                             generator.notificationOccurred(.error)
                             failedLogin(error.localizedDescription)

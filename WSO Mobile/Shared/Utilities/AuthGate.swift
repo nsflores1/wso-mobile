@@ -8,10 +8,12 @@
 // used for gating views.
 
 import SwiftUI
+import Logging
 
 struct AuthGate<Content: View>: View {
     @State var authManager = AuthManager.shared
     @State var isLoading: Bool = true
+    @Environment(\.logger) private var logger
 
     let content: () -> Content
 
@@ -47,6 +49,7 @@ struct AuthGate<Content: View>: View {
             withAnimation(.easeInOut(duration: 0.25)) {
                 isLoading = false
             }
+            logger.error("Failed to get token: \(error.localizedDescription)")
         }
     }
 }

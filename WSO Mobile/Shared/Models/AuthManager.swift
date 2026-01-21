@@ -28,6 +28,35 @@ enum KeychainError: Error {
     case notImplemented
 }
 
+extension KeychainError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+            case .noUsername:
+                return "No username found in keychain."
+            case .noToken:
+                return "No token found in keychain."
+            case .noRefreshToken:
+                return "No refresh token found in keychain."
+            case .invalidToken:
+                return "Token is invalid."
+            case .encodingFailed:
+                return "Failed to encode data to store in keychain."
+            case .saveFailed:
+                return "Failure to save data to keychain."
+            case .authenticationFailed:
+                return "Failed to authenticate with server."
+            case .refreshFailed:
+                return "Failed to refresh token."
+            case .biometricsFailed:
+                return "Biometric authentication failed."
+            case .biometricsExhausted:
+                return "Biometric authentication has been exhausted."
+            case .notImplemented:
+                return "If you're seeing this message, contact a WSO dev. Something is REALLY wrong with your iPhone."
+        }
+    }
+}
+
 @available(macOS 14.0, *)
 @MainActor
 @Observable
@@ -134,6 +163,9 @@ class AuthManager {
         if tokens.authExpiry > Date() {
             logger.debug("Loading token from memory success, in cache")
             self.isAuthenticated = true
+            // give a refresh a try, since we've succeeded, it can't hurt
+            // this will artificially make it feel like it's longer until next refresh
+            let _ = try await refreshToken()
             return tokens.authToken
         } else {
             logger.debug("Loading token is out of date, retrying now...")
@@ -146,11 +178,20 @@ class AuthManager {
         let tokens: StoredTokens? = try load()
         guard let tokens else { throw KeychainError.noToken }
         logger.debug("Tokens are loaded")
+
+        // reminder for our new dev friends: response is SHADOWED in these blocks.
+
+        // first try the API refresh
         let response: WSOAuthLogin? = try await WSOAPIRefresh(apiToken: tokens.authToken)
-        guard let response else { throw KeychainError.authenticationFailed }
+        if response == nil {
+            // now try the identity token refresh
+            let response: WSOAuthLogin? = try await WSOAPILogin(identityToken: tokens.identityToken)
+            // if that somehow fucks up too, we need a full reauth
+            if response == nil { throw KeychainError.invalidToken }
+        }
 
         logger.debug("Checking for response data...")
-        guard let update = response.data?.token else {
+        guard let update = response?.data?.token else {
             throw KeychainError.noRefreshToken
         }
 
@@ -203,6 +244,12 @@ class AuthManager {
         if identityToken.data?.token != nil {
             logger.info("Identity token successfully fetched")
             logger.debug("Identity token data: \(identityToken.data!.token!)")
+            do {
+                let date: Date = try decode(jwt: identityToken.data!.token!).expiresAt!
+                logger.debug("Identity token expiry date: \(date)")
+            } catch {
+                logger.critical("Unable to decode date from identity token. Something is REALLY wrong. Contact a WSO admin.")
+            }
             logger.info("Auth token is being fetched...")
 
             let apiToken = try await WSOAPILogin(identityToken: identityToken.data!.token!)
@@ -216,7 +263,12 @@ class AuthManager {
                     authExpiry: try decode(jwt: apiToken.data!.token!).expiresAt!
                 )
                 // if we get to this point it def exists so unwrap ok
-                try save(self.tokens!)
+                do {
+                    try save(self.tokens!)
+                } catch {
+                    logger.critical("iOS is out of storage? Seriously? Please file a bug report.")
+                    throw KeychainError.saveFailed
+                }
                 self.isAuthenticated = true
             } else {
                 logger.error("Auth token could not be fetched")

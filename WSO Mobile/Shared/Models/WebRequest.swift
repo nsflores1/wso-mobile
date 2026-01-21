@@ -45,7 +45,7 @@ extension WebRequestError: LocalizedError {
             case .noToken:
                 return "No token found for authentication, or token is invalid."
             case .invalidResponse(let error):
-                return "Invalid response from server: \(error.status)."
+                return "Invalid response from server: \(error.status)"
             case .internalFailure:
                 return "Failed to process data."
             case .noParser:
@@ -106,6 +106,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             guard let http = response as HTTPResponse?,
                   (200..<300).contains(http.status.code) else {
                 logger.error("GET request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
+                logger.error("GET: Emergency core dump: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                 throw WebRequestError.invalidResponse(response)
             }
             logger.debug("GET success: the request HTTP status was \(response.status)")
@@ -142,6 +143,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
             guard let http = response as HTTPResponse?,
                   (200..<300).contains(http.status.code) else {
                 logger.error("GET (auth) request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
+                logger.error("GET (auth): Emergency core dump: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                 throw WebRequestError.invalidResponse(response)
             }
             logger.debug("GET (auth) success: the request HTTP status was \(response.status)")
@@ -176,6 +178,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
                     logger.error("POST request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
+                    logger.error("POST: Emergency core dump: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                     throw WebRequestError.invalidResponse(response)
                 }
                 logger.debug("POST success: the request HTTP status was \(response.status)")
@@ -194,6 +197,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
                     logger.error("POST request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
+                    logger.error("POST: Emergency core dump: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                     throw WebRequestError.invalidResponse(response)
                 }
                 logger.debug("POST success: the request HTTP status was \(response.status)")
@@ -230,6 +234,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
                     logger.error("POST (auth) request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
+                    logger.error("POST (auth): Emergency core dump: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                     throw WebRequestError.invalidResponse(response)
                 }
                 logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
@@ -248,6 +253,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
                 guard let http = response as HTTPResponse?,
                       (200..<300).contains(http.status.code) else {
                     logger.error("POST (auth) request to \(internalURL) failed due to invalid HTTP response: \(response.status)")
+                    logger.error("POST (auth): Emergency core dump: \(String(decoding: data, as: UTF8.self).truncated(to: 20480))")
                     throw WebRequestError.invalidResponse(response)
                 }
                 logger.debug("POST (auth) success: the request HTTP status was \(response.status)")
