@@ -86,7 +86,12 @@ struct ProfileView: View {
                     }.frame(maxWidth: .infinity, alignment: .center)
                     VStack(alignment: .leading) {
                         Section {
-                            Text("Unix: ").bold() + Text(viewModel.data?.unixID ?? "...").italic() + Text("@williams.edu")
+                            HStack {
+                                Text("Unix:").bold()
+                                let email = "\(viewModel.data?.unixID ?? "Loading...")@williams.edu"
+                                let url = URL(string: "mailto:\(email)")!
+                                Link(email, destination: url)
+                            }
                             if let department = viewModel.data?.department {
                                 Text("Department: ").bold() + Text(department.name)
                             }
@@ -104,23 +109,30 @@ struct ProfileView: View {
                             if let suBox = viewModel.data?.suBox {
                                 Text("SU Box: ").bold() + Text(suBox)
                             }
-                            // some shenanigains with the hometown.
-                            // swift really doesn't like conditional text,
-                            // but this is a nice functional way of handling it.
-                            let parts: [Text] = [
-                                viewModel.data?.homeTown.map {
-                                    Text("Hometown: ").bold() + Text($0)
-                                },
-                                viewModel.data?.homeState.map {
-                                    Text(", \($0)")
-                                },
-                                viewModel.data?.homeCountry.map {
-                                    Text(", \($0)")
-                                }
-                            ].compactMap { $0 }
                             // this shows the hometown by checking if we're allowed to
-                            if let showHome = viewModel.data?.homeVisible {
-                                if showHome { parts.reduce(Text(""), +) }
+                            if viewModel.data?.homeVisible != nil && viewModel.data?.homeVisible == true  {
+                                let locationString = [
+                                    viewModel.data?.homeTown,
+                                    viewModel.data?.homeState,
+                                    viewModel.data?.homeCountry
+                                ]
+                                    .compactMap { $0 }
+                                    .joined(separator: ", ")
+
+                                let encoded = locationString.addingPercentEncoding(
+                                    withAllowedCharacters: .urlQueryAllowed
+                                )
+
+                                let url = URL(
+                                    string: "http://maps.apple.com/?q=\(encoded ?? "")"
+                                )!
+
+                                HStack {
+                                    Text("Hometown:").bold()
+                                    Link(destination: url) {
+                                        Text(locationString)
+                                    }
+                                }
                             }
                             if viewModel.data?.pronoun?.isEmpty == false {
                                 Text("Pronouns: ").bold() + Text(viewModel.data?.pronoun ?? "Loading...")
