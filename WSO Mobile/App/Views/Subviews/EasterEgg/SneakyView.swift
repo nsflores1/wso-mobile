@@ -105,6 +105,10 @@ struct SneakyView: View {
                 activated.toggle()
             }
         }
+        .onAppear {
+            // if we're here, then user is wowed by the easter egg, which is review-worthy
+            requestReview()
+        }
     }
 }
 

@@ -408,7 +408,7 @@ struct AboutView: View {
                     }
                 } else {
                     NavigationLink {
-                        
+                        EtherialView()
                     } label: {
                         Text("Most importantly, WSO is made possible by users like you. Thank you!")
                     }

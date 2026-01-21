@@ -32,17 +32,24 @@ struct EtherialView: View {
                 .background(.quaternary)
                 .cornerRadius(20)
                 VStack {
-                    Text("\"Do not think you will be aware of your own enlightenment.\"\n - Dōgen")
+                    Text("""
+                        Hey, you! Thanks for making it here, to the end of the app.
+                        
+                        I hope you like using this app as much as I liked writing it! It was a lot of fun to develop complex software that people will end up using every day. If you've got anything you want to say about the app, I'd love to hear it. 
+                        
+                        This whole project is made out of a great appreciation for the excellent community at Williams, and I encourage you all to help keep it as amazing as it has always been!
+                        
+                        So long, and thanks for all the Driscoll salmon! :D
+                        
+                        - Nathaniel Flores, class of '27 (nsf1@williams.edu)
+                        """)
                         .italic(true)
-                        .padding(20)
-                        .background(.ultraThinMaterial, in: Capsule())
-                    NavigationLink("Click if you like whimsy") {
-                        EasterEggView()
-                    }
-                    .buttonStyle(.borderedProminent)
+                        .padding(10)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(5)
                 }.padding(20)
             }
-            .navigationTitle(Text("The Ether"))
+            .navigationTitle(Text("Thank You!"))
         }.padding(20)
     }
 }

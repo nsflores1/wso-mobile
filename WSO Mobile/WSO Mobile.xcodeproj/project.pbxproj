@@ -58,6 +58,8 @@
 		5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */; };
 		5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */; };
 		5B75F0BE2ECF56CB00F1F4F8 /* DiningItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */; };
+		5B7610412F21845E00F5AA79 /* ReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7610402F21845C00F5AA79 /* ReviewRequest.swift */; };
+		5B7610422F21845E00F5AA79 /* ReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7610402F21845C00F5AA79 /* ReviewRequest.swift */; };
 		5B77241A2F1F28E600AAF049 /* Dining WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5B7724072F1F28E500AAF049 /* Dining WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B7724522F1F38BE00AAF049 /* Library WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5B7724452F1F38BD00AAF049 /* Library WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B6B032EC81BAC00CF7C4D /* WSOMobileCLI.swift */; };
@@ -264,6 +266,7 @@
 		5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningVendorView.swift; sourceTree = "<group>"; };
 		5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningCoursesView.swift; sourceTree = "<group>"; };
 		5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningItemsView.swift; sourceTree = "<group>"; };
+		5B7610402F21845C00F5AA79 /* ReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequest.swift; sourceTree = "<group>"; };
 		5B7724072F1F28E500AAF049 /* Dining WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dining WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7724222F1F2DDD00AAF049 /* Dining WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dining WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		5B7724452F1F38BD00AAF049 /* Library WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Library WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -712,6 +715,7 @@
 		5BEB328E2EBFDA4300F75A10 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5B7610402F21845C00F5AA79 /* ReviewRequest.swift */,
 				5B9808E22F0C245E0001F8D4 /* AuthGate.swift */,
 				5BFA32D52F05E2FD005D8F5C /* StringTrim.swift */,
 				5BCF0D5A2F01ACDD00E702EB /* CopyableViews.swift */,
@@ -1086,6 +1090,7 @@
 				5B05EF282ED8EFA300802310 /* OnboardingFiveView.swift in Sources */,
 				5B8117082F199DAF00985804 /* WSORidesItemView.swift in Sources */,
 				5B8117172F1DD7BA00985804 /* PrivacyPolicyView.swift in Sources */,
+				5B7610422F21845E00F5AA79 /* ReviewRequest.swift in Sources */,
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5B9808E62F0C5E7D0001F8D4 /* PastMenuViewModel.swift in Sources */,
@@ -1202,6 +1207,7 @@
 				5BDEED682ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5BDEED6C2ED0E64200E150E6 /* SpinitronMetadata.swift in Sources */,
 				5B8117012F19939B00985804 /* WSORides.swift in Sources */,
+				5B7610412F21845E00F5AA79 /* ReviewRequest.swift in Sources */,
 				5BFA32BF2F030FB8005D8F5C /* LogBootstrap.swift in Sources */,
 				5B7B6B042EC81BB400CF7C4D /* WSOMobileCLI.swift in Sources */,
 				5B93FE212EF20196008A2C1A /* WSOUser.swift in Sources */,

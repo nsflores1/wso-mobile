@@ -42,8 +42,18 @@ struct SettingsView: View {
             Form {
                 Section {
                     // TODO: rewrite this when Apple releases a less awful way of doing bindings in non-closure environments
-                    Toggle("Enable Notifications", isOn: Binding(get: { notificationManager.isAuthorized}, set: { _ in }))
+                    Toggle("Enable Notifications", isOn: Binding(get: { notificationManager.isAuthorized }, set: { _ in }))
                         .disabled(true)
+                        .onAppear {
+                            Task {
+                                let status = await notificationManager.requestPermission()
+                                if status {
+                                    notificationManager.isAuthorized = true
+                                } else {
+                                    notificationManager.isAuthorized = false
+                                }
+                            }
+                        }
                     if !notificationManager.isAuthorized {
                         Button("Enable in Settings...") {
                             Task {

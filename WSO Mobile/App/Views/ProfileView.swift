@@ -158,6 +158,13 @@ struct ProfileView: View {
             .navigationTitle(Text("Profile"))
             .modifier(NavSubtitleIfAvailable(subtitle: "Last updated: \(viewModel.lastUpdated?.shortDisplay ?? "(Not yet updated)")"))
             .navigationBarTitleDisplayMode(.large)
+            .onAppear {
+                Task {
+                    // give a refresh a try, since we've succeeded, it can't hurt
+                    // this will artificially make it feel like it's longer until next refresh
+                    let _ = try await authManager.refreshToken()
+                }
+            }
             .task {
                 logger.trace("Fetching user's personal profile...")
                 await viewModel.fetchIfNeeded()
@@ -168,14 +175,14 @@ struct ProfileView: View {
                 await viewModel.forceRefresh()
                 logger.trace("User's personal profile data forcibly refreshed")
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
-                        // TODO: ADD EDIT CAPABILITIES
-                        Label("Share", systemImage: "square.and.pencil")
-                    }
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    HStack {
+//                        // TODO: ADD EDIT CAPABILITIES
+//                        Label("Share", systemImage: "square.and.pencil")
+//                    }
+//                }
+//            }
         }
     }
 }

@@ -163,9 +163,6 @@ class AuthManager {
         if tokens.authExpiry > Date() {
             logger.debug("Loading token from memory success, in cache")
             self.isAuthenticated = true
-            // give a refresh a try, since we've succeeded, it can't hurt
-            // this will artificially make it feel like it's longer until next refresh
-            let _ = try await refreshToken()
             return tokens.authToken
         } else {
             logger.debug("Loading token is out of date, retrying now...")
