@@ -96,7 +96,7 @@ struct ImportantPhoneNumView: View {
                         HStack {
                             Image(systemName: "phone")
                             VStack(alignment: .leading) {
-                                Text("Facilities Help line")
+                                Text("Facilities Help Line")
                                     .fontWeight(.regular)
                                     .font(.title3)
                                 Text("413-597-2486")

@@ -12,18 +12,23 @@ struct OnboardingFourView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("WSO Mobile requires agreeing to a software license to use the app. Please read the contents before using the app.")
+                Text("""
+                    WSO Mobile requires agreeing to the software license and to the privacy policy to use the app. Please read the contents before using the app. By using the app, you consent to following the rules stated within them. You may find them in the \"More\" tab. Violating these terms will result in a ban from WSO.
+                    
+                    Some other things you may want to know:
+                    - You can swipe left on many list items to get additional options, such as sharing them and opening their links.
+                    - Quickly email WSO users by clicking on their Unix emails in Facebook. View their hometowns by clicking on them in the profile options menu.
+                    - WSO Mobile ships with widgets! Add them to your homescreen to see dining and library hours at a glance, without opening the app.
+                    """)
                     .padding(20)
                     .multilineTextAlignment(.leading)
-                SoftwareLicenseTextView()
-                    .frame(maxWidth: .infinity, maxHeight: 400)
-                Text("Swipe to the left to agree to the policy.")
+                Text("Swipe to the left to continue; please read the license and policy after starting the app.")
                     .shimmering()
                     .padding(5)
                     .multilineTextAlignment(.center)
                 Spacer()
             }
-            .navigationTitle(Text("Software License"))
+            .navigationTitle(Text("Final Notes"))
         }.padding(20)
     }
 }

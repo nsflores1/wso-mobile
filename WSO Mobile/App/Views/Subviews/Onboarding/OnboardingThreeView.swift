@@ -12,18 +12,29 @@ struct OnboardingThreeView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("WSO Mobile requires agreeing to a privacy policy to use the app. Please read the contents before using the app.")
+                Text("""
+                    WSO Mobile is constantly under development and is not complete yet.
+                    
+                    Features which are still not implemented in this version include:
+                    - FacTrak
+                    - DormTrak
+                    - ClubTrak
+                    - Discussions
+                    - EphMatch
+                    - Posting content
+                    - Dining notifications
+                    
+                    All other features not listed here are implemented in-app. If you would like to see the above features implemented, please send feedback to WSO via the form located in the \"More\" tab of the app.
+                    """)
                     .padding(20)
                     .multilineTextAlignment(.leading)
-                PrivacyPolicyTextView()
-                    .frame(maxWidth: .infinity, maxHeight: 400)
-                Text("Swipe to the left to agree to the policy.")
+                Text("Swipe to the left to continue.")
                     .shimmering()
                     .padding(5)
                     .multilineTextAlignment(.center)
                 Spacer()
             }
-            .navigationTitle(Text("Privacy Policy"))
+            .navigationTitle(Text("Known Issues"))
         }.padding(20)
     }
 }

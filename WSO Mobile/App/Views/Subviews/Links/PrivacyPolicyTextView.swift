@@ -19,6 +19,8 @@ struct PrivacyPolicyTextView: View {
                 If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
 
                 The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at WSO's website unless otherwise defined in this Privacy Policy.
+                
+                This Privacy Policy is copyright of myself, Ye Shu, and Aidan Lloyd-Tucker. Copying this privacy policy for use in your own software is strictly forbidden. If you make any copies of this policy, either in full or partially, you MUST credit the authors (us).
 
                 -- Information Collection and Use
 
@@ -26,9 +28,13 @@ struct PrivacyPolicyTextView: View {
 
                 The app does use third party services that may collect information used to identify you. Please read the WSO Privacy Policy for more information.
                 
+                This app is not GDPR compliant. WSO does not possess a Trading License within the European Union. However, all WSO data is stored within servers on the Williams College campus, and sometimes on the servers of the aforementioned third party services. Please contact those third party services as enumerated in the WSO Privacy Policy for further information on GDPR compliance with regard to their services, as their policies may be different.
+                
                 -- Log Data
 
                 I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, the device make and model, and other statistics.
+                
+                You may optionally share log files with other users and WSO using the Debug Logs feature in WSO Mobile. I highly recommend not doing this unless requested to do so by a WSO developer, as they contain sensitive information that could be used to hack your account. Those log files are cleared on every boot of the app and are stored in an encrypted partition within your iPhone, so there is a very low risk of hackers being able to read them unless you specifically choose to share them. WSO is not responsible for any consequences of your ill-fated decision to share this data with others, or to move it outside the encrypted partition.
 
                 -- Cookies
 
@@ -67,7 +73,9 @@ struct PrivacyPolicyTextView: View {
                 
                 -- Contact Us
 
-                If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at wso-dev+app@wso.williams.edu.          
+                If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at wso-dev+app@wso.williams.edu.
+                
+                If you would like your data deleted (you may only do this after you graduate/transfer), please contact WSO and OIT for more information. Remember, it is up to you to be careful with your personal data; there is only so much we can do once it has been shared.
                 """
         ScrollView {
             Text(privacyText)

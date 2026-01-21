@@ -40,6 +40,10 @@ struct OnboardingTwoView: View {
                 Text(secondaryText)
                     .padding(20)
                     .multilineTextAlignment(.leading)
+                Text("Swipe to the left to continue.")
+                    .shimmering()
+                    .padding(5)
+                    .multilineTextAlignment(.center)
                 Spacer()
             }
             .navigationTitle(Text("User Type"))

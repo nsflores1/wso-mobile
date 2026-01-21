@@ -20,9 +20,11 @@ struct SoftwareLicenseTextView: View {
                 
                 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 
-                Dependencies of this software use other licenses, all of which constitute free-as-in freedom software (excluding libraries included as part of the iOS SDK and Swift language, which are either source-available or proprietary software). See WSO's GitHub for more information.
+                Dependencies of this software use other licenses, all of which constitute free-as-in freedom software (excluding libraries included as part of the iOS SDK and Swift language, which are either source-available or proprietary software).
                 
-                In short: credit me for my work or you're a cretin. Other than that, do what you wish, I can't stop you.
+                WSO Mobile is a frontend to code written by other developers. Please speak to them as well if you wish to use this code for your own reasons (and if you do, please email me too. I would love to know why you would need to do such a thing); see the WSO GitHub for more information.
+                
+                In short: credit me for my work or you're a cretin. Other than that, do what you wish as long as it's within the terms of the license.
                 """
         ScrollView {
             Text(licenseText)
