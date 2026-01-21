@@ -22,11 +22,9 @@ That will make it ignore all your errors. You should probably read what `swiftli
 
 ## To-Do List
 Ordered from most to least important:
-- Implement JWT Token support and add that to the user's keychain (unlock with FaceID)
-- Complete the radio player show view
 - Add views for all core WSO services
-- Decent watchOS support
-- Decent iPadOS support
+- (Maybe) Decent watchOS support
+- (Maybe) Decent iPadOS support
 
 Users are also regularly submitting feedback. You should listen to them, too!
 
