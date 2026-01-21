@@ -62,6 +62,3 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 
 .DS_Store
-
-# test JSON files
-*.json
