@@ -15,7 +15,7 @@ struct OnboardingThreeView: View {
                 Text("""
                     WSO Mobile is constantly under development and is not complete yet.
                     
-                    Features which are still not implemented in this version include:
+                    Features which are still not implemented in this version compared to our web client include:
                     - FacTrak
                     - DormTrak
                     - ClubTrak

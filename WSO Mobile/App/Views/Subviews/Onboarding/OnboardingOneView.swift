@@ -13,11 +13,12 @@ struct OnboardingOneView: View {
         NavigationStack {
             VStack {
                 let mainText = """
-                You're using WSO Mobile Beta v1.2.2.
+                You're using:
+                WSO Mobile Rewritten, v1.3.0
                 
-                WSO (Williams Students Online) is a student organization at Williams College devoted to making software to help the college community, and this is our app!
+                WSO (Williams Students Online) is a student organization at Williams College devoted to making software to help the college community, and this is our app! It provides a variety of useful services for students, faculty, staff, alumni, and all who are interested in Williams College or part of its community.
                 
-                In the following pages, you will get information on how to use the app and set up some basic settings.
+                In the following pages, you will get information on how to use the app and you will configure some basic settings.
                 """
                 let secondaryText = """
                 Swipe to the left to view the next page!

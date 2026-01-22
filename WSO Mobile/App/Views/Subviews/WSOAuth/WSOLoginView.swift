@@ -47,7 +47,11 @@ struct WSOLoginView: View {
                         .transition(.opacity)
                         .padding(.vertical, 20)
                 }
-                Text("Enter your Unix login (no email):")
+                Text("""
+                Please note that this login is for student users only. Faculty, staff, alumni, and other non-student users cannot login to WSO.
+                
+                Students, enter your Unix login (no email suffix, please):
+                """)
                 TextField("Username", text: $username)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled(true)

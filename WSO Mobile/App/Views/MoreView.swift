@@ -54,7 +54,7 @@ struct MoreView: View {
                 }
                 Section {
                     Text("""
-                        You're using WSO Mobile Rewritten, version 1.2.0 (beta build 99)!
+                        You're using WSO Mobile Rewritten, v1.3.0!
                         
                         Please send all feedback to the developers via the "Send Feedback" button.
                         
