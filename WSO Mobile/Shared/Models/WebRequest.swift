@@ -81,6 +81,8 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
     var postParser: PostParser?
     private let internalURL: URL
 
+    let userAgent = "New WSO Mobile/1.3.2"
+
     var requestType: HTTPRequest.Method
 
     init(
@@ -99,7 +101,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         if getParser != nil {
             logger.trace("Starting GET request to \(internalURL)")
             var request = HTTPRequest(method: .get, url: internalURL)
-            request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
+            request.headerFields[.userAgent] = userAgent
             request.headerFields[.accept] = getParser!.acceptType
 
             let (data, response) = try await session.data(for: request)
@@ -130,7 +132,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         if getParser != nil {
             logger.trace("Starting GET (auth) request to \(internalURL)")
             var request = HTTPRequest(method: .get, url: internalURL)
-            request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
+            request.headerFields[.userAgent] = userAgent
             request.headerFields[.accept] = getParser!.acceptType
 
             // note to future maintainers: this is using the singleton,
@@ -167,7 +169,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         if postParser != nil {
             logger.trace("Starting POST request to \(internalURL)")
             var request = HTTPRequest(method: .post, url: internalURL)
-            request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
+            request.headerFields[.userAgent] = userAgent
             request.headerFields[.accept] = postParser!.acceptType
             request.headerFields[.contentType] = postParser!.contentType
 
@@ -219,7 +221,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
         if postParser != nil {
             logger.trace("Starting POST (auth) request to \(internalURL)")
             var request = HTTPRequest(method: .post, url: internalURL)
-            request.headerFields[.userAgent] = "New WSO Mobile/1.2.2"
+            request.headerFields[.userAgent] = userAgent
             request.headerFields[.accept] = postParser!.acceptType
             request.headerFields[.contentType] = postParser!.contentType
 
