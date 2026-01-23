@@ -176,13 +176,14 @@ class AuthManager {
         guard let tokens else { throw KeychainError.noToken }
         logger.debug("Tokens are loaded")
 
-        // reminder for our new dev friends: response is SHADOWED in these blocks.
-
         // first try the API refresh
-        let response: WSOAuthLogin? = try await WSOAPIRefresh(apiToken: tokens.authToken)
-        if response == nil {
-            // now try the identity token refresh
-            let response: WSOAuthLogin? = try await WSOAPILogin(identityToken: tokens.identityToken)
+        let response: WSOAuthLogin?
+        do {
+            response = try await WSOAPIRefresh(apiToken: tokens.authToken)
+        } catch {
+                // now try the identity token refresh
+            logger.debug("API refresh failed, let's try again with Identity tokens...")
+            response = try await WSOAPILogin(identityToken: tokens.identityToken)
             // if that somehow fucks up too, we need a full reauth
             if response == nil { throw KeychainError.invalidToken }
         }

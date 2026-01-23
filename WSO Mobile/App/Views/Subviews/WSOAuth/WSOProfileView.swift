@@ -33,10 +33,10 @@ struct WSOProfileView: View {
                         Group {
                             if let image = imageData {
                                 Image(uiImage: image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                .frame(width: 200, height: 200)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    .frame(width: 200, height: 200)
                             } else {
                                 ProgressView()
                                     .frame(width: 200, height: 200)
@@ -76,8 +76,8 @@ struct WSOProfileView: View {
                                 Text("(Staff)").italic()
                             } else if viewModel.data?.type == "professor" {
                                 Text("(Professor)").italic()
-                            // in the edge case where the student attends the CDE or Master's Art programs,
-                            // the class year value is undefined.
+                                    // in the edge case where the student attends the CDE or Master's Art programs,
+                                    // the class year value is undefined.
                             } else if viewModel.data?.type == "student" && viewModel.data?.classYear != nil {
                                 Text("(Class of \(viewModel.data?.classYear?.description ?? "(N/A)"))").italic()
                             }
@@ -92,12 +92,17 @@ struct WSOProfileView: View {
                         }
                     }.frame(maxWidth: .infinity, alignment: .center)
                     VStack(alignment: .leading) {
-                        Section {
                             HStack {
                                 Text("Unix:").bold()
                                 let email = "\(viewModel.data?.unixID ?? "Loading...")@williams.edu"
                                 let url = URL(string: "mailto:\(email)")!
-                                Link(email, destination: url)
+                                Button {
+                                    openURL(url)
+                                } label: {
+                                    Text(email)
+                                }
+                                .buttonStyle(.plain)
+                                .foregroundStyle(.accent)
                             }
                             if let department = viewModel.data?.department {
                                 Text("Department: ").bold() + Text(department.name)
@@ -134,17 +139,22 @@ struct WSOProfileView: View {
                                     string: "http://maps.apple.com/?q=\(encoded ?? "")"
                                 )!
 
-                                HStack {
-                                    Text("Hometown:").bold()
-                                    Link(destination: url) {
-                                        Text(locationString)
+                                if !locationString.isEmpty {
+                                    HStack {
+                                        Text("Hometown:").bold()
+                                        Button {
+                                            openURL(url)
+                                        } label: {
+                                            Text(locationString)
+                                        }
+                                        .buttonStyle(.plain)
+                                        .foregroundStyle(.accent)
                                     }
                                 }
                             }
                             if viewModel.data?.pronoun?.isEmpty == false {
                                 Text("Pronouns: ").bold() + Text(viewModel.data?.pronoun ?? "Loading...")
                             }
-                        }
                     }
                 } header : {
                     Text("\(viewModel.data?.type.capitalized ?? "User") Profile")
