@@ -15,7 +15,7 @@ struct OnboardingTwoView: View {
         NavigationStack {
             VStack {
                 let mainText = """
-                WSO Mobile is designed to be usable by both students and non-students; however, non-students will have some features disabled, as some of the app's features require a login to the serice.
+                WSO Mobile is designed to be usable by both students and non-students; however, non-students will have some features disabled, as some of the app's features require a login to the service.
                 
                 For the best possible user experience, please select the option that best represents you:
                 """

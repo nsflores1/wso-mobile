@@ -21,12 +21,12 @@ struct DiningKeyView: View {
                     HStack {
                         Image(systemName: "leaf")
                             .foregroundStyle(Color(.green))
-                        Text("Vegan items")
+                        Text("Vegetarian items")
                     }
                     HStack {
                         Image(systemName: "v.circle")
                             .foregroundStyle(Color(.green))
-                        Text("Vegetarian items")
+                        Text("Vegan items")
                     }
                     HStack {
                         Image(systemName: "g.circle")
