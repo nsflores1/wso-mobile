@@ -90,7 +90,13 @@ struct ProfileView: View {
                                 Text("Unix:").bold()
                                 let email = "\(viewModel.data?.unixID ?? "Loading...")@williams.edu"
                                 let url = URL(string: "mailto:\(email)")!
-                                Link(email, destination: url)
+                                Button {
+                                    openURL(url)
+                                } label: {
+                                    Text(email)
+                                }
+                                .buttonStyle(.plain)
+                                .foregroundStyle(.accent)
                             }
                             if let department = viewModel.data?.department {
                                 Text("Department: ").bold() + Text(department.name)
@@ -127,10 +133,16 @@ struct ProfileView: View {
                                     string: "http://maps.apple.com/?q=\(encoded ?? "")"
                                 )!
 
-                                HStack {
-                                    Text("Hometown:").bold()
-                                    Link(destination: url) {
-                                        Text(locationString)
+                                if !locationString.isEmpty {
+                                    HStack {
+                                        Text("Hometown:").bold()
+                                        Button {
+                                            openURL(url)
+                                        } label: {
+                                            Text(locationString)
+                                        }
+                                        .buttonStyle(.plain)
+                                        .foregroundStyle(.accent)
                                     }
                                 }
                             }

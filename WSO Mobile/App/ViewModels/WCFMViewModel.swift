@@ -24,11 +24,11 @@ class WCFMViewModel {
 
     init(url: URL) {
         player = AVPlayer(url: url)
-        setupAudioSession()
-        setupRemoteControls()
     }
 
     func play() {
+        setupAudioSession()
+        setupRemoteControls()
         // recover if we were murdered
         if player?.currentItem?.status == .failed {
             // TODO: this can crash if we try to run with no internet access!!!
@@ -37,13 +37,15 @@ class WCFMViewModel {
         }
 
         // reactivate if we were deactivated
-        try? AVAudioSession.sharedInstance().setActive(true)
+        let session = AVAudioSession.sharedInstance()
+        try? session.setCategory(
+            .playback,
+            mode: .default,
+            options: []
+        )
+        try? session.setActive(true)
 
         player?.play()
-        // TODO: we should check to see if the URL is accessible to us rather than
-        // failing silently. big source of user confusion.
-        // we also need to check if there's silence, and then pass some other
-        // state rather than just isPlaying to un-gate the view
         isPlaying = true
 
         var info = [String: Any]()
@@ -56,15 +58,12 @@ class WCFMViewModel {
     }
 
     func pause() {
-        // TODO: the in-app pause should also kill the player,
-        // it needs to be a separate function.
-        // we need to detach from the MPNowPlayingCenter.
-
-        // also, pausing outside of the app crashes the player?
-        
         player?.pause()
         isPlaying = false
-        //player?.replaceCurrentItem(with: nil)
+
+        try? AVAudioSession.sharedInstance()
+            .setActive(false, options: [.notifyOthersOnDeactivation])
+
         metadataTimer?.invalidate()
         metadataTimer = nil
 
