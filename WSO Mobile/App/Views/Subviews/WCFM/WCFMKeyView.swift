@@ -38,8 +38,7 @@ struct WCFMKeyView: View {
                     Text("Some other pertinent information:")
                     Section {
                         Text("-  The station metadata refreshes only once every 30 seconds, so if a song seems to not be listed even though it is playing, please be patient!")
-                        Text("-  Sometimes, WCFM has a special event, and the cooresponding metadata you see is not what they are playing. Unfortunately, we cannot cover this special edge case. Player metadata is no guarantee of what's actually playing, but simply a best guess.")
-                        Text("-  If you click on a song, you can open it in Apple Music if that's available. To change this to Spotify, look at the app settings.")
+                        Text("-  Sometimes, WCFM has a special event, and the metadata you see in the player is not what they are playing. Unfortunately, we cannot cover this special edge case. Player metadata is no guarantee of what's actually playing, but simply a best guess.")
                     }
                 }
             }

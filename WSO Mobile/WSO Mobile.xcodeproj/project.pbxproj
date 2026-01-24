@@ -117,6 +117,7 @@
 		5BCF0D5F2F01EA9400E702EB /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D5D2F01EA9200E702EB /* UserType.swift */; };
 		5BCF0D612F01EB5A00E702EB /* SettingsKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D602F01EB5600E702EB /* SettingsKeyView.swift */; };
 		5BCF0D642F01EE0600E702EB /* NewsKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF0D632F01EE0400E702EB /* NewsKeyView.swift */; };
+		5BCFA8A22F2470950011BFCD /* Ephelia Stickers.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5BCFA89B2F2470940011BFCD /* Ephelia Stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */; };
 		5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */; };
 		5BD358222ED3A7B0001AE153 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD358212ED3A7AC001AE153 /* AboutView.swift */; };
@@ -179,6 +180,13 @@
 			remoteGlobalIDString = 5B7724442F1F38BD00AAF049;
 			remoteInfo = "Library WidgetExtension";
 		};
+		5BCFA8A02F2470950011BFCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BEB32472EBFD7F300F75A10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BCFA89A2F2470940011BFCD;
+			remoteInfo = "Ephelia Stickers";
+		};
 		5BEB325D2EBFD7F400F75A10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5BEB32472EBFD7F300F75A10 /* Project object */;
@@ -221,6 +229,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				5BCFA8A22F2470950011BFCD /* Ephelia Stickers.appex in Embed Foundation Extensions */,
 				5B77241A2F1F28E600AAF049 /* Dining WidgetExtension.appex in Embed Foundation Extensions */,
 				5B7724522F1F38BE00AAF049 /* Library WidgetExtension.appex in Embed Foundation Extensions */,
 			);
@@ -317,6 +326,7 @@
 		5BCF0D5D2F01EA9200E702EB /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		5BCF0D602F01EB5600E702EB /* SettingsKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeyView.swift; sourceTree = "<group>"; };
 		5BCF0D632F01EE0400E702EB /* NewsKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsKeyView.swift; sourceTree = "<group>"; };
+		5BCFA89B2F2470940011BFCD /* Ephelia Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ephelia Stickers.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD2D2E92ED90E3C009F3C3A /* EpheliaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpheliaView.swift; sourceTree = "<group>"; };
 		5BD2D2EC2ED91F20009F3C3A /* WSOLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOLoginView.swift; sourceTree = "<group>"; };
 		5BD358212ED3A7AC001AE153 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -368,6 +378,13 @@
 			);
 			target = 5B7724442F1F38BD00AAF049 /* Library WidgetExtension */;
 		};
+		5BCFA8A52F2470950011BFCD /* Exceptions for "Ephelia Stickers" folder in "Ephelia Stickers" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5BCFA89A2F2470940011BFCD /* Ephelia Stickers */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -385,6 +402,14 @@
 				5B7724532F1F38BE00AAF049 /* Exceptions for "Library Widget" folder in "Library WidgetExtension" target */,
 			);
 			path = "Library Widget";
+			sourceTree = "<group>";
+		};
+		5BCFA89C2F2470940011BFCD /* Ephelia Stickers */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5BCFA8A52F2470950011BFCD /* Exceptions for "Ephelia Stickers" folder in "Ephelia Stickers" target */,
+			);
+			path = "Ephelia Stickers";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -595,6 +620,7 @@
 				5BEB32842EBFD89700F75A10 /* App */,
 				5B77240A2F1F28E500AAF049 /* Dining Widget */,
 				5B7724482F1F38BD00AAF049 /* Library Widget */,
+				5BCFA89C2F2470940011BFCD /* Ephelia Stickers */,
 				5BEB32502EBFD7F300F75A10 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -608,6 +634,7 @@
 				5BEB327D2EBFD83200F75A10 /* WSOMobileCLI */,
 				5B7724072F1F28E500AAF049 /* Dining WidgetExtension.appex */,
 				5B7724452F1F38BD00AAF049 /* Library WidgetExtension.appex */,
+				5BCFA89B2F2470940011BFCD /* Ephelia Stickers.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -834,6 +861,26 @@
 			productReference = 5B7724452F1F38BD00AAF049 /* Library WidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		5BCFA89A2F2470940011BFCD /* Ephelia Stickers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BCFA8A62F2470950011BFCD /* Build configuration list for PBXNativeTarget "Ephelia Stickers" */;
+			buildPhases = (
+				5BCFA8992F2470940011BFCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5BCFA89C2F2470940011BFCD /* Ephelia Stickers */,
+			);
+			name = "Ephelia Stickers";
+			packageProductDependencies = (
+			);
+			productName = "Ephelia Stickers";
+			productReference = 5BCFA89B2F2470940011BFCD /* Ephelia Stickers.appex */;
+			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
+		};
 		5BEB324E2EBFD7F300F75A10 /* WSOMobile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BEB32702EBFD7F400F75A10 /* Build configuration list for PBXNativeTarget "WSOMobile" */;
@@ -849,6 +896,7 @@
 			dependencies = (
 				5B7724192F1F28E600AAF049 /* PBXTargetDependency */,
 				5B7724512F1F38BE00AAF049 /* PBXTargetDependency */,
+				5BCFA8A12F2470950011BFCD /* PBXTargetDependency */,
 			);
 			name = WSOMobile;
 			packageProductDependencies = (
@@ -947,6 +995,9 @@
 					5B7724442F1F38BD00AAF049 = {
 						CreatedOnToolsVersion = 26.2;
 					};
+					5BCFA89A2F2470940011BFCD = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					5BEB324E2EBFD7F300F75A10 = {
 						CreatedOnToolsVersion = 26.1;
 					};
@@ -994,6 +1045,7 @@
 				5BEB327C2EBFD83200F75A10 /* WSOMobileCLI */,
 				5B7724062F1F28E500AAF049 /* Dining WidgetExtension */,
 				5B7724442F1F38BD00AAF049 /* Library WidgetExtension */,
+				5BCFA89A2F2470940011BFCD /* Ephelia Stickers */,
 			);
 		};
 /* End PBXProject section */
@@ -1007,6 +1059,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5B7724432F1F38BD00AAF049 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BCFA8992F2470940011BFCD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1230,6 +1289,11 @@
 			target = 5B7724442F1F38BD00AAF049 /* Library WidgetExtension */;
 			targetProxy = 5B7724502F1F38BE00AAF049 /* PBXContainerItemProxy */;
 		};
+		5BCFA8A12F2470950011BFCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BCFA89A2F2470940011BFCD /* Ephelia Stickers */;
+			targetProxy = 5BCFA8A02F2470950011BFCD /* PBXContainerItemProxy */;
+		};
 		5BEB325E2EBFD7F400F75A10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5BEB324E2EBFD7F300F75A10 /* WSOMobile */;
@@ -1376,6 +1440,48 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5BCFA8A32F2470950011BFCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ephelia Stickers/Info.plist";
+				INFOPLIST_KEY_NSStickerSharingLevel = OS;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.Ephelia-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5BCFA8A42F2470950011BFCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84SWF3NPCT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ephelia Stickers/Info.plist";
+				INFOPLIST_KEY_NSStickerSharingLevel = OS;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.Ephelia-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1735,6 +1841,15 @@
 			buildConfigurations = (
 				5B7724552F1F38BE00AAF049 /* Debug */,
 				5B7724562F1F38BE00AAF049 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BCFA8A62F2470950011BFCD /* Build configuration list for PBXNativeTarget "Ephelia Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BCFA8A32F2470950011BFCD /* Debug */,
+				5BCFA8A42F2470950011BFCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
