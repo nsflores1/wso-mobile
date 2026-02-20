@@ -16,7 +16,11 @@ struct DiningVendorView: View {
             List {
                 ForEach(menu.meals.sorted(), id: \.mealName) { meal in
                     Section("\(meal.mealName.capitalized) (\(meal.openHours.replacingOccurrences(of: ":00", with: "")) - \(meal.closeHours.replacingOccurrences(of: ":00", with: "")))") {
-                        DiningCoursesView(courses: meal.courses)
+                        DisclosureGroup() {
+                            DiningCoursesView(courses: meal.courses)
+                        } label: {
+                            Text("(Tap to view this course...)").italic()
+                        }
                     }
                 }
             }
