@@ -24,6 +24,7 @@ struct WSOProfileView: View {
 
     @State var viewModel: WSOUserViewModel
     @State private var imageData: UIImage?
+    @AppStorage("userType") private var userType: UserType = .student
 
     var body: some View {
         NavigationStack {
@@ -168,6 +169,24 @@ struct WSOProfileView: View {
                         Text("Last Updated")
                             .fontWeight(.semibold)
                             .font(.title3)
+                    }
+                }
+                Section {
+                    if viewModel.data?.type == "professor" && userType.id == .student {
+                        NavigationLink {
+                            WSOFacTrakProfView(
+                                userViewModel: viewModel,
+                                reviewsViewModel: WSOFacTrakReviewsViewModel(
+                                    id: viewModel.userID,
+                                    type: .Professor
+                                ),
+                                viewModel: WSOFacTrakProfViewModel(id: viewModel.userID),
+                                id: viewModel.userID
+                            )
+                        } label: {
+                            Text("Click to see this professor's FacTrak page...")
+                                .foregroundStyle(.accent)
+                        }
                     }
                 }
             }

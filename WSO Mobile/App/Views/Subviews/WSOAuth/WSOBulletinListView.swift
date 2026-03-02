@@ -20,7 +20,14 @@ struct WSOBulletinListView: View {
         NavigationStack {
             if let err = viewModel.error {
                 Group {
-                    Text(err.localizedDescription).foregroundStyle(Color.red)
+                    Text(err.localizedDescription)
+                        .foregroundStyle(Color.red)
+                    Text("""
+                        
+                        Serious error.
+                        All shortcuts have disappeared.
+                        Screen. Mind. Both are blank.
+                        """)
                         .navigationTitle("Bulletins")
                 }.refreshable {
                     await viewModel.forceRefresh()
@@ -28,7 +35,7 @@ struct WSOBulletinListView: View {
                 }
             } else {
                 List {
-                    Section {
+                    DisclosureGroup {
                         if viewModel.isLoading {
                             ProgressView()
                         } else {
@@ -47,17 +54,16 @@ struct WSOBulletinListView: View {
                                 Text("View more posts...").italic()
                             }
                         }
-                    } header : {
+                    } label : {
                         HStack {
                             Text("Announcements")
-                                .fontWeight(.semibold)
                                 .font(.title3)
                             Spacer()
                             Image(systemName: "megaphone")
                         }
                     }
                     .animation(.easeInOut(duration: 0.2), value: viewModel.announcementsPreview.count)
-                    Section {
+                    DisclosureGroup {
                         if viewModel.isLoading {
                             ProgressView()
                         } else {
@@ -76,17 +82,16 @@ struct WSOBulletinListView: View {
                                 Text("View more posts...").italic()
                             }
                         }
-                    } header : {
+                    } label : {
                         HStack {
                             Text("Exchanges")
-                                .fontWeight(.semibold)
                                 .font(.title3)
                             Spacer()
                             Image(systemName: "gift")
                         }
                     }
                     .animation(.easeInOut(duration: 0.2), value: viewModel.exchangePreview.count)
-                    Section {
+                    DisclosureGroup {
                         if viewModel.isLoading {
                             ProgressView()
                         } else {
@@ -105,17 +110,16 @@ struct WSOBulletinListView: View {
                                 Text("View more posts...").italic()
                             }
                         }
-                    } header : {
+                    } label : {
                         HStack {
                             Text("Jobs")
-                                .fontWeight(.semibold)
                                 .font(.title3)
                             Spacer()
                             Image(systemName: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
                         }
                     }
                     .animation(.easeInOut(duration: 0.2), value: viewModel.jobsPreview.count)
-                    Section {
+                    DisclosureGroup {
                         if viewModel.isLoading {
                             ProgressView()
                         } else {
@@ -134,10 +138,9 @@ struct WSOBulletinListView: View {
                                 Text("View more posts...").italic()
                             }
                         }
-                    } header : {
+                    } label : {
                         HStack {
                             Text("Lost & Found")
-                                .fontWeight(.semibold)
                                 .font(.title3)
                             Spacer()
                             Image(systemName: "suitcase")

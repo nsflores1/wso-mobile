@@ -36,6 +36,7 @@ struct SettingsView: View {
     @Environment(\.openURL) private var openURL
 
     private let cache = CacheManager.shared
+    private let application = UIApplication.shared
 
     var body: some View {
         NavigationStack {

@@ -27,7 +27,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             List {
-                if userType == .student && authManager.isAuthenticated {
+                if authManager.isAuthenticated {
                     Section {
                         HStack {
                             Image(systemName: "magnifyingglass")
@@ -71,17 +71,8 @@ struct HomeView: View {
                             }
                         }
                     }
-                } else if userType == .student && !authManager.isAuthenticated {
-                    NavigationLink {
-                        AuthGate {
-                            ProfileView()
-                        }
-                    } label: {
-                        Text("Login to search users...")
-                            .italic()
-                    }
                 } else {
-                    Text("App is in nonstudent mode").italic()
+                    Text("App is missing auth key, please login...").italic()
                 }
                 if searchText.isEmpty {
                     if userType == .student {

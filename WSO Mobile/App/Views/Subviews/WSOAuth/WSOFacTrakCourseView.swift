@@ -1,28 +1,25 @@
 //
-//  WSOFacTrakProfView.swift
+//  WSOFacTrakCourseView.swift
 //  WSO Mobile
 //
-//  Created by Nathaniel Flores on 2026-02-07.
+//  Created by Nathaniel Flores on 2026-02-20.
 //
 
-// a view for showing the page for any given prof.
+// a view for showing the page for any given course.
 
 import SwiftUI
 import Kingfisher
 import Logging
 
-struct WSOFacTrakProfView: View {
+struct WSOFacTrakCourseView: View {
     @Environment(\.logger) private var logger
     @Environment(\.openURL) private var openURL
     @Environment(AuthManager.self) private var authManager
     @Environment(NotificationManager.self) private var notificationManager
 
-    let userViewModel: WSOUserViewModel
-    let reviewsViewModel: WSOFacTrakReviewsViewModel
-    let viewModel: WSOFacTrakProfViewModel
+    let viewModel: WSOFacTrakReviewsViewModel
+    let name: String
     let id: Int
-
-    @State private var imageData: UIImage?
 
     var body: some View {
         NavigationStack {
@@ -38,76 +35,18 @@ struct WSOFacTrakProfView: View {
                          but the water has moved on.
                          This page is not here.
                          
-                         Did you complete your FacTrak course review quota on desktop? If you did, and you can find this professor's page on the desktop site, please contact WSO for help.
+                         Did you complete your FacTrak course review quota on desktop? If you did, and you can find this course's page on the desktop site, please contact WSO for help.
                          """)
-                        .navigationTitle("Professor Page #\(id)")
+                        .navigationTitle("Course Page #\(id)")
                 }
             } else {
                 List {
-                    Section {
-                        VStack {
-                            Group {
-                                if let image = imageData {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                                        .frame(width: 200, height: 200)
-                                } else {
-                                    ProgressView()
-                                        .frame(width: 200, height: 200)
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                                }
-                            }.task(id: userViewModel.data?.unixID) {
-                                guard let unixID = userViewModel.data?.unixID else { return }
-                                let key = "\(userViewModel.userID).jpg"
-
-                                    // check memory
-                                if let cached = ImageCache.default.retrieveImageInMemoryCache(forKey: key) {
-                                    imageData = cached
-                                    return
-                                }
-                                
-                                    // check disk
-                                let diskResult = try? await ImageCache.default.retrieveImage(forKey: key)
-                                if let diskImage = diskResult?.image {
-                                    imageData = diskImage
-                                    return
-                                }
-                                
-                                    // fetch
-                                guard let data = try? await WSOGetUserImage(unix: unixID),
-                                      let image = UIImage(data: data) else { return }
-                                
-                                imageData = image
-                                do {
-                                    try await ImageCache.default.store(image, forKey: key, toDisk: true)
-                                } catch {
-                                    logger.error("Failed to cache image for Unix \(unixID), WSO ID \(userViewModel.userID). Error: \(error.localizedDescription)")
-                                }
-                            }
-                            HStack {
-                                Text(userViewModel.data?.name ?? "Loading...").bold()
-                                Text("(Professor)").italic()
-                            }
-                            if let title = viewModel.data?.title {
-                                Text(title).font(.headline)
-                            }
-                        }.frame(maxWidth: .infinity, alignment: .center)
-                        VStack(alignment: .leading) {
-                            Text("**Total Reviews:** \(viewModel.data?.factrakSurveys.count.description ?? "N/A")")
-                            if let rates = viewModel.ratings {
-                                Text("- **\((rates.avgWouldRecommendCourse * 100.0).rounded().formatted())%** would recommend this professor's courses.")
-                                Text("- **\((rates.avgWouldTakeAnother * 100.0).rounded().formatted())%** would take another course with this professor.")
-                            }
-                        }
-                    }
                     if let content = viewModel.data {
-                        ForEach(content.factrakSurveys, id: \.id) { review in
+                        ForEach(content) { review in
                             Section {
                                 VStack(alignment: .leading) {
                                     HStack {
-                                        Text("\(review.course.areaOfStudy.abbreviation) \(review.course.number)")
+                                        Text(name)
                                         HStack {
                                             if let year = review.semesterYear {
                                                 if let season = review.semesterSeason {
@@ -122,17 +61,22 @@ struct WSOFacTrakProfView: View {
                                     }
                                     HStack {
                                         NavigationLink(
-                                            destination: WSOFacTrakCourseView(
-                                                viewModel: WSOFacTrakReviewsViewModel(
-                                                    id: review.courseID,
-                                                    type: .Course
+                                            destination: WSOFacTrakProfView(
+                                                userViewModel: WSOUserViewModel(
+                                                    userID: review.professorID,
                                                 ),
-                                                name: "\(review.course.areaOfStudy.abbreviation) \(review.course.number)",
-                                                id: review.courseID
+                                                reviewsViewModel: WSOFacTrakReviewsViewModel(
+                                                    id: review.professorID,
+                                                    type: .Professor
+                                                ),
+                                                viewModel: WSOFacTrakProfViewModel(
+                                                    id: review.professorID,
+                                                ),
+                                                id: review.professorID
                                             )
                                         ) {
-                                            Image(systemName: "studentdesk")
-                                            Text("View reviews for this course...")
+                                            Image(systemName: "person")
+                                            Text("View reviews for this professor...")
                                         }
                                         .buttonStyle(.plain)
                                         .foregroundStyle(Color.secondary)
@@ -188,16 +132,15 @@ struct WSOFacTrakProfView: View {
                                                     Text("User *would not* take more courses")
                                                 }
                                             }
-
                                         }
                                     }
                                 }
                             }
                         }
-                        if content.factrakSurveys.isEmpty {
-                            Text("(No reviews for this professor)")
+                        if content.isEmpty {
+                            Text("(No reviews for this course)")
                         }
-                    } else if let err = reviewsViewModel.error {
+                    } else if let err = viewModel.error {
                         Group {
                             Text(err.localizedDescription).foregroundStyle(Color.red)
                         }
@@ -209,18 +152,14 @@ struct WSOFacTrakProfView: View {
         }
         .task {
             await viewModel.fetchIfNeeded()
-            await userViewModel.fetchIfNeeded()
-            await reviewsViewModel.fetchIfNeeded()
         }
         .refreshable {
             await viewModel.forceRefresh()
-            await userViewModel.forceRefresh()
-            await reviewsViewModel.forceRefresh()
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {
-                    NavigationLink(destination: WSOFacTrakProfKeyView()) {
+                    NavigationLink(destination: WSOFacTrakAreaKeyView()) {
                         Image(systemName: "questionmark")
                     }.simultaneousGesture(TapGesture().onEnded {
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -228,7 +167,7 @@ struct WSOFacTrakProfView: View {
                 }
             }
         }
-        .navigationTitle("Professor Reviews")
+        .navigationTitle("\(name) Reviews")
         .modifier(NavSubtitleIfAvailable(subtitle: "Reviews may not be truthful nor helpful"))
         .listStyle(.sidebar)
     }

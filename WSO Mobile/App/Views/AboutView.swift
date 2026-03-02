@@ -42,10 +42,6 @@ struct AboutView: View {
                 Text(text.replacingOccurrences(of: "\n", with: ""))
             }
             List {
-                Section {
-                    Text("Note: without a student login, contributor profiles may not be visible.")
-                        .italic()
-                }
                 Section("Lead Developers (2026-2027)") {
                     NavigationLink {
                         AuthGate {
@@ -397,7 +393,6 @@ struct AboutView: View {
                         Text("Professor Dan Barowy - dwb1@williams.edu, for some code review and brainstorming of some app functionality")
                     }
                     Text("Aidan Lloyd-Tucker - aidanlloydtucker@gmail.com, for writing the prior app implementation, which I used as a baseline for this one")
-                    Text("Xe Iaso - https://github.com/Xe, for allowing WSO to use her anti-AI scraping techniques to protect our backend")
                     Text("The many WSO developers of yore, including Williams CSCI department member Lida Doret (whose code still runs on our servers over two decades later!)").italic(true)
                 }
                 // EASTER EGG

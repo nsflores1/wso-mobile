@@ -17,6 +17,8 @@ struct ContentView: View {
     @AppStorage("wcfmIsShown") private var wcfmIsShown: Bool = true
     @AppStorage("diningIsShown") private var diningIsShown: Bool = true
 
+    @Environment(AuthManager.self) private var authManager
+    @AppStorage("userType") private var userType: UserType = .student
 
     var body: some View {
         if (!hasSeenOnboarding) {
@@ -25,7 +27,13 @@ struct ContentView: View {
         else {
             TabView {
                 Tab("Home", systemImage: "house") {
-                    HomeView()
+                    if userType == .student && !authManager.isAuthenticated {
+                        AuthGate {
+                            HomeView()
+                        }
+                    } else {
+                        HomeView()
+                    }
                 }
                 if newsIsShown {
                     Tab("News", systemImage: "calendar") {

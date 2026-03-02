@@ -19,7 +19,14 @@ struct WSORidesView: View {
         NavigationStack {
             if let err = viewModel.error {
                 Group {
-                    Text(err.localizedDescription).foregroundStyle(Color.red)
+                    Text(err.localizedDescription)
+                        .foregroundStyle(Color.red)
+                    Text("""
+                        
+                        Serious error.
+                        All shortcuts have disappeared.
+                        Screen. Mind. Both are blank.
+                        """)
                         .navigationTitle("Rides")
                 }
             } else {
@@ -32,6 +39,9 @@ struct WSORidesView: View {
                                 post: item,
                                 viewModel: WSOUserViewModel(userID: item.userID)
                             )
+                        }
+                        if viewModel.data.isEmpty {
+                            Text("(No rides have been posted)")
                         }
                     }
                 }

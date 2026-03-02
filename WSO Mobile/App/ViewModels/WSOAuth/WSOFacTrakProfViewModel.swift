@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class WSOFacTrakOverviewViewModel {
+class WSOFacTrakProfViewModel {
     private let cache = CacheManager.shared
 
     // cache per-id.
@@ -19,8 +19,9 @@ class WSOFacTrakOverviewViewModel {
         self.id = id
     }
 
-        // contains ALL data.
-    var data: [WSOFacTrakAreasOfStudy] = []
+    // contains ALL data.
+    var data: WSOFacTrakProf? = nil
+    var ratings: WSOFacTrakProfRatings? = nil
 
     var isLoading: Bool = false
     var error: WebRequestError?
@@ -30,30 +31,47 @@ class WSOFacTrakOverviewViewModel {
         isLoading = true
         error = nil
 
-            // only last about an hour
-        if let cached: TimestampedData<[WSOFacTrakAreasOfStudy]> = await cache.load(
-            [WSOFacTrakAreasOfStudy].self,
-            from: "factrak_overview.json",
+        // only last about an hour
+        if let cached: TimestampedData<WSOFacTrakProf> = await cache.load(
+            WSOFacTrakProf.self,
+            from: "factrak_prof_\(self.id).json",
             maxAge: 3600
         ) {
             self.data = cached.data
+        }
+
+        if let cachedRatings: TimestampedData<WSOFacTrakProfRatings> = await cache.load(
+            WSOFacTrakProfRatings.self,
+            from: "factrak_prof_ratings_\(self.id).json",
+            maxAge: 3600
+        ) {
+            self.ratings = cachedRatings.data
             self.isLoading = false
             self.error = nil
             return
         }
 
         do {
-            let data: [WSOFacTrakAreasOfStudy] = try await WSOFacTrakGetAreasOfStudy()
+            let data: WSOFacTrakProf = try await WSOFacTrakGetProf(query: self.id)
             self.data = data
+
+            try await cache.save(data, to: "factrak_prof_\(self.id).json")
+
+            let ratings: WSOFacTrakProfRatings = try await WSOFacTrakGetProfRatings(
+                query: self.id
+            )
+            self.ratings = ratings
             self.error = nil
 
-            try await cache.save(data, to: "factrak_overview.json")
+            try await cache.save(ratings, to: "factrak_prof_ratings_\(self.id).json")
         } catch let err as WebRequestError {
             self.error = err
-            self.data = []
+            self.data = nil
+            self.ratings = nil
         } catch {
             self.error = WebRequestError.internalFailure
-            self.data = []
+            self.data = nil
+            self.ratings = nil
         }
 
         isLoading = false
@@ -69,24 +87,35 @@ class WSOFacTrakOverviewViewModel {
         isLoading = true
 
         do {
-            let data: [WSOFacTrakAreasOfStudy] = try await WSOFacTrakGetAreasOfStudy()
+            let data: WSOFacTrakProf = try await WSOFacTrakGetProf(query: self.id)
             self.data = data
+
+            try await cache.save(data, to: "factrak_prof_\(self.id).json")
+
+            let ratings: WSOFacTrakProfRatings = try await WSOFacTrakGetProfRatings(
+                query: self.id
+            )
+            self.ratings = ratings
             self.error = nil
 
-            try await cache.save(data, to: "factrak_overview.json")
+            try await cache.save(ratings, to: "factrak_prof_ratings_\(self.id).json")
         } catch let err as WebRequestError {
             self.error = err
-            self.data = []
+            self.data = nil
+            self.ratings = nil
         } catch {
             self.error = WebRequestError.internalFailure
-            self.data = []
+            self.data = nil
+            self.ratings = nil
         }
 
         isLoading = false
     }
 
     func clearCache() async {
-        await cache.clear(path: "factrak_overview.json")
-        self.data = []
+        await cache.clear(path: "factrak_prof_\(self.id).json")
+        await cache.clear(path: "factrak_prof_ratings_\(self.id).json")
+        self.data = nil
+        self.ratings = nil
     }
 }

@@ -54,6 +54,8 @@
 		5B6B99C32EEE16740046B3A7 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B99C22EEE16710046B3A7 /* MoreView.swift */; };
 		5B6BECA02F0225EB00CE7CF0 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6BEC9F2F0225EB00CE7CF0 /* Logging */; };
 		5B6BECE32F03043500CE7CF0 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6BECE22F03043500CE7CF0 /* JWTDecode */; };
+		5B6DD6B72F5519CA00CEA81F /* WSOFacTrakProfKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6DD6B62F5519C000CEA81F /* WSOFacTrakProfKeyView.swift */; };
+		5B6DD6B92F551A9800CEA81F /* WSOFacTrakAreaKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6DD6B82F551A8D00CEA81F /* WSOFacTrakAreaKeyView.swift */; };
 		5B71D5F82EC802790051ABF5 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71D5F72EC802790051ABF5 /* ArgumentParser */; };
 		5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */; };
 		5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */; };
@@ -107,6 +109,16 @@
 		5BB76FA02EC0F20200A242A1 /* DiningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */; };
 		5BB76FA22EC0F65600A242A1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */; };
 		5BB7AF422ECEB2870097343E /* WilliamsRecordArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */; };
+		5BBDC2342F48E8E100249DE0 /* WSOFacTrakReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDC2332F48E8E100249DE0 /* WSOFacTrakReviewsViewModel.swift */; };
+		5BBDC2362F48FECF00249DE0 /* WSOFacTrakCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDC2352F48FECF00249DE0 /* WSOFacTrakCourseView.swift */; };
+		5BBDC2382F490B2000249DE0 /* WSOFacTrakAreaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDC2372F490B2000249DE0 /* WSOFacTrakAreaViewModel.swift */; };
+		5BBDC23C2F49318400249DE0 /* WSOFacTrakAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDC23B2F49318400249DE0 /* WSOFacTrakAreaView.swift */; };
+		5BBDC23E2F49348400249DE0 /* WSOFacTrakCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDC23D2F49347800249DE0 /* WSOFacTrakCardView.swift */; };
+		5BC7C2FA2F33BFBB00B7C31F /* WSOFacTrakOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7C2F92F33BFB400B7C31F /* WSOFacTrakOverviewView.swift */; };
+		5BC7C2FC2F33C05C00B7C31F /* WSOFacTrakOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7C2FB2F33C05300B7C31F /* WSOFacTrakOverviewViewModel.swift */; };
+		5BC7C2FE2F37C53D00B7C31F /* WSOFacTrakProfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7C2FD2F37C53A00B7C31F /* WSOFacTrakProfView.swift */; };
+		5BC7C3002F37C96C00B7C31F /* WSOFacTrakSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7C2FF2F37C96600B7C31F /* WSOFacTrakSearchView.swift */; };
+		5BC7C3022F37CDCC00B7C31F /* WSOFacTrakProfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7C3012F37CDC400B7C31F /* WSOFacTrakProfViewModel.swift */; };
 		5BCDB7FD2EF09506008B438C /* MapPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB7FC2EF09502008B438C /* MapPageView.swift */; };
 		5BCDB7FF2EF0973E008B438C /* LinksKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */; };
 		5BCDB8012EF098CE008B438C /* SneakyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCDB8002EF098CB008B438C /* SneakyView.swift */; };
@@ -272,6 +284,8 @@
 		5B6252602EFEFAD700F1C814 /* WSOUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOUserViewModel.swift; sourceTree = "<group>"; };
 		5B6252622EFF26FE00F1C814 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		5B6B99C22EEE16710046B3A7 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		5B6DD6B62F5519C000CEA81F /* WSOFacTrakProfKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrakProfKeyView.swift; sourceTree = "<group>"; };
+		5B6DD6B82F551A8D00CEA81F /* WSOFacTrakAreaKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrakAreaKeyView.swift; sourceTree = "<group>"; };
 		5B75F0B92ECF4E9D00F1F4F8 /* DiningVendorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningVendorView.swift; sourceTree = "<group>"; };
 		5B75F0BB2ECF55F600F1F4F8 /* DiningCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningCoursesView.swift; sourceTree = "<group>"; };
 		5B75F0BD2ECF56C700F1F4F8 /* DiningItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningItemsView.swift; sourceTree = "<group>"; };
@@ -319,6 +333,16 @@
 		5BB76F9F2EC0F1FB00A242A1 /* DiningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningView.swift; sourceTree = "<group>"; };
 		5BB76FA12EC0F64D00A242A1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WilliamsRecordArticleView.swift; sourceTree = "<group>"; };
+		5BBDC2332F48E8E100249DE0 /* WSOFacTrakReviewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSOFacTrakReviewsViewModel.swift; sourceTree = "<group>"; };
+		5BBDC2352F48FECF00249DE0 /* WSOFacTrakCourseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSOFacTrakCourseView.swift; sourceTree = "<group>"; };
+		5BBDC2372F490B2000249DE0 /* WSOFacTrakAreaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSOFacTrakAreaViewModel.swift; sourceTree = "<group>"; };
+		5BBDC23B2F49318400249DE0 /* WSOFacTrakAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSOFacTrakAreaView.swift; sourceTree = "<group>"; };
+		5BBDC23D2F49347800249DE0 /* WSOFacTrakCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrakCardView.swift; sourceTree = "<group>"; };
+		5BC7C2F92F33BFB400B7C31F /* WSOFacTrakOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrakOverviewView.swift; sourceTree = "<group>"; };
+		5BC7C2FB2F33C05300B7C31F /* WSOFacTrakOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrakOverviewViewModel.swift; sourceTree = "<group>"; };
+		5BC7C2FD2F37C53A00B7C31F /* WSOFacTrakProfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrakProfView.swift; sourceTree = "<group>"; };
+		5BC7C2FF2F37C96600B7C31F /* WSOFacTrakSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrakSearchView.swift; sourceTree = "<group>"; };
+		5BC7C3012F37CDC400B7C31F /* WSOFacTrakProfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSOFacTrakProfViewModel.swift; sourceTree = "<group>"; };
 		5BCDB7FC2EF09502008B438C /* MapPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPageView.swift; sourceTree = "<group>"; };
 		5BCDB7FE2EF09736008B438C /* LinksKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksKeyView.swift; sourceTree = "<group>"; };
 		5BCDB8002EF098CB008B438C /* SneakyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakyView.swift; sourceTree = "<group>"; };
@@ -513,14 +537,14 @@
 			path = Dining;
 			sourceTree = "<group>";
 		};
-		5B3543E12ED652AE00A37A56 /* Record */ = {
+		5B3543E12ED652AE00A37A56 /* News */ = {
 			isa = PBXGroup;
 			children = (
 				5BCF0D632F01EE0400E702EB /* NewsKeyView.swift */,
 				5BB7AF412ECEB2800097343E /* WilliamsRecordArticleView.swift */,
 				5BE3EE532ECC3521009CDFD3 /* WilliamsRecordView.swift */,
 			);
-			path = Record;
+			path = News;
 			sourceTree = "<group>";
 		};
 		5B55972D2EC8F7B700FB82D6 /* Subviews */ = {
@@ -531,7 +555,7 @@
 				5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */,
 				5BD2D2E82ED90E34009F3C3A /* EasterEgg */,
 				5B05EF212ED8EC1100802310 /* Onboarding */,
-				5B3543E12ED652AE00A37A56 /* Record */,
+				5B3543E12ED652AE00A37A56 /* News */,
 				5B3543E02ED6526400A37A56 /* Dining */,
 				5B3543DF2ED6525700A37A56 /* WCFM */,
 			);
@@ -549,6 +573,10 @@
 		5B62525F2EFEFAC200F1C814 /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
+				5BC7C3012F37CDC400B7C31F /* WSOFacTrakProfViewModel.swift */,
+				5BBDC2372F490B2000249DE0 /* WSOFacTrakAreaViewModel.swift */,
+				5BBDC2332F48E8E100249DE0 /* WSOFacTrakReviewsViewModel.swift */,
+				5BC7C2FB2F33C05300B7C31F /* WSOFacTrakOverviewViewModel.swift */,
 				5B8117032F19954C00985804 /* WSORidesViewModel.swift */,
 				5BFA32D12F04943D005D8F5C /* WSOBulletinViewModel.swift */,
 				5B6252602EFEFAD700F1C814 /* WSOUserViewModel.swift */,
@@ -597,9 +625,17 @@
 		5BD2D2EB2ED91F1B009F3C3A /* WSOAuth */ = {
 			isa = PBXGroup;
 			children = (
+				5BBDC23D2F49347800249DE0 /* WSOFacTrakCardView.swift */,
+				5BC7C2FF2F37C96600B7C31F /* WSOFacTrakSearchView.swift */,
+				5BC7C2FD2F37C53A00B7C31F /* WSOFacTrakProfView.swift */,
+				5BBDC2352F48FECF00249DE0 /* WSOFacTrakCourseView.swift */,
+				5BBDC23B2F49318400249DE0 /* WSOFacTrakAreaView.swift */,
+				5BC7C2F92F33BFB400B7C31F /* WSOFacTrakOverviewView.swift */,
 				5B8117072F199DAC00985804 /* WSORidesItemView.swift */,
 				5B8117052F1995BA00985804 /* WSORidesView.swift */,
 				5BFA32DC2F05EE70005D8F5C /* WSOBulletinKeyView.swift */,
+				5B6DD6B62F5519C000CEA81F /* WSOFacTrakProfKeyView.swift */,
+				5B6DD6B82F551A8D00CEA81F /* WSOFacTrakAreaKeyView.swift */,
 				5BFA32D32F04D215005D8F5C /* WSOBulletinItemView.swift */,
 				5BFA32D82F05E3EF005D8F5C /* WSOBulletinPerListView.swift */,
 				5BFA32CD2F048CFE005D8F5C /* WSOBulletinListView.swift */,
@@ -1121,6 +1157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BDA0FDB2EE122F8005D6AC4 /* WCFMShowViewModel.swift in Sources */,
+				5B6DD6B72F5519CA00CEA81F /* WSOFacTrakProfKeyView.swift in Sources */,
 				5B75F0BA2ECF4EA300F1F4F8 /* DiningVendorView.swift in Sources */,
 				5BFA32D92F05E3F9005D8F5C /* WSOBulletinPerListView.swift in Sources */,
 				5B93FE1B2EF1FE1D008A2C1A /* WSOBookTrak.swift in Sources */,
@@ -1130,6 +1167,7 @@
 				5B10FF9D2EC83CA80021597F /* LibraryHours.swift in Sources */,
 				5B379A152EE3D0A000A09DE4 /* PetView.swift in Sources */,
 				5B05EF262ED8EF9B00802310 /* OnboardingTwoView.swift in Sources */,
+				5BBDC2382F490B2000249DE0 /* WSOFacTrakAreaViewModel.swift in Sources */,
 				5BCF0D642F01EE0600E702EB /* NewsKeyView.swift in Sources */,
 				5BB76F9E2EC0F1F800A242A1 /* NewsView.swift in Sources */,
 				5B93FE222EF20196008A2C1A /* WSOUser.swift in Sources */,
@@ -1153,21 +1191,28 @@
 				5B75F0BC2ECF55FB00F1F4F8 /* DiningCoursesView.swift in Sources */,
 				5BDEED692ECF857900E150E6 /* WSOGetWords.swift in Sources */,
 				5B9808E62F0C5E7D0001F8D4 /* PastMenuViewModel.swift in Sources */,
+				5BC7C3022F37CDCC00B7C31F /* WSOFacTrakProfViewModel.swift in Sources */,
 				5BFA32CA2F0360B9005D8F5C /* HomeCardView.swift in Sources */,
 				5B8117152F1DC45200985804 /* LinksSectionView.swift in Sources */,
 				5B05EF2E2ED8F96000802310 /* RestOfWilliamstownView.swift in Sources */,
+				5BC7C2FC2F33C05C00B7C31F /* WSOFacTrakOverviewViewModel.swift in Sources */,
 				5BD2D2EA2ED90E40009F3C3A /* EpheliaView.swift in Sources */,
 				5BD50F0E2ED9497900806CA7 /* AboutViewModel.swift in Sources */,
 				5B6252632EFF270300F1C814 /* CacheManager.swift in Sources */,
 				5BFA32CE2F048D04005D8F5C /* WSOBulletinListView.swift in Sources */,
 				5BFA32DD2F05EE75005D8F5C /* WSOBulletinKeyView.swift in Sources */,
+				5BC7C2FA2F33BFBB00B7C31F /* WSOFacTrakOverviewView.swift in Sources */,
+				5BBDC23E2F49348400249DE0 /* WSOFacTrakCardView.swift in Sources */,
 				5B81170E2F1D9D0900985804 /* LinksView.swift in Sources */,
 				5BFA32D62F05E2FF005D8F5C /* StringTrim.swift in Sources */,
 				5B10FF9A2EC83C880021597F /* DailyMessages.swift in Sources */,
 				5BCF0D5C2F01ACE400E702EB /* CopyableViews.swift in Sources */,
 				5BFA32C42F0312C3005D8F5C /* LogViewerView.swift in Sources */,
+				5BBDC23C2F49318400249DE0 /* WSOFacTrakAreaView.swift in Sources */,
 				5B6252532EFE0BB700F1C814 /* FontExtension.swift in Sources */,
+				5BBDC2342F48E8E100249DE0 /* WSOFacTrakReviewsViewModel.swift in Sources */,
 				5BE3EE452ECBE85C009CDFD3 /* WilliamsRecord.swift in Sources */,
+				5BC7C2FE2F37C53D00B7C31F /* WSOFacTrakProfView.swift in Sources */,
 				5B56327B2EDB84B800390AB8 /* EtherialView.swift in Sources */,
 				5BFA32C02F030FB8005D8F5C /* LogBootstrap.swift in Sources */,
 				5B515FB02EDBC99C00F166A1 /* WCFMPlaylistViewModel.swift in Sources */,
@@ -1175,6 +1220,7 @@
 				5BFA32CC2F036B4B005D8F5C /* DailyMessagesItemView.swift in Sources */,
 				5B8117102F1DBE3C00985804 /* LinksViewModel.swift in Sources */,
 				5BD2D2ED2ED91F23009F3C3A /* WSOLoginView.swift in Sources */,
+				5B6DD6B92F551A9800CEA81F /* WSOFacTrakAreaKeyView.swift in Sources */,
 				5BDEED642ECF7E9700E150E6 /* SpringStreetRestaurantView.swift in Sources */,
 				5B515FB62EDC8F1300F166A1 /* NavStackShim.swift in Sources */,
 				5B93FE1E2EF1FE3E008A2C1A /* WSOBulletins.swift in Sources */,
@@ -1192,6 +1238,7 @@
 				5BCDB8012EF098CE008B438C /* SneakyView.swift in Sources */,
 				5B5597372EC9086D00FB82D6 /* DailyMessagesViewModel.swift in Sources */,
 				5B05EF322ED8F98800802310 /* SpringStreetCafesView.swift in Sources */,
+				5BBDC2362F48FECF00249DE0 /* WSOFacTrakCourseView.swift in Sources */,
 				5B6252572EFE412A00F1C814 /* WSOSelfUserViewModel.swift in Sources */,
 				5B6252612EFEFADA00F1C814 /* WSOUserViewModel.swift in Sources */,
 				5B3543DE2ED64E7B00A37A56 /* WCFMShowsView.swift in Sources */,
@@ -1220,6 +1267,7 @@
 				5BCF0D5E2F01EA9400E702EB /* UserType.swift in Sources */,
 				5B8117062F1995BE00985804 /* WSORidesView.swift in Sources */,
 				5B9460CD2ECD5ED70078DCE2 /* WCFMViewModel.swift in Sources */,
+				5BC7C3002F37C96C00B7C31F /* WSOFacTrakSearchView.swift in Sources */,
 				5B62525E2EFEFA1300F1C814 /* WSOProfileView.swift in Sources */,
 				5B3543DC2ED64DDB00A37A56 /* WCFMPlaylistView.swift in Sources */,
 			);
@@ -1452,9 +1500,10 @@
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Ephelia Stickers/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Ephelia Stickers";
 				INFOPLIST_KEY_NSStickerSharingLevel = OS;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				MARKETING_VERSION = 1.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.Ephelia-Stickers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1473,9 +1522,10 @@
 				DEVELOPMENT_TEAM = 84SWF3NPCT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Ephelia Stickers/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Ephelia Stickers";
 				INFOPLIST_KEY_NSStickerSharingLevel = OS;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				MARKETING_VERSION = 1.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "williams-students-online.WSO-Mobile.Ephelia-Stickers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1619,7 +1669,7 @@
 		5BEB32712EBFD7F400F75A10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "EpheliaPurple EpheliaGold WSORetro";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = EpheliaPurple;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -1661,7 +1711,7 @@
 		5BEB32722EBFD7F400F75A10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "EpheliaPurple EpheliaGold WSORetro";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = EpheliaPurple;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;

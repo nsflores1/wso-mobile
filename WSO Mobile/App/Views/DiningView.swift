@@ -30,7 +30,14 @@ struct DiningView: View {
                 .navigationTitle(Text("Dining"))
             } else if let err = viewModel.error {
                 Group {
-                    Text(err.localizedDescription).foregroundStyle(Color.red)
+                    Text(err.localizedDescription)
+                        .foregroundStyle(Color.red)
+                    Text("""
+                        
+                        With searching comes loss
+                        and the presence of absence:
+                        Menu not found.
+                        """)
                         .navigationTitle(Text("Dining"))
                 }.refreshable {
                     await viewModel.forceRefresh()

@@ -39,6 +39,15 @@ struct HomeButtonsView: View {
                         .foregroundStyle(Color(.secondaryLabel)).italic(true)
                 }
             }
+            HStack {
+                NavigationLink(destination: AuthGate { WSOFacTrakOverviewView() }) {
+                    Label("FacTrak", systemImage: "graduationcap")
+                        .foregroundStyle(Color.accent)
+                    Spacer()
+                    Text("Rate professors & courses")
+                        .foregroundStyle(Color(.secondaryLabel)).italic(true)
+                }
+            }
 //            HStack {
 //                Button {
 //                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
@@ -59,28 +68,6 @@ struct HomeButtonsView: View {
 //                    }
 //                Spacer()
 //                Text("Chat about topics")
-//                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
-//            }
-//            HStack {
-//                Button {
-//                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-//                    notImplementedWarn = true
-//                } label: {
-//                    Label("FacTrak", systemImage: "graduationcap")
-//
-//                }.buttonStyle(.borderless)
-//                    .controlSize(ControlSize.large)
-//                    .alert(
-//                                    """
-//                                    This feature hasn't been implemented yet!
-//                                    Please check back soon.
-//                                    """,
-//                                    isPresented: $notImplementedWarn
-//                    ) {
-//                        Button("OK", role: .cancel) { }
-//                    }
-//                Spacer()
-//                Text("Rate professors & courses")
 //                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
 //            }
 //            HStack {

@@ -29,6 +29,12 @@ struct WilliamsRecordView: View {
                 HStack {
                     Text(err.localizedDescription)
                         .foregroundStyle(Color.red)
+                    Text("""
+                        
+                        The Web site you seek
+                        cannot be located but
+                        endless more exist.
+                        """)
                 }
                 .listRowSeparator(.hidden)
                 .transition(.opacity)

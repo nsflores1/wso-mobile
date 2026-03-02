@@ -23,7 +23,8 @@ struct DailyMessagesView: View {
                 .transition(.opacity)
             } else if let err = viewModel.error {
                 HStack {
-                    Text(err.localizedDescription).foregroundStyle(Color.red)
+                    Text(err.localizedDescription)
+                        .foregroundStyle(Color.red)
                     Spacer()
                 }
                 .listRowSeparator(.hidden)

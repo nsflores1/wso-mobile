@@ -64,16 +64,9 @@ struct MoreView: View {
             }
             .navigationTitle(Text("More Stuff"))
             .modifier(NavSubtitleIfAvailable(subtitle: "Campus resources & settings"))
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        requestReview()
-                    } label: {
-                        Label("Review", systemImage: "star")
-                    }
-                }
+            .onAppear {
+                requestReview()
             }
-
         }
     }
 }
