@@ -30,6 +30,8 @@ struct PrivacyPolicyTextView: View {
                 
                 This app is not GDPR compliant. WSO does not possess a Trading License within the European Union. However, all WSO data is stored within servers on the Williams College campus, and sometimes on the servers of the aforementioned third party services. Please contact those third party services as enumerated in the WSO Privacy Policy for further information on GDPR compliance with regard to their services, as their policies may be different.
                 
+                All server-side collected data is retained forever (or some shorter duration, depending on a variety of factors) for auditing purposes. Therefore, think before you post, and understand that all actions that make a change or request data from WSO servers are stored with your name and College ID so as to identify those who may be violating the terms of usage of this Service. You may not request a deletion of this data.
+                
                 -- Log Data
 
                 I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, the device make and model, and other statistics.
@@ -69,13 +71,13 @@ struct PrivacyPolicyTextView: View {
 
                 I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.
                 
-                This policy is effective as of 2026-01-18.
+                This policy is effective as of 2026-03-02.
                 
                 -- Contact Us
 
                 If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at wso-dev+app@wso.williams.edu.
                 
-                If you would like your data deleted (you may only do this after you graduate/transfer), please contact WSO and OIT for more information. Remember, it is up to you to be careful with your personal data; there is only so much we can do once it has been shared.
+                If you would like your data deleted (you may only do this after you graduate/transfer, and only for a limited subset of all your data), please contact WSO and OIT for more information. Remember, it is up to you to be careful with your personal data; there is only so much we can do once it has been shared.
                 """
         ScrollView {
             Text(privacyText)
