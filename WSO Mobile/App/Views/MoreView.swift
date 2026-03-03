@@ -37,20 +37,6 @@ struct MoreView: View {
                     NavigationLink(destination: SoftwareLicenseView()) {
                         Label("Software License", systemImage: "document")
                     }
-                    NavigationLink(destination: LinksView()) {
-                        Label("Important Links", systemImage: "link")
-                    }
-                    Button {
-                        if let url = URL(string: "https://forms.gle/pJVhoyRU8A2ciDhz5"){
-                            openURL(url)
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        }
-                    } label: {
-                        HStack {
-                            Label("Suggest Important Link", systemImage: "link.badge.plus")
-                        }
-                    }
-                    .buttonStyle(.plain)
                 }
                 Section {
                     Text("""

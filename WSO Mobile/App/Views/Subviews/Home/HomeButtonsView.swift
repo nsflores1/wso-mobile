@@ -17,6 +17,8 @@ struct HomeButtonsView: View {
     // this warning is for the user because they aren't done yet
     @State private var notImplementedWarn = false
 
+    @Environment(\.openURL) private var openURL
+
     // TODO: go back and add code for the unimplemented parts
 
     var body: some View {
@@ -120,6 +122,35 @@ struct HomeButtonsView: View {
                     .font(.title3)
                 Spacer()
                 Image(systemName: "server.rack")
+            }
+        }
+        Section {
+            NavigationLink(destination: LinksView()) {
+                Label("Links", systemImage: "link")
+                    .foregroundStyle(Color.accent)
+                Spacer()
+                Text("Share digital resources")
+                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
+            }
+            Button {
+                if let url = URL(string: "https://forms.gle/pJVhoyRU8A2ciDhz5"){
+                    openURL(url)
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                }
+            } label: {
+                HStack {
+                    Label("Suggest Important Link...", systemImage: "link.badge.plus")
+                        .foregroundStyle(Color.accent)
+                }
+            }
+            .buttonStyle(.plain)
+        } header: {
+            HStack {
+                Text("Community Link")
+                    .fontWeight(.semibold)
+                    .font(.title3)
+                Spacer()
+                Image(systemName: "link")
             }
         }
     }
