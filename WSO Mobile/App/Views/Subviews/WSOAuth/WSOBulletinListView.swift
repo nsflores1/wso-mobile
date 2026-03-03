@@ -32,7 +32,7 @@ struct WSOBulletinListView: View {
                 }.refreshable {
                     await viewModel.forceRefresh()
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                }
+                }.padding(20)
             } else {
                 List {
                     DisclosureGroup {

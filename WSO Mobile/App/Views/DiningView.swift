@@ -42,7 +42,7 @@ struct DiningView: View {
                 }.refreshable {
                     await viewModel.forceRefresh()
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                }
+                }.padding(20)
             } else {
                 // ALL dining hours stuff lives in here,
                 // not just the dining hall ones.

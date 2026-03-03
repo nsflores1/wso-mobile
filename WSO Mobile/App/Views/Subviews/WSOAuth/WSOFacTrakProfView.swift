@@ -32,7 +32,7 @@ struct WSOFacTrakProfView: View {
                         .foregroundStyle(Color.red)
                     Text("""
                          
-                         Your attempt to access FacTrak has failed.
+                         Your attempt to access FacTrak has failed (probably due to not completing your review quota).
                          
                          You step in the stream,
                          but the water has moved on.
@@ -41,7 +41,11 @@ struct WSOFacTrakProfView: View {
                          Did you complete your FacTrak course review quota on desktop? If you did, and you can find this professor's page on the desktop site, please contact WSO for help.
                          """)
                         .navigationTitle("Professor Page #\(id)")
-                }
+
+                }.refreshable {
+                    await viewModel.forceRefresh()
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                }.padding(20)
             } else {
                 List {
                     Section {
@@ -200,7 +204,13 @@ struct WSOFacTrakProfView: View {
                     } else if let err = reviewsViewModel.error {
                         Group {
                             Text(err.localizedDescription).foregroundStyle(Color.red)
-                        }
+                            Text("""
+                                 
+                                 The Web site you seek
+                                 cannot be located but
+                                 endless more exist.
+                                 """)
+                        }.padding(20)
                     } else {
                         ProgressView()
                     }

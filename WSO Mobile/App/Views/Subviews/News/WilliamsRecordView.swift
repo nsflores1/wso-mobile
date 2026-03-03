@@ -29,19 +29,13 @@ struct WilliamsRecordView: View {
                 HStack {
                     Text(err.localizedDescription)
                         .foregroundStyle(Color.red)
-                    Text("""
-                        
-                        The Web site you seek
-                        cannot be located but
-                        endless more exist.
-                        """)
                 }
                 .listRowSeparator(.hidden)
                 .transition(.opacity)
                 .refreshable {
                     await viewModel.forceRefresh()
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                }
+                }.padding(20)
             }
             if !viewModel.isLoading && viewModel.error == nil {
                 if #unavailable(iOS 26) {

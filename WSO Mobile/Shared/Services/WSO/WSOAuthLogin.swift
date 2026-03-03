@@ -47,7 +47,7 @@ func WSOIdentityLogin(password: String, unixID: String) async throws -> WSOAuthL
 func WSOAPIRefresh(apiToken: String) async throws -> WSOAuthLogin {
     let logger = Logger(label: "com.wso.WebRequest") // technically not but whatever, this is a web request
     var request = HTTPRequest(method: .get, url: URL(string: "https://wso.williams.edu/api/v2/auth/api/refresh")!)
-    request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+    request.headerFields[.userAgent] = "New WSO Mobile/1.4.2"
     request.headerFields[.authorization] = "Bearer \(apiToken)"
 
     let (data, response) = try await URLSession.shared.data(for: request)
@@ -74,7 +74,7 @@ func WSOAPIRefresh(apiToken: String) async throws -> WSOAuthLogin {
 func WSOAPILogin(identityToken: String) async throws -> WSOAuthLogin {
     let logger = Logger(label: "com.wso.WebRequest") // technically not but whatever, this is a web request
     var request = HTTPRequest(method: .post, url: URL(string: "https://wso.williams.edu/api/v2/auth/api/token")!)
-    request.headerFields[.userAgent] = "New WSO Mobile/1.2.0"
+    request.headerFields[.userAgent] = "New WSO Mobile/1.4.2"
     request.headerFields[.authorization] = "Bearer \(identityToken)"
 
     let (data, response) = try await URLSession.shared.data(for: request)

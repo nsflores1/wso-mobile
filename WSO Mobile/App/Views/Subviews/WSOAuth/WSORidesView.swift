@@ -28,7 +28,10 @@ struct WSORidesView: View {
                         Screen. Mind. Both are blank.
                         """)
                         .navigationTitle("Rides")
-                }
+                }.refreshable {
+                    await viewModel.forceRefresh()
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                }.padding(20)
             } else {
                 List {
                     if viewModel.isLoading {

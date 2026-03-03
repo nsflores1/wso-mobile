@@ -19,9 +19,11 @@ struct LibraryHoursView: View {
                     Text("Loading...")
                         .transition(.opacity)
                 } else if let err = viewModel.error {
-                    Text(err.localizedDescription)
-                        .foregroundStyle(.red)
-                        .transition(.opacity)
+                    Group {
+                        Text(err.localizedDescription)
+                            .foregroundStyle(.red)
+                            .transition(.opacity)
+                    }
                 } else {
                     ForEach(viewModel.libraryHours) { place in
                         HStack {

@@ -81,7 +81,7 @@ class WebRequest<GetParser: DataParser, PostParser: DataParser> {
     var postParser: PostParser?
     private let internalURL: URL
 
-    let userAgent = "New WSO Mobile/1.4.1"
+    let userAgent = "New WSO Mobile/1.4.2"
 
     var requestType: HTTPRequest.Method
 
