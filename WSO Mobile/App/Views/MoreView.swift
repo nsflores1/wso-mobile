@@ -40,7 +40,7 @@ struct MoreView: View {
                 }
                 Section {
                     Text("""
-                        You're using WSO Mobile Rewritten, v1.4.1 (Fantastic FacTrak)!
+                        You're using WSO Mobile Rewritten, v1.4.2 (Fantastic FacTrak)!
                         
                         Please send all feedback to the developers via the "Send Feedback" button.
                         
