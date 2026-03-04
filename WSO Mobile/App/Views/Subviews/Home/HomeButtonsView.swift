@@ -146,7 +146,7 @@ struct HomeButtonsView: View {
             .buttonStyle(.plain)
         } header: {
             HStack {
-                Text("Community Link")
+                Text("Important Links")
                     .fontWeight(.semibold)
                     .font(.title3)
                 Spacer()
