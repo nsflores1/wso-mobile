@@ -173,6 +173,168 @@ struct WSOBulletinListView: View {
     }
 }
 
+struct WSOBulletinPerListView: View {
+    let type: String
+    let prettyString: String
+    @State var viewModel = WSOBulletinViewModel()
+    @State private var searchText = ""
+
+    var body: some View {
+        var searchResults: [WSOBulletinItem] {
+            if searchText.isEmpty {
+                return viewModel.data.filter {
+                    $0.type == type
+                }
+            } else {
+                    // check the body and title, but first filter by type
+                return viewModel.data.filter {
+                    $0.type == type &&
+                    $0.body.contains(searchText)
+                    || $0.title.contains(searchText)
+                }
+            }
+        }
+        NavigationStack {
+            List {
+                ForEach(searchResults) { bulletin in
+                    WSOBulletinItemView(
+                        post: bulletin,
+                        viewModel: WSOUserViewModel(userID: bulletin.userID)
+                    )
+                }
+            }
+            .animation(.easeInOut(duration: 0.25), value: searchText.isEmpty)
+            .animation(.easeInOut(duration: 0.2), value: searchResults.count)
+            .searchable(text: $searchText)
+            .task {
+                await viewModel.fetchIfNeeded()
+            }
+            .refreshable {
+                await viewModel.forceRefresh()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        NavigationLink(destination: WSOBulletinKeyView()) {
+                            Image(systemName: "questionmark")
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        })
+                    }
+                }
+            }
+            .navigationTitle(Text(prettyString))
+            .modifier(NavSubtitleIfAvailable(subtitle: "Posts on the \(prettyString) bulletin"))
+        }
+    }
+}
+
+struct WSOBulletinItemView: View {
+    @Environment(\.logger) private var logger
+
+    let post: WSOBulletinItem
+    @State var viewModel: WSOUserViewModel
+    @State private var imageData: UIImage?
+
+    var body: some View {
+        let startDate = {
+            guard let postStartDate = post.startDate else { return "N/A" }
+            let displayFormatter = DateFormatter()
+            displayFormatter.dateFormat = "MMM d, yyyy"
+            return displayFormatter.string(from: postStartDate)
+        }
+        DisclosureGroup {
+            VStack {
+                Text(post.body)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.secondary)
+                    .multilineTextAlignment(.leading)
+            }
+        } label: {
+            HStack {
+                VStack {
+                    if let imageData = imageData {
+                        Image(uiImage: imageData)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }  else {
+                        ProgressView()
+                            .frame(width: 80, height: 80)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                }
+                VStack {
+                    HStack {
+                        Text(post.title)
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
+                    HStack {
+                        Image(systemName: "clock")
+                            .foregroundStyle(Color.accent)
+                        Text(startDate())
+                            .multilineTextAlignment(.leading)
+                            .foregroundStyle(Color.secondary)
+                        Spacer()
+                    }
+                    if viewModel.data != nil {
+                        HStack {
+                            Image(systemName: "person")
+                                .foregroundStyle(Color.accent)
+                            Text("\(viewModel.data!.name) (\(viewModel.data!.unixID))")
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(Color.secondary)
+                            Spacer()
+                        }
+                    }
+                }.padding(.horizontal, 10)
+            }
+        }
+        .swipeActions(edge: .trailing) {
+            Button {
+                UIPasteboard.general.string = post.body
+            } label: {
+                Label("Copy", systemImage: "document.on.document")
+            }
+            .tint(.blue)
+        }
+        .task {
+            await viewModel.fetchIfNeeded()
+        }
+        .loadingUserImage(for: viewModel.data?.unixID, into: $imageData)
+    }
+}
+
+struct WSOBulletinKeyView: View {
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    let introText = """
+                    Bulletins is a feature which displays useful messages for the Williams College campus community.
+                    """
+                    Text(introText.replacingOccurrences(of: "\n", with: " "))
+                }
+                Section {
+                    let explanationText = """
+                    Each section reflects a different kind of bulletin that you can access. Rides and discussions have special properties and thus are not shown here, despite being presented alongside all the other bulletins on the web version.
+                    """
+                    Text(explanationText.replacingOccurrences(of: "\n", with: " "))
+                    let explanationText2 = """
+                    Bulletins may take a second to load as the app fetches all bulletins available on the server (so that you can browse them offline if you would like). The same applies for search; it may take a second or two to load search results, depending on how old your iPhone is along with other factors.
+                    """
+                    Text(explanationText2.replacingOccurrences(of: "\n", with: " "))
+                }
+            }
+            .navigationTitle("Bulletins Help")
+            .modifier(NavSubtitleIfAvailable(subtitle: "For all your bulletin related needs"))
+        }
+
+    }
+}
+
 #Preview {
     WSOBulletinListView()
 }

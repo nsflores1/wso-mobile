@@ -9,7 +9,7 @@
 
 import SwiftUI
 
-struct ImportantPhoneNumView: View {
+struct EmergencyNumView: View {
     var body: some View {
         NavigationStack {
             List {
@@ -114,5 +114,5 @@ struct ImportantPhoneNumView: View {
 }
 
 #Preview {
-    ImportantPhoneNumView()
+    EmergencyNumView()
 }

@@ -32,7 +32,7 @@ struct WSOUserOffice: Codable, Hashable {
     let number: String
 }
 
-struct User: Codable, Equatable, Hashable, Identifiable {
+struct User: Codable, Hashable, Identifiable {
     let admin: Bool
     let factrakAdmin: Bool
     let atWilliams: Bool
@@ -63,7 +63,7 @@ struct User: Codable, Equatable, Hashable, Identifiable {
 
 // the default comparator for the User class will simply check the names,
 // since that's how people usually think about it.
-extension User: Comparable {
+extension User: Comparable, Equatable {
     static func < (lhs: User, rhs: User) -> Bool {
         lhs.name < rhs.name
     }

@@ -132,6 +132,13 @@ struct HomeButtonsView: View {
                 Text("Share digital resources")
                     .foregroundStyle(Color(.secondaryLabel)).italic(true)
             }
+            NavigationLink(destination: EmergencyNumView()) {
+                Label("Numbers", systemImage: "phone")
+                    .foregroundStyle(Color.accent)
+                Spacer()
+                Text("Emergency contacts")
+                    .foregroundStyle(Color(.secondaryLabel)).italic(true)
+            }
             Button {
                 if let url = URL(string: "https://forms.gle/pJVhoyRU8A2ciDhz5"){
                     openURL(url)

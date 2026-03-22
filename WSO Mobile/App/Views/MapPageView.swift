@@ -27,6 +27,6 @@ struct MapPageView: View {
     if #available(iOS 26.0, *) {
         MapPageView()
     } else {
-            // Fallback on earlier versions
+        // Fallback on earlier versions, nothing happens
     }
 }

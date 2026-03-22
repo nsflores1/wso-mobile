@@ -31,7 +31,7 @@ struct HomeView: View {
                     Section {
                         HStack {
                             Image(systemName: "magnifyingglass")
-                            TextField("Search for users...", text: $searchText)
+                            TextField("Search for users, profs, staff...", text: $searchText)
                                 .textInputAutocapitalization(.never)
                                 .autocorrectionDisabled(true)
                                 .onChange(of: searchText) { _, newValue in
@@ -137,8 +137,8 @@ struct HomeView: View {
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     HStack {
-                        NavigationLink(destination: AboutView()) {
-                            Image(systemName: "questionmark")
+                        NavigationLink(destination: MoreView()) {
+                            Image(systemName: "ellipsis.curlybraces")
                         }.simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         })

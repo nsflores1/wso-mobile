@@ -1,9 +1,26 @@
 //
-//  CopyableViews.swift
+//  NavStackShim.swift
 //  WSO Mobile
 //
-//  Created by Nathaniel Flores on 2025-12-28.
+//  Created by Nathaniel Flores on 2025-11-30.
 //
+
+import SwiftUI
+
+// .navigationSubtitle() is nice but only runs on iOS 26 or newer.
+// for iOS 18 users, this shim alows it to only run on the selected version.
+struct NavSubtitleIfAvailable: ViewModifier {
+    let subtitle: String
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.navigationSubtitle(Text(subtitle))
+        } else {
+            content
+        }
+    }
+}
 
 // this is a helper that makes it trivially easy to make a view copy-paste!
 // to use on a view:
@@ -11,10 +28,6 @@
 //  .copyable(thing.text)
 
 // TODO: extend this so way more views use this
-// ...although this requires making a ToString() for all of them
-
-import SwiftUI
-
 struct Copyable: ViewModifier {
     let value: String
 
@@ -33,3 +46,4 @@ extension View {
         modifier(Copyable(value: value))
     }
 }
+

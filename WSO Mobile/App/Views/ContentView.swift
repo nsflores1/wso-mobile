@@ -41,15 +41,9 @@ struct ContentView: View {
                     }
                 }
                 if diningIsShown {
-                    Tab
+                    Tab("Dining", systemImage: "fork.knife")
                     {
                         DiningView()
-                    } label: {
-                        if likesMath {
-                            Label("Dining", systemImage: "pi")
-                        } else {
-                            Label("Dining", systemImage: "fork.knife")
-                        }
                     }
                 }
                 if wcfmIsShown {
@@ -57,9 +51,6 @@ struct ContentView: View {
                     {
                         WCFMView()
                     }
-                }
-                Tab("More", systemImage: "ellipsis.curlybraces") {
-                    MoreView()
                 }
             }
         }

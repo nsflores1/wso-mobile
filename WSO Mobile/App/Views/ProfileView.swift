@@ -37,34 +37,7 @@ struct ProfileView: View {
                                     .frame(width: 200, height: 200)
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
-                        }.task(id: viewModel.data?.unixID) {
-                            guard let unixID = viewModel.data?.unixID else { return }
-                            let key = "\(unixID).jpg"
-
-                                // check memory
-                            if let cached = ImageCache.default.retrieveImageInMemoryCache(forKey: key) {
-                                imageData = cached
-                                return
-                            }
-
-                                // check disk
-                            let diskResult = try? await ImageCache.default.retrieveImage(forKey: key)
-                            if let diskImage = diskResult?.image {
-                                imageData = diskImage
-                                return
-                            }
-
-                                // fetch
-                            guard let data = try? await WSOGetUserImage(unix: unixID),
-                                  let image = UIImage(data: data) else { return }
-
-                            imageData = image
-                            do {
-                                try await ImageCache.default.store(image, forKey: key, toDisk: true)
-                            } catch {
-                                logger.error("Failed to cache image for \(unixID): \(error.localizedDescription)")
-                            }
-                        }
+                        }.loadingUserImage(for: viewModel.data?.unixID, into: $imageData)
                         HStack {
                             Text(viewModel.data?.name ?? "Loading...").bold()
                             if viewModel.data?.type == "staff" {

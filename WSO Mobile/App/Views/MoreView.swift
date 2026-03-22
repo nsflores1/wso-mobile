@@ -17,9 +17,6 @@ struct MoreView: View {
                     NavigationLink(destination: SettingsView()) {
                         Label("App Settings", systemImage: "gear")
                     }
-                    NavigationLink(destination: ImportantPhoneNumView()) {
-                        Label("Emergency Numbers", systemImage: "phone")
-                    }
                     Button {
                         if let url = URL(string: "https://forms.gle/NqYdAAbZKPQmPq866"){
                             openURL(url)
@@ -37,6 +34,9 @@ struct MoreView: View {
                     NavigationLink(destination: SoftwareLicenseView()) {
                         Label("Software License", systemImage: "document")
                     }
+                    NavigationLink(destination: AboutView()) {
+                        Label("About WSO Mobile", systemImage: "questionmark")
+                    }
                 }
                 Section {
                     Text("""
@@ -50,9 +50,6 @@ struct MoreView: View {
             }
             .navigationTitle(Text("More Stuff"))
             .modifier(NavSubtitleIfAvailable(subtitle: "Campus resources & settings"))
-            .onAppear {
-                requestReview()
-            }
         }
     }
 }

@@ -22,8 +22,6 @@ struct WSOLoginView: View {
     @State private var showError: Bool = false
     @State private var hideTask: Task<Void, Never>?
 
-    @AppStorage("surferErrors") private var surferErrors: Bool = false
-
     // wondering how the user goes back to the correct screen?
     // this is a NavigationStack{}, so when we see our state updated at the
     // higher-level HomeView(), we pop this off the stack
@@ -31,16 +29,10 @@ struct WSOLoginView: View {
         NavigationStack {
             VStack {
                 if showError && errorString.contains("401") {
-                    Group {
-                        if surferErrors {
-                            Text("Wipeout, man! Password FAILED.")
-                        } else {
-                            Text("Your password is wrong, please try again...")
-                        }
-                    }
-                    .foregroundStyle(.red)
-                    .transition(.opacity)
-                    .padding(.vertical, 20)
+                    Text("Your password is wrong, please try again...")
+                        .foregroundStyle(.red)
+                        .transition(.opacity)
+                        .padding(.vertical, 20)
                 } else if showError {
                     Text(errorString)
                         .foregroundStyle(.red)
@@ -101,38 +93,6 @@ struct WSOLoginView: View {
                             logger.info("Login succeeded")
                             generator.notificationOccurred(.success)
                         } catch let error as DecodingError {
-                            switch error {
-                                case .dataCorrupted(let context):
-                                    logger.error("""
-                                    dataCorrupted:
-                                    path: \(codingPath(context.codingPath))
-                                    debug: \(context.debugDescription)
-                                    underlying: \(String(reflecting: context.underlyingError))
-                                    """)
-                                case .keyNotFound(let key, let context):
-                                    logger.error("""
-                                    keyNotFound:
-                                    key: \(key.stringValue)
-                                    path: \(codingPath(context.codingPath))
-                                    debug: \(context.debugDescription)
-                                    """)
-                                case .typeMismatch(let type, let context):
-                                    logger.error("""
-                                    typeMismatch:
-                                    expected: \(type)
-                                    path: \(codingPath(context.codingPath))
-                                    debug: \(context.debugDescription)
-                                    """)
-                                case .valueNotFound(let type, let context):
-                                    logger.error("""
-                                    valueNotFound:
-                                    expected: \(type)
-                                    path: \(codingPath(context.codingPath))
-                                    debug: \(context.debugDescription)
-                                    """)
-                                @unknown default:
-                                    logger.error("Unexpected decode error: \(String(reflecting: error))")
-                            }
                             generator.notificationOccurred(.error)
                             failedLogin(error.localizedDescription)
                         } catch {

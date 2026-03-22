@@ -11,8 +11,6 @@ import Logging
 
 struct SettingsView: View {
     @Environment(\.logger) private var logger
-    @AppStorage("likesMath") var likesMath: Bool = false
-    @AppStorage("surferErrors") private var surferErrors: Bool = false
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     @AppStorage("likesSerifFont") private var likesSerifFont: Bool = false
@@ -95,32 +93,6 @@ struct SettingsView: View {
                         .simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                         })
-                    if whimsyEnabled {
-                        Toggle("Mathematical Mode", isOn: $likesMath)
-                            .simultaneousGesture(TapGesture().onEnded {
-                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                            })
-                        Toggle("Surfer Errors on Login", isOn: $surferErrors)
-                            .simultaneousGesture(TapGesture().onEnded {
-                                Task {
-                                    if surferErrors {
-                                        await notificationManager.scheduleLocal(
-                                            title: "Hit the beach!",
-                                            body: "Gnarly, dude! Let's hope you don't wipeout on login!",
-                                            date: Date().addingTimeInterval(1)
-                                        )
-                                    } else if !surferErrors {
-                                        await notificationManager.scheduleLocal(
-                                            title: "Surf's up!",
-                                            body: "(You hear the sound of a surfboard being put away.)",
-                                            date: Date().addingTimeInterval(1)
-                                        )
-
-                                    }
-                                }
-                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                            })
-                    }
                     Toggle("Use Serif Font For Record", isOn: $likesSerifFont)
                         .simultaneousGesture(TapGesture().onEnded {
                             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
@@ -254,10 +226,9 @@ struct SettingsView: View {
                                 secretEnabled.toggle()
                                 Task {
                                     if secretEnabled {
-                                        logger.trace("User has enabled the easter egg")
                                         await notificationManager.scheduleLocal(
-                                            title: "綺麗な星空を眺める",
-                                            body: "「ABOUT」と言うページを見たらいいと思うよ",
+                                            title: "The motion of the stars",
+                                            body: "I hear good things await you on the ABOUT page.",
                                             date: Date().addingTimeInterval(1)
                                         )
                                     }
@@ -269,16 +240,9 @@ struct SettingsView: View {
                                         Text("🐮")
                                     }
                                     VStack(alignment: .leading) {
-                                        Text("エフェリア君の内緒を聞く...")
                                         Text("Hear Ephelia's secret...")
-                                            .font(.caption)
                                     }
                                 }
-                            }
-                            VStack(alignment: .leading) {
-                                Text("星の動きを観察する")
-                                Text("Observe the motion of the stars")
-                                    .font(.caption)
                             }
                         }
                         // rickroll people who think this would actually work. deserved
@@ -310,6 +274,69 @@ struct SettingsView: View {
                     }
                 }
             }
+        }
+    }
+}
+
+struct SettingsKeyView: View {
+    var body: some View {
+        NavigationStack {
+            List {
+                let explanation = """
+                    This page is a short explanation on what the various settings do.
+                    
+                    Each group of settings is listed below with an explanation per setting:
+                    """
+                Text(explanation)
+                Section {
+                    HStack {
+                        Text("Enable Notifications: ").bold() + Text("allows you to recieve notifications. If you have disabled notifications for WSO, you will need to enable them in the Settings app on your phone.")
+                    }
+                    HStack {
+                        Text("Test Notifications: ").bold() + Text("sends a test notification. It may not deliver if you are using a Focus mode, such as Do Not Disturb.")
+                    }
+                } header : {
+                    Text("Notifications")
+                        .fontWeight(.semibold)
+                        .font(.title3)
+                }
+                Section {
+                    HStack {
+                        Text("User Type: ").bold() + Text("this setting allows non-students to hide/disable interface items which would require a student login.")
+                    }
+                    HStack {
+                        Text("Use Serif Font For Record: ").bold() + Text("changes the font used in the in-app Williams Record reader to the same serif font used in the physical newsprint version (the default is a sans serif font).")
+                    }
+                    HStack {
+                        Text("Hide All Restaurants: ").bold() + Text("hides all non-dining halls from the Dining tab of the app.")
+                    }
+                    HStack {
+                        Text("Enable Beta Options: ").bold() + Text("does exactly what it says it does. If you are a WSO developer or just curious about new features, you can use this to test new features that are not yet available to the general public.")
+                    }
+                } header : {
+                    Text("Toggles")
+                        .fontWeight(.semibold)
+                        .font(.title3)
+                }
+                Section {
+                    HStack {
+                        Text("Reset Onboarding: ").bold() + Text("resets the onboarding flow to its original state, if you want to read it again.")
+                    }
+                    HStack {
+                        Text("Force Clear Cache: ").bold() + Text("this button deletes all temporary files that WSO uses on disk except for your login data.")
+                    }
+                    HStack {
+                        Text("Logout of WSO: ").bold() + Text("resets your login. Only visible to students (since only students can login).")
+                    }
+                } header : {
+                    Text("Reset & Cache")
+                        .fontWeight(.semibold)
+                        .font(.title3)
+                }
+
+            }
+            .navigationTitle("Settings Help")
+            .modifier(NavSubtitleIfAvailable(subtitle: "For all your settings-related questions"))
         }
     }
 }

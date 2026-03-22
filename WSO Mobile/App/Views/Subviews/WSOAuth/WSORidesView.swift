@@ -73,3 +73,81 @@ struct WSORidesView: View {
         .modifier(NavSubtitleIfAvailable(subtitle: "College ridesharing"))
     }
 }
+
+struct WSORidesItemView: View {
+    @Environment(\.logger) private var logger
+
+    let post: WSORidesItem
+    @State var viewModel: WSOUserViewModel
+    @State private var imageData: UIImage?
+
+    var body: some View {
+        let startDate = {
+            guard let postDate = post.date else { return "N/A" }
+            let displayFormatter = DateFormatter()
+            displayFormatter.dateFormat = "MMM d, yyyy"
+            return displayFormatter.string(from: postDate)
+        }
+        DisclosureGroup {
+            VStack {
+                Text(post.body)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.secondary)
+                    .multilineTextAlignment(.leading)
+            }
+        } label: {
+            HStack {
+                VStack {
+                    if let imageData = imageData {
+                        Image(uiImage: imageData)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    } else {
+                        ProgressView()
+                            .frame(width: 80, height: 80)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                }
+                VStack {
+                    HStack {
+                        Text("\(post.source) to \(post.destination) (\(post.offer ? "Offer" : "Request"))")
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
+                    HStack {
+                        Image(systemName: "clock")
+                            .foregroundStyle(Color.accent)
+                        Text(startDate())
+                            .multilineTextAlignment(.leading)
+                            .foregroundStyle(Color.secondary)
+                        Spacer()
+                    }
+                    if viewModel.data != nil {
+                        HStack {
+                            Image(systemName: "person")
+                                .foregroundStyle(Color.accent)
+                            Text("\(viewModel.data!.name) (\(viewModel.data!.unixID))")
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(Color.secondary)
+                            Spacer()
+                        }
+                    }
+                }.padding(.horizontal, 10)
+            }
+        }
+        .swipeActions(edge: .trailing) {
+            Button {
+                UIPasteboard.general.string = post.body
+            } label: {
+                Label("Copy", systemImage: "document.on.document")
+            }
+            .tint(.blue)
+        }
+        .task {
+            await viewModel.fetchIfNeeded()
+        }
+        .loadingUserImage(for: viewModel.data?.unixID, into: $imageData)
+    }
+}
