@@ -46,18 +46,14 @@ struct WCFMView: View {
                     HStack {
                         NavigationLink(destination: WCFMShowsView()) {
                             Label("Shows", systemImage: "music.microphone")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
+                        }.hapticTap(.light)
                         .padding(10)
                         .buttonStyle(.borderedProminent)
                         .controlSize(ControlSize.large)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                         NavigationLink(destination: WCFMPlaylistView()) {
                             Label("Playlists", systemImage: "scroll")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
+                        }.hapticTap(.light)
                         .padding(10)
                         .buttonStyle(.borderedProminent)
                         .controlSize(ControlSize.large)
@@ -110,9 +106,7 @@ struct WCFMView: View {
                     HStack {
                         NavigationLink(destination: WCFMKeyView()) {
                             Image(systemName: "questionmark")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
+                        }.hapticTap(.light)
                     }
                 }
             }

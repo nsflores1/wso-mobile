@@ -56,9 +56,7 @@ struct LinksView: View {
                     HStack {
                         NavigationLink(destination: LinksKeyView()) {
                             Image(systemName: "questionmark")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
+                        }.hapticTap(.light)
                     }
                 }
             }

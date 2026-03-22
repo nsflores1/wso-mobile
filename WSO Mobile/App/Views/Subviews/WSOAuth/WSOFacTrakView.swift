@@ -120,9 +120,7 @@ struct WSOFacTrakOverviewView: View {
                 HStack {
                     NavigationLink(destination: WSOFacTrakAreaKeyView()) {
                         Image(systemName: "questionmark")
-                    }.simultaneousGesture(TapGesture().onEnded {
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    })
+                    }.hapticTap(.light)
                 }
             }
         }
@@ -352,9 +350,7 @@ struct WSOFacTrakCourseView: View {
                 HStack {
                     NavigationLink(destination: WSOFacTrakAreaKeyView()) {
                         Image(systemName: "questionmark")
-                    }.simultaneousGesture(TapGesture().onEnded {
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    })
+                    }.hapticTap(.light)
                 }
             }
         }
@@ -559,9 +555,7 @@ struct WSOFacTrakProfView: View {
                 HStack {
                     NavigationLink(destination: WSOFacTrakProfKeyView()) {
                         Image(systemName: "questionmark")
-                    }.simultaneousGesture(TapGesture().onEnded {
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    })
+                    }.hapticTap(.light)
                 }
             }
         }
@@ -707,9 +701,7 @@ struct WSOFacTrakAreaView: View {
                 HStack {
                     NavigationLink(destination: WSOFacTrakAreaKeyView()) {
                         Image(systemName: "questionmark")
-                    }.simultaneousGesture(TapGesture().onEnded {
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                    })
+                    }.hapticTap(.light)
                 }
             }
         }

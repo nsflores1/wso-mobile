@@ -159,9 +159,7 @@ struct WSOBulletinListView: View {
                         HStack {
                             NavigationLink(destination: WSOBulletinKeyView()) {
                                 Image(systemName: "questionmark")
-                            }.simultaneousGesture(TapGesture().onEnded {
-                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                            })
+                            }.hapticTap(.light)
                         }
                     }
                 }
@@ -217,9 +215,7 @@ struct WSOBulletinPerListView: View {
                     HStack {
                         NavigationLink(destination: WSOBulletinKeyView()) {
                             Image(systemName: "questionmark")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
+                        }.hapticTap(.light)
                     }
                 }
             }

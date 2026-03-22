@@ -117,9 +117,7 @@ struct HomeView: View {
                         if #available(iOS 26.0, *) {
                             NavigationLink(destination: MapPageView()) {
                                 Image(systemName: "map")
-                            }.simultaneousGesture(TapGesture().onEnded {
-                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                            })
+                            }.hapticTap(.light)
                         }
                         if userType == .student {
                             NavigationLink(destination: {
@@ -128,10 +126,7 @@ struct HomeView: View {
                                 }
                             }) {
                                 Image(systemName: "person")
-                            }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                            })
+                            }.hapticTap(.light)
                         }
                     }
                 }
@@ -139,9 +134,7 @@ struct HomeView: View {
                     HStack {
                         NavigationLink(destination: MoreView()) {
                             Image(systemName: "ellipsis.curlybraces")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
+                        }.hapticTap(.light)
                     }
                 }
             }

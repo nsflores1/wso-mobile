@@ -20,9 +20,7 @@ struct NewsView: View {
                     HStack {
                         NavigationLink(destination: NewsKeyView()) {
                             Image(systemName: "questionmark")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
+                        }.hapticTap(.light)
                     }
                 }
             }

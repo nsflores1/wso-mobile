@@ -81,9 +81,7 @@ struct OnboardingTwoView: View {
                         Text("Student").tag(UserType.student)
                         Text("Non-student").tag(UserType.nonstudent)
                     }
-                    .simultaneousGesture(TapGesture().onEnded {
-                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                    })
+                    .hapticTap(.rigid)
                 }
                 Text(secondaryText)
                     .padding(20)

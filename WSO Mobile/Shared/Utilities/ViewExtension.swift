@@ -22,6 +22,32 @@ struct NavSubtitleIfAvailable: ViewModifier {
     }
 }
 
+extension View {
+    func navSubtitleIfAvailable(_ value: String) -> some View {
+        modifier(NavSubtitleIfAvailable(subtitle: value))
+    }
+}
+
+// this allows you to quickly set haptic feedback, since Apple's wrapper
+// is a bit verbose than is needed for our use case.
+struct HapticTap: ViewModifier {
+    let haptic: UIImpactFeedbackGenerator.FeedbackStyle
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        content.simultaneousGesture(TapGesture().onEnded {
+            UIImpactFeedbackGenerator(style: haptic).impactOccurred()
+        })
+    }
+}
+
+extension View {
+    func hapticTap(_ value: UIImpactFeedbackGenerator.FeedbackStyle) -> some View {
+        modifier(HapticTap(haptic: value))
+    }
+}
+
+
 // this is a helper that makes it trivially easy to make a view copy-paste!
 // to use on a view:
 // Text(thing.text)

@@ -89,22 +89,13 @@ struct SettingsView: View {
                     Picker("User Type", selection: $userType) {
                         Text("Student").tag(UserType.student)
                         Text("Non-student").tag(UserType.nonstudent)
-                    }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                        })
+                    }.hapticTap(.rigid)
                     Toggle("Use Serif Font For Record", isOn: $likesSerifFont)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                        })
+                        .hapticTap(.rigid)
                     Toggle("Hide All Restaurants", isOn: $hatesEatingOut)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                        })
+                        .hapticTap(.rigid)
                     Toggle("Enable Beta Options", isOn: $betaOptionsEnabled)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                        })
+                        .hapticTap(.rigid)
                 } header : {
                     Text("Toggles")
                         .fontWeight(.semibold)
@@ -112,13 +103,9 @@ struct SettingsView: View {
                 }
                 Section {
                     Toggle("Show Dining Menus", isOn: $diningIsShown)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                        })
+                        .hapticTap(.rigid)
                     Toggle("Show News Reader", isOn: $newsIsShown)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                        })
+                        .hapticTap(.rigid)
                     Toggle("Show WCFM Player", isOn: $wcfmIsShown)
                         .simultaneousGesture(TapGesture().onEnded {
                             Task {
@@ -211,14 +198,10 @@ struct SettingsView: View {
                             Text("View Debug Log")
                         }
                         Toggle("Enable Future Menus", isOn: $betaFutureMenusEnabled)
-                            .simultaneousGesture(TapGesture().onEnded {
-                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                            })
+                            .hapticTap(.rigid)
                         Text("See menus up to one week into the future. May be inaccurate. May not work.").italic()
                         Toggle("Enable whimsy", isOn: $whimsyEnabled)
-                            .simultaneousGesture(TapGesture().onEnded {
-                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                            })
+                            .hapticTap(.rigid)
                         Text("Adds back some beta-exclusive \"features\" (mostly bad jokes) which were left out during the app's public release.").italic()
                         if whimsyEnabled {
                             // EASTER EGG
@@ -268,9 +251,7 @@ struct SettingsView: View {
                     HStack {
                         NavigationLink(destination: SettingsKeyView()) {
                             Image(systemName: "questionmark")
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        })
+                        }.hapticTap(.rigid)
                     }
                 }
             }
