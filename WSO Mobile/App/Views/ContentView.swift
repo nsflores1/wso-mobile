@@ -35,15 +35,15 @@ struct ContentView: View {
                         HomeView()
                     }
                 }
-                if newsIsShown {
-                    Tab("News", systemImage: "calendar") {
-                        NewsView()
-                    }
-                }
                 if diningIsShown {
                     Tab("Dining", systemImage: "fork.knife")
                     {
                         DiningView()
+                    }
+                }
+                if newsIsShown {
+                    Tab("News", systemImage: "calendar") {
+                        NewsView()
                     }
                 }
                 if wcfmIsShown {

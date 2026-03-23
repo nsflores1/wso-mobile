@@ -5,7 +5,7 @@
 //  Created by Nathaniel Flores on 2026-01-05.
 //
 
-// used for gating views.
+// used for gating views based on user authentication status.
 
 import SwiftUI
 import Logging

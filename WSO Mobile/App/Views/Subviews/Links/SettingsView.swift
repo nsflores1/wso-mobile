@@ -16,7 +16,6 @@ struct SettingsView: View {
     @AppStorage("likesSerifFont") private var likesSerifFont: Bool = false
 
     @AppStorage("betaOptionsEnabled") private var betaOptionsEnabled: Bool = false
-    @AppStorage("betaFutureMenusEnabled") private var betaFutureMenusEnabled: Bool = false
 
     // easter egg
     @AppStorage("whimsyEnabled") private var whimsyEnabled: Bool = false
@@ -194,12 +193,6 @@ struct SettingsView: View {
                         
                         The WSO development team makes NO guarantees as to beta feature functionality and may remove them at any time.
                         """)
-                        NavigationLink(destination: LogViewerView()) {
-                            Text("View Debug Log")
-                        }
-                        Toggle("Enable Future Menus", isOn: $betaFutureMenusEnabled)
-                            .hapticTap(.rigid)
-                        Text("See menus up to one week into the future. May be inaccurate. May not work.").italic()
                         Toggle("Enable whimsy", isOn: $whimsyEnabled)
                             .hapticTap(.rigid)
                         Text("Adds back some beta-exclusive \"features\" (mostly bad jokes) which were left out during the app's public release.").italic()

@@ -44,7 +44,7 @@ struct Hours: Codable {
 
 struct Course: Codable {
     let name: String
-    let items: [MenuItem]
+    let items: [MenuItem]?
 }
 
 struct MenuItem: Codable {
@@ -69,15 +69,13 @@ struct DiningHall: Codable {
 
     // every course is empty, but there may be many courses for many meals
     // still defined. I hate this API.
-    func hasCoursesToday() -> Bool {
+    func lacksCoursesToday() -> Bool {
         let truth = meals.contains { meal in
             meal.courses.contains { course in
                 !course.foodItems.isEmpty
             }
         }
-        // we actually want the OPPOSITE, the case where every meal is empty
-        // it's just easier to express it above, like so
-        return !truth
+        return truth
     }
     // the same for all dining halls. sloppy but it works
     let updateTime: String
@@ -131,6 +129,21 @@ struct Meal: Codable {
 
         return now >= open && now < close
     }
+}
+
+// this stops assuming a day around the cutoff, which is important for avoiding
+// all sorts of weird time bugs that would otherwise happen around 4am
+// yes, we're comparing by seconds. yes, it's mostly accurate.
+func normalizedNowMinutes(cutoffHour: Int = 5) -> Int {
+    let calendar = Calendar(identifier: .gregorian)
+    let comps = calendar.dateComponents([.hour, .minute], from: Date())
+    let hour = comps.hour!
+    let minute = comps.minute!
+
+    let raw = hour * 60 + minute
+    let cutoff = cutoffHour * 60
+
+    return raw < cutoff ? raw + 24 * 60 : raw
 }
 
 struct Courses: Codable {
@@ -201,7 +214,7 @@ func flattenMenuResponse(_ response: MenuResponse) -> [DiningHall] {
                     courses: (meal.courses ?? [:]).values.map { course in
                         Courses(
                             courseTitle: course.name,
-                            foodItems: course.items.map { item in
+                            foodItems: (course.items ?? []).map { item in
                                 FoodItem(
                                     name: item.name,
                                     isVegetarian: item.vegetarian,
@@ -227,8 +240,13 @@ func parseWilliamsDining() async throws -> [DiningHall] {
         requestType: .get,
         getParser: parser
     )
-    let data = try await request.get()
-    return flattenMenuResponse(data)
+    do {
+        let data = try await request.get()
+        return flattenMenuResponse(data)
+    } catch {
+        print("exception in parsing: \(error)")
+        return []
+    }
 }
 
 struct DateFile: Codable, Hashable, Identifiable {

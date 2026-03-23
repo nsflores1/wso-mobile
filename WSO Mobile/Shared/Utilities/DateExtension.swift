@@ -21,9 +21,7 @@ extension Date {
     var shortDisplay: String {
         Date.shortDisplayFormatter.string(from: self)
     }
-}
 
-extension Date {
     static let evenShorterDisplayFormatter: DateFormatter = {
         let f = DateFormatter()
         f.dateFormat = "EEEE, d MMM"

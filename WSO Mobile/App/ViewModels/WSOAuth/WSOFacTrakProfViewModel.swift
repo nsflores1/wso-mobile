@@ -14,7 +14,6 @@ class WSOFacTrakProfViewModel {
 
     // cache per-id.
     let id: Int
-
     init(id: Int) {
         self.id = id
     }

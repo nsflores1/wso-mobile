@@ -28,6 +28,9 @@ struct MoreView: View {
                         }
                     }
                     .buttonStyle(.plain)
+                    NavigationLink(destination: LogViewerView()) {
+                        Label("View Debug Log", systemImage: "printer.dotmatrix")
+                    }
                     NavigationLink(destination: PrivacyPolicyView()) {
                         Label("Privacy Policy", systemImage: "document")
                     }
@@ -40,7 +43,7 @@ struct MoreView: View {
                 }
                 Section {
                     Text("""
-                        You're using WSO Mobile Rewritten, v1.4.2 (Fantastic FacTrak)!
+                        You're using WSO Mobile Rewritten, \(appVersion) (\(appVersionName)!
                         
                         Please send all feedback to the developers via the "Send Feedback" button.
                         

@@ -11,17 +11,7 @@ import Logging
 struct DiningView: View {
     @Environment(\.logger) private var logger
     @State private var viewModel = DiningHoursViewModel()
-    @State private var pastViewModel = PastMenuViewModel(Date())
-
-    // note that this isn't optional because we need .onChange(), which doesn't
-    // support using optionals in iOS 17. this is just some arbitrary choice,
-    // which is arguably a bit moronic, but I never let common sense stop me
-    // from working code. pragmatism should be your guide always when coding
-    @State private var selected: Date = Date.distantPast
-
-    @State private var showPicker = false
     @AppStorage("hatesEatingOut") var hatesEatingOut: Bool = false
-    @AppStorage("betaFutureMenusEnabled") private var betaFutureMenusEnabled: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -57,6 +47,26 @@ struct DiningView: View {
                                 .font(.title3)
                         }
                     }
+                    ForEach(
+                        viewModel.diningMenu.sorted(),
+                        id: \.hallName
+                    ) { hall in
+                        if hall.lacksCoursesToday() {
+                            Section {
+                                DiningVendorView(menu: hall)
+                            } header: {
+                                Group {
+                                    HStack {
+                                        Circle()
+                                            .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
+                                            .frame(width: 15, height: 15)
+                                    }
+                                    Text(hall.hallName)
+                                }.font(.title3)
+                                    .fontWeight(.semibold)
+                            }
+                        }
+                    }
                     if (hatesEatingOut == false) {
                         Section {
                             NavigationLink("Ephelia's Roots") {
@@ -77,106 +87,6 @@ struct DiningView: View {
                                 .font(.title3)
                         }
                     }
-                    Section {
-                        // user must opt-in to this feature
-                        // it's a bit ugly and the code doesn't look nice either. sorry
-                        if betaFutureMenusEnabled {
-                            if viewModel.pastList != [] {
-                                DisclosureGroup(
-                                    isExpanded: $showPicker,
-                                    content: {
-                                        Picker("Date", selection: $selected) {
-                                                // sorted in descending (most recent) order
-                                            ForEach(viewModel.pastList.sorted(by: >), id: \.self) { date in
-                                                Text(date, format: .dateTime.year().month().day())
-                                                    .tag(Optional(date))
-                                            }
-                                        }
-                                        .pickerStyle(.wheel)
-                                        .frame(maxWidth: .infinity)
-                                    },
-                                    label: {
-                                        if selected != Date.distantPast {
-                                            Text(selected, format: .dateTime.year().month().day())
-                                                .italic(true)
-                                        } else {
-                                            Text("(Click to select a different day...)")
-                                                .foregroundStyle(Color(.secondaryLabel))
-                                                .italic()
-                                        }
-                                        if selected != Date.distantPast {
-                                            Button {
-                                                selected = Date.distantPast
-                                            } label: {
-                                                Image(systemName: "xmark.circle.fill")
-                                                    .foregroundStyle(.secondary)
-                                            }
-                                        }
-                                    }
-                                ).onChange(of: selected) { old, new in
-                                    Task {
-                                        await pastViewModel.updateDate(new)
-                                    }
-                                }
-                            }
-                            if pastViewModel.isLoading {
-                                ProgressView()
-                            } else if let err = pastViewModel.error {
-                                Group {
-                                    Text(err.localizedDescription).foregroundStyle(Color.red)
-                                }.refreshable {
-                                    await pastViewModel.forceRefresh()
-                                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                }
-                            } else {
-                                ForEach(
-                                    pastViewModel.diningMenu.sorted(),
-                                    id: \.hallName
-                                ) { hall in
-                                    NavigationLink(destination: DiningVendorView(menu: hall)) {
-                                        HStack {
-                                            Circle()
-                                                .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
-                                                .frame(width: 10, height: 10)
-                                        }
-                                        Text(hall.hallName)
-                                        if hall.hasCoursesToday() {
-                                            Text("(Not serving today)")
-                                                .foregroundStyle(Color(.secondaryLabel))
-                                        }
-                                    }
-                                }
-                                .task {
-                                    await pastViewModel.fetchIfNeeded()
-                                }
-                            }
-                        }
-                        // if we selected the distant past, fall back, same if it's disabled
-                        if selected == Date.distantPast || betaFutureMenusEnabled == false {
-                            ForEach(
-                                viewModel.diningMenu.sorted(),
-                                id: \.hallName
-                            ) { hall in
-                                NavigationLink(destination: DiningVendorView(menu: hall)) {
-                                    HStack {
-                                        Circle()
-                                            .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
-                                            .frame(width: 10, height: 10)
-                                    }
-                                    Text(hall.hallName)
-                                    if hall.hasCoursesToday() {
-                                        Text("(Not serving today)")
-                                            .foregroundStyle(Color(.secondaryLabel))
-                                    }
-                                }
-
-                            }
-                        }
-                    } header: {
-                        Text("On-Campus Dining Halls")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                    }
                 }.listStyle(.sidebar)
                 .refreshable {
                         logger.trace("Dining data is being forcibly refreshed...")
@@ -184,7 +94,6 @@ struct DiningView: View {
                         logger.trace("Dining data forcibly refreshed")
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 }
-                .animation(.easeInOut(duration: 0.25), value: selected)
                 .navigationTitle(Text("Dining"))
                 .modifier(
                     NavSubtitleIfAvailable(
@@ -207,21 +116,6 @@ struct DiningView: View {
             logger.trace("Fetch complete")
         }
     }
-
-    // this stops assuming a day around the cutoff, which is important for avoiding
-    // all sorts of weird time bugs that would otherwise happen around 4am
-    func normalizedNowMinutes(cutoffHour: Int = 5) -> Int {
-        let calendar = Calendar(identifier: .gregorian)
-        let comps = calendar.dateComponents([.hour, .minute], from: Date())
-        let hour = comps.hour!
-        let minute = comps.minute!
-
-        let raw = hour * 60 + minute
-        let cutoff = cutoffHour * 60
-
-        return raw < cutoff ? raw + 24 * 60 : raw
-    }
-
 }
 
 #Preview {
