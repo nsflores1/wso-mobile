@@ -97,8 +97,8 @@ class AuthManager {
         logger.debug("Created SecAccessControlFlags")
         let access = SecAccessControlCreateWithFlags(
             nil,
-            kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
-            [.userPresence],
+            kSecAttrAccessibleAfterFirstUnlock,
+            [],
             nil
         )!
 

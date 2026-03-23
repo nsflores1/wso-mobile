@@ -33,7 +33,7 @@ struct OnboardingOneView: View {
             VStack {
                 let mainText = """
                 You're using:
-                WSO Mobile Rewritten, v1.4.2 (Fantastic FacTrak)!
+                WSO Mobile Rewritten, \(appVersion) (\(appVersionName)!
                 
                 WSO (Williams Students Online) is a student organization at Williams College devoted to making software to help the college community, and this is our app! It provides a variety of useful services for students, faculty, staff, alumni, and all who are interested in Williams College or part of its community.
                 

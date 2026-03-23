@@ -46,7 +46,7 @@ struct HomeButtonsView: View {
                     Label("FacTrak", systemImage: "graduationcap")
                         .foregroundStyle(Color.accent)
                     Spacer()
-                    Text("Rate professors & courses")
+                    Text("Rate profs & courses")
                         .foregroundStyle(Color(.secondaryLabel)).italic(true)
                 }
             }
