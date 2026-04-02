@@ -26,7 +26,8 @@ struct DiningVendorView: View {
                         Text(timeString)
                             .foregroundStyle(Color(.secondaryLabel))
                         Spacer()
-                        if menu.isOpenNow(now: normalizedNowMinutes()) {
+                        // we only want to show if this particular meal is open
+                        if meal.isOpen(now: normalizedNowMinutes()) {
                             Image(systemName: "hands.and.sparkles")
                                 .foregroundStyle(Color(.accent))
                         }

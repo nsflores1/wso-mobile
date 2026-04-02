@@ -58,7 +58,10 @@ struct DiningView: View {
                                 Group {
                                     HStack {
                                         Circle()
-                                            .fill(hall.isOpenNow(now: normalizedNowMinutes()) ? .green : .red)
+                                        // TODO: this is evidence this whole thing needs
+                                        // to be salted and drawn and quartered in the town square.
+                                        // I hate this part of the code. it needs substantial work.
+                                            .fill(hall.meals.filter { $0.isOpen(now: normalizedNowMinutes()) && !$0.courses.isEmpty }.isEmpty == false ? .green : .red)
                                             .frame(width: 15, height: 15)
                                     }
                                     Text(hall.hallName)

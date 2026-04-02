@@ -133,7 +133,8 @@ struct Meal: Codable {
 
 // this stops assuming a day around the cutoff, which is important for avoiding
 // all sorts of weird time bugs that would otherwise happen around 4am
-// yes, we're comparing by seconds. yes, it's mostly accurate.
+// yes, we're comparing by seconds. yes, this is terrible.
+// I need to refactor this whole logic at some point...
 func normalizedNowMinutes(cutoffHour: Int = 5) -> Int {
     let calendar = Calendar(identifier: .gregorian)
     let comps = calendar.dateComponents([.hour, .minute], from: Date())
