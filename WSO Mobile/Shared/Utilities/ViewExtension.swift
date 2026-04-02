@@ -47,7 +47,6 @@ extension View {
     }
 }
 
-
 // this is a helper that makes it trivially easy to make a view copy-paste!
 // to use on a view:
 // Text(thing.text)

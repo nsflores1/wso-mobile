@@ -8,11 +8,6 @@
 // this service abstracts the process of making calls to spinitron and getting
 // metadata for WCFM. in particular, it makes interfaces to do like
 // 90% of what you actually want to do.
-// TODO: BEFORE RELEASING THIS: have WSO scrape this file,
-// NOT you! it's bad for the API key to be leaked openly, it's much
-// safer for backend to handle this.
-
-// TODO: DO NOT SHIP THE APP WITH THE API KEY!
 
 import Foundation
 import HTTPTypes
